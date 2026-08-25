@@ -20,8 +20,7 @@ const translations: Record<Locale, Record<string, string>> = {
     nav_portal: "Exhibitor Portal", nav_contact: "Contact",
     // Hero
     hero_badge: "Pan-African · Events · Media · Innovation · Promotion",
-    hero_sub1: "We don't just host events,",
-    hero_sub2: "we ignite movements.",
+    hero_tagline: "Branding the New Africa.",
     hero_body: "AfroNova is a premier Pan-African enterprise dedicated to celebrating, amplifying and promoting Africa's cultural heritage, innovation and creative excellence. Headquartered in Addis Ababa, operating across 50+ countries.",
     hero_cta_discover: "Discover AfroNova",
     hero_cta_services: "Our Services",

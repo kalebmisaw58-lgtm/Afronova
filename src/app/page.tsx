@@ -64,9 +64,8 @@ export default function HomePage() {
                 style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)" }}>
               <span className="text-white">Afro</span><span className="text-gradient">Nova</span>
             </h1>
-            <p className="text-xl md:text-2xl font-display font-bold text-white/85 mb-5 leading-snug">
-              {t("hero_sub1")}<br />
-              <span className="text-gradient">{t("hero_sub2")}</span>
+            <p className="text-xl md:text-2xl font-display font-bold text-gradient mb-5 leading-snug">
+              {t("hero_tagline")}
             </p>
             <p className="text-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-xl">{t("hero_body")}</p>
             <div className="flex flex-col sm:flex-row flex-wrap items-start gap-3">
