@@ -259,7 +259,7 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
             {partnerList.map((p) => (
               <div key={p.name} className="flex items-center justify-center transition-transform duration-200 hover:scale-110">
-                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={56} height={56} />
+                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={66} height={66} />
               </div>
             ))}
           </div>
