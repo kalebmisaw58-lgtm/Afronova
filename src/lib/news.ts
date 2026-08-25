@@ -11,10 +11,10 @@ export type NewsArticle = {
 export const newsArticles: NewsArticle[] = [
   {
     slug: "africa-celebrates-2026-announced", category: "event", date: "July 10, 2026", readTime: "4 min read",
-    title: "Africa Celebrates 2026 — 6th Edition Officially Announced for November in Addis Ababa",
-    excerpt: "AfroNova confirms the 6th edition of Africa Celebrates, taking place November 10–15 at AU HQ and UNECA.",
+    title: "Africa Celebrates 2026, 6th Edition Officially Announced for November in Addis Ababa",
+    excerpt: "AfroNova confirms the 6th edition of Africa Celebrates, taking place November 10 to 15 at AU HQ and UNECA.",
     paragraphs: [
-      "AfroNova Media House & Events is proud to announce Africa Celebrates 2026, the sixth edition of the continent’s Pan-African festival. The event will take place November 10–15, 2026 at the African Union Headquarters and the United Nations Economic Commission for Africa in Addis Ababa, Ethiopia.",
+      "AfroNova Media House & Events is proud to announce Africa Celebrates 2026, the sixth edition of the continent’s Pan-African festival. The event will take place November 10 to 15, 2026 at the African Union Headquarters and the United Nations Economic Commission for Africa in Addis Ababa, Ethiopia.",
       "This year’s theme, One Africa, One People, brings culture, innovation and enterprise together on one world-class stage.",
       "The programme includes gala fashion and awards nights, a business and trade forum, and an open exhibition for artisans, vendors and corporate delegations from across Africa and the diaspora.",
     ],

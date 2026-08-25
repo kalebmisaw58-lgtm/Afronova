@@ -101,7 +101,7 @@ export default function ContactForm({
         <CheckCircle className="w-16 h-16" style={{ color: "#D6A34A" }} />
         <h3 className="text-xl font-display font-bold text-white">{successMessage}</h3>
         <p className="text-white/45 text-sm max-w-xs">
-          Check your inbox — we&apos;ve sent you a confirmation email.
+          Check your inbox, we&apos;ve sent you a confirmation email.
         </p>
         <button
           onClick={() => { setSubmitted(false); setValues({}); setErrors({}); setApiError(""); }}

@@ -100,16 +100,16 @@ export async function sendContactEmail(data: ContactEmailData) {
     getResendClient().emails.send({
       from:    FROM,
       to:      data.email,
-      subject: "We received your message — AfroNova",
+      subject: "We received your message, AfroNova",
       html: emailWrapper("Message Received", `
         ${row("Hello", data.name)}
         <div class="row">
           <div class="val">
             Thank you for reaching out to AfroNova. We have received your message and will
-            get back to you within <strong style="color:#D6A34A">1–2 business days</strong>.<br/><br/>
+            get back to you within <strong style="color:#D6A34A">1 to 2 business days</strong>.<br/><br/>
             In the meantime, follow us on social media for the latest updates on
             Africa Celebrates 2026 and all things AfroNova.<br/><br/>
-            <em style="color:rgba(255,255,255,0.50)">"We don't just host events — we ignite movements."</em>
+            <em style="color:rgba(255,255,255,0.50)">"We don't just host events, we ignite movements."</em>
           </div>
         </div>
       `),
@@ -124,14 +124,14 @@ export async function sendNewsletterWelcome(email: string) {
   return getResendClient().emails.send({
     from:    FROM,
     to:      email,
-    subject: "Welcome to AfroNova — You're on the list!",
+    subject: "Welcome to AfroNova, You're on the list!",
     html: emailWrapper("Welcome to AfroNova", `
       <div class="row">
         <div class="val">
           You're now subscribed to the <strong style="color:#D6A34A">AfroNova newsletter</strong>.<br/><br/>
           Expect the latest updates on <strong>Africa Celebrates 2026</strong>, Pan-African events,
-          media releases, and exclusive opportunities — straight to your inbox.<br/><br/>
-          <strong>Next up:</strong> Africa Celebrates 2026 · Nov 10–15 · Addis Ababa<br/><br/>
+          media releases, and exclusive opportunities, straight to your inbox.<br/><br/>
+          <strong>Next up:</strong> Africa Celebrates 2026 · Nov 10 to 15 · Addis Ababa<br/><br/>
           <em style="color:rgba(255,255,255,0.50)">"Branding the New Africa. Limitless Possibilities."</em>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const slides = [
   {
     name: "Kwame Nkrumah",
-    title: "Father of Pan-Africanism · Ghana · 1909–1972",
+    title: "Father of Pan-Africanism · Ghana · 1909 to 1972",
     quote: "Africa is one continent, one people, and one nation.",
     initial: "KN",
     photo: "/heroes/kwame-nkrumah.jpg",
@@ -18,7 +18,7 @@ const slides = [
   },
   {
     name: "Nelson Mandela",
-    title: "Madiba · South Africa · 1918–2013",
+    title: "Madiba · South Africa · 1918 to 2013",
     quote: "It always seems impossible until it's done.",
     initial: "NM",
     photo: "/heroes/nelson-mandela.jpg",
@@ -29,7 +29,7 @@ const slides = [
   },
   {
     name: "Haile Selassie I",
-    title: "Lion of Judah · Ethiopia · 1892–1975",
+    title: "Lion of Judah · Ethiopia · 1892 to 1975",
     quote: "Throughout history, it has been the inaction of those who could have acted that has made it possible for evil to triumph.",
     initial: "HS",
     photo: "/heroes/haile-selassie.jpg",
@@ -40,8 +40,8 @@ const slides = [
   },
   {
     name: "Patrice Lumumba",
-    title: "Hero of Independence · DR Congo · 1925–1961",
-    quote: "Africa will write its own history — a history of glory and dignity.",
+    title: "Hero of Independence · DR Congo · 1925 to 1961",
+    quote: "Africa will write its own history, a history of glory and dignity.",
     initial: "PL",
     photo: "/heroes/patrice-lumumba.jpg",
     bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #18151A 0%, #070908 60%)",
@@ -51,7 +51,7 @@ const slides = [
   },
   {
     name: "Thomas Sankara",
-    title: "The Upright Man · Burkina Faso · 1949–1987",
+    title: "The Upright Man · Burkina Faso · 1949 to 1987",
     quote: "You cannot carry out fundamental change without a certain amount of madness.",
     initial: "TS",
     photo: "/heroes/thomas-sankara.jpg",
@@ -62,7 +62,7 @@ const slides = [
   },
   {
     name: "Jomo Kenyatta",
-    title: "Founding Father · Kenya · 1897–1978",
+    title: "Founding Father · Kenya · 1897 to 1978",
     quote: "The African is not struggling for his dignity; he has it.",
     initial: "JK",
     photo: "/heroes/jomo-kenyatta.jpg",
@@ -73,8 +73,8 @@ const slides = [
   },
   {
     name: "Julius Nyerere",
-    title: "Mwalimu · Tanzania · 1922–1999",
-    quote: "We are at war with poverty and oppression — and this is a war we must win.",
+    title: "Mwalimu · Tanzania · 1922 to 1999",
+    quote: "We are at war with poverty and oppression, and this is a war we must win.",
     initial: "JN",
     photo: "/heroes/julius-nyerere.jpg",
     bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #1B1813 0%, #070908 60%)",
@@ -84,7 +84,7 @@ const slides = [
   },
   {
     name: "Amílcar Cabral",
-    title: "Revolutionary Poet · Guinea-Bissau · 1924–1973",
+    title: "Revolutionary Poet · Guinea-Bissau · 1924 to 1973",
     quote: "Mask no difficulties, tell no lies, claim no easy victories.",
     initial: "AC",
     photo: "/heroes/amilcar-cabral.jpg",
@@ -95,7 +95,7 @@ const slides = [
   },
   {
     name: "Wangari Maathai",
-    title: "Green Belt Movement · Kenya · 1940–2011",
+    title: "Green Belt Movement · Kenya · 1940 to 2011",
     quote: "In the course of history, there comes a time when humanity is called to shift to a new level of consciousness.",
     initial: "WM",
     photo: "/heroes/wangari-maathai.jpg",
@@ -106,7 +106,7 @@ const slides = [
   },
   {
     name: "Miriam Makeba",
-    title: "Mama Africa · South Africa · 1932–2008",
+    title: "Mama Africa · South Africa · 1932 to 2008",
     quote: "I look at an ant and I see myself: a native South African, enduring.",
     initial: "MM",
     photo: "/heroes/miriam-makeba.jpg",
@@ -117,7 +117,7 @@ const slides = [
   },
   {
     name: "Steve Biko",
-    title: "Black Consciousness · South Africa · 1946–1977",
+    title: "Black Consciousness · South Africa · 1946 to 1977",
     quote: "The most potent weapon in the hands of the oppressor is the mind of the oppressed.",
     initial: "SB",
     photo: "/heroes/steve-biko.jpg",
@@ -128,7 +128,7 @@ const slides = [
   },
   {
     name: "Cheikh Anta Diop",
-    title: "Historian of Africa · Senegal · 1923–1986",
+    title: "Historian of Africa · Senegal · 1923 to 1986",
     quote: "Africa has a history, and it was a great one.",
     initial: "CD",
     photo: "/heroes/cheikh-anta-diop.jpg",
@@ -139,7 +139,7 @@ const slides = [
   },
   {
     name: "Fela Kuti",
-    title: "Father of Afrobeat · Nigeria · 1938–1997",
+    title: "Father of Afrobeat · Nigeria · 1938 to 1997",
     quote: "Music is the weapon of the future.",
     initial: "FK",
     photo: "/heroes/fela-kuti.jpg",
@@ -152,7 +152,7 @@ const slides = [
 
 const INTERVAL = 5500;
 
-// Inline Adinkra SVG pattern — no network request
+// Inline Adinkra SVG pattern, no network request
 function AdinkraPattern({ color }: { color: string }) {
   return (
     <svg
@@ -201,7 +201,7 @@ export default function HeroSlideshow() {
             {/* ── Layer 1: colour gradient background ─────── */}
             <div className="absolute inset-0" style={{ background: slide.bg }} />
 
-            {/* ── Layer 2: the real photo — right half ─────── */}
+            {/* ── Layer 2: the real photo, right half ─────── */}
             <div
               className="absolute"
               style={{

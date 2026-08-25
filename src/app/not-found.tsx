@@ -8,7 +8,7 @@ export default function NotFound() {
         <p className="text-8xl font-display font-black text-gradient">404</p>
         <h1 className="text-3xl font-display font-bold text-white">Page Not Found</h1>
         <p className="text-white/55 max-w-sm mx-auto">
-          This page doesn&apos;t exist — but Africa does, and so does everything you need at AfroNova.
+          This page doesn&apos;t exist, but Africa does, and so does everything you need at AfroNova.
         </p>
         <Link href="/" className="btn-primary inline-flex">
           <ArrowLeft className="w-4 h-4" /> Back to Home

@@ -16,7 +16,7 @@ export default function TermsPage() {
         <div className="space-y-6 text-white/65 leading-relaxed">
           <p>By accessing afronova.org, you agree to these Terms of Use. Please read them carefully.</p>
           <h2 className="text-white font-display font-bold text-xl">Use of Content</h2>
-          <p>All content on this website — including text, imagery, logos, and media — is owned by
+          <p>All content on this website, including text, imagery, logos, and media, is owned by
              AfroNova Media House &amp; Events or its licensors. Reproduction without written
              permission is prohibited.</p>
           <h2 className="text-white font-display font-bold text-xl">Limitation of Liability</h2>

@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Your message has been received. We'll be in touch within 1–2 business days." },
+      { success: true, message: "Your message has been received. We'll be in touch within 1 to 2 business days." },
       { status: 200 }
     );
   } catch (err) {

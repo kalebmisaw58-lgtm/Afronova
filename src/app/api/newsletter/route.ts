@@ -11,7 +11,7 @@ async function subscribeToMailchimp(email: string): Promise<void> {
   const dc       = process.env.MAILCHIMP_DC;
 
   if (!apiKey || !listId || !dc) {
-    console.warn("[newsletter] Mailchimp env vars not set — skipping Mailchimp sync");
+    console.warn("[newsletter] Mailchimp env vars not set, skipping Mailchimp sync");
     return;
   }
 
@@ -30,7 +30,7 @@ async function subscribeToMailchimp(email: string): Promise<void> {
     }),
   });
 
-  // 400 with title "Member Exists" is acceptable — already subscribed
+  // 400 with title "Member Exists" is acceptable, already subscribed
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
     if (data?.title !== "Member Exists") {
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
       .maybeSingle();
 
     if (existing) {
-      // Already subscribed — return success silently (don't leak info)
+      // Already subscribed, return success silently (don't leak info)
       return NextResponse.json(
         { success: true, message: "You're already on the list!" },
         { status: 200 }

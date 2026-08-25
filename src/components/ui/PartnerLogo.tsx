@@ -32,7 +32,7 @@ export default function PartnerLogo({
   const [error, setError] = useState(false);
 
   if (!logo || error) {
-    // Graceful fallback — colored initial circle
+    // Graceful fallback, colored initial circle
     return (
       <div
         className={cn(

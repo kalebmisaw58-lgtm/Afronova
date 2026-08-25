@@ -1,4 +1,4 @@
-/* Google Fonts — must be FIRST before any @tailwind directives */
+/* Google Fonts, must be FIRST before any @tailwind directives */
 /* Latin + Amharic + Arabic fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap');
 
@@ -190,13 +190,13 @@
 
 /* ── FLIP CARD ───────────────────────────────────────────── */
 
-/* Outer wrapper — sets the 3D perspective */
+/* Outer wrapper, sets the 3D perspective */
 .flip-card {
   perspective: 1000px;
   /* Height is set per usage via Tailwind */
 }
 
-/* Inner wrapper — rotates on hover */
+/* Inner wrapper, rotates on hover */
 .flip-card-inner {
   position: relative;
   width: 100%;

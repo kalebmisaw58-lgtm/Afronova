@@ -9,7 +9,7 @@ export default function PortfolioPage() {
 
   const featuredProjects = [
     {
-      title: "Africa Celebrates 2025 — 5th Edition",
+      title: "Africa Celebrates 2025, 5th Edition",
       theme: "Justice for Africans and People of African Descent through and Beyond Reparations",
       role: "Lead Implementing Partner in Ethiopia",
       highlights: [
@@ -19,7 +19,7 @@ export default function PortfolioPage() {
     },
     {
       title: "AFRIMA 2025",
-      theme: "World Media Calendar Unveiling & Music Conference — \"Music Beyond Borders\"",
+      theme: "World Media Calendar Unveiling & Music Conference, \"Music Beyond Borders\"",
       role: "Full Event Facilitator & Media Partner",
       highlights: [
         t("fp2_h1"), t("fp2_h2"), t("fp2_h3"), t("fp2_h4"),

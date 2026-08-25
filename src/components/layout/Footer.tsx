@@ -56,7 +56,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/8 adinkra-bg section-overlay-strong">
 
-      {/* ── TOP BAND — colourful wheel stripe echoing the logo ── */}
+      {/* ── TOP BAND, colourful wheel stripe echoing the logo ── */}
       <div className="w-full h-1 wheel-shimmer opacity-70" />
 
       {/* ── MAIN GRID ─────────────────────────────────────────── */}
@@ -105,7 +105,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5 text-sm text-white/55">
                 <Clock className="w-4 h-4 shrink-0" style={{ color: "#D6A34A" }} />
-                Mon – Fri, 9:00 AM – 5:00 PM
+                Mon  to  Fri, 9:00 AM  to  5:00 PM
               </li>
             </ul>
 

@@ -8,7 +8,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 export const metadata: Metadata = {
   metadataBase: new URL("https://afronova.org"),
   title: {
-    default: "AfroNova | Branding the New Africa — Limitless Possibilities",
+    default: "AfroNova | Branding the New Africa, Limitless Possibilities",
     template: "%s | AfroNova",
   },
   description:
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     siteName: "AfroNova",
     title: "AfroNova | Media House & Events",
     description:
-      "Pan-African event management, multimedia production & advertising — headquartered in Addis Ababa, Ethiopia.",
+      "Pan-African event management, multimedia production & advertising, headquartered in Addis Ababa, Ethiopia.",
     images: [
       {
         url: "/logo.png",
         width: 512,
         height: 512,
-        alt: "AfroNova — One Africa, One People",
+        alt: "AfroNova, One Africa, One People",
       },
     ],
   },

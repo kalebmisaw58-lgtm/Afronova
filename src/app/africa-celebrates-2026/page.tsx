@@ -6,11 +6,11 @@ import CountdownTimer from "@/components/ui/CountdownTimer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
 
-// schema.org stays static — not translated
+// schema.org stays static, not translated
 const eventSchema = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: "Africa Celebrates 2026 — 6th Edition",
+  name: "Africa Celebrates 2026, 6th Edition",
   description: "One Africa, One People: Uniting Culture, Innovation and Enterprise for a Shared Prosperous Future",
   startDate: "2026-11-10", endDate: "2026-11-15",
   eventStatus: "https://schema.org/EventScheduled",
