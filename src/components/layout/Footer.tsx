@@ -5,17 +5,18 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   MapPin, Phone, Clock,
-  Instagram, Facebook, Twitter, Youtube, Linkedin,
+  Instagram, Facebook, Twitter, Youtube, Linkedin, Music2,
   ArrowRight, Send, Loader2,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const socials = [
-  { icon: Instagram, href: "https://instagram.com/afronova",              label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/afronova__",              label: "Instagram" },
   { icon: Facebook,  href: "https://facebook.com/afronova",               label: "Facebook" },
-  { icon: Twitter,   href: "https://twitter.com/afronova",                label: "Twitter / X" },
+  { icon: Twitter,   href: "https://x.com/socialafronova",                label: "Twitter / X" },
   { icon: Youtube,   href: "https://youtube.com/afronova",                label: "YouTube" },
-  { icon: Linkedin,  href: "https://linkedin.com/company/afronova",       label: "LinkedIn" },
+  { icon: Linkedin,  href: "https://www.linkedin.com/company/afronova-mediahub/",       label: "LinkedIn" },
+  { icon: Music2,    href: "https://www.tiktok.com/@afronova",            label: "TikTok" },
 ];
 
 export default function Footer() {
