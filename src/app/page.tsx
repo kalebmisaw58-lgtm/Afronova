@@ -256,14 +256,10 @@ export default function HomePage() {
       <section className="py-14 border-t border-white/5 section-overlay">
         <div className="container-custom">
           <p className="text-center text-white/30 text-xs uppercase tracking-widest font-semibold mb-8">{t("partners_label")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
             {partnerList.map((p) => (
-              <div key={p.name} className="px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-2.5 cursor-default"
-                   style={{ border: "1px solid rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.35)" }}
-                   onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(214,163,74,0.45)"; (e.currentTarget as HTMLDivElement).style.color = "rgba(214,163,74,0.85)"; }}
-                   onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.07)"; (e.currentTarget as HTMLDivElement).style.color = "rgba(255,255,255,0.35)"; }}>
-                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={24} height={24} />
-                <span>{p.name}</span>
+              <div key={p.name} className="flex items-center justify-center transition-transform duration-200 hover:scale-110">
+                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={40} height={40} />
               </div>
             ))}
           </div>
