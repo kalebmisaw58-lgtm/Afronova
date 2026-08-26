@@ -67,12 +67,12 @@ export default function Navbar() {
 
           {/* ── LOGO ─────────────────────────────────────────── */}
           <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="relative w-14 h-14 md:w-16 md:h-16">
+            <div className="relative w-16 h-16 md:w-[72px] md:h-[72px]">
               <Image
                 src="/logo.png"
                 alt="AfroNova logo"
                 fill
-                sizes="64px"
+                sizes="72px"
                 className="object-contain drop-shadow-[0_2px_8px_rgba(214,163,74,0.5)]
                            group-hover:drop-shadow-[0_4px_14px_rgba(214,163,74,0.75)]
                            transition-all duration-300"

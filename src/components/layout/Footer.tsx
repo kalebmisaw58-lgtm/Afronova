@@ -67,12 +67,12 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-3 group w-fit">
-              <div className="relative w-14 h-14 shrink-0">
+              <div className="relative w-20 h-20 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="AfroNova"
                   fill
-                  sizes="56px"
+                  sizes="80px"
                   className="object-contain drop-shadow-[0_2px_10px_rgba(214,163,74,0.45)]
                              group-hover:drop-shadow-[0_4px_16px_rgba(214,163,74,0.7)]
                              transition-all duration-300"
