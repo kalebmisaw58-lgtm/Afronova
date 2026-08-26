@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, CheckCircle, ArrowRight, Camera, Megaphone, Printer, BookOpen } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
@@ -11,31 +12,31 @@ export default function ServicesPage() {
 
   const services = [
     {
-      id: "event-management", icon: Calendar, accentColor: "#D6A34A", accentBg: "rgba(214,163,74,0.12)",
+      id: "event-management", icon: Calendar, image: "/heroes/nelson-mandela.jpg", accentColor: "#D6A34A", accentBg: "rgba(214,163,74,0.12)",
       eyebrow: "Service 01", title: t("svc1_title"), description: t("svc1_full_desc"),
       features: [t("svc1_f1"), t("svc1_f2"), t("svc1_f3"), t("svc1_f4"), t("svc1_f5")],
       cta: t("svc1_cta"), ctaHref: "/contact", flip: false,
     },
     {
-      id: "multimedia", icon: Camera, accentColor: "#B9853B", accentBg: "rgba(185,133,59,0.12)",
+      id: "multimedia", icon: Camera, image: "/heroes/miriam-makeba.jpg", accentColor: "#B9853B", accentBg: "rgba(185,133,59,0.12)",
       eyebrow: "Service 02", title: t("svc2_title"), description: t("svc2_full_desc"),
       features: [t("svc2_f1"), t("svc2_f2"), t("svc2_f3"), t("svc2_f4"), t("svc2_f5")],
       cta: t("svc2_cta"), ctaHref: "/contact", flip: true,
     },
     {
-      id: "advertising", icon: Megaphone, accentColor: "#9A6A31", accentBg: "rgba(154,106,49,0.12)",
+      id: "advertising", icon: Megaphone, image: "/heroes/fela-kuti.jpg", accentColor: "#9A6A31", accentBg: "rgba(154,106,49,0.12)",
       eyebrow: "Service 03", title: t("svc3_title"), description: t("svc3_full_desc"),
       features: [t("svc3_f1"), t("svc3_f2"), t("svc3_f3"), t("svc3_f4"), t("svc3_f5")],
       cta: t("svc3_cta"), ctaHref: "/contact", flip: false,
     },
     {
-      id: "print-brand", icon: Printer, accentColor: "#F0B84F", accentBg: "rgba(240,184,79,0.12)",
+      id: "print-brand", icon: Printer, image: "/heroes/wangari-maathai.jpg", accentColor: "#F0B84F", accentBg: "rgba(240,184,79,0.12)",
       eyebrow: "Service 04", title: t("svc4_title"), description: t("svc4_full_desc"),
       features: [t("svc4_f1"), t("svc4_f2"), t("svc4_f3"), t("svc4_f4")],
       cta: t("svc4_cta"), ctaHref: "/contact", flip: true,
     },
     {
-      id: "publication", icon: BookOpen, accentColor: "#9A6A31", accentBg: "rgba(154,106,49,0.12)",
+      id: "publication", icon: BookOpen, image: "/heroes/cheikh-anta-diop.jpg", accentColor: "#9A6A31", accentBg: "rgba(154,106,49,0.12)",
       eyebrow: "Service 05", title: t("svc5_title"), description: t("svc5_full_desc"),
       features: [t("svc5_f1"), t("svc5_f2"), t("svc5_f3"), t("svc5_f4")],
       cta: t("svc5_cta"), ctaHref: "/contact", flip: false,
@@ -80,8 +81,8 @@ export default function ServicesPage() {
       </div>
 
       {/* Service sections */}
-      {services.map(({ id, icon: Icon, accentColor, accentBg, eyebrow, title, description, features, cta, ctaHref, flip }, i) => (
-        <section key={id} id={id} className={`section-padding border-t border-white/5 ${i % 2 === 1 ? "section-overlay" : ""}`}>
+      {services.map(({ id, icon: Icon, image, accentColor, accentBg, eyebrow, title, description, features, cta, ctaHref, flip }, i) => (
+          <section key={id} id={id} className={`section-padding border-t border-white/5 ${i % 2 === 1 ? "section-overlay" : ""}`}>
           <div className="container-custom">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className={`space-y-6 ${flip ? "md:order-2" : ""}`}>
@@ -100,9 +101,11 @@ export default function ServicesPage() {
                 <Link href={ctaHref} className="btn-primary inline-flex">{cta} <ArrowRight className="w-4 h-4" /></Link>
               </div>
               <div className={flip ? "md:order-1" : ""}>
-                <div className="aspect-square max-w-sm mx-auto rounded-2xl flex items-center justify-center p-12"
+                <div className="relative aspect-square max-w-sm mx-auto rounded-2xl flex items-center justify-center overflow-hidden"
                      style={{ background: accentBg, border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <Icon className="w-32 h-32 opacity-20" style={{ color: accentColor }} strokeWidth={0.8} />
+                  <Image src={image} alt="" fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover opacity-50 mix-blend-luminosity transition duration-500 hover:scale-105 hover:opacity-70" />
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${accentColor}55, rgba(7,9,8,0.68))` }} />
+                  <Icon className="relative z-10 w-24 h-24 opacity-60" style={{ color: "white" }} strokeWidth={0.8} />
                 </div>
               </div>
             </div>

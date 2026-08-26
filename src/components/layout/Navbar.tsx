@@ -146,6 +146,8 @@ export default function Navbar() {
                 className="flex items-center gap-1.5 text-white/65 hover:text-[#D6A34A]
                            transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-white/5"
                 aria-label="Change language"
+                aria-expanded={langOpen}
+                aria-haspopup="menu"
               >
                 <Globe className="w-4 h-4" />
                 <span className="hidden sm:inline">{localeLabels[locale]}</span>
@@ -155,7 +157,8 @@ export default function Navbar() {
               {langOpen && (
                 <div className="absolute right-0 mt-2 w-40 rounded-xl shadow-2xl overflow-hidden z-50
                                 border border-white/10"
-                     style={{ background: "rgba(10,3,0,0.97)" }}>
+                     style={{ background: "rgba(10,3,0,0.97)" }}
+                     role="menu">
                   {(["en", "am", "fr", "pt", "ar"] as Locale[]).map((l) => (
                     <button
                       key={l}
@@ -165,6 +168,7 @@ export default function Navbar() {
                         locale === l ? "text-[#D6A34A] font-semibold" : "text-white/65"
                       )}
                       dir="ltr"
+                      role="menuitem"
                     >
                       <span className="text-white/40 text-xs w-6 shrink-0">{localeLabels[l]}</span>
                       {localeNames[l]}

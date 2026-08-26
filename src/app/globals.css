@@ -1,13 +1,13 @@
 /* Google Fonts, must be FIRST before any @tailwind directives */
 /* Latin + Amharic + Arabic fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-inter:    'Inter', sans-serif;
+  --font-inter:    'Manrope', sans-serif;
   --font-playfair: 'Playfair Display', serif;
   --gold:     #D6A34A;
   --amber:    #F0B84F;
@@ -15,6 +15,9 @@
   --charcoal: #101312;
   --black:    #070908;
   --ivory:    #F5F4F0;
+  --terracotta: #C96B4B;
+  --leaf:      #6E8B5B;
+  --cobalt:    #477A9D;
 }
 
 /* ── BASE ────────────────────────────────────────────────── */
@@ -43,6 +46,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  :focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 4px;
+  }
+
   /* Arabic: use Noto Sans Arabic, right-to-left */
   [lang="ar"] body,
   [dir="rtl"] body {
@@ -66,7 +74,7 @@
 @layer components {
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-full
+    @apply inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg
            transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
     background: linear-gradient(90deg, #9A6A31 0%, #D6A34A 50%, #F0B84F 100%);
     color: #070908;
@@ -76,7 +84,7 @@
 
   .btn-outline {
     @apply inline-flex items-center gap-2 px-6 py-3 border-2 font-semibold
-           rounded-full transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
+           rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
     border-color: #D6A34A;
     color: #D6A34A;
     background: transparent;
@@ -85,7 +93,7 @@
 
   .btn-ghost {
     @apply inline-flex items-center gap-2 px-6 py-3 text-white font-semibold
-           rounded-full hover:bg-white/10 transition-all duration-300 cursor-pointer;
+           rounded-lg hover:bg-white/10 transition-all duration-300 cursor-pointer;
   }
 
   .section-heading    { @apply text-4xl md:text-5xl font-display font-bold leading-tight; }
@@ -109,7 +117,7 @@
   }
 
   .card-dark {
-    @apply rounded-2xl backdrop-blur-sm transition-all duration-300;
+    @apply rounded-xl backdrop-blur-sm transition-all duration-300;
     background: rgba(0, 0, 0, 0.35);
     border: 1px solid rgba(214, 163, 74, 0.16);
   }
@@ -119,7 +127,7 @@
   }
 
   .card-glass {
-    @apply rounded-2xl backdrop-blur-md;
+    @apply rounded-xl backdrop-blur-md;
     background: rgba(0, 0, 0, 0.22);
     border: 1px solid rgba(214, 163, 74, 0.20);
   }
@@ -157,6 +165,11 @@
   .section-padding  { @apply py-16 md:py-24; }
   .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
 
+  .editorial-rule {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(214,163,74,0.65), rgba(255,255,255,0.12), transparent);
+  }
+
   .countdown-block {
     @apply flex flex-col items-center justify-center rounded-2xl p-4
            min-w-[80px] md:min-w-[100px];
@@ -166,6 +179,15 @@
 
   .section-overlay        { background: rgba(0, 0, 0, 0.28); }
   .section-overlay-strong { background: rgba(0, 0, 0, 0.55); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ── DECORATIVE PATTERNS ─────────────────────────────────── */

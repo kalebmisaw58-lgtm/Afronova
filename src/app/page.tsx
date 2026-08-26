@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight, Star, Globe2, Camera, Megaphone,
   ChevronRight, Calendar, MapPin, BookOpen,
@@ -39,9 +40,9 @@ export default function HomePage() {
   ];
 
   const featuredWork = [
-    { title: t("fw1_title"), type: t("fw1_type"), desc: t("fw1_desc"), accent: "#D6A34A", href: "/africa-celebrates-2026", isEvent: true },
-    { title: t("fw2_title"), type: t("fw2_type"), desc: t("fw2_desc"), accent: "#B9853B", href: "/portfolio", isEvent: false },
-    { title: t("fw3_title"), type: t("fw3_type"), desc: t("fw3_desc"), accent: "#9A6A31", href: "/portfolio", isEvent: false },
+    { title: t("fw1_title"), type: t("fw1_type"), desc: t("fw1_desc"), accent: "#D6A34A", image: "/heroes/kwame-nkrumah.jpg", href: "/africa-celebrates-2026", isEvent: true },
+    { title: t("fw2_title"), type: t("fw2_type"), desc: t("fw2_desc"), accent: "#C96B4B", image: "/heroes/miriam-makeba.jpg", href: "/portfolio", isEvent: false },
+    { title: t("fw3_title"), type: t("fw3_type"), desc: t("fw3_desc"), accent: "#6E8B5B", image: "/heroes/wangari-maathai.jpg", href: "/portfolio", isEvent: false },
   ];
 
   return (
@@ -53,7 +54,7 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
         <div className="absolute bottom-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
 
-        <div className="relative z-[3] pt-28 pb-24" style={{ paddingLeft: "2rem" }}>
+        <div className="container-custom relative z-[3] pt-28 pb-24">
           <div className="max-w-lg xl:max-w-xl">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-8 animate-fade-in"
                  style={{ border: "1px solid rgba(214,163,74,0.40)", background: "rgba(214,163,74,0.12)", color: "#D6A34A" }}>
@@ -228,14 +229,12 @@ export default function HomePage() {
             <Link href="/portfolio" className="btn-outline shrink-0">{t("work_portfolio")} <ChevronRight className="w-4 h-4" /></Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {featuredWork.map(({ title, type, desc, accent, href, isEvent }) => (
+            {featuredWork.map(({ title, type, desc, accent, image, href, isEvent }) => (
               <Link key={title} href={href} className="card-dark p-7 flex flex-col gap-4 group hover:-translate-y-1 transition-all">
-                <div className="aspect-video rounded-xl flex items-center justify-center overflow-hidden"
+                <div className="relative aspect-video rounded-xl flex items-center justify-center overflow-hidden"
                      style={{ background: `linear-gradient(135deg,${accent}25,rgba(0,0,0,0.60))`, border: `1px solid ${accent}35` }}>
-                  {isEvent
-                    ? <div className="text-center space-y-0.5"><p className="font-display font-black text-3xl" style={{ color: accent }}>AC</p><p className="text-white/35 text-xs">Africa Celebrates</p></div>
-                    : <Play className="w-9 h-9 opacity-35" style={{ color: accent }} />
-                  }
+                  <Image src={image} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover opacity-70 transition duration-500 group-hover:scale-105 group-hover:opacity-90" />
+                  {isEvent && <span className="absolute rounded-md bg-black/55 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">Africa Celebrates</span>}
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: `${accent}18`, color: accent }}>{type}</span>
