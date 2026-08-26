@@ -152,6 +152,8 @@ const translations: Record<Locale, Record<string, string>> = {
     p_ci_role: "Diplomatic Partner, Francophone Africa",
     p_nz_desc: "Bridging African and Pacific perspectives, supporting international dialogue and cultural programming through AfroNova.",
     p_nz_role: "International Diplomatic Partner",
+    p_usau_desc: "The United States Mission to the African Union advances US-Africa relations and supports dialogue, partnership and shared prosperity across the continent.",
+    p_usau_role: "Diplomatic Partner, African Union",
     p_kt_desc: "One of Ethiopia's leading entertainment channels. Kana TV provides broadcast reach and media coverage for AfroNova events.",
     p_kt_role: "Broadcast Media Partner",
     p_dc_desc: "A premier entertainment company providing production, talent management and event entertainment for AfroNova's festivals.",
