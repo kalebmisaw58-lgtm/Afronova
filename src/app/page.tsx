@@ -55,7 +55,7 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
 
         <div className="container-custom relative z-[3] pt-28 pb-24">
-          <div className="max-w-lg xl:max-w-xl">
+          <div className="max-w-[min(100%,32rem)] lg:w-[46%]">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-8 animate-fade-in"
                  style={{ border: "1px solid rgba(214,163,74,0.40)", background: "rgba(214,163,74,0.12)", color: "#D6A34A" }}>
               <Star className="w-3 h-3" style={{ fill: "#D6A34A" }} />
@@ -68,7 +68,7 @@ export default function HomePage() {
             <p className="text-xl md:text-2xl font-display font-bold text-gradient mb-5 leading-snug">
               {t("hero_tagline")}
             </p>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-xl">{t("hero_body")}</p>
+            <p className="text-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-[30rem]">{t("hero_body")}</p>
             <div className="flex flex-col sm:flex-row flex-wrap items-start gap-3">
               <Link href="/about" className="btn-primary text-base px-7 py-3.5">
                 {t("hero_cta_discover")} <ArrowRight className="w-5 h-5" />
