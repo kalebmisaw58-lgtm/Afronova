@@ -122,7 +122,7 @@ export default function ContactPage() {
         </div>
         <div className="w-full h-80 relative overflow-hidden" style={{ background: "rgba(255,255,255,0.03)" }}>
           <iframe
-            src="https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9"
+            src="https://www.google.com/maps?q=8.9866842,38.7884885&z=18&output=embed"
             width="100%" height="100%"
             style={{ border: 0, filter: "invert(0.88) hue-rotate(180deg) saturate(0.6) brightness(0.9)" }}
             allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
