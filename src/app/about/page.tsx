@@ -67,7 +67,9 @@ export default function AboutPage() {
                        style={{ background: "linear-gradient(135deg,#9A6A31,#D6A34A)" }}>A</div>
                   <p className="font-display font-bold text-white text-xl">AfroNova</p>
                   <p className="text-sm" style={{ color: "#D6A34A" }}>Pan-African · Events · Media · Innovation · Promotion</p>
-                  <p className="text-white/40 text-xs">Africa Avenue, Addis Ababa, Ethiopia</p>
+                  <a href="https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9" target="_blank" rel="noopener noreferrer" className="text-white/40 text-xs hover:text-[#D6A34A] transition-colors">
+                    Africa Avenue, Addis Ababa, Ethiopia
+                  </a>
                   <p className="text-white/30 text-xs italic">&ldquo;{t("hero_sub1")} {t("hero_sub2")}&rdquo;</p>
                 </div>
               </div>

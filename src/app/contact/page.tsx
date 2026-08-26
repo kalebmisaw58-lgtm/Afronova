@@ -10,7 +10,7 @@ export default function ContactPage() {
   const { t } = useLanguage();
 
   const contactInfo = [
-    { icon: MapPin, label: t("contact_office"), lines: ["Africa Avenue", "Addis Ababa, Ethiopia"], href: "https://www.google.com/maps/search/?api=1&query=Africa+Avenue+Addis+Ababa+Ethiopia" },
+    { icon: MapPin, label: t("contact_office"), lines: ["Africa Avenue", "Addis Ababa, Ethiopia"], href: "https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9" },
     { icon: Phone,  label: t("contact_phone"),  lines: ["+251 965 081 998", "+234 809 562 4444"], href: "tel:+251965081998" },
     { icon: Clock,  label: t("contact_hours"),  lines: [t("contact_hours_val")], href: undefined },
   ];
@@ -122,7 +122,7 @@ export default function ContactPage() {
         </div>
         <div className="w-full h-80 relative overflow-hidden" style={{ background: "rgba(255,255,255,0.03)" }}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7177!2d38.7578!3d9.0065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d49!2sAfrica%20Avenue%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2set!4v1"
+            src="https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9"
             width="100%" height="100%"
             style={{ border: 0, filter: "invert(0.88) hue-rotate(180deg) saturate(0.6) brightness(0.9)" }}
             allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"

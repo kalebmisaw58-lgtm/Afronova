@@ -96,7 +96,9 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li className="flex items-start gap-2.5 text-sm text-white/55">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "#D6A34A" }} />
-                Africa Avenue, Addis Ababa 1000, Ethiopia
+                <a href="https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6A34A] transition-colors">
+                  Africa Avenue, Addis Ababa 1000, Ethiopia
+                </a>
               </li>
               <li className="flex items-center gap-2.5 text-sm text-white/55">
                 <Phone className="w-4 h-4 shrink-0" style={{ color: "#D6A34A" }} />
