@@ -54,7 +54,7 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
         <div className="absolute bottom-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
 
-        <div className="container-custom relative z-[3] pt-28 pb-24">
+        <div className="relative z-[3] w-full px-4 sm:px-6 lg:px-14 pt-28 pb-24">
           <div className="max-w-[min(100%,32rem)] lg:w-[46%]">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-8 animate-fade-in"
                  style={{ border: "1px solid rgba(214,163,74,0.40)", background: "rgba(214,163,74,0.12)", color: "#D6A34A" }}>
