@@ -16,7 +16,7 @@ const socials = [
   { icon: Twitter,   href: "https://x.com/socialafronova",                label: "Twitter / X" },
   { icon: Youtube,   href: "https://youtube.com/afronova",                label: "YouTube" },
   { icon: Linkedin,  href: "https://www.linkedin.com/company/afronova-mediahub/",       label: "LinkedIn" },
-  { icon: Music2,    href: "https://www.tiktok.com/@afronova",            label: "TikTok" },
+  { icon: Music2,    href: "https://www.tiktok.com/@afronova_",            label: "TikTok" },
 ];
 
 export default function Footer() {
