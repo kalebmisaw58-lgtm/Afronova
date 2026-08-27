@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin, Music2 } from "lucide-react";
 import ContactForm from "@/components/ui/ContactForm";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
@@ -16,11 +16,12 @@ export default function ContactPage() {
   ];
 
   const socials = [
-    { icon: Instagram, href: "https://instagram.com/afronova",          label: "Instagram",   handle: "@afronova" },
-    { icon: Facebook,  href: "https://facebook.com/afronova",           label: "Facebook",    handle: "AfroNova" },
-    { icon: Twitter,   href: "https://twitter.com/afronova",            label: "Twitter / X", handle: "@afronova" },
-    { icon: Youtube,   href: "https://youtube.com/afronova",            label: "YouTube",     handle: "AfroNova TV" },
-    { icon: Linkedin,  href: "https://linkedin.com/company/afronova",   label: "LinkedIn",    handle: "AfroNova" },
+    { icon: Instagram, href: "https://www.instagram.com/afronova__",              label: "Instagram",   handle: "@afronova__" },
+    { icon: Facebook,  href: "https://facebook.com/afronova",                    label: "Facebook",    handle: "AfroNova" },
+    { icon: Twitter,   href: "https://x.com/socialafronova",                     label: "Twitter / X", handle: "@socialafronova" },
+    { icon: Youtube,   href: "https://youtube.com/afronova",                     label: "YouTube",     handle: "AfroNova" },
+    { icon: Linkedin,  href: "https://www.linkedin.com/company/afronova-mediahub/", label: "LinkedIn",    handle: "AfroNova" },
+    { icon: Music2,    href: "https://www.tiktok.com/@afronova_",                label: "TikTok",      handle: "@afronova_" },
   ];
 
   const contactFields = [
