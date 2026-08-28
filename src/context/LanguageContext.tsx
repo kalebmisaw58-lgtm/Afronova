@@ -1147,8 +1147,26 @@ const LanguageContext = createContext<LanguageContextType>({
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
+  const [liveTranslations, setLiveTranslations] = useState<Record<string, string>>({});
   const isRTL = RTL_LOCALES.includes(locale);
   const setLocale = (l: Locale) => setLocaleState(l);
+
+  // ── Fetch live translations from Supabase when locale changes ──
+  // Falls back to hardcoded strings if the API is unavailable.
+  useEffect(() => {
+    async function fetchTranslations() {
+      try {
+        const res = await fetch(`/api/content?locale=${locale}`);
+        const json = await res.json();
+        if (json.success && json.translations) {
+          setLiveTranslations(json.translations);
+        }
+      } catch {
+        // Silently fall back to hardcoded strings
+      }
+    }
+    fetchTranslations();
+  }, [locale]);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -1156,8 +1174,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     html.setAttribute("dir", isRTL ? "rtl" : "ltr");
   }, [locale, isRTL]);
 
-  const t = (key: string): string =>
-    translations[locale][key] ?? translations["en"][key] ?? key;
+    const t = (key: string): string =>
+    liveTranslations[key] ?? translations[locale][key] ?? translations["en"][key] ?? key;
 
   return (
     <LanguageContext.Provider value={{ locale, setLocale, t, isRTL }}>

@@ -12,7 +12,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const socials = [
   { icon: Instagram, href: "https://www.instagram.com/afronova__",              label: "Instagram" },
-  { icon: Facebook,  href: "https://facebook.com/afronova",               label: "Facebook" },
+  { icon: Facebook,  href: "https://www.facebook.com/share/19FxHLrzQD/",               label: "Facebook" },
   { icon: Twitter,   href: "https://x.com/socialafronova",                label: "Twitter / X" },
   { icon: Youtube,   href: "https://youtube.com/afronova",                label: "YouTube" },
   { icon: Linkedin,  href: "https://www.linkedin.com/company/afronova-mediahub/",       label: "LinkedIn" },
