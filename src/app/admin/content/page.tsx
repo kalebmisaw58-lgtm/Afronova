@@ -108,7 +108,7 @@ export default function ContentManagerPage() {
     setSaving(false);
   }
 
-    async function importDefaults() {
+  async function importDefaults() {
     if (!confirm(`Import English defaults for '${selectedLocale}'? Missing keys will be created with English values.`)) return;
     setImporting(true);
     setSaveMessage("");
@@ -157,7 +157,7 @@ export default function ContentManagerPage() {
     return filtered;
   }, [grouped, searchTerm, englishDefaults]);
 
-    const toggleSection = (key: string) => {
+  const toggleSection = (key: string) => {
     setExpandedSections((prev) => {
       const next = new Set(prev);
       if (next.has(key)) next.delete(key);

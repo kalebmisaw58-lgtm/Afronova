@@ -28,9 +28,19 @@ export default function AdminDashboardPage() {
     fetchStats();
   }, []);
 
+  async function getAccessToken(): Promise<string | null> {
+    const { createBrowserClient } = await import("@/lib/supabase");
+    const supabase = createBrowserClient();
+    const { data: { session } } = await supabase.auth.getSession();
+    return session?.access_token ?? null;
+  }
+
   async function fetchStats() {
     try {
-      const res = await fetch("/api/admin/stats");
+      const token = await getAccessToken();
+      const res = await fetch("/api/admin/stats", {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
       const json = await res.json();
       if (json.success) setStats(json.stats);
     } catch (e) {

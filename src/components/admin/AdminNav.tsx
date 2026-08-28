@@ -32,7 +32,7 @@ export default function AdminNav() {
         <p className="text-xs text-white/30">{admin?.role}</p>
       </div>
 
-      <nav className="flex-1 py-4">
+      <nav className="py-4">
         {navItems.map(({ label, href, icon: Icon }) => (
           <Link
             key={href}
