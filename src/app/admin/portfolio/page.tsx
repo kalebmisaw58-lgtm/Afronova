@@ -43,6 +43,7 @@ export default function AdminPortfolioPage() {
       const json = await res.json();
       if (json.success && json.url) {
         setImgKeyForm((prev) => ({ ...prev, value: json.url }));
+        alert("Picture uploaded successfully! The image URL has been filled in. Click 'Save Image' to apply.");
       } else {
         alert(json.error ?? "Failed to upload image from local storage");
       }
@@ -379,11 +380,10 @@ export default function AdminPortfolioPage() {
                   <label className="text-[11px] text-white/60">Option B: Image URL (http://... or /images/...)</label>
                   <input
                     type="text"
-                    placeholder="https://images.unsplash.com/photo-1540575467063-178a50c2df87..."
+                    placeholder="Image URL or uploaded file path..."
                     value={imgKeyForm.value}
                     onChange={(e) => setImgKeyForm({ ...imgKeyForm, value: e.target.value })}
                     className="input-dark w-full text-xs"
-                    required
                   />
                 </div>
 
