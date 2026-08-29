@@ -1,0 +1,87 @@
+import { NextRequest, NextResponse } from "next/server";
+import { getAdminUser } from "@/lib/admin-auth";
+import { createServerClient } from "@/lib/supabase";
+import { z } from "zod";
+
+/* GET  /api/admin/partners                          → list all partners
+ * POST /api/admin/partners { action:"create"|"update"|"delete", id?, partner?, descriptions? }
+ */
+
+const PartnerSchema = z.object({
+  name: z.string().min(1),
+  initials: z.string().optional().nullable(),
+  category_key: z.string().default("cat_corporate"),
+  accent: z.string().default("#D6A34A"),
+  logo: z.string().optional().nullable(),
+  website: z.string().url().optional().nullable(),
+  featured: z.boolean().default(false),
+  sort_order: z.number().int().default(0),
+});
+
+const DescriptionSchema = z.object({
+  locale: z.enum(["en", "am", "fr", "pt", "ar"]),
+  description: z.string().optional().nullable(),
+  role: z.string().optional().nullable(),
+});
+
+export async function GET(req: NextRequest) {
+  const admin = await getAdminUser(req);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  const locale = req.nextUrl.searchParams.get("locale") ?? "en";
+  const supabase = createServerClient();
+
+  const { data, error } = await supabase.from("partners").select(`
+    *,
+    descriptions:partner_descriptions(*)
+  `).order("sort_order");
+
+  if (error) {
+    console.error("[admin/partners] GET error:", error.message);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+  return NextResponse.json({ success: true, partners: data });
+}
+
+export async function POST(req: NextRequest) {
+  const admin = await getAdminUser(req);
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  const body = await req.json();
+  const supabase = createServerClient();
+
+  if (body.action === "create") {
+    const p = PartnerSchema.safeParse(body.partner);
+    if (!p.success) return NextResponse.json({ success: false, error: p.error.message }, { status: 400 });
+    const { data: partner, error: e1 } = await supabase.from("partners").insert(p.data).select().single();
+    if (e1) return NextResponse.json({ success: false, error: e1.message }, { status: 500 });
+
+    if (body.descriptions?.length) {
+      const descs = body.descriptions.map((d: any) => ({
+        partner_id: partner.id,
+        locale: d.locale,
+        description: d.description ?? null,
+        role: d.role ?? null,
+      }));
+      await supabase.from("partner_descriptions").insert(descs);
+    }
+    return NextResponse.json({ success: true, partner });
+  }
+
+  if (body.action === "update") {
+    const p = PartnerSchema.safeParse(body.partner);
+    if (!p.success) return NextResponse.json({ success: false, error: p.error.message }, { status: 400 });
+    const { data, error } = await supabase.from("partners").update(p.data).eq("id", body.id).select().single();
+    if (error) return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json({ success: true, partner: data });
+  }
+
+  if (body.action === "delete") {
+    const { error: e1 } = await supabase.from("partner_descriptions").delete().eq("partner_id", body.id);
+    const { error: e2 } = await supabase.from("partners").delete().eq("id", body.id);
+    if (e1 || e2) return NextResponse.json({ success: false, error: e1?.message ?? e2?.message ?? "Error deleting partner" }, { status: 500 });
+    return NextResponse.json({ success: true });
+  }
+
+  return NextResponse.json({ success: false, error: "Invalid action" }, { status: 400 });
+}

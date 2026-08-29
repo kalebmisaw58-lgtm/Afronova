@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import {
+ import {
   LayoutDashboard, Globe, FileText, Users, Calendar,
-  Settings, LogOut,
+  Settings, LogOut, Images,
 } from "lucide-react";
 import { useAdmin } from "@/context/AdminContext";
 
@@ -13,6 +13,7 @@ const navItems = [
   { label: "Website Content", href: "/admin/content", icon: Globe },
   { label: "News Articles", href: "/admin/news", icon: FileText },
   { label: "Partners", href: "/admin/partners", icon: Users },
+  { label: "Portfolio Images", href: "/admin/portfolio", icon: Images },
   { label: "Testimonials", href: "/admin/testimonials", icon: Calendar },
   { label: "Event Schedule", href: "/admin/schedule", icon: Calendar },
   { label: "Settings", href: "/admin/settings", icon: Settings },
