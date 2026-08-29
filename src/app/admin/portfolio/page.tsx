@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Edit, Trash2, Save, X, Globe, Images, Tag, Calendar, CheckCircle } from "lucide-react";
+import { Plus, Edit, Trash2, Save, X, Globe, Images, Tag, Calendar, CheckCircle, Upload, Loader2 } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 
@@ -12,7 +12,46 @@ export default function AdminPortfolioPage() {
   const [portfolio, setPortfolio] = useState<any[]>([]);
   const [imageKeys, setImageKeys] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+
+  async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const supabase = typeof window !== "undefined"
+        ? require("@/lib/supabase").createBrowserClient()
+        : null;
+
+      let token = "";
+      if (supabase) {
+        const { data: { session } } = await supabase.auth.getSession();
+        token = session?.access_token ?? "";
+      }
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        body: formData,
+      });
+
+      const json = await res.json();
+      if (json.success && json.url) {
+        setImgKeyForm((prev) => ({ ...prev, value: json.url }));
+      } else {
+        alert(json.error ?? "Failed to upload image from local storage");
+      }
+    } catch (err: any) {
+      alert("Upload error: " + (err.message || String(err)));
+    } finally {
+      setUploading(false);
+    }
+  }
   const [form, setForm] = useState({
     locale: "en", slug: "", category: "event", title: "",
     subtitle: "", excerpt: "", year: "", accent: "#D6A34A",
@@ -289,13 +328,36 @@ export default function AdminPortfolioPage() {
             </div>
 
             {editingKey && (
-              <form onSubmit={handleSaveImageKey} className="p-4 rounded-lg bg-black/60 border border-[#D6A34A]/30 space-y-3 mt-4">
+              <form onSubmit={handleSaveImageKey} className="p-4 rounded-lg bg-black/60 border border-[#D6A34A]/30 space-y-4 mt-4">
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-mono text-[#D6A34A] font-semibold">Editing Image Slot: {editingKey}</span>
                   <button type="button" onClick={() => setEditingKey(null)} className="text-white/40 hover:text-white"><X className="w-4 h-4" /></button>
                 </div>
+
+                {/* Option A: Upload from Computer */}
+                <div className="p-3 rounded-lg bg-white/5 border border-white/10 space-y-2">
+                  <label className="text-xs text-white/90 font-medium flex items-center gap-2">
+                    <Upload className="w-4 h-4 text-[#D6A34A]" /> Option A: Select Picture from Your Computer
+                  </label>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileUpload}
+                      disabled={uploading}
+                      className="text-xs text-white/70 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-[#D6A34A] file:text-black hover:file:bg-[#b9853b] cursor-pointer"
+                    />
+                    {uploading && (
+                      <span className="text-xs text-[#D6A34A] flex items-center gap-1.5 font-medium">
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" /> Uploading to Supabase Storage...
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Option B: Direct URL */}
                 <div className="space-y-1">
-                  <label className="text-[11px] text-white/60">Image URL (http://... or /images/...)</label>
+                  <label className="text-[11px] text-white/60">Option B: Image URL (http://... or /images/...)</label>
                   <input
                     type="text"
                     placeholder="https://images.unsplash.com/photo-1540575467063-178a50c2df87..."
