@@ -57,8 +57,8 @@ export function getNewsArticle(slug: string) {
 
 export async function getDbNewsArticles(locale: string = "en"): Promise<NewsArticle[]> {
   try {
-    const { createServerClient } = await import("@/lib/supabase");
-    const supabase = createServerClient();
+    const { createBrowserClient, createServerClient } = await import("@/lib/supabase");
+    const supabase = typeof window !== "undefined" ? createBrowserClient() : createServerClient();
     const { data, error } = await supabase
       .from("news_articles")
       .select("*")
@@ -66,7 +66,7 @@ export async function getDbNewsArticles(locale: string = "en"): Promise<NewsArti
       .order("sort_order", { ascending: true })
       .order("created_at", { ascending: false });
 
-    if (error || !data || data.length === 0) {
+    if (error || !data) {
       return newsArticles;
     }
 
@@ -86,8 +86,8 @@ export async function getDbNewsArticles(locale: string = "en"): Promise<NewsArti
 
 export async function getDbNewsArticleBySlug(slug: string, locale: string = "en"): Promise<NewsArticle | undefined> {
   try {
-    const { createServerClient } = await import("@/lib/supabase");
-    const supabase = createServerClient();
+    const { createBrowserClient, createServerClient } = await import("@/lib/supabase");
+    const supabase = typeof window !== "undefined" ? createBrowserClient() : createServerClient();
     const { data, error } = await supabase
       .from("news_articles")
       .select("*")

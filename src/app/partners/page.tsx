@@ -79,7 +79,7 @@ export default function PartnersPage() {
     async function loadPartners() {
       try {
         const fetched = await getDbPartners(locale);
-        if (fetched && fetched.length > 0) setPartnerList(fetched);
+        if (fetched) setPartnerList(fetched);
       } catch {}
     }
   }, [locale]);

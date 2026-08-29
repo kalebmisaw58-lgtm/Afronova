@@ -7,13 +7,7 @@ import { LOCALES } from "@/lib/content-sections";
 import PartnerLogo from "@/components/ui/PartnerLogo";
 
 const CATEGORIES = [
-  { value: "cat_institutional", label: "Institutional" },
-  { value: "cat_strategic", label: "Strategic Partner" },
-  { value: "cat_diplomatic", label: "Diplomatic" },
   { value: "cat_corporate", label: "Corporate" },
-  { value: "cat_media", label: "Media" },
-  { value: "cat_cultural", label: "Cultural" },
-  { value: "cat_hospitality", label: "Hospitality" },
   { value: "cat_government", label: "Government" },
 ];
 
@@ -286,7 +280,8 @@ export default function AdminPartnersPage() {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+
+                <div className="flex items-center gap-2">
                   <button onClick={() => editPartner(p)} className="p-1.5 text-white/40 hover:text-white rounded" title="Edit">
                     <Edit className="w-4 h-4" />
                   </button>

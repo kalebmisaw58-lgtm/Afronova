@@ -82,8 +82,8 @@ export function tCategory(key: string, locale: Locale): string {
 
 export async function getDbPartners(locale: Locale = "en"): Promise<Partner[]> {
   try {
-    const { createServerClient } = await import("@/lib/supabase");
-    const supabase = createServerClient();
+    const { createBrowserClient, createServerClient } = await import("@/lib/supabase");
+    const supabase = typeof window !== "undefined" ? createBrowserClient() : createServerClient();
     const { data: dbPartners, error } = await supabase
       .from("partners")
       .select(`
@@ -92,10 +92,11 @@ export async function getDbPartners(locale: Locale = "en"): Promise<Partner[]> {
       `)
       .order("sort_order", { ascending: true });
 
-    if (error || !dbPartners || dbPartners.length === 0) {
+    if (error || !dbPartners) {
       return partners;
     }
 
+    // If database table has rows, return database partners
     return dbPartners.map((item) => {
       const descObj = item.descriptions?.find((d: any) => d.locale === locale) || item.descriptions?.[0];
       return {
