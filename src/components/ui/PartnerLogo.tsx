@@ -52,20 +52,19 @@ export default function PartnerLogo({
     );
   }
 
+  const src = logo.startsWith("http") || logo.startsWith("/") ? logo : `/partners/${logo}`;
+
   return (
     <div
-      className={cn("relative rounded-xl flex items-center justify-center shrink-0", className)}
+      className={cn("relative rounded-xl flex items-center justify-center shrink-0 overflow-hidden bg-white/5", className)}
       style={{ width, height, minWidth: width }}
       aria-label={name}
     >
-      <Image
-        src={`/partners/${logo}`}
+      <img
+        src={src}
         alt={name}
-        width={width * 0.7}
-        height={height * 0.7}
         onError={() => setError(true)}
-        className="object-contain"
-        style={{ maxWidth: "100%", maxHeight: "100%" }}
+        className="w-full h-full object-contain p-1.5"
       />
     </div>
   );

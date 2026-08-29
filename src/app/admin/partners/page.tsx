@@ -4,13 +4,17 @@ import { useState, useEffect } from "react";
 import { Users, Plus, Edit, Trash2, Save, X, Tag, Globe, Upload, Loader2 } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
+import PartnerLogo from "@/components/ui/PartnerLogo";
 
 const CATEGORIES = [
+  { value: "cat_institutional", label: "Institutional" },
+  { value: "cat_strategic", label: "Strategic Partner" },
+  { value: "cat_diplomatic", label: "Diplomatic" },
   { value: "cat_corporate", label: "Corporate" },
-  { value: "cat_government", label: "Government" },
   { value: "cat_media", label: "Media" },
-  { value: "cat_community", label: "Community" },
-  { value: "cat_educational", label: "Educational" },
+  { value: "cat_cultural", label: "Cultural" },
+  { value: "cat_hospitality", label: "Hospitality" },
+  { value: "cat_government", label: "Government" },
 ];
 
 export default function AdminPartnersPage() {
@@ -266,15 +270,14 @@ export default function AdminPartnersPage() {
             partners.map((p: any) => (
               <div key={p.id} className="card-dark p-4 rounded-xl flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  {p.logo ? (
-                    <img src={p.logo} alt={p.name} className="w-12 h-12 rounded-lg object-contain bg-white/5" />
-                  ) : (
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#D6A34A]/20 to-[#9A6A31]/20 flex items-center justify-center">
-                      <span className="font-display font-bold text-[#D6A34A] text-lg">
-                        {p.initials || p.name?.charAt(0) || <Users className="w-6 h-6" />}
-                      </span>
-                    </div>
-                  )}
+                  <PartnerLogo
+                    logo={p.logo}
+                    name={p.name}
+                    initials={p.initials || p.name?.substring(0, 2).toUpperCase() || "PN"}
+                    accent={p.accent || "#D6A34A"}
+                    width={48}
+                    height={48}
+                  />
                   <div>
                     <h3 className="font-medium text-white">{p.name}</h3>
                     <div className="flex items-center gap-2 text-xs text-white/40 mt-1">

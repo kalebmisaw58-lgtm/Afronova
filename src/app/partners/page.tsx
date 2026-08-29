@@ -6,41 +6,46 @@ import { ArrowRight, ExternalLink, Search, X } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import PartnerLogo from "@/components/ui/PartnerLogo";
 import { useLanguage } from "@/context/LanguageContext";
-import { partners, catAccents, getDbPartners, Partner } from "@/lib/partners";
+import { partners, catAccents, getDbPartners, tCategory, Partner } from "@/lib/partners";
 
 function PartnerCard({ name, logo, initials, accent, description, role, category, hoverHint, website }: {
   name: string; logo: string; initials: string; accent: string;
   description: string; role: string; category: string; hoverHint: string; website?: string;
 }) {
   return (
-    <div className="flip-card h-56 focus-within:outline-none" tabIndex={0}>
+    <div className="flip-card h-[270px] focus-within:outline-none" tabIndex={0}>
       <div className="flip-card-inner">
         {/* FRONT */}
-        <div className="flip-card-front flex flex-col items-center justify-center gap-4 p-6 text-center relative"
+        <div className="flip-card-front flex flex-col items-center justify-between p-6 text-center relative"
              style={{ background: "rgba(0,0,0,0.40)", border: "1px solid rgba(255,255,255,0.09)" }}>
           <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
                style={{ background: `linear-gradient(90deg, ${accent}99, ${accent})` }} />
-          <div className="flex items-center justify-center w-32 h-32 shrink-0">
-            <PartnerLogo logo={logo} name={name} initials={initials} accent={accent} width={112} height={112} />
+          
+          <div className="flex items-center justify-center w-24 h-24 shrink-0 my-auto">
+            <PartnerLogo logo={logo} name={name} initials={initials} accent={accent} width={88} height={88} />
           </div>
-          <div>
-            <h3 className="text-white font-display font-bold text-base leading-snug">{name}</h3>
-            <span className="inline-block mt-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold"
+
+          <div className="space-y-1.5 w-full">
+            <h3 className="text-white font-display font-bold text-base leading-snug line-clamp-1">{name}</h3>
+            <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold"
                   style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}40` }}>
               {category}
             </span>
           </div>
-          {website && (
-            <a href={website} target="_blank" rel="noopener noreferrer"
-               className="absolute bottom-4 left-0 right-0 flex items-center justify-center gap-1 text-xs text-white/30 hover:text-[#D6A34A] transition-colors"
-               onClick={(e) => e.stopPropagation()}>
-              <ExternalLink className="w-3 h-3" /> {hoverHint}
-            </a>
-          )}
-          {!website && (
-            <p className="text-white/30 text-xs absolute bottom-4 left-0 right-0 text-center">{hoverHint}</p>
-          )}
+
+          <div className="pt-2 w-full">
+            {website ? (
+              <a href={website} target="_blank" rel="noopener noreferrer"
+                 className="inline-flex items-center justify-center gap-1 text-xs text-white/40 hover:text-[#D6A34A] transition-colors"
+                 onClick={(e) => e.stopPropagation()}>
+                <ExternalLink className="w-3 h-3" /> {hoverHint}
+              </a>
+            ) : (
+              <p className="text-white/30 text-xs text-center">{hoverHint}</p>
+            )}
+          </div>
         </div>
+
         {/* BACK */}
         <div className="flip-card-back flex flex-col justify-between p-6 relative"
              style={{ background: `linear-gradient(135deg, ${accent}22 0%, rgba(0,0,0,0.70) 100%)`, border: `1px solid ${accent}50` }}>
@@ -48,13 +53,13 @@ function PartnerCard({ name, logo, initials, accent, description, role, category
                style={{ background: `linear-gradient(90deg, ${accent}99, ${accent})` }} />
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <PartnerLogo logo={logo} name={name} initials={initials} accent={accent} width={56} height={56} />
+              <PartnerLogo logo={logo} name={name} initials={initials} accent={accent} width={48} height={48} />
               <div>
-                <h3 className="text-white font-display font-bold text-base leading-snug">{name}</h3>
+                <h3 className="text-white font-display font-bold text-sm leading-snug line-clamp-1">{name}</h3>
                 <p className="text-xs font-semibold mt-0.5" style={{ color: accent }}>{role}</p>
               </div>
             </div>
-            <p className="text-white/70 text-xs leading-relaxed line-clamp-5">{description}</p>
+            <p className="text-white/70 text-xs leading-relaxed line-clamp-4">{description}</p>
           </div>
           <span className="text-xs font-medium mt-2" style={{ color: `${accent}CC` }}>{category}</span>
         </div>
@@ -182,7 +187,7 @@ export default function PartnersPage() {
                   accent={p.accent}
                   description={t(p.descKey)}
                   role={t(p.roleKey)}
-                  category={t(p.categoryKey)}
+                  category={tCategory(p.categoryKey, locale)}
                   hoverHint={t("partners_hover")}
                   website={p.website}
                 />
