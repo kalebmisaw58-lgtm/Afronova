@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Search, X } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import PartnerLogo from "@/components/ui/PartnerLogo";
 import { useLanguage } from "@/context/LanguageContext";
@@ -66,6 +66,8 @@ function PartnerCard({ name, logo, initials, accent, description, role, category
 export default function PartnersPage() {
   const { t, locale } = useLanguage();
   const [partnerList, setPartnerList] = useState<Partner[]>(partners);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     void loadPartners();
@@ -76,6 +78,15 @@ export default function PartnersPage() {
       } catch {}
     }
   }, [locale]);
+
+  const visiblePartners = partnerList.filter((p) => {
+    const matchesCat = activeCategory === "All" || p.categoryKey === activeCategory;
+    const q = searchQuery.toLowerCase().trim();
+    const desc = t(p.descKey) || "";
+    const role = t(p.roleKey) || "";
+    const matchesSearch = !q || p.name.toLowerCase().includes(q) || desc.toLowerCase().includes(q) || role.toLowerCase().includes(q);
+    return matchesCat && matchesSearch;
+  });
 
   return (
     <>
@@ -109,18 +120,44 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Category chips */}
+      {/* Category chips & Search */}
       <section className="pt-14 pb-4">
-        <div className="container-custom">
+        <div className="container-custom space-y-6">
+          <div className="flex justify-center">
+            <div className="relative max-w-md w-full">
+              <Search className="w-4 h-4 text-white/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Search partners by name or keyword..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-9 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white focus:outline-none focus:border-[#D6A34A] transition-colors"
+              />
+              {searchQuery && (
+                <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white">
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          </div>
+
           <div className="flex flex-wrap gap-2 justify-center">
             {["All", ...Object.keys(catAccents)].map((key) => {
-              const label = key === "All" ? t("partners_all") || "All" : t(key);
+              const label = key === "All" ? t("partners_all") || "All Partners" : t(key);
               const accent = catAccents[key] ?? "#D6A34A";
+              const isActive = activeCategory === key;
               return (
-                <span key={key} className="px-4 py-1.5 rounded-full text-xs font-semibold cursor-default"
-                      style={{ background: `${accent}15`, border: `1px solid ${accent}35`, color: accent }}>
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setActiveCategory(key)}
+                  className="px-4 py-1.5 rounded-full text-xs font-semibold transition-all border cursor-pointer"
+                  style={isActive
+                    ? { background: accent, borderColor: accent, color: "#000" }
+                    : { background: `${accent}15`, borderColor: `${accent}35`, color: accent }}
+                >
                   {label}
-                </span>
+                </button>
               );
             })}
           </div>
@@ -130,22 +167,28 @@ export default function PartnersPage() {
       {/* Flip Cards */}
       <section className="section-padding pt-8">
         <div className="container-custom">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {partnerList.map((p) => (
-              <PartnerCard
-                key={p.name}
-                name={p.name}
-                logo={p.logo}
-                initials={p.initials}
-                accent={p.accent}
-                description={t(p.descKey)}
-                role={t(p.roleKey)}
-                category={t(p.categoryKey)}
-                hoverHint={t("partners_hover")}
-                website={p.website}
-              />
-            ))}
-          </div>
+          {visiblePartners.length === 0 ? (
+            <div className="card-dark p-8 text-center text-white/40 rounded-xl">
+              No partners found matching your search. Try clearing the search or category filter.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {visiblePartners.map((p) => (
+                <PartnerCard
+                  key={p.name}
+                  name={p.name}
+                  logo={p.logo}
+                  initials={p.initials}
+                  accent={p.accent}
+                  description={t(p.descKey)}
+                  role={t(p.roleKey)}
+                  category={t(p.categoryKey)}
+                  hoverHint={t("partners_hover")}
+                  website={p.website}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

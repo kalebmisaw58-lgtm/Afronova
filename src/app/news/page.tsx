@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Calendar, ArrowRight, Tag } from "lucide-react";
+import { Calendar, ArrowRight, Tag, Search, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getDbNewsArticles, NewsArticle } from "@/lib/news";
 
 export default function NewsPage() {
   const { t, locale } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [dbArticles, setDbArticles] = useState<NewsArticle[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -62,7 +63,13 @@ export default function NewsPage() {
     { key: "all", label: t("news_cat_all") }, { key: "event", label: t("news_cat_event") }, { key: "partner", label: t("news_cat_partner") },
     { key: "business", label: t("news_cat_business") }, { key: "recap", label: t("news_cat_recap") }, { key: "production", label: t("news_cat_production") },
   ];
-  const visibleArticles = activeCategory === "all" ? articles : articles.filter((article) => article.categoryKey === activeCategory);
+
+  const visibleArticles = displayList.filter((article) => {
+    const matchesCat = activeCategory === "all" || article.categoryKey === activeCategory;
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = !q || article.title.toLowerCase().includes(q) || article.excerpt.toLowerCase().includes(q) || article.category.toLowerCase().includes(q);
+    return matchesCat && matchesSearch;
+  });
 
   return (
     <>
@@ -79,16 +86,34 @@ export default function NewsPage() {
 
       <section className="section-padding section-overlay">
         <div className="container-custom">
-          {/* Category filter */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {categories.map(({ key, label }) => (
-              <button key={key} type="button" onClick={() => setActiveCategory(key)} aria-pressed={activeCategory === key} className="px-4 py-1.5 rounded-full text-sm font-medium transition-all border"
-                style={activeCategory === key
-                  ? { background: "linear-gradient(90deg,#9A6A31,#D6A34A)", borderColor: "transparent", color: "#fff" }
-                  : { borderColor: "rgba(255,255,255,0.13)", color: "rgba(255,255,255,0.50)" }}>
-                {label}
-              </button>
-            ))}
+          {/* Search Bar & Category filter */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+            <div className="relative max-w-md w-full">
+              <Search className="w-4 h-4 text-white/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Search articles by title or keyword..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-9 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white focus:outline-none focus:border-[#D6A34A] transition-colors"
+              />
+              {searchQuery && (
+                <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white">
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {categories.map(({ key, label }) => (
+                <button key={key} type="button" onClick={() => setActiveCategory(key)} aria-pressed={activeCategory === key} className="px-4 py-1.5 rounded-full text-sm font-medium transition-all border"
+                  style={activeCategory === key
+                    ? { background: "linear-gradient(90deg,#9A6A31,#D6A34A)", borderColor: "transparent", color: "#fff" }
+                    : { borderColor: "rgba(255,255,255,0.13)", color: "rgba(255,255,255,0.50)" }}>
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Featured */}

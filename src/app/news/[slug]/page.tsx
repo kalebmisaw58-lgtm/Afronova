@@ -2,19 +2,45 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, ArrowLeft, Tag, Clock } from "lucide-react";
-import { getNewsArticle, newsArticles } from "@/lib/news";
+import { getNewsArticle, newsArticles, getDbNewsArticleBySlug } from "@/lib/news";
 
 export function generateStaticParams() {
   return newsArticles.map(({ slug }) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const article = getNewsArticle(params.slug);
-  return article ? { title: article.title, description: article.excerpt } : { title: "Article not found" };
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const article = await getDbNewsArticleBySlug(params.slug);
+  if (!article) return { title: "Article Not Found | AfroNova" };
+
+  return {
+    title: `${article.title} | AfroNova News`,
+    description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: `https://afronova.org/news/${params.slug}`,
+      type: "article",
+      siteName: "AfroNova Media House & Events",
+      images: [
+        {
+          url: article.paragraphs.find((p) => p.startsWith("http") || p.startsWith("/")) || "/logo.png",
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+      images: [article.paragraphs.find((p) => p.startsWith("http") || p.startsWith("/")) || "/logo.png"],
+    },
+  };
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = getNewsArticle(params.slug);
+export default async function ArticlePage({ params }: { params: { slug: string } }) {
+  const article = await getDbNewsArticleBySlug(params.slug);
   if (!article) notFound();
 
   return (
