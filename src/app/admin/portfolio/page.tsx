@@ -235,52 +235,102 @@ export default function AdminPortfolioPage() {
             )}
           </div>
 
-          {/* Quick Image Key Editor */}
+          {/* Gallery Image Keys (pf_gal1 .. pf_gal9) */}
           <div className="card-dark p-6 rounded-xl border border-white/5 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-md font-semibold text-white flex items-center gap-2">
-                <Images className="w-4 h-4 text-[#D6A34A]" /> Portfolio Gallery Image Keys ({imageKeys.length})
-              </h2>
+              <div>
+                <h2 className="text-md font-semibold text-white flex items-center gap-2">
+                  <Images className="w-4 h-4 text-[#D6A34A]" /> Portfolio Gallery Image Keys
+                </h2>
+                <p className="text-xs text-white/40 mt-0.5">
+                  Set image URLs for slots <code className="text-[#D6A34A]">pf_gal1</code> through <code className="text-[#D6A34A]">pf_gal9</code>.
+                </p>
+              </div>
             </div>
 
-            {imageKeys.length === 0 ? (
-              <p className="text-xs text-white/30">No gallery image keys (`pf_*`) configured in site_content yet.</p>
-            ) : (
-              <div className="grid gap-3">
-                {imageKeys.map((k) => (
-                  <div key={k.key} className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5 text-xs">
-                    <div className="space-y-1 overflow-hidden pr-2">
-                      <span className="font-mono text-[#D6A34A] font-semibold">{k.key}</span>
-                      <p className="text-white/70 truncate">{k.value || "(empty image URL)"}</p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {Array.from({ length: 9 }).map((_, idx) => {
+                const keyName = `pf_gal${idx + 1}`;
+                const existing = imageKeys.find((k) => k.key === keyName);
+                const currentVal = existing?.value ?? "";
+                const hasImg = currentVal.startsWith("http") || currentVal.startsWith("/");
+
+                return (
+                  <div key={keyName} className="p-3 rounded-lg bg-white/5 border border-white/5 text-xs space-y-2 flex flex-col justify-between">
+                    <div className="space-y-1 overflow-hidden">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[#D6A34A] font-semibold">{keyName}</span>
+                        <span className="text-[10px] text-white/30">Slot #{idx + 1}</span>
+                      </div>
+                      {hasImg ? (
+                        <div className="relative h-24 rounded overflow-hidden border border-white/10 mt-1 bg-black/40">
+                          <img src={currentVal} alt={keyName} className="w-full h-full object-cover" />
+                        </div>
+                      ) : (
+                        <div className="h-16 rounded border border-dashed border-white/10 flex items-center justify-center text-white/20 text-[11px]">
+                          No image set
+                        </div>
+                      )}
+                      <p className="text-white/50 text-[11px] truncate mt-1">{currentVal || "(empty)"}</p>
                     </div>
+
                     <button
-                      onClick={() => { setEditingKey(k.key); setImgKeyForm({ key: k.key, value: k.value ?? "", section: k.section ?? "portfolio" }); }}
-                      className="p-1.5 text-white/40 hover:text-white rounded shrink-0"
+                      onClick={() => {
+                        setEditingKey(keyName);
+                        setImgKeyForm({ key: keyName, value: currentVal, section: "portfolio" });
+                      }}
+                      className="w-full py-1.5 px-2 rounded bg-white/10 hover:bg-white/20 text-white font-medium text-xs flex items-center justify-center gap-1.5 transition-colors"
                     >
-                      <Edit className="w-3.5 h-3.5" />
+                      <Edit className="w-3 h-3 text-[#D6A34A]" /> {currentVal ? "Edit Image URL" : "Set Image URL"}
                     </button>
                   </div>
-                ))}
-              </div>
-            )}
+                );
+              })}
+            </div>
 
             {editingKey && (
-              <form onSubmit={handleSaveImageKey} className="p-4 rounded-lg bg-black/40 border border-white/10 space-y-3 mt-3">
+              <form onSubmit={handleSaveImageKey} className="p-4 rounded-lg bg-black/60 border border-[#D6A34A]/30 space-y-3 mt-4">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-mono text-[#D6A34A]">Editing Key: {editingKey}</span>
+                  <span className="font-mono text-[#D6A34A] font-semibold">Editing Image Slot: {editingKey}</span>
                   <button type="button" onClick={() => setEditingKey(null)} className="text-white/40 hover:text-white"><X className="w-4 h-4" /></button>
                 </div>
-                <input
-                  type="text"
-                  placeholder="Image URL (e.g. /images/portfolio/gallery-1.jpg)"
-                  value={imgKeyForm.value}
-                  onChange={(e) => setImgKeyForm({ ...imgKeyForm, value: e.target.value })}
-                  className="input-dark w-full text-xs"
-                  required
-                />
-                <div className="flex justify-end gap-2">
-                  <button type="button" onClick={() => setEditingKey(null)} className="text-xs text-white/40 hover:text-white px-2 py-1">Cancel</button>
-                  <button type="submit" className="btn-primary text-xs px-3 py-1">Save Image URL</button>
+                <div className="space-y-1">
+                  <label className="text-[11px] text-white/60">Image URL (http://... or /images/...)</label>
+                  <input
+                    type="text"
+                    placeholder="https://images.unsplash.com/photo-1540575467063-178a50c2df87..."
+                    value={imgKeyForm.value}
+                    onChange={(e) => setImgKeyForm({ ...imgKeyForm, value: e.target.value })}
+                    className="input-dark w-full text-xs"
+                    required
+                  />
+                </div>
+
+                <div className="flex items-center justify-between pt-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const sampleImgs = [
+                        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+                        "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+                        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+                        "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80",
+                        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
+                      ];
+                      const randomSample = sampleImgs[Math.floor(Math.random() * sampleImgs.length)];
+                      setImgKeyForm({ ...imgKeyForm, value: randomSample });
+                    }}
+                    className="text-[11px] text-[#D6A34A] underline hover:text-white"
+                  >
+                    + Insert Sample Event Photo URL
+                  </button>
+
+                  <div className="flex gap-2">
+                    <button type="button" onClick={() => setEditingKey(null)} className="text-xs text-white/40 hover:text-white px-2 py-1">Cancel</button>
+                    <button type="submit" className="btn-primary text-xs px-3 py-1 flex items-center gap-1">
+                      <Save className="w-3 h-3" /> Save Image URL
+                    </button>
+                  </div>
                 </div>
               </form>
             )}
