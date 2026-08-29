@@ -125,24 +125,9 @@ export default function PortfolioPage() {
               const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
               const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
               const isVideo = i === 4;
-              const imgKey = `pf_gal${i + 1}`;
-              const imgUrl = t(imgKey);
-              const hasImage = imgUrl && (imgUrl.startsWith("http") || imgUrl.startsWith("/"));
-
               return (
                 <div key={label} className={`${heights[i % 3]} rounded-2xl border border-white/8 relative overflow-hidden group cursor-pointer`}
                      style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(0,0,0,0.60))` }}>
-                  {hasImage ? (
-                    <img
-                      src={imgUrl}
-                      alt={label}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center opacity-12 pointer-events-none">
-                      <span className="font-display font-black text-6xl" style={{ color: "#D6A34A" }}>A</span>
-                    </div>
-                  )}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/55 transition-all duration-300 flex items-center justify-center">
                     {isVideo
                       ? <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "rgba(214,163,74,0.90)" }}>

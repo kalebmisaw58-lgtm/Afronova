@@ -54,3 +54,61 @@ export const newsArticles: NewsArticle[] = [
 export function getNewsArticle(slug: string) {
   return newsArticles.find((article) => article.slug === slug);
 }
+
+export async function getDbNewsArticles(locale: string = "en"): Promise<NewsArticle[]> {
+  try {
+    const { createServerClient } = await import("@/lib/supabase");
+    const supabase = createServerClient();
+    const { data, error } = await supabase
+      .from("news_articles")
+      .select("*")
+      .eq("published", true)
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false });
+
+    if (error || !data || data.length === 0) {
+      return newsArticles;
+    }
+
+    return data.map((item) => ({
+      slug: item.slug,
+      category: item.category as any,
+      date: item.article_date || new Date(item.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      readTime: item.read_time || "4 min read",
+      title: item.title,
+      excerpt: item.excerpt || "",
+      paragraphs: item.paragraphs || [],
+    }));
+  } catch {
+    return newsArticles;
+  }
+}
+
+export async function getDbNewsArticleBySlug(slug: string, locale: string = "en"): Promise<NewsArticle | undefined> {
+  try {
+    const { createServerClient } = await import("@/lib/supabase");
+    const supabase = createServerClient();
+    const { data, error } = await supabase
+      .from("news_articles")
+      .select("*")
+      .eq("slug", slug)
+      .eq("published", true)
+      .single();
+
+    if (error || !data) {
+      return getNewsArticle(slug);
+    }
+
+    return {
+      slug: data.slug,
+      category: data.category as any,
+      date: data.article_date || new Date(data.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      readTime: data.read_time || "4 min read",
+      title: data.title,
+      excerpt: data.excerpt || "",
+      paragraphs: data.paragraphs || [],
+    };
+  } catch {
+    return getNewsArticle(slug);
+  }
+}

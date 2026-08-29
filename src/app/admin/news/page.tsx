@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Edit, Trash2, Save, X, Globe, Tag, Calendar, FileText } from "lucide-react";
+import { Plus, Edit, Trash2, Save, X, Globe, Tag, Calendar, FileText, Upload, Loader2 } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 
@@ -11,7 +11,51 @@ export default function AdminNewsPage() {
   const { api } = useAdminApi();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [editingId, setEditingId] = useState(null);
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const supabase = typeof window !== "undefined"
+        ? require("@/lib/supabase").createBrowserClient()
+        : null;
+
+      let token = "";
+      if (supabase) {
+        const { data: { session } } = await supabase.auth.getSession();
+        token = session?.access_token ?? "";
+      }
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        body: formData,
+      });
+
+      const json = await res.json();
+      if (json.success && json.url) {
+        // Appends image markdown or URL
+        setForm((prev: any) => ({
+          ...prev,
+          paragraphs: [json.url, ...prev.paragraphs],
+        }));
+        alert("Image uploaded and inserted!");
+      } else {
+        alert(json.error ?? "Failed to upload image");
+      }
+    } catch (err: any) {
+      alert("Upload error: " + (err.message || String(err)));
+    } finally {
+      setUploadingImage(false);
+    }
+  }
   const [form, setForm] = useState({
     slug: "", locale: "en", category: "event",
     article_date: "", read_time: "", title: "", excerpt: "",

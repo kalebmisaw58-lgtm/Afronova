@@ -1,15 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Calendar, ArrowRight, Tag } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { getDbNewsArticles, NewsArticle } from "@/lib/news";
 
 export default function NewsPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("all");
+  const [dbArticles, setDbArticles] = useState<NewsArticle[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const featured = {
+  useEffect(() => {
+    void loadArticles();
+    async function loadArticles() {
+      setLoading(true);
+      try {
+        const fetched = await getDbNewsArticles(locale);
+        setDbArticles(fetched);
+      } catch {} finally {
+        setLoading(false);
+      }
+    }
+  }, [locale]);
+
+  const defaultFeatured = {
     slug: "africa-celebrates-2026-announced",
     category: t("news_cat_event"), categoryKey: "event",
     date: "July 10, 2026",
@@ -18,13 +34,29 @@ export default function NewsPage() {
     readTime: "4 min read",
   };
 
-  const articles = [
+  const defaultArticles = [
     { slug: "legendary-gold-partnership", category: t("news_cat_partner"), categoryKey: "partner", date: "June 28, 2026", title: t("art1_title"), excerpt: t("art1_excerpt"), readTime: "3 min read", accent: "#D6A34A" },
     { slug: "au-uneca-venues-confirmed", category: t("news_cat_event"), categoryKey: "event", date: "May 30, 2026", title: t("art3_title"), excerpt: t("art3_excerpt"), readTime: "3 min read", accent: "#9A6A31" },
     { slug: "fashion-night-highlights", category: t("news_cat_recap"), categoryKey: "recap", date: "Nov 20, 2025", title: t("art4_title"), excerpt: t("art4_excerpt"), readTime: "5 min read", accent: "#F0B84F" },
     { slug: "trade-forum-outcomes-2025", category: t("news_cat_business"), categoryKey: "business", date: "Nov 18, 2025", title: t("art5_title"), excerpt: t("art5_excerpt"), readTime: "4 min read", accent: "#D6A34A" },
     { slug: "multimedia-awards-2025", category: t("news_cat_production"), categoryKey: "production", date: "Oct 5, 2025", title: t("art6_title"), excerpt: t("art6_excerpt"), readTime: "2 min read", accent: "#B9853B" },
   ];
+
+  const displayList = dbArticles.length > 0
+    ? dbArticles.map((a, i) => ({
+        slug: a.slug,
+        category: a.category,
+        categoryKey: a.category === "partnership" ? "partner" : a.category,
+        date: a.date,
+        title: a.title,
+        excerpt: a.excerpt,
+        readTime: a.readTime,
+        accent: ["#D6A34A", "#9A6A31", "#F0B84F", "#B9853B"][i % 4],
+      }))
+    : defaultArticles;
+
+  const featured = displayList.length > 0 ? displayList[0] : defaultFeatured;
+  const articles = displayList.length > 1 ? displayList.slice(1) : defaultArticles;
 
   const categories = [
     { key: "all", label: t("news_cat_all") }, { key: "event", label: t("news_cat_event") }, { key: "partner", label: t("news_cat_partner") },

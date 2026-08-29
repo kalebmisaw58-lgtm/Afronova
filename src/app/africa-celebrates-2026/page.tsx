@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Calendar, MapPin, Globe2, Star, ArrowRight, Music, Building2, Users, Palette, CheckCircle } from "lucide-react";
 import CountdownTimer from "@/components/ui/CountdownTimer";
@@ -23,7 +24,30 @@ const eventSchema = {
 };
 
 export default function AfricaCelebrates2026Page() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const [scheduleData, setScheduleData] = useState<any[]>([]);
+
+  useEffect(() => {
+    void loadSchedule();
+    async function loadSchedule() {
+      try {
+        const { createBrowserClient } = await import("@/lib/supabase");
+        const supabase = createBrowserClient();
+        const { data, error } = await supabase
+          .from("event_schedule")
+          .select(`
+            *,
+            items:schedule_items(*)
+          `)
+          .eq("locale", locale)
+          .order("sort_order", { ascending: true });
+
+        if (!error && data && data.length > 0) {
+          setScheduleData(data);
+        }
+      } catch {}
+    }
+  }, [locale]);
 
   const highlights = [
     { icon: Music,     title: t("ac_h1_title"), desc: t("ac_h1_desc") },
@@ -34,7 +58,7 @@ export default function AfricaCelebrates2026Page() {
     { icon: Star,      title: t("ac_h6_title"), desc: t("ac_h6_desc") },
   ];
 
-  const programDays = [
+  const defaultProgramDays = [
     { date: "Nov 10", title: t("prog1_title"), events: [t("prog1_e1"), t("prog1_e2"), t("prog1_e3")] },
     { date: "Nov 11", title: t("prog2_title"), events: [t("prog2_e1"), t("prog2_e2"), t("prog2_e3"), t("prog2_e4")] },
     { date: "Nov 12", title: t("prog3_title"), events: [t("prog3_e1"), t("prog3_e2"), t("prog3_e3"), t("prog3_e4")] },
@@ -42,6 +66,14 @@ export default function AfricaCelebrates2026Page() {
     { date: "Nov 14", title: t("prog5_title"), events: [t("prog5_e1"), t("prog5_e2"), t("prog5_e3"), t("prog5_e4")] },
     { date: "Nov 15", title: t("prog6_title"), events: [t("prog6_e1"), t("prog6_e2"), t("prog6_e3"), t("prog6_e4")] },
   ];
+
+  const programDays = scheduleData.length > 0
+    ? scheduleData.map((d: any) => ({
+        date: d.day,
+        title: d.title,
+        events: (d.items || []).sort((a: any, b: any) => a.sort_order - b.sort_order).map((i: any) => i.description),
+      }))
+    : defaultProgramDays;
 
   const sponsorTiers = [
     { tier: t("tier1_name"), bg: "linear-gradient(90deg,#9A6A31,#D6A34A)", benefits: [t("tier1_b1"), t("tier1_b2"), t("tier1_b3"), t("tier1_b4"), t("tier1_b5")] },
@@ -119,7 +151,7 @@ export default function AfricaCelebrates2026Page() {
                   <h3 className="text-white font-semibold text-sm">{title}</h3>
                 </div>
                 <ul className="space-y-2">
-                  {events.map((ev) => (
+                  {events.map((ev: string) => (
                     <li key={ev} className="flex items-start gap-2 text-white/50 text-xs">
                       <CheckCircle className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: "#D6A34A" }} />{ev}
                     </li>

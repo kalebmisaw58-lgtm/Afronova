@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Users, Plus, Edit, Trash2, Save, X, Tag, Globe } from "lucide-react";
+import { Users, Plus, Edit, Trash2, Save, X, Tag, Globe, Upload, Loader2 } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 
@@ -17,7 +17,46 @@ export default function AdminPartnersPage() {
   const { api } = useAdminApi();
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [uploadingLogo, setUploadingLogo] = useState(false);
   const [editingId, setEditingId] = useState(null);
+
+  async function handleLogoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingLogo(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const supabase = typeof window !== "undefined"
+        ? require("@/lib/supabase").createBrowserClient()
+        : null;
+
+      let token = "";
+      if (supabase) {
+        const { data: { session } } = await supabase.auth.getSession();
+        token = session?.access_token ?? "";
+      }
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        body: formData,
+      });
+
+      const json = await res.json();
+      if (json.success && json.url) {
+        setForm((prev) => ({ ...prev, logo: json.url }));
+      } else {
+        alert(json.error ?? "Failed to upload logo");
+      }
+    } catch (err: any) {
+      alert("Upload error: " + (err.message || String(err)));
+    } finally {
+      setUploadingLogo(false);
+    }
+  }
   const [form, setForm] = useState({
     name: "", initials: "", category_key: "cat_corporate",
     accent: "#D6A34A", logo: "", website: "",
@@ -126,8 +165,20 @@ export default function AdminPartnersPage() {
             </select>
             <input type="color" value={form.accent}
               onChange={(e) => setForm({ ...form, accent: e.target.value })} className="input-dark h-10" />
-            <input type="url" placeholder="Logo URL (image)" value={form.logo}
-              onChange={(e) => setForm({ ...form, logo: e.target.value })} className="input-dark sm:col-span-2" />
+            <div className="sm:col-span-2 space-y-2">
+              <label className="text-xs text-white/60 font-medium flex items-center justify-between">
+                <span>Partner Logo</span>
+                <label className="text-xs text-[#D6A34A] hover:underline cursor-pointer flex items-center gap-1">
+                  <Upload className="w-3.5 h-3.5" /> Upload Logo File
+                  <input type="file" accept="image/*" onChange={handleLogoUpload} disabled={uploadingLogo} className="hidden" />
+                </label>
+              </label>
+              <div className="flex items-center gap-2">
+                <input type="url" placeholder="Logo URL or uploaded image link" value={form.logo}
+                  onChange={(e) => setForm({ ...form, logo: e.target.value })} className="input-dark flex-1" />
+                {uploadingLogo && <Loader2 className="w-4 h-4 text-[#D6A34A] animate-spin" />}
+              </div>
+            </div>
             <input type="url" placeholder="Website URL" value={form.website}
               onChange={(e) => setForm({ ...form, website: e.target.value })} className="input-dark" />
             <label className="flex items-center gap-2 text-sm">

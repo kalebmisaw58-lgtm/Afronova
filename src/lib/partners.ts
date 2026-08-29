@@ -79,3 +79,38 @@ export function getPartnersByCategory(locale: Locale) {
 export function tCategory(key: string, locale: Locale): string {
   return categoryLabels[key]?.[locale] ?? key;
 }
+
+export async function getDbPartners(locale: Locale = "en"): Promise<Partner[]> {
+  try {
+    const { createServerClient } = await import("@/lib/supabase");
+    const supabase = createServerClient();
+    const { data: dbPartners, error } = await supabase
+      .from("partners")
+      .select(`
+        *,
+        descriptions:partner_descriptions(*)
+      `)
+      .order("sort_order", { ascending: true });
+
+    if (error || !dbPartners || dbPartners.length === 0) {
+      return partners;
+    }
+
+    return dbPartners.map((item) => {
+      const descObj = item.descriptions?.find((d: any) => d.locale === locale) || item.descriptions?.[0];
+      return {
+        name: item.name,
+        initials: item.initials || item.name.substring(0, 2).toUpperCase(),
+        categoryKey: item.category_key || "cat_corporate",
+        accent: item.accent || "#D6A34A",
+        logo: item.logo || "",
+        website: item.website || undefined,
+        descKey: descObj?.description || "",
+        roleKey: descObj?.role || "",
+        featured: item.featured ?? false,
+      };
+    });
+  } catch {
+    return partners;
+  }
+}

@@ -1,11 +1,12 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import PartnerLogo from "@/components/ui/PartnerLogo";
 import { useLanguage } from "@/context/LanguageContext";
-import { partners, catAccents } from "@/lib/partners";
+import { partners, catAccents, getDbPartners, Partner } from "@/lib/partners";
 
 function PartnerCard({ name, logo, initials, accent, description, role, category, hoverHint, website }: {
   name: string; logo: string; initials: string; accent: string;
@@ -63,7 +64,18 @@ function PartnerCard({ name, logo, initials, accent, description, role, category
 }
 
 export default function PartnersPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const [partnerList, setPartnerList] = useState<Partner[]>(partners);
+
+  useEffect(() => {
+    void loadPartners();
+    async function loadPartners() {
+      try {
+        const fetched = await getDbPartners(locale);
+        if (fetched && fetched.length > 0) setPartnerList(fetched);
+      } catch {}
+    }
+  }, [locale]);
 
   return (
     <>
@@ -119,7 +131,7 @@ export default function PartnersPage() {
       <section className="section-padding pt-8">
         <div className="container-custom">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {partners.map((p) => (
+            {partnerList.map((p) => (
               <PartnerCard
                 key={p.name}
                 name={p.name}
