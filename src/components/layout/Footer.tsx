@@ -8,6 +8,7 @@ import {
   Instagram, Facebook, Twitter, Youtube, Linkedin, Music2,
   ArrowRight, Send, Loader2,
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 
 const socials = [
@@ -20,11 +21,14 @@ const socials = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
   const { t } = useLanguage();
   const [email,     setEmail]     = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
   const [newsError, setNewsError] = useState("");
+
+  if (pathname?.startsWith("/admin")) return null;
 
   const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
