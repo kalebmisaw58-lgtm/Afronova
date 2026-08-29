@@ -313,15 +313,34 @@ export default function AdminPortfolioPage() {
                       <p className="text-white/50 text-[11px] truncate mt-1">{currentVal || "(empty)"}</p>
                     </div>
 
-                    <button
-                      onClick={() => {
-                        setEditingKey(keyName);
-                        setImgKeyForm({ key: keyName, value: currentVal, section: "portfolio" });
-                      }}
-                      className="w-full py-1.5 px-2 rounded bg-white/10 hover:bg-white/20 text-white font-medium text-xs flex items-center justify-center gap-1.5 transition-colors"
-                    >
-                      <Edit className="w-3 h-3 text-[#D6A34A]" /> {currentVal ? "Edit Image URL" : "Set Image URL"}
-                    </button>
+                    <div className="flex items-center gap-1.5 pt-1">
+                      <button
+                        onClick={() => {
+                          setEditingKey(keyName);
+                          setImgKeyForm({ key: keyName, value: currentVal, section: "portfolio" });
+                        }}
+                        className="flex-1 py-1.5 px-2 rounded bg-white/10 hover:bg-white/20 text-white font-medium text-xs flex items-center justify-center gap-1 transition-colors"
+                      >
+                        <Edit className="w-3 h-3 text-[#D6A34A]" /> {currentVal ? "Edit" : "Set Image"}
+                      </button>
+                      {currentVal && (
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            if (!confirm(`Clear image from slot ${keyName}?`)) return;
+                            const res = await api("/api/admin/portfolio", {
+                              method: "POST",
+                              body: JSON.stringify({ action: "saveKey", key: keyName, value: "", section: "portfolio" }),
+                            });
+                            if (res.success) void loadPortfolio();
+                          }}
+                          className="p-1.5 rounded bg-red-500/20 hover:bg-red-500/30 text-red-400 text-xs shrink-0"
+                          title="Clear/Delete Image"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 );
               })}

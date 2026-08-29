@@ -14,25 +14,8 @@ export async function GET(req: NextRequest) {
   const admin = await getAdminUser(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const isMatrix = req.nextUrl.searchParams.get("matrix") === "true";
   const locale = req.nextUrl.searchParams.get("locale") ?? "en";
   const supabase = createServerClient();
-
-  if (isMatrix) {
-    const { data, error } = await supabase
-      .from("site_content")
-      .select("*")
-      .order("section")
-      .order("key");
-
-    if (error) {
-      console.error("[admin/content] Matrix GET error:", error.message);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-    }
-
-    return NextResponse.json({ success: true, items: data || [] });
-  }
-
   const { data, error } = await supabase
     .from("site_content")
     .select("*")
@@ -57,28 +40,6 @@ export async function POST(req: NextRequest) {
   const supabase = createServerClient();
 
   // Batch upsert across multiple locales for a single key
-  if (action === "batchUpsertKey" && body.key && body.values) {
-    const section = body.section || "general";
-    const rows = Object.entries(body.values).map(([loc, val]) => ({
-      locale: loc,
-      key: body.key,
-      value: String(val ?? ""),
-      section,
-    }));
-
-    const { error } = await supabase.from("site_content").upsert(rows, {
-      onConflict: "locale,key",
-    });
-
-    if (error) {
-      console.error("[admin/content] batchUpsertKey error:", error.message);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-    }
-    return NextResponse.json({ success: true, count: rows.length });
-  }
-
-  // Bulk upsert for single locale
-  if (action === "bulk" && locale && Array.isArray(items)) {
     const rows = items.map((i: any) => ({
       locale,
       key: i.key,

@@ -83,5 +83,34 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   }
 
+  if (body.action === "seed") {
+    const { partners: defaultList } = await import("@/lib/partners");
+    let inserted = 0;
+    for (let i = 0; i < defaultList.length; i++) {
+      const p = defaultList[i];
+      const { data: existing } = await supabase.from("partners").select("id").eq("name", p.name).single();
+      if (!existing) {
+        const { data: partner, error: e1 } = await supabase.from("partners").insert({
+          name: p.name,
+          initials: p.initials,
+          category_key: p.categoryKey,
+          accent: p.accent,
+          logo: p.logo,
+          website: p.website || null,
+          featured: p.featured ?? false,
+          sort_order: i,
+        }).select().single();
+
+        if (!e1 && partner) {
+          inserted++;
+          await supabase.from("partner_descriptions").insert([
+            { partner_id: partner.id, locale: "en", description: p.descKey, role: p.roleKey },
+          ]);
+        }
+      }
+    }
+    return NextResponse.json({ success: true, inserted });
+  }
+
   return NextResponse.json({ success: false, error: "Invalid action" }, { status: 400 });
 }

@@ -131,17 +131,45 @@ export default function AdminPartnersPage() {
 
   const isEditing = editingId !== null || isCreating;
 
+  async function handleSeed() {
+    if (!confirm("Import default partner organizations (African Union, UNECA, etc.) into the database so you can manage or delete them?")) return;
+    setLoading(true);
+    const res = await api("/api/admin/partners", {
+      method: "POST",
+      body: JSON.stringify({ action: "seed" }),
+    });
+    if (res.success) {
+      alert(`Imported ${res.inserted ?? 0} default partners into database!`);
+      void loadPartners();
+    } else {
+      alert(res.error ?? "Failed to seed partners");
+    }
+    setLoading(false);
+  }
+
   return (
     <div className="p-8 max-w-7xl">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-display font-bold text-white">Partners</h1>
+        <div>
+          <h1 className="text-2xl font-display font-bold text-white">Partners ({partners.length})</h1>
+          <p className="text-white/40 text-sm mt-1">Manage partner organizations, logos, and localized role descriptions</p>
+        </div>
         {!isEditing && (
-          <button
-            onClick={() => { resetForm(); setIsCreating(true); }}
-            className="btn-primary flex items-center gap-2 text-sm px-4 py-2"
-          >
-            <Plus className="w-4 h-4" /> Add Partner
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleSeed}
+              className="btn-outline flex items-center gap-2 text-sm px-4 py-2"
+              title="Import default partners into database to make them editable/deletable"
+            >
+              <Users className="w-4 h-4 text-[#D6A34A]" /> Import Default Partners
+            </button>
+            <button
+              onClick={() => { resetForm(); setIsCreating(true); }}
+              className="btn-primary flex items-center gap-2 text-sm px-4 py-2"
+            >
+              <Plus className="w-4 h-4" /> Add Partner
+            </button>
+          </div>
         )}
       </div>
 
@@ -174,8 +202,18 @@ export default function AdminPartnersPage() {
                 </label>
               </label>
               <div className="flex items-center gap-2">
-                <input type="url" placeholder="Logo URL or uploaded image link" value={form.logo}
+                <input type="text" placeholder="Logo image file path or URL" value={form.logo}
                   onChange={(e) => setForm({ ...form, logo: e.target.value })} className="input-dark flex-1" />
+                {form.logo && (
+                  <button
+                    type="button"
+                    onClick={() => setForm({ ...form, logo: "" })}
+                    className="px-2.5 py-1.5 rounded bg-red-500/20 hover:bg-red-500/30 text-red-400 text-xs shrink-0 flex items-center gap-1"
+                    title="Remove Logo Image"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" /> Remove Image
+                  </button>
+                )}
                 {uploadingLogo && <Loader2 className="w-4 h-4 text-[#D6A34A] animate-spin" />}
               </div>
             </div>
