@@ -122,21 +122,30 @@ export default function PortfolioPage() {
           <SectionHeader eyebrow={t("portfolio_gallery_eyebrow")} title={t("portfolio_gallery_title")} titleHighlight={t("portfolio_gallery_highlight")} className="mb-12" />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryItems.map((label, i) => {
+              const imgUrl = t(`pf_gal${i + 1}`);
+              const hasImg = imgUrl && (imgUrl.startsWith("http") || imgUrl.startsWith("/"));
               const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
               const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
               const isVideo = i === 4;
               return (
-                <div key={label} className={`${heights[i % 3]} rounded-2xl border border-white/8 relative overflow-hidden group cursor-pointer`}
+                <div key={label + i} className={`${heights[i % 3]} rounded-2xl border border-white/8 relative overflow-hidden group cursor-pointer`}
                      style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(0,0,0,0.60))` }}>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/55 transition-all duration-300 flex items-center justify-center">
+                  {hasImg && (
+                    <img
+                      src={imgUrl}
+                      alt={label}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-all duration-300 flex items-center justify-center">
                     {isVideo
-                      ? <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "rgba(214,163,74,0.90)" }}>
+                      ? <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10" style={{ background: "rgba(214,163,74,0.90)" }}>
                           <Play className="w-6 h-6 text-white ml-1" />
                         </div>
-                      : <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                      : <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                     }
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10">
                     <p className="text-white text-sm font-medium">{label}</p>
                     <p className="text-xs" style={{ color: "#D6A34A" }}>{isVideo ? "Video" : "Photography"}</p>
                   </div>
