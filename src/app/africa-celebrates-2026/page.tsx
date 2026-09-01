@@ -98,16 +98,16 @@ export default function AfricaCelebrates2026Page() {
           <h1 className="text-6xl sm:text-7xl md:text-8xl font-display font-black leading-none tracking-tight mb-4">
             <span className="text-white">Africa </span><span className="text-gradient">Celebrates</span>
           </h1>
-          <p className="text-5xl sm:text-6xl md:text-7xl font-display font-black mb-8" style={{ color: "#F0B84F" }}>2026</p>
+          <p className="text-5xl sm:text-6xl md:text-7xl font-display font-black mb-8 text-[#F0B84F]">2026</p>
           <p className="text-white/70 text-base md:text-lg max-w-3xl mx-auto mb-4 italic leading-relaxed">{t("ac_theme")}</p>
           <div className="flex flex-wrap items-center justify-center gap-6 mb-12 text-sm">
-            <span className="flex items-center gap-2 text-white/60"><Calendar className="w-4 h-4" style={{ color: "#F0B84F" }} />{t("ac_date")}</span>
-            <span className="flex items-center gap-2 text-white/60"><MapPin className="w-4 h-4" style={{ color: "#F0B84F" }} />{t("ac_venue")}</span>
-            <span className="flex items-center gap-2 text-white/60"><Globe2 className="w-4 h-4" style={{ color: "#F0B84F" }} />{t("ac_nations")}</span>
+            <span className="flex items-center gap-2 text-white/60"><Calendar className="w-4 h-4 text-[#F0B84F]" />{t("ac_date")}</span>
+            <span className="flex items-center gap-2 text-white/60"><MapPin className="w-4 h-4 text-[#F0B84F]" />{t("ac_venue")}</span>
+            <span className="flex items-center gap-2 text-white/60"><Globe2 className="w-4 h-4 text-[#F0B84F]" />{t("ac_nations")}</span>
           </div>
           <div className="inline-block rounded-2xl px-6 py-6"
                style={{ border: "1px solid rgba(214,163,74,0.25)", background: "rgba(255,255,255,0.04)" }}>
-            <p className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "#F0B84F" }}>{t("ac_countdown_label")}</p>
+            <p className="text-xs font-semibold tracking-widest uppercase mb-5 text-[#F0B84F]">{t("ac_countdown_label")}</p>
             <CountdownTimer />
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
@@ -127,7 +127,7 @@ export default function AfricaCelebrates2026Page() {
               <div key={title} className="card-dark p-6 space-y-3 hover:-translate-y-1 transition-all group">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors group-hover:bg-[rgba(214,163,74,0.20)]"
                      style={{ background: "rgba(214,163,74,0.10)", border: "1px solid rgba(214,163,74,0.20)" }}>
-                  <Icon className="w-6 h-6" style={{ color: "#D6A34A" }} />
+                  <Icon className="w-6 h-6 text-[#D6A34A]" />
                 </div>
                 <h3 className="text-white font-semibold">{title}</h3>
                 <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
@@ -153,7 +153,7 @@ export default function AfricaCelebrates2026Page() {
                 <ul className="space-y-2">
                   {events.map((ev: string) => (
                     <li key={ev} className="flex items-start gap-2 text-white/50 text-xs">
-                      <CheckCircle className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: "#D6A34A" }} />{ev}
+                      <CheckCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#D6A34A]" />{ev}
                     </li>
                   ))}
                 </ul>
@@ -197,7 +197,7 @@ export default function AfricaCelebrates2026Page() {
                 <ul className="space-y-2">
                   {benefits.map((b) => (
                     <li key={b} className="flex items-center gap-2 text-white/60 text-sm">
-                      <Star className="w-3 h-3 shrink-0" style={{ color: "#D6A34A" }} /> {b}
+                      <Star className="w-3 h-3 shrink-0 text-[#D6A34A]" /> {b}
                     </li>
                   ))}
                 </ul>
@@ -222,3 +222,4 @@ export default function AfricaCelebrates2026Page() {
     </>
   );
 }
+

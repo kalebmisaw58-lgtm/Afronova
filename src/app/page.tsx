@@ -102,12 +102,12 @@ export default function HomePage() {
               </h2>
               <p className="text-white/55 text-sm leading-relaxed">{t("countdown_theme")}</p>
               <div className="flex flex-wrap gap-4 text-sm text-white/55 justify-center lg:justify-start pt-1">
-                <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" style={{ color: "#F0B84F" }} />{t("countdown_date")}</span>
-                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" style={{ color: "#F0B84F" }} />{t("countdown_venue")}</span>
+                <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#F0B84F]" />{t("countdown_date")}</span>
+                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#F0B84F]" />{t("countdown_venue")}</span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">
-              <p className="text-xs font-bold tracking-widest uppercase" style={{ color: "#F0B84F" }}>{t("countdown_label")}</p>
+              <p className="text-xs font-bold tracking-widest uppercase text-[#F0B84F]">{t("countdown_label")}</p>
               <CountdownTimer />
             </div>
             <div className="flex flex-col items-center lg:items-end gap-3">
@@ -144,7 +144,7 @@ export default function HomePage() {
               <SectionHeader eyebrow={t("who_eyebrow")} title={t("who_title")} titleHighlight={t("who_highlight")} />
               <p className="text-white/60 leading-relaxed text-lg">{t("who_body1")}</p>
               <p className="text-white/55 leading-relaxed">
-                {t("who_body2")} <strong style={{ color: "#F0B84F" }}>{t("who_partner")}</strong>.
+                {t("who_body2")} <strong className="text-[#F0B84F]">{t("who_partner")}</strong>.
               </p>
               <div className="flex flex-wrap gap-2 pt-1">
                 {[t("tag_events"), t("tag_media"), t("tag_advertising"), t("tag_publishing"), t("tag_merch")].map((tag) => (
@@ -281,3 +281,4 @@ export default function HomePage() {
     </>
   );
 }
+

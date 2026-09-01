@@ -37,7 +37,7 @@ function LoginForm() {
       {isInactive && (
         <div className="p-4 mb-6 rounded-xl border flex items-start gap-3"
              style={{ background: "rgba(214,163,74,0.12)", borderColor: "rgba(214,163,74,0.35)" }}>
-          <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5" style={{ color: "#D6A34A" }} />
+          <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5 text-[#D6A34A]" />
           <p className="text-xs leading-relaxed" style={{ color: "#F0D49A" }}>
             You were automatically signed out after 15 minutes of inactivity for security. Please sign in again.
           </p>
@@ -54,7 +54,7 @@ function LoginForm() {
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="form-label flex items-center gap-2">
-              <Mail className="w-4 h-4" style={{ color: "#D6A34A" }} /> Email
+              <Mail className="w-4 h-4 text-[#D6A34A]" /> Email
             </label>
             <input
               type="email"
@@ -69,7 +69,7 @@ function LoginForm() {
 
           <div>
             <label className="form-label flex items-center gap-2">
-              <Lock className="w-4 h-4" style={{ color: "#D6A34A" }} /> Password
+              <Lock className="w-4 h-4 text-[#D6A34A]" /> Password
             </label>
             <input
               type="password"
@@ -103,3 +103,4 @@ export default function AdminLoginPage() {
     </div>
   );
 }
+

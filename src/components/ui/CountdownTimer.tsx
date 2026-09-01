@@ -42,8 +42,7 @@ export default function CountdownTimer() {
         <div key={label} className="flex items-center gap-3 md:gap-4">
           <div className="countdown-block">
             {/* Value in logo orange */}
-            <span className="text-3xl md:text-4xl font-display font-bold tabular-nums leading-none"
-                  style={{ color: "#D6A34A" }}>
+            <span className="text-3xl md:text-4xl font-display font-bold tabular-nums leading-none text-[#D6A34A]">
               {String(value).padStart(2, "0")}
             </span>
             <span className="text-white/45 text-xs uppercase tracking-wider mt-1">{label}</span>
@@ -56,3 +55,4 @@ export default function CountdownTimer() {
     </div>
   );
 }
+

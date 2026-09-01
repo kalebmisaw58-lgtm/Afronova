@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
  import {
-  LayoutDashboard, Globe, FileText, Users, Calendar,
+  LayoutDashboard, Globe, FileText, Users, Calendar, Quote,
   Settings, LogOut, Images, Inbox,
 } from "lucide-react";
 import { useAdmin } from "@/context/AdminContext";
@@ -14,7 +14,7 @@ const navItems = [
   { label: "News Articles", href: "/admin/news", icon: FileText },
   { label: "Partners", href: "/admin/partners", icon: Users },
   { label: "Portfolio Images", href: "/admin/portfolio", icon: Images },
-  { label: "Testimonials", href: "/admin/testimonials", icon: Calendar },
+  { label: "Testimonials", href: "/admin/testimonials", icon: Quote },
   { label: "Event Schedule", href: "/admin/schedule", icon: Calendar },
   { label: "Inquiries & Leads", href: "/admin/inquiries", icon: Inbox },
   { label: "Settings", href: "/admin/settings", icon: Settings },
@@ -63,3 +63,4 @@ export default function AdminNav() {
     </aside>
   );
 }
+

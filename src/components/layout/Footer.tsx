@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,14 +12,22 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 
-const socials = [
+const DEFAULT_SOCIALS = [
   { icon: Instagram, href: "https://www.instagram.com/afronova__",              label: "Instagram" },
   { icon: Facebook,  href: "https://www.facebook.com/share/19FxHLrzQD/",               label: "Facebook" },
   { icon: Twitter,   href: "https://x.com/socialafronova",                label: "Twitter / X" },
-  { icon: Youtube,   href: "https://youtube.com/afronova",                label: "YouTube" },
+  { icon: Youtube,   href: "https://www.youtube.com/@AfroNovaTV-n2c",                label: "YouTube" },
   { icon: Linkedin,  href: "https://www.linkedin.com/company/afronova-mediahub/",       label: "LinkedIn" },
   { icon: TikTokIcon, href: "https://www.tiktok.com/@afronova_",            label: "TikTok" },
 ];
+
+const FALLBACK_FOOTER = {
+  address: "Africa Avenue, Addis Ababa 1000, Ethiopia",
+  phone: "+251 96 508 1998",
+  hours: "Mon  to  Fri, 9:00 AM  to  5:00 PM",
+  mapUrl: "https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9",
+  socials: DEFAULT_SOCIALS,
+};
 
 export default function Footer() {
   const pathname = usePathname();
@@ -28,8 +36,29 @@ export default function Footer() {
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
   const [newsError, setNewsError] = useState("");
+  const [footerData, setFooterData] = useState(FALLBACK_FOOTER);
 
-  if (pathname?.startsWith("/admin")) return null;
+  useEffect(() => {
+    if (pathname?.startsWith("/admin")) return;
+    let cancelled = false;
+    fetch("/api/content?locale=en")
+      .then((r) => r.json())
+      .then((json) => {
+        if (cancelled || !json.translations) return;
+        setFooterData({
+          address: json.translations.footer_address ?? FALLBACK_FOOTER.address,
+          phone: json.translations.footer_phone ?? FALLBACK_FOOTER.phone,
+          hours: json.translations.footer_hours ?? FALLBACK_FOOTER.hours,
+          mapUrl: json.translations.footer_map_url ?? FALLBACK_FOOTER.mapUrl,
+          socials: DEFAULT_SOCIALS.map((s) => ({
+            ...s,
+            href: json.translations[`footer_${s.label.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`] ?? s.href,
+          })),
+        });
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [pathname]);
 
   const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,29 +126,29 @@ export default function Footer() {
               {t("footer_tagline")}
             </p>
 
-            {/* Contact */}
-            <ul className="space-y-2.5">
-              <li className="flex items-start gap-2.5 text-sm text-white/55">
-                <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "#D6A34A" }} />
-                <a href="https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6A34A] transition-colors">
-                  Africa Avenue, Addis Ababa 1000, Ethiopia
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5 text-sm text-white/55">
-                <Phone className="w-4 h-4 shrink-0" style={{ color: "#D6A34A" }} />
-                <a href="tel:+251965081998" className="hover:text-[#D6A34A] transition-colors">
-                  +251 96 508 1998
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5 text-sm text-white/55">
-                <Clock className="w-4 h-4 shrink-0" style={{ color: "#D6A34A" }} />
-                Mon  to  Fri, 9:00 AM  to  5:00 PM
-              </li>
-            </ul>
+             {/* Contact */}
+             <ul className="space-y-2.5">
+               <li className="flex items-start gap-2.5 text-sm text-white/55">
+                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-[#D6A34A]" />
+                 <a href={footerData.mapUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#D6A34A] transition-colors">
+                   {footerData.address}
+                 </a>
+               </li>
+               <li className="flex items-center gap-2.5 text-sm text-white/55">
+                 <Phone className="w-4 h-4 shrink-0 text-[#D6A34A]" />
+                 <a href={`tel:${footerData.phone.replace(/\s/g, "")}`} className="hover:text-[#D6A34A] transition-colors">
+                   {footerData.phone}
+                 </a>
+               </li>
+               <li className="flex items-center gap-2.5 text-sm text-white/55">
+                 <Clock className="w-4 h-4 shrink-0 text-[#D6A34A]" />
+                 {footerData.hours}
+               </li>
+             </ul>
 
-            {/* Socials */}
-            <div className="flex items-center gap-2.5 pt-1">
-              {socials.map(({ icon: Icon, href, label }) => (
+             {/* Socials */}
+             <div className="flex items-center gap-2.5 pt-1">
+               {footerData.socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
@@ -198,7 +227,7 @@ export default function Footer() {
             </p>
             {submitted ? (
               <div className="space-y-1">
-                <p className="text-sm font-medium flex items-center gap-1.5" style={{ color: "#D6A34A" }}>
+                <p className="text-sm font-medium flex items-center gap-1.5 text-[#D6A34A]">
                   ✓ {t("footer_subscribed")}
                 </p>
                 <p className="text-white/35 text-xs">Check your inbox for a welcome email.</p>
@@ -257,3 +286,4 @@ export default function Footer() {
     </footer>
   );
 }
+

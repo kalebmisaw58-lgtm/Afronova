@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Settings, Save, Shield, User, Lock, CheckCircle2, Server, Key } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
+import { createBrowserClient } from "@/lib/supabase";
 
 export default function AdminSettingsPage() {
   const { api, admin } = useAdminApi();
@@ -39,7 +40,7 @@ export default function AdminSettingsPage() {
     setPasswordMsg("");
     try {
       const supabase = typeof window !== "undefined"
-        ? require("@/lib/supabase").createBrowserClient()
+        ? createBrowserClient()
         : null;
 
       if (!supabase) throw new Error("Supabase client unavailable");
@@ -176,3 +177,4 @@ export default function AdminSettingsPage() {
     </div>
   );
 }
+

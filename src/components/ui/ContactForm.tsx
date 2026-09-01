@@ -98,15 +98,14 @@ export default function ContactForm({
   if (submitted) {
     return (
       <div className={`flex flex-col items-center justify-center gap-4 py-12 text-center ${className}`}>
-        <CheckCircle className="w-16 h-16" style={{ color: "#D6A34A" }} />
+        <CheckCircle className="w-16 h-16 text-[#D6A34A]" />
         <h3 className="text-xl font-display font-bold text-white">{successMessage}</h3>
         <p className="text-white/45 text-sm max-w-xs">
           Check your inbox, we&apos;ve sent you a confirmation email.
         </p>
         <button
           onClick={() => { setSubmitted(false); setValues({}); setErrors({}); setApiError(""); }}
-          className="text-sm hover:underline mt-1 transition-colors"
-          style={{ color: "#D6A34A" }}
+          className="text-sm hover:underline mt-1 transition-colors text-[#D6A34A]"
         >
           Submit another
         </button>
@@ -131,7 +130,7 @@ export default function ContactForm({
           <label htmlFor={field.name} className="form-label">
             {field.label}
             {field.required && (
-              <span className="ml-1" style={{ color: "#D6A34A" }}>*</span>
+              <span className="ml-1 text-[#D6A34A]">*</span>
             )}
           </label>
 
@@ -208,3 +207,4 @@ export default function ContactForm({
     </form>
   );
 }
+

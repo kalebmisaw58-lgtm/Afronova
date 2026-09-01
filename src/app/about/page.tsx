@@ -53,7 +53,7 @@ export default function AboutPage() {
               <div className="space-y-4 text-white/65 leading-relaxed">
                 <p>{t("about_p1")}</p>
                 <p>{t("about_p2")}</p>
-                <p>{t("about_p3")} <strong style={{ color: "#F0B84F" }}>Legendary Gold Limited</strong>{t("about_p3b")}</p>
+                <p>{t("about_p3")} <strong className="text-[#F0B84F]">Legendary Gold Limited</strong>{t("about_p3b")}</p>
               </div>
               <Link href="/services" className="btn-primary inline-flex">
                 {t("about_our_services")} <ArrowRight className="w-4 h-4" />
@@ -66,7 +66,7 @@ export default function AboutPage() {
                   <div className="w-20 h-20 rounded-full flex items-center justify-center font-display font-black text-white text-4xl mx-auto"
                        style={{ background: "linear-gradient(135deg,#9A6A31,#D6A34A)" }}>A</div>
                   <p className="font-display font-bold text-white text-xl">AfroNova</p>
-                  <p className="text-sm" style={{ color: "#D6A34A" }}>Pan-African · Events · Media · Innovation · Promotion</p>
+                  <p className="text-sm text-[#D6A34A]">Pan-African · Events · Media · Innovation · Promotion</p>
                   <a href="https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9" target="_blank" rel="noopener noreferrer" className="text-white/40 text-xs hover:text-[#D6A34A] transition-colors">
                     Africa Avenue, Addis Ababa, Ethiopia
                   </a>
@@ -89,7 +89,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="card-dark p-8 space-y-4">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "rgba(214,163,74,0.12)" }}>
-                <Target className="w-6 h-6" style={{ color: "#D6A34A" }} />
+                <Target className="w-6 h-6 text-[#D6A34A]" />
               </div>
               <h3 className="text-white font-display font-bold text-2xl">{t("about_mission_h")}</h3>
               <p className="text-white/60 leading-relaxed">{t("about_mission_body")}</p>
@@ -132,7 +132,7 @@ export default function AboutPage() {
               <div key={title} className="card-dark p-6 text-center space-y-3 group hover:-translate-y-1 transition-all">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto"
                      style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.25)" }}>
-                  <Icon className="w-5 h-5" style={{ color: "#D6A34A" }} />
+                  <Icon className="w-5 h-5 text-[#D6A34A]" />
                 </div>
                 <h4 className="text-white font-semibold text-sm">{title}</h4>
                 <p className="text-white/45 text-xs leading-relaxed">{desc}</p>
@@ -153,7 +153,7 @@ export default function AboutPage() {
                      style={{ background: bg }}>{initials}</div>
                 <div>
                   <p className="text-white font-display font-bold text-xl">{name}</p>
-                  <p className="text-sm font-medium mt-1" style={{ color: "#D6A34A" }}>Executive Director, AfroNova</p>
+                  <p className="text-sm font-medium mt-1 text-[#D6A34A]">Executive Director, AfroNova</p>
                 </div>
                 <p className="text-white/55 text-sm leading-relaxed">
                   Visionary leader and Pan-African strategist driving AfroNova&apos;s mission to reshape how Africa is seen, heard and remembered on the global stage.
@@ -193,3 +193,4 @@ export default function AboutPage() {
     </>
   );
 }
+

@@ -578,3 +578,4 @@ export default function ContentManagerPage() {
     </div>
   );
 }
+

@@ -58,7 +58,7 @@ export default function ContactPage() {
                 {contactInfo.map(({ icon: Icon, label, lines, href }) => (
                   <div key={label} className="card-dark p-5 flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(214,163,74,0.10)" }}>
-                      <Icon className="w-5 h-5" style={{ color: "#D6A34A" }} />
+                      <Icon className="w-5 h-5 text-[#D6A34A]" />
                     </div>
                     <div>
                       <p className="text-white/40 text-xs uppercase tracking-wider font-medium mb-1">{label}</p>
@@ -91,7 +91,7 @@ export default function ContactPage() {
 
               <div className="rounded-2xl p-6 space-y-3"
                    style={{ background: "linear-gradient(135deg,rgba(214,163,74,0.10),rgba(185,133,59,0.07))", border: "1px solid rgba(214,163,74,0.22)" }}>
-                <p className="text-sm font-bold" style={{ color: "#D6A34A" }}>{t("contact_direct")}</p>
+                <p className="text-sm font-bold text-[#D6A34A]">{t("contact_direct")}</p>
                 <p className="text-white font-semibold text-sm">Tesfaye Gebremichael</p>
                 <p className="text-white/50 text-xs">Executive Director, AfroNova</p>
                 <div className="space-y-1 text-white/55 text-sm">
@@ -135,3 +135,4 @@ export default function ContactPage() {
     </>
   );
 }
+

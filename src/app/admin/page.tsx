@@ -88,7 +88,7 @@ export default function AdminDashboardPage() {
         <Link href="/admin/content"
               className="card-dark p-4 flex items-center justify-between group hover:-translate-y-0.5 transition-all">
           <div className="flex items-center gap-3">
-            <Globe className="w-5 h-5" style={{ color: "#D6A34A" }} />
+            <Globe className="w-5 h-5 text-[#D6A34A]" />
             <div>
               <span className="text-white font-semibold">Website Translations</span>
               <p className="text-white/40 text-xs">Edit all UI text strings across 5 locales</p>
@@ -100,7 +100,7 @@ export default function AdminDashboardPage() {
         <Link href="/admin/news"
               className="card-dark p-4 flex items-center justify-between group hover:-translate-y-0.5 transition-all">
           <div className="flex items-center gap-3">
-            <FileText className="w-5 h-5" style={{ color: "#D6A34A" }} />
+            <FileText className="w-5 h-5 text-[#D6A34A]" />
             <div>
               <span className="text-white font-semibold">News Articles</span>
               <p className="text-white/40 text-xs">Create, edit, and manage blog posts</p>
@@ -112,7 +112,7 @@ export default function AdminDashboardPage() {
         <Link href="/admin/partners"
               className="card-dark p-4 flex items-center justify-between group hover:-translate-y-0.5 transition-all">
           <div className="flex items-center gap-3">
-            <Users className="w-5 h-5" style={{ color: "#D6A34A" }} />
+            <Users className="w-5 h-5 text-[#D6A34A]" />
             <div>
               <span className="text-white font-semibold">Partners</span>
               <p className="text-white/40 text-xs">Manage partner listings and logos</p>
@@ -151,10 +151,11 @@ function StatCard({ icon: Icon, label, value, loading }: {
     <div className="card-dark p-5 text-center">
       <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3"
            style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.25)" }}>
-        <Icon className="w-5 h-5" style={{ color: "#D6A34A" }} />
+        <Icon className="w-5 h-5 text-[#D6A34A]" />
       </div>
       <p className="text-2xl font-display font-black text-white">{loading ? "…" : value}</p>
       <p className="text-white/40 text-xs">{label}</p>
     </div>
   );
 }
+

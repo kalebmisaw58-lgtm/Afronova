@@ -5,6 +5,8 @@ import { Plus, Edit, Trash2, Save, X, Globe, Tag, Calendar, FileText, Upload, Lo
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 import { compressImage } from "@/lib/image-compression";
+import { Skeleton } from "@/components/ui/Skeleton";
+import { createBrowserClient } from "@/lib/supabase";
 
 const CATEGORIES = ["event", "partnership", "business", "recap", "production"];
 
@@ -25,7 +27,7 @@ export default function AdminNewsPage() {
       const formData = new FormData();
       formData.append("file", fileToUpload);
       const supabase = typeof window !== "undefined"
-        ? require("@/lib/supabase").createBrowserClient()
+        ? createBrowserClient()
         : null;
 
       let token = "";
@@ -67,6 +69,7 @@ export default function AdminNewsPage() {
       setUploadingImage(false);
     }
   }
+
   const [form, setForm] = useState({
     slug: "", locale: "en", category: "event",
     article_date: "", read_time: "", title: "", excerpt: "",
@@ -236,7 +239,17 @@ export default function AdminNewsPage() {
       {!isCreating && editingId === null && (
         <div className="space-y-3">
           {loading ? (
-            <div className="text-white/30">Loading articles...</div>
+            <div className="space-y-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="card-dark p-4 rounded-xl flex items-center gap-4">
+                  <Skeleton className="w-10 h-10 rounded-lg shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <Skeleton className="h-4 w-3/4" />
+                    <Skeleton className="h-3 w-1/2" />
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : articles.length === 0 ? (
             <div className="card-dark p-8 text-center text-white/30 rounded-xl">
               No articles found. Create one above!
@@ -278,3 +291,4 @@ export default function AdminNewsPage() {
     </div>
   );
 }
+

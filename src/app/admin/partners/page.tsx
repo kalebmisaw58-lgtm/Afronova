@@ -6,6 +6,8 @@ import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 import PartnerLogo from "@/components/ui/PartnerLogo";
 import { compressImage } from "@/lib/image-compression";
+import { createBrowserClient } from "@/lib/supabase";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 const CATEGORIES = [
   { value: "cat_corporate", label: "Corporate" },
@@ -30,7 +32,7 @@ export default function AdminPartnersPage() {
       formData.append("file", fileToUpload);
 
       const supabase = typeof window !== "undefined"
-        ? require("@/lib/supabase").createBrowserClient()
+        ? createBrowserClient()
         : null;
 
       let token = "";
@@ -262,12 +264,21 @@ export default function AdminPartnersPage() {
           </div>
         </form>
       )}
-  {isEditing && false ? null : null}
 
       {!isEditing && (
         <div className="space-y-3">
           {loading ? (
-            <div className="text-white/30">Loading partners...</div>
+            <div className="space-y-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="card-dark p-4 rounded-xl flex items-center gap-4">
+                  <Skeleton className="w-12 h-12 rounded-lg shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <Skeleton className="h-4 w-3/4" />
+                    <Skeleton className="h-3 w-1/2" />
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : partners.length === 0 ? (
             <div className="card-dark p-8 text-center text-white/30 rounded-xl">
               No partners found. Create one above!
@@ -309,3 +320,4 @@ export default function AdminPartnersPage() {
     </div>
   );
 }
+

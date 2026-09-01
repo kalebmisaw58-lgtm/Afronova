@@ -68,3 +68,4 @@ export async function compressImage(file: File, maxDim: number = 2000, quality: 
     img.src = url;
   });
 }
+

@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         <p className="text-white/40 text-sm mb-4">Last updated: July 2026</p>
         <div className="space-y-6 text-white/60 leading-relaxed">
           <p>AfroNova Media House &amp; Events (&quot;AfroNova&quot;, &quot;we&quot;, &quot;our&quot;) is committed to protecting your personal data.</p>
-          <h2 className="text-white font-display font-bold text-xl" style={{ color: "#D6A34A" }}>Information We Collect</h2>
+          <h2 className="text-white font-display font-bold text-xl text-[#D6A34A]">Information We Collect</h2>
           <p>We collect information you provide directly: name, email address, phone number,
              organisation, and any details submitted via our contact or application forms.</p>
           <h2 className="text-white font-display font-bold text-xl">How We Use Your Information</h2>
@@ -30,3 +30,4 @@ export default function PrivacyPage() {
     </div>
   );
 }
+

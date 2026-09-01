@@ -122,7 +122,7 @@ export default function ServicesPage() {
               <div key={step} className="card-dark p-6 space-y-3 relative overflow-hidden">
                 <span className="text-6xl font-display font-black absolute top-2 right-4 leading-none select-none"
                       style={{ color: "rgba(214,163,74,0.08)" }}>{step}</span>
-                <p className="text-sm font-bold" style={{ color: "#D6A34A" }}>{step}</p>
+                <p className="text-sm font-bold text-[#D6A34A]">{step}</p>
                 <h4 className="text-white font-semibold text-lg">{title}</h4>
                 <p className="text-white/45 text-sm leading-relaxed">{desc}</p>
               </div>
@@ -144,3 +144,4 @@ export default function ServicesPage() {
     </>
   );
 }
+

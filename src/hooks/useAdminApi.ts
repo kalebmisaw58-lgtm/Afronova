@@ -1,5 +1,6 @@
 import { useAdmin } from "@/context/AdminContext";
 import { useEffect, useState } from "react";
+import { createBrowserClient } from "@/lib/supabase";
 
 /**
  * Lightweight hook that returns an authenticated fetch wrapper
@@ -11,7 +12,7 @@ export function useAdminApi() {
 
   const api = async (path: string, options: RequestInit = {}) => {
     const supabase = typeof window !== "undefined"
-      ? require("@/lib/supabase").createBrowserClient()
+      ? createBrowserClient()
       : null;
 
     let token = "";
@@ -43,26 +44,22 @@ export function useAdminData<T>(url: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  async function loadData() {
     if (!url) return;
-    void loadData();
-
-    async function loadData() {
-      setLoading(true);
-      try {
-        const json = await api(url);
-        setData(json);
-      } catch (e) {
-        setError(e instanceof Error ? e.message : String(e));
-      } finally {
-        setLoading(false);
-      }
+    setLoading(true);
+    try {
+      const json = await api(url);
+      setData(json);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setLoading(false);
     }
+  }
+
+  useEffect(() => {
+    void loadData();
   }, [url]);
 
   return { data, loading, error, refetch: () => { void loadData(); } };
-
-  function loadData() {
-    return api(url).then(setData).catch(setError);
-  }
 }

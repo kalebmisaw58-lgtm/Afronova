@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Quote, Plus, Edit, Trash2, Save, X, Globe, CheckCircle } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 export default function AdminTestimonialsPage() {
   const { api } = useAdminApi();
@@ -142,7 +143,19 @@ export default function AdminTestimonialsPage() {
       {!isEditing && (
         <div className="space-y-3">
           {loading ? (
-            <div className="text-white/30">Loading testimonials...</div>
+            <div className="space-y-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="card-dark p-4 rounded-xl space-y-3">
+                  <div className="flex items-start gap-4">
+                    <Skeleton className="w-10 h-10 rounded-full shrink-0" />
+                    <div className="flex-1 space-y-2">
+                      <Skeleton className="h-4 w-3/4" />
+                      <Skeleton className="h-3 w-1/2" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : testimonials.length === 0 ? (
             <div className="card-dark p-8 text-center text-white/30 rounded-xl">
               No testimonials found. Create one above!
@@ -181,3 +194,4 @@ export default function AdminTestimonialsPage() {
     </div>
   );
 }
+

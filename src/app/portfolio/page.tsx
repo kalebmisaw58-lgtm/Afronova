@@ -147,7 +147,7 @@ export default function PortfolioPage() {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10">
                     <p className="text-white text-sm font-medium">{label}</p>
-                    <p className="text-xs" style={{ color: "#D6A34A" }}>{isVideo ? "Video" : "Photography"}</p>
+                    <p className="text-xs text-[#D6A34A]">{isVideo ? "Video" : "Photography"}</p>
                   </div>
                 </div>
               );
@@ -177,3 +177,4 @@ export default function PortfolioPage() {
     </>
   );
 }
+

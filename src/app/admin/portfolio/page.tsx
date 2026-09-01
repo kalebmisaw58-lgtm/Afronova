@@ -5,6 +5,7 @@ import { Plus, Edit, Trash2, Save, X, Globe, Images, Tag, Calendar, CheckCircle,
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 import { compressImage } from "@/lib/image-compression";
+import { createBrowserClient } from "@/lib/supabase";
 
 const CATEGORIES = ["event", "recap", "production", "campaign", "publication"];
 
@@ -28,7 +29,7 @@ export default function AdminPortfolioPage() {
       formData.append("file", fileToUpload);
 
       const supabase = typeof window !== "undefined"
-        ? require("@/lib/supabase").createBrowserClient()
+        ? createBrowserClient()
         : null;
 
       let token = "";
@@ -434,3 +435,4 @@ export default function AdminPortfolioPage() {
     </div>
   );
 }
+
