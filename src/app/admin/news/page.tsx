@@ -24,7 +24,6 @@ export default function AdminNewsPage() {
       const fileToUpload = await compressImage(file);
       const formData = new FormData();
       formData.append("file", fileToUpload);
-
       const supabase = typeof window !== "undefined"
         ? require("@/lib/supabase").createBrowserClient()
         : null;

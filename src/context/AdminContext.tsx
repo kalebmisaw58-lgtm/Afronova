@@ -5,8 +5,10 @@ import React, {
   useContext,
   useState,
   useEffect,
+  useRef,
   ReactNode,
 } from "react";
+import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@/lib/supabase";
 
 export interface AdminUser {
@@ -25,9 +27,14 @@ interface AdminContextType {
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
+// Inactivity timeout: 15 minutes (in milliseconds)
+const INACTIVITY_TIMEOUT_MS = 15 * 60 * 1000;
+
 export function AdminProvider({ children }: { children: ReactNode }) {
   const [admin, setAdmin] = useState<AdminUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const lastActivityRef = useRef<number>(Date.now());
+  const router = useRouter();
 
   const supabase = createBrowserClient();
 
@@ -57,6 +64,37 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  // ── Auto-logout timer for inactivity ───────────────────────
+  useEffect(() => {
+    if (!admin) return;
+
+    // Reset timer on any user activity
+    const updateActivity = () => {
+      lastActivityRef.current = Date.now();
+    };
+
+    const events = ["mousemove", "mousedown", "keydown", "scroll", "touchstart", "click"];
+    events.forEach((evt) => window.addEventListener(evt, updateActivity, { passive: true }));
+
+    // Periodically check if idle time exceeded threshold
+    const interval = setInterval(() => {
+      const idleTime = Date.now() - lastActivityRef.current;
+      if (idleTime >= INACTIVITY_TIMEOUT_MS) {
+        void handleAutoLogout();
+      }
+    }, 5000);
+
+    return () => {
+      events.forEach((evt) => window.removeEventListener(evt, updateActivity));
+      clearInterval(interval);
+    };
+  }, [admin]);
+
+  async function handleAutoLogout() {
+    await logout();
+    router.replace("/admin/login?reason=inactivity");
+  }
+
   async function login(email: string, password: string) {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
@@ -78,6 +116,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       await supabase.auth.signOut();
       return { success: false, error: "You do not have admin access" };
     }
+    lastActivityRef.current = Date.now();
     setAdmin(json.user);
     return { success: true };
   }
