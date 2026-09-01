@@ -5,6 +5,7 @@ import { Users, Plus, Edit, Trash2, Save, X, Tag, Globe, Upload, Loader2 } from 
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 import PartnerLogo from "@/components/ui/PartnerLogo";
+import { compressImage } from "@/lib/image-compression";
 
 const CATEGORIES = [
   { value: "cat_corporate", label: "Corporate" },
@@ -24,8 +25,9 @@ export default function AdminPartnersPage() {
 
     setUploadingLogo(true);
     try {
+      const fileToUpload = await compressImage(file);
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", fileToUpload);
 
       const supabase = typeof window !== "undefined"
         ? require("@/lib/supabase").createBrowserClient()
@@ -42,6 +44,16 @@ export default function AdminPartnersPage() {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         body: formData,
       });
+
+      if (!res.ok) {
+        if (res.status === 413) {
+          alert("The uploaded image is too large. Please select a smaller file.");
+          return;
+        }
+        const text = await res.text();
+        alert(`Upload failed (HTTP ${res.status}): ${text.substring(0, 150)}`);
+        return;
+      }
 
       const json = await res.json();
       if (json.success && json.url) {

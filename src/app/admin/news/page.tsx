@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Plus, Edit, Trash2, Save, X, Globe, Tag, Calendar, FileText, Upload, Loader2 } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
+import { compressImage } from "@/lib/image-compression";
 
 const CATEGORIES = ["event", "partnership", "business", "recap", "production"];
 
@@ -20,8 +21,9 @@ export default function AdminNewsPage() {
 
     setUploadingImage(true);
     try {
+      const fileToUpload = await compressImage(file);
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", fileToUpload);
 
       const supabase = typeof window !== "undefined"
         ? require("@/lib/supabase").createBrowserClient()
@@ -38,6 +40,16 @@ export default function AdminNewsPage() {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         body: formData,
       });
+
+      if (!res.ok) {
+        if (res.status === 413) {
+          alert("The uploaded image is too large. Please select a smaller file.");
+          return;
+        }
+        const text = await res.text();
+        alert(`Upload failed (HTTP ${res.status}): ${text.substring(0, 150)}`);
+        return;
+      }
 
       const json = await res.json();
       if (json.success && json.url) {
