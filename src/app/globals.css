@@ -157,6 +157,33 @@
   }
   .form-input option { background: #101312; color: #fff; }
 
+  .input-dark {
+    @apply w-full rounded-lg px-3 py-2 text-sm text-white transition-all duration-200 outline-none;
+    background: #151817 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  }
+  .input-dark::placeholder {
+    color: rgba(255, 255, 255, 0.45) !important;
+  }
+  .input-dark:focus {
+    border-color: #D6A34A !important;
+    box-shadow: 0 0 0 2px rgba(214, 163, 74, 0.25) !important;
+    background: #0d0f0e !important;
+    color: #ffffff !important;
+  }
+  .input-dark option {
+    background: #101312 !important;
+    color: #ffffff !important;
+  }
+  .input-dark:-webkit-autofill,
+  .input-dark:-webkit-autofill:hover,
+  .input-dark:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #151817 inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   .form-label {
     @apply block text-sm font-medium mb-1.5;
     color: rgba(255, 255, 255, 0.65);
