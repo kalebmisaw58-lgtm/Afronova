@@ -13,7 +13,18 @@ const PartnerSchema = z.object({
   category_key: z.string().default("cat_corporate"),
   accent: z.string().default("#D6A34A"),
   logo: z.string().optional().nullable(),
-  website: z.string().url().optional().nullable(),
+  website: z
+    .string()
+    .optional()
+    .nullable()
+    .transform((val) => {
+      if (!val || !val.trim()) return null;
+      let trimmed = val.trim();
+      if (!/^https?:\/\//i.test(trimmed)) {
+        trimmed = `https://${trimmed}`;
+      }
+      return trimmed;
+    }),
   featured: z.boolean().default(false),
   sort_order: z.number().int().default(0),
 });
@@ -52,7 +63,10 @@ export async function POST(req: NextRequest) {
 
   if (body.action === "create") {
     const p = PartnerSchema.safeParse(body.partner);
-    if (!p.success) return NextResponse.json({ success: false, error: p.error.message }, { status: 400 });
+    if (!p.success) {
+      const msg = p.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join(", ");
+      return NextResponse.json({ success: false, error: msg }, { status: 400 });
+    }
     const { data: partner, error: e1 } = await supabase.from("partners").insert(p.data).select().single();
     if (e1) return NextResponse.json({ success: false, error: e1.message }, { status: 500 });
 
@@ -70,7 +84,10 @@ export async function POST(req: NextRequest) {
 
   if (body.action === "update") {
     const p = PartnerSchema.safeParse(body.partner);
-    if (!p.success) return NextResponse.json({ success: false, error: p.error.message }, { status: 400 });
+    if (!p.success) {
+      const msg = p.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join(", ");
+      return NextResponse.json({ success: false, error: msg }, { status: 400 });
+    }
     const { data, error } = await supabase.from("partners").update(p.data).eq("id", body.id).select().single();
     if (error) return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     return NextResponse.json({ success: true, partner: data });
