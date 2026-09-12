@@ -201,30 +201,58 @@ export default function HeroSlideshow() {
             {/* ── Layer 1: colour gradient background ─────── */}
             <div className="absolute inset-0" style={{ background: slide.bg }} />
 
-            {/* ── Layer 2: Responsive Photo Container (Mobile + Desktop) ── */}
+            {/* ── Layer 2: Hero Portrait Card (Clean Luxury Frame) ── */}
             <div
               className={cn(
-                "absolute transition-all duration-700",
-                "top-[10%] right-[2%] w-[85%] h-[55%] md:top-[6%] md:right-[3%] md:w-[46%] md:h-[86%]",
-                "opacity-35 md:opacity-100"
+                "absolute transition-all duration-700 rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6A34A]/35 z-[2]",
+                "top-[12%] right-[4%] w-[92%] h-[50%] md:top-[13%] md:right-[5%] md:w-[42%] md:h-[72%]"
               )}
+              style={{
+                background: "linear-gradient(135deg, #F8F6F0 0%, #EFECE3 100%)",
+              }}
             >
               <Image
                 src={slide.photo}
                 alt={slide.name}
                 fill
-                sizes="(max-width: 768px) 85vw, 46vw"
-                className="object-contain object-top md:object-right-top drop-shadow-xl"
+                sizes="(max-width: 768px) 92vw, 42vw"
+                className="object-cover object-top transition-transform duration-700 hover:scale-105"
                 priority={i <= 1}
               />
-              {/* Soft light vignette around the photo */}
+              {/* Inner vignette & bottom gradient for text contrast */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse 90% 90% at 50% 50%, transparent 60%, rgba(255,255,255,0.65) 100%)",
+                    "linear-gradient(to top, rgba(16,19,18,0.88) 0%, rgba(16,19,18,0.40) 35%, transparent 70%)",
                 }}
               />
+
+              {/* ── Caption inside portrait card bottom ── */}
+              <div
+                className={cn(
+                  "absolute bottom-5 left-5 right-5 text-right text-white z-10",
+                  "transition-all duration-700 delay-300",
+                  isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                )}
+              >
+                <div
+                  className="ml-auto mb-1.5 h-0.5 w-10 rounded-full"
+                  style={{ background: slide.accentColor }}
+                />
+                <p className="text-white/70 text-[10px] mb-0.5 tracking-widest uppercase font-semibold">
+                  {slide.flag}&nbsp; {slide.country}
+                </p>
+                <p className="font-display font-black text-lg md:text-xl leading-tight text-white drop-shadow-md">
+                  {slide.name}
+                </p>
+                <p
+                  className="text-[11px] font-bold tracking-wide mt-0.5 leading-snug"
+                  style={{ color: "#F0B84F" }}
+                >
+                  {slide.title}
+                </p>
+              </div>
             </div>
 
             {/* ── Layer 3: Adinkra pattern ─────────────────── */}
@@ -236,7 +264,7 @@ export default function HeroSlideshow() {
                 "absolute right-[-2%] top-1/2 -translate-y-1/2",
                 "font-display font-black select-none pointer-events-none",
                 "transition-all duration-[1400ms]",
-                isActive ? "opacity-[0.06] translate-x-0" : "opacity-0 translate-x-20"
+                isActive ? "opacity-[0.05] translate-x-0" : "opacity-0 translate-x-20"
               )}
               style={{
                 fontSize: "clamp(12rem, 28vw, 26rem)",
@@ -247,55 +275,24 @@ export default function HeroSlideshow() {
               {slide.initial}
             </div>
 
-            {/* ── Layer 5: text readability overlays (Light Mode) ───────── */}
+            {/* ── Layer 5: clean light background gradients ─────── */}
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 pointer-events-none z-[1]"
               style={{
                 background:
-                  "linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.94) 35%, rgba(255,255,255,0.70) 65%, transparent 92%)",
+                  "linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.40) 65%, transparent 100%)",
               }}
             />
             {/* Bottom fade into next section */}
             <div
-              className="absolute bottom-0 left-0 right-0 h-40"
-              style={{ background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0.70) 60%, transparent 100%)" }}
+              className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-[1]"
+              style={{ background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0.60) 60%, transparent 100%)" }}
             />
             {/* Top fade for navbar */}
             <div
-              className="absolute top-0 left-0 right-0 h-28"
+              className="absolute top-0 left-0 right-0 h-24 pointer-events-none z-[1]"
               style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.90) 0%, transparent 100%)" }}
             />
-
-            {/* ── Layer 6: caption bottom-right ───────────── */}
-            <div
-              className={cn(
-                "absolute bottom-20 right-5 md:bottom-24 md:right-12 max-w-[260px] text-right z-10",
-                "transition-all duration-700 delay-400",
-                isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-              )}
-            >
-              <div
-                className="ml-auto mb-2 h-0.5 w-10 rounded-full"
-                style={{ background: slide.accentColor }}
-              />
-              <p className="text-[#101312]/60 text-[11px] mb-1 tracking-widest uppercase font-semibold">
-                {slide.flag}&nbsp; {slide.country}
-              </p>
-              <p
-                className="font-display font-black text-xl md:text-2xl leading-tight text-[#101312]"
-              >
-                {slide.name}
-              </p>
-              <p
-                className="text-[11px] font-bold tracking-wide mt-1 mb-2 leading-snug"
-                style={{ color: slide.accentColor }}
-              >
-                {slide.title}
-              </p>
-              <p className="text-[#101312]/65 text-[11px] italic leading-relaxed hidden md:block">
-                &ldquo;{slide.quote}&rdquo;
-              </p>
-            </div>
           </div>
         );
       })}
