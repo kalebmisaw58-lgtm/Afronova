@@ -39,32 +39,32 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 adinkra-bg opacity-60" />
+      <section className="relative pt-32 pb-20 overflow-hidden bg-white">
+        <div className="absolute inset-0 adinkra-bg opacity-30" />
         <div className="absolute inset-0 pointer-events-none"
-             style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(154,106,49,0.22) 0%, transparent 65%)" }} />
+             style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(214,163,74,0.12) 0%, transparent 65%)" }} />
         <div className="container-custom relative z-10 text-center max-w-2xl mx-auto">
           <p className="section-subheading">{t("contact_eyebrow")}</p>
-          <h1 className="section-heading text-white mb-4">{t("contact_h1")} <span className="text-gradient">{t("contact_h1b")}</span></h1>
-          <p className="text-white/55 leading-relaxed">{t("contact_hero_body")}</p>
+          <h1 className="section-heading text-[#101312] mb-4">{t("contact_h1")} <span className="text-gradient">{t("contact_h1b")}</span></h1>
+          <p className="text-[#101312]/75 text-lg leading-relaxed font-medium">{t("contact_hero_body")}</p>
         </div>
       </section>
 
-      <section className="section-padding section-overlay">
+      <section className="section-padding bg-[#F8F6F0]">
         <div className="container-custom">
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2 space-y-8">
               <div className="space-y-4">
                 {contactInfo.map(({ icon: Icon, label, lines, href }) => (
                   <div key={label} className="card-dark p-5 flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(214,163,74,0.10)" }}>
-                      <Icon className="w-5 h-5 text-[#D6A34A]" />
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(214,163,74,0.18)" }}>
+                      <Icon className="w-5 h-5 text-[#9A6A31]" />
                     </div>
                     <div>
-                      <p className="text-white/40 text-xs uppercase tracking-wider font-medium mb-1">{label}</p>
+                      <p className="text-[#9A6A31] text-xs uppercase tracking-wider font-bold mb-1">{label}</p>
                       {lines.map((line) => href
-                        ? <a key={line} href={href} target="_blank" rel="noopener noreferrer" className="block text-white text-sm hover:text-[#D6A34A] transition-colors">{line}</a>
-                        : <p key={line} className="text-white text-sm">{line}</p>
+                        ? <a key={line} href={href} target="_blank" rel="noopener noreferrer" className="block text-[#101312] text-sm font-semibold hover:text-[#9A6A31] transition-colors">{line}</a>
+                        : <p key={line} className="text-[#101312] text-sm font-semibold">{line}</p>
                       )}
                     </div>
                   </div>
@@ -72,29 +72,29 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <p className="text-white/40 text-xs uppercase tracking-wider font-medium mb-4">{t("contact_follow")}</p>
+                <p className="text-[#101312]/60 text-xs uppercase tracking-wider font-bold mb-4">{t("contact_follow")}</p>
                 <div className="space-y-1">
                   {socials.map(({ icon: Icon, href, label, handle }) => (
                     <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                       className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
-                      <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/45 group-hover:border-[#D6A34A] group-hover:text-[#D6A34A] transition-all">
+                       className="flex items-center gap-3 p-3 rounded-xl hover:bg-white transition-colors group">
+                      <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-[#101312]/70 group-hover:border-[#D6A34A] group-hover:text-[#9A6A31] transition-all bg-white">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-white/65 text-sm font-medium group-hover:text-[#D6A34A] transition-colors">{label}</p>
-                        <p className="text-white/30 text-xs">{handle}</p>
+                        <p className="text-[#101312] text-sm font-semibold group-hover:text-[#9A6A31] transition-colors">{label}</p>
+                        <p className="text-[#101312]/50 text-xs font-medium">{handle}</p>
                       </div>
                     </a>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-2xl p-6 space-y-3"
-                   style={{ background: "linear-gradient(135deg,rgba(214,163,74,0.10),rgba(185,133,59,0.07))", border: "1px solid rgba(214,163,74,0.22)" }}>
-                <p className="text-sm font-bold text-[#D6A34A]">{t("contact_direct")}</p>
-                <p className="text-white font-semibold text-sm">Tesfaye Gebremichael</p>
-                <p className="text-white/50 text-xs">Executive Director, AfroNova</p>
-                <div className="space-y-1 text-white/55 text-sm">
+              <div className="rounded-2xl p-6 space-y-3 bg-white shadow-sm"
+                   style={{ border: "1px solid rgba(214,163,74,0.30)" }}>
+                <p className="text-sm font-bold text-[#9A6A31]">{t("contact_direct")}</p>
+                <p className="text-[#101312] font-bold text-base">Tesfaye Gebremichael</p>
+                <p className="text-[#101312]/65 text-xs font-semibold">Executive Director, AfroNova</p>
+                <div className="space-y-1 text-[#101312]/75 text-sm font-medium">
                   <p>📞 +251 965 081 998</p>
                   <p>📞 +234 809 562 4444</p>
                   <p>✉ tesfaye.afronova@gmail.com</p>
@@ -118,15 +118,15 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="border-t border-white/5">
-        <div className="container-custom py-4 mb-2">
-          <p className="text-white/30 text-xs text-center mb-4 uppercase tracking-wider">{t("contact_map")}</p>
+      <section className="border-t border-gray-200 bg-white py-6">
+        <div className="container-custom mb-4">
+          <p className="text-[#101312]/60 text-xs text-center uppercase tracking-wider font-bold">{t("contact_map")}</p>
         </div>
-        <div className="w-full h-80 relative overflow-hidden" style={{ background: "rgba(255,255,255,0.03)" }}>
+        <div className="w-full h-80 relative overflow-hidden bg-gray-100 border-y border-gray-200">
           <iframe
             src="https://www.google.com/maps?q=8.9866842,38.7884885&z=18&output=embed"
             width="100%" height="100%"
-            style={{ border: 0, filter: "invert(0.88) hue-rotate(180deg) saturate(0.6) brightness(0.9)" }}
+            style={{ border: 0 }}
             allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
             title="AfroNova location on Google Maps"
           />
@@ -135,4 +135,3 @@ export default function ContactPage() {
     </>
   );
 }
-

@@ -16,7 +16,7 @@ export default function SectionHeader({
   titleHighlight,
   description,
   centered = false,
-  light = false,
+  light = true,
   className,
 }: SectionHeaderProps) {
   return (
@@ -39,8 +39,8 @@ export default function SectionHeader({
 
       {description && (
         <p className={cn(
-          "text-base md:text-lg leading-relaxed max-w-2xl",
-          light ? "text-[#101312]/65" : "text-white/55",
+          "text-base md:text-lg leading-relaxed max-w-2xl font-medium",
+          light ? "text-[#101312]/75" : "text-white/75",
           centered && "mx-auto"
         )}>
           {description}
