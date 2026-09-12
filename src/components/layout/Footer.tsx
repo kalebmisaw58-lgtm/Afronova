@@ -89,7 +89,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-gray-200 bg-[#F8F6F0] text-[#101312] adinkra-bg">
+    <footer className="border-t border-gray-200 bg-white/75 backdrop-blur-sm text-[#101312] adinkra-bg">
 
       {/* ── TOP BAND, colourful wheel stripe echoing the logo ── */}
       <div className="w-full h-1 wheel-shimmer opacity-80" />

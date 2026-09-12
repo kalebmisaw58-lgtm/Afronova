@@ -28,7 +28,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-white">
+      <section className="relative pt-32 pb-20 overflow-hidden bg-transparent">
         <div className="absolute inset-0 adinkra-bg opacity-30" />
         <div className="absolute inset-0 pointer-events-none"
              style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(214,163,74,0.12) 0%, transparent 65%)" }} />
@@ -45,7 +45,7 @@ export default function AboutPage() {
       </section>
 
       {/* About text */}
-      <section className="section-padding bg-[#F8F6F0]">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
@@ -74,7 +74,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-transparent">
         <div className="container-custom">
           <SectionHeader eyebrow={t("values_eyebrow")} title={t("values_title")} titleHighlight={t("values_highlight")} centered className="mb-14" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -92,7 +92,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="section-padding bg-[#F8F6F0]">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <SectionHeader eyebrow={t("lead_eyebrow")} title={t("lead_title")} titleHighlight={t("lead_highlight")} centered className="mb-14" />
           <div className="max-w-2xl mx-auto">
@@ -113,7 +113,7 @@ export default function AboutPage() {
       </section>
 
       {/* Partners strip */}
-      <section className="py-14 border-t border-gray-200 bg-white">
+      <section className="py-14 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
         <div className="container-custom">
           <p className="text-center text-[#101312]/60 text-xs uppercase tracking-widest font-bold mb-8">{t("partners_label")}</p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
@@ -127,7 +127,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#F8F6F0] border-t border-gray-200">
+      <section className="py-20 bg-white/70 backdrop-blur-sm border-t border-gray-200">
         <div className="container-custom text-center space-y-6">
           <SectionHeader eyebrow={t("cta_eyebrow")} title={t("cta_title")} titleHighlight={t("cta_highlight")} centered />
           <p className="text-[#101312]/75 text-lg max-w-xl mx-auto font-medium">{t("cta_body")}</p>

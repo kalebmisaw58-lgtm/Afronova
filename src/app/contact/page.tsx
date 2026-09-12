@@ -39,7 +39,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="relative pt-32 pb-20 overflow-hidden bg-white">
+      <section className="relative pt-32 pb-20 overflow-hidden bg-transparent">
         <div className="absolute inset-0 adinkra-bg opacity-30" />
         <div className="absolute inset-0 pointer-events-none"
              style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(214,163,74,0.12) 0%, transparent 65%)" }} />
@@ -50,7 +50,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-[#F8F6F0]">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2 space-y-8">

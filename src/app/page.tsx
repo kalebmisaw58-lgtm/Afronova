@@ -48,7 +48,7 @@ export default function HomePage() {
   return (
     <>
       {/* ══ 1. HERO ══════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-transparent">
         <HeroSlideshow />
         <div className="absolute inset-0 adinkra-bg opacity-30 z-[1] pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
@@ -127,7 +127,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 3. STATS ══════════════════════════════════════════ */}
-      <section className="border-y border-gray-200 py-14 bg-[#F8F6F0]">
+      <section className="border-y border-gray-200 py-14 bg-white/70 backdrop-blur-sm">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map(({ value, label }) => (
@@ -141,7 +141,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 4. WHO WE ARE ════════════════════════════════════ */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-transparent">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
@@ -184,7 +184,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 5. SERVICES ══════════════════════════════════════ */}
-      <section className="section-padding bg-[#F8F6F0]">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <SectionHeader eyebrow={t("services_eyebrow")} title={t("services_title")} titleHighlight={t("services_highlight")} description={t("services_desc")} />
@@ -208,7 +208,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 6. WHY AFRONOVA ══════════════════════════════════ */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-transparent">
         <div className="container-custom">
           <SectionHeader eyebrow={t("why_eyebrow")} title={t("why_title")} titleHighlight={t("why_highlight")} centered className="mb-12" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -226,7 +226,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 7. FEATURED WORK ════════════════════════════════ */}
-      <section className="section-padding bg-[#F8F6F0]">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <SectionHeader eyebrow={t("work_eyebrow")} title={t("work_title")} titleHighlight={t("work_highlight")} description={t("work_desc")} />
@@ -256,7 +256,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 8. PARTNERS ══════════════════════════════════════ */}
-      <section className="py-16 border-t border-gray-200 bg-white">
+      <section className="py-16 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
         <div className="container-custom">
           <p className="text-center text-[#101312]/60 text-xs uppercase tracking-widest font-bold mb-8">{t("partners_label")}</p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
@@ -270,7 +270,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 9. CTA ═══════════════════════════════════════════ */}
-      <section className="py-20 bg-[#F8F6F0] border-t border-gray-200">
+      <section className="py-20 bg-white/70 backdrop-blur-sm border-t border-gray-200">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <SectionHeader eyebrow={t("cta_eyebrow")} title={t("cta_title")} titleHighlight={t("cta_highlight")} centered />

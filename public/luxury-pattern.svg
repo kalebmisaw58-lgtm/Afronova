@@ -1,0 +1,13 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light off-white tile fill -->
+  <rect width="80" height="80" fill="#FAF8F4" />
+  
+  <!-- Warm ivory center diamond tile -->
+  <polygon points="40,0 80,40 40,80 0,40" fill="#F3ECE0" />
+  
+  <!-- Muted warm gold center dot -->
+  <circle cx="40" cy="40" r="6" fill="#E0D1B1" />
+  
+  <!-- Crisp diagonal diamond grid lines -->
+  <path d="M40 0 L80 40 M0 40 L40 80 M40 0 L0 40 M80 40 L40 80" stroke="#E5DAC7" stroke-width="0.75" />
+</svg>

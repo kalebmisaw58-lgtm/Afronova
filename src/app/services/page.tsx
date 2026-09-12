@@ -82,7 +82,7 @@ export default function ServicesPage() {
 
       {/* Service sections */}
       {services.map(({ id, icon: Icon, image, accentColor, accentBg, eyebrow, title, description, features, cta, ctaHref, flip }, i) => (
-        <section key={id} id={id} className={`section-padding border-t border-gray-200 ${i % 2 === 1 ? "bg-[#F8F6F0]" : "bg-white"}`}>
+        <section key={id} id={id} className={`section-padding border-t border-gray-200 ${i % 2 === 1 ? "bg-white/60 backdrop-blur-[2px]" : "bg-transparent"}`}>
           <div className="container-custom">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className={`space-y-6 ${flip ? "md:order-2" : ""}`}>
@@ -113,7 +113,7 @@ export default function ServicesPage() {
       ))}
 
       {/* Process */}
-      <section id="process" className="section-padding border-t border-gray-200 bg-[#F8F6F0]">
+      <section id="process" className="section-padding border-t border-gray-200 bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <SectionHeader eyebrow={t("svc_process_eyebrow")} title={t("svc_process_title")} centered className="mb-14" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -131,7 +131,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-white border-t border-gray-200">
+      <section className="section-padding bg-white/70 backdrop-blur-sm border-t border-gray-200">
         <div className="container-custom text-center space-y-5">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-[#101312]">
             {t("svc_cta_h")} <span className="text-gradient">{t("svc_cta_hb")}</span>
