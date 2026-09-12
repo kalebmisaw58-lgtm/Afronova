@@ -59,10 +59,10 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "backdrop-blur-md shadow-lg shadow-black/60 border-b border-white/5"
+          ? "backdrop-blur-md shadow-sm border-b border-gray-200/80"
           : "bg-transparent"
       )}
-      style={scrolled ? { background: "rgba(10,3,0,0.92)" } : undefined}
+      style={scrolled ? { background: "rgba(255,255,255,0.92)" } : undefined}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -75,17 +75,17 @@ export default function Navbar() {
                 alt="AfroNova logo"
                 fill
                 sizes="72px"
-                className="object-contain drop-shadow-[0_2px_8px_rgba(214,163,74,0.5)]
-                           group-hover:drop-shadow-[0_4px_14px_rgba(214,163,74,0.75)]
+                className="object-contain drop-shadow-[0_2px_8px_rgba(214,163,74,0.35)]
+                           group-hover:drop-shadow-[0_4px_14px_rgba(214,163,74,0.60)]
                            transition-all duration-300"
                 priority
               />
             </div>
             <div className="leading-tight hidden sm:block">
-              <p className="font-display font-black text-white text-lg tracking-tight leading-none">
+              <p className="font-display font-black text-[#101312] text-lg tracking-tight leading-none">
                 AFRO<span className="text-gradient">NOVA</span>
               </p>
-              <p className="text-white/40 text-[9px] tracking-widest uppercase mt-0.5">
+              <p className="text-[#101312]/60 text-[9px] tracking-widest uppercase mt-0.5 font-semibold">
                 Media House &amp; Events
               </p>
             </div>
@@ -101,12 +101,12 @@ export default function Navbar() {
                   className={cn(
                     "px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300",
                     pathname === item.href
-                      ? "text-white shadow-lg"
-                      : "border text-[#D6A34A] hover:text-white"
+                      ? "text-white shadow-md"
+                      : "border text-[#9A6A31] hover:text-white"
                   )}
                   style={
                     pathname === item.href
-                      ? { background: "linear-gradient(90deg,#9A6A31,#D6A34A)", borderColor: "transparent", boxShadow: "0 2px 12px rgba(214,163,74,0.45)" }
+                      ? { background: "linear-gradient(90deg,#9A6A31,#D6A34A)", borderColor: "transparent", boxShadow: "0 2px 12px rgba(214,163,74,0.35)" }
                       : { borderColor: "rgba(214,163,74,0.45)" }
                   }
                   onMouseEnter={(e) => {
@@ -129,7 +129,7 @@ export default function Navbar() {
                   key={item.key}
                   href={item.href}
                   className={cn(
-                    "nav-link pb-0.5",
+                    "nav-link pb-0.5 text-[#101312]/85 hover:text-[#9A6A31]",
                     pathname === item.href && "nav-link-active"
                   )}
                 >
@@ -145,34 +145,33 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1.5 text-white/65 hover:text-[#D6A34A]
-                           transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-white/5"
+                className="flex items-center gap-1.5 text-[#101312]/80 hover:text-[#9A6A31]
+                           transition-colors text-sm font-semibold px-2.5 py-1.5 rounded-lg hover:bg-black/5"
                 aria-label="Change language"
                 aria-expanded={langOpen}
                 aria-haspopup="menu"
               >
-                <Globe className="w-4 h-4" />
+                <Globe className="w-4 h-4 text-[#9A6A31]" />
                 <span className="hidden sm:inline">{localeLabels[locale]}</span>
                 <ChevronDown className={cn("w-3 h-3 transition-transform", langOpen && "rotate-180")} />
               </button>
 
               {langOpen && (
-                <div className="absolute right-0 mt-2 w-40 rounded-xl shadow-2xl overflow-hidden z-50
-                                border border-white/10"
-                     style={{ background: "rgba(10,3,0,0.97)" }}
+                <div className="absolute right-0 mt-2 w-40 rounded-xl shadow-xl overflow-hidden z-50
+                                border border-gray-200 bg-white"
                      role="menu">
                   {(["en", "am", "fr", "pt", "ar"] as Locale[]).map((l) => (
                     <button
                       key={l}
                       onClick={() => { setLocale(l); setLangOpen(false); }}
                       className={cn(
-                        "w-full text-left px-4 py-2.5 text-sm hover:bg-white/5 transition-colors flex items-center gap-2",
-                        locale === l ? "text-[#D6A34A] font-semibold" : "text-white/65"
+                        "w-full text-left px-4 py-2.5 text-sm hover:bg-gray-100 transition-colors flex items-center gap-2",
+                        locale === l ? "text-[#9A6A31] font-bold bg-amber-50/50" : "text-[#101312]/75"
                       )}
                       dir="ltr"
                       role="menuitem"
                     >
-                      <span className="text-white/40 text-xs w-6 shrink-0">{localeLabels[l]}</span>
+                      <span className="text-[#101312]/40 text-xs w-6 shrink-0">{localeLabels[l]}</span>
                       {localeNames[l]}
                     </button>
                   ))}
@@ -182,7 +181,7 @@ export default function Navbar() {
 
             {/* Mobile toggle */}
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors text-white"
+              className="lg:hidden p-2 rounded-lg hover:bg-black/5 transition-colors text-[#101312]"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -195,10 +194,9 @@ export default function Navbar() {
       {/* ── MOBILE DRAWER ────────────────────────────────────── */}
       <div className={cn(
         "lg:hidden transition-all duration-300 overflow-hidden",
-        isOpen ? "max-h-screen" : "max-h-0"
+        isOpen ? "max-h-screen border-b border-gray-200" : "max-h-0"
       )}>
-        <nav className="border-t border-white/5 px-4 py-4 flex flex-col gap-1"
-             style={{ background: "rgba(10,3,0,0.98)" }}>
+        <nav className="border-t border-gray-200 px-4 py-4 flex flex-col gap-1 bg-white">
 
           {navItems.map((item) => (
             <Link
@@ -209,10 +207,10 @@ export default function Navbar() {
                 item.highlight
                   ? pathname === item.href
                     ? "text-white"
-                    : "text-[#D6A34A] border border-[#D6A34A]/30 hover:text-white"
+                    : "text-[#9A6A31] border border-[#D6A34A]/30 hover:text-white"
                   : pathname === item.href
-                  ? "text-[#D6A34A] bg-white/5"
-                  : "text-white/75 hover:bg-white/5 hover:text-white"
+                  ? "text-[#9A6A31] bg-amber-50/60 font-semibold"
+                  : "text-[#101312]/75 hover:bg-gray-100 hover:text-[#101312]"
               )}
               style={
                 item.highlight && pathname !== item.href
@@ -236,7 +234,7 @@ export default function Navbar() {
                   "px-3 py-1.5 rounded-full text-xs font-semibold transition-all border",
                   locale === l
                     ? "text-white border-transparent"
-                    : "border-white/20 text-white/55 hover:border-[#D6A34A]/50 hover:text-[#D6A34A]"
+                    : "border-gray-300 text-[#101312]/70 hover:border-[#D6A34A] hover:text-[#9A6A31]"
                 )}
                 style={locale === l ? { background: "linear-gradient(90deg,#9A6A31,#D6A34A)" } : {}}
                 dir="ltr"

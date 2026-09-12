@@ -25,13 +25,12 @@
   html {
     scroll-behavior: smooth;
     min-height: 100%;
-    background-color: #070908;
+    background-color: #FFFFFF;
     background-image: radial-gradient(
-      ellipse 90% 70% at 0% 0%,
-      #6D4A24 0%,
-      #2A2117 30%,
-      #101312 60%,
-      #070908 100%
+      ellipse 90% 70% at 50% 0%,
+      #FDFBF7 0%,
+      #F8F6F0 50%,
+      #FFFFFF 100%
     );
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -40,7 +39,7 @@
   body {
     min-height: 100vh;
     background: transparent;
-    color: var(--ivory);
+    color: #101312;
     font-family: var(--font-inter);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -62,11 +61,11 @@
     font-family: 'Noto Sans Ethiopic', var(--font-inter), sans-serif;
   }
 
-  h1, h2, h3 { font-family: var(--font-playfair); }
+  h1, h2, h3 { font-family: var(--font-playfair); color: #101312; }
 
   ::selection              { background: #D6A34A; color: #fff; }
   ::-webkit-scrollbar      { width: 6px; }
-  ::-webkit-scrollbar-track { background: #070908; }
+  ::-webkit-scrollbar-track { background: #F8F6F0; }
   ::-webkit-scrollbar-thumb { background: #D6A34A; border-radius: 999px; }
 }
 
@@ -77,29 +76,29 @@
     @apply inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg
            transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
     background: linear-gradient(90deg, #9A6A31 0%, #D6A34A 50%, #F0B84F 100%);
-    color: #070908;
-    box-shadow: 0 4px 22px rgba(214,163,74,0.28);
+    color: #FFFFFF;
+    box-shadow: 0 4px 20px rgba(154,106,49,0.25);
   }
-  .btn-primary:hover { box-shadow: 0 6px 30px rgba(240,184,79,0.40); }
+  .btn-primary:hover { box-shadow: 0 6px 26px rgba(214,163,74,0.38); }
 
   .btn-outline {
     @apply inline-flex items-center gap-2 px-6 py-3 border-2 font-semibold
            rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
     border-color: #D6A34A;
-    color: #D6A34A;
+    color: #9A6A31;
     background: transparent;
   }
-  .btn-outline:hover { background: #D6A34A; color: #070908; }
+  .btn-outline:hover { background: #D6A34A; color: #FFFFFF; }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 px-6 py-3 text-white font-semibold
-           rounded-lg hover:bg-white/10 transition-all duration-300 cursor-pointer;
+    @apply inline-flex items-center gap-2 px-6 py-3 text-[#101312] font-semibold
+           rounded-lg hover:bg-black/5 transition-all duration-300 cursor-pointer;
   }
 
-  .section-heading    { @apply text-4xl md:text-5xl font-display font-bold leading-tight; }
+  .section-heading    { @apply text-4xl md:text-5xl font-display font-bold leading-tight text-[#101312]; }
   .section-subheading {
     @apply font-semibold text-sm tracking-widest uppercase mb-3;
-    color: #D6A34A;
+    color: #9A6A31;
   }
 
   .brand-divider {
@@ -109,84 +108,88 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, #D6A34A 0%, #F0B84F 60%, #D6A34A 100%);
+    background-image: linear-gradient(90deg, #9A6A31 0%, #D6A34A 50%, #B9853B 100%);
   }
   .text-cream-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, #B9853B 0%, #F0B84F 50%, #B9853B 100%);
+    background-image: linear-gradient(90deg, #7A5323 0%, #D6A34A 50%, #9A6A31 100%);
   }
 
   .card-dark {
     @apply rounded-xl backdrop-blur-sm transition-all duration-300;
-    background: rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(214, 163, 74, 0.16);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(214, 163, 74, 0.22);
+    box-shadow: 0 4px 20px rgba(16, 19, 18, 0.04);
   }
   .card-dark:hover {
-    border-color: rgba(214, 163, 74, 0.44);
-    background: rgba(0, 0, 0, 0.48);
+    border-color: rgba(214, 163, 74, 0.50);
+    background: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(214, 163, 74, 0.14);
   }
 
   .card-glass {
     @apply rounded-xl backdrop-blur-md;
-    background: rgba(0, 0, 0, 0.22);
-    border: 1px solid rgba(214, 163, 74, 0.20);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(214, 163, 74, 0.25);
+    box-shadow: 0 8px 32px rgba(16, 19, 18, 0.06);
   }
 
   .nav-link {
-    @apply text-white/80 text-sm font-medium transition-colors duration-200 relative pb-0.5;
+    @apply text-[#101312]/85 text-sm font-semibold transition-colors duration-200 relative pb-0.5;
   }
   .nav-link::after {
     content: '';
     @apply absolute bottom-0 left-0 w-0 h-0.5 rounded-full transition-all duration-300;
     background: #D6A34A;
   }
-  .nav-link:hover        { color: #D6A34A; }
+  .nav-link:hover        { color: #9A6A31; }
   .nav-link:hover::after { width: 100%; }
-  .nav-link-active       { color: #D6A34A; }
+  .nav-link-active       { color: #9A6A31; }
   .nav-link-active::after { width: 100%; }
 
   .form-input {
-    @apply w-full rounded-xl px-4 py-3 text-white transition-all duration-200 outline-none;
-    background: rgba(0, 0, 0, 0.30);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    @apply w-full rounded-xl px-4 py-3 text-[#101312] transition-all duration-200 outline-none;
+    background: rgba(248, 247, 244, 0.95);
+    border: 1px solid rgba(16, 19, 18, 0.15);
   }
-  .form-input::placeholder { color: rgba(255, 255, 255, 0.35); }
+  .form-input::placeholder { color: rgba(16, 19, 18, 0.40); }
   .form-input:focus {
     border-color: #D6A34A;
-    box-shadow: 0 0 0 3px rgba(214, 163, 74, 0.18);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(214, 163, 74, 0.20);
   }
-  .form-input option { background: #101312; color: #fff; }
+  .form-input option { background: #FFFFFF; color: #101312; }
 
   .input-dark {
-    @apply w-full rounded-lg px-3 py-2 text-sm text-white transition-all duration-200 outline-none;
-    background: #151817 !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    @apply w-full rounded-lg px-3 py-2 text-sm text-[#101312] transition-all duration-200 outline-none;
+    background: #FFFFFF !important;
+    color: #101312 !important;
+    border: 1px solid rgba(16, 19, 18, 0.18) !important;
   }
   .input-dark::placeholder {
-    color: rgba(255, 255, 255, 0.45) !important;
+    color: rgba(16, 19, 18, 0.45) !important;
   }
   .input-dark:focus {
     border-color: #D6A34A !important;
     box-shadow: 0 0 0 2px rgba(214, 163, 74, 0.25) !important;
-    background: #0d0f0e !important;
-    color: #ffffff !important;
+    background: #FFFFFF !important;
+    color: #101312 !important;
   }
   .input-dark option {
-    background: #101312 !important;
-    color: #ffffff !important;
+    background: #FFFFFF !important;
+    color: #101312 !important;
   }
   .input-dark:-webkit-autofill,
   .input-dark:-webkit-autofill:hover,
   .input-dark:-webkit-autofill:focus {
-    -webkit-text-fill-color: #ffffff !important;
-    -webkit-box-shadow: 0 0 0px 1000px #151817 inset !important;
+    -webkit-text-fill-color: #101312 !important;
+    -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset !important;
     transition: background-color 5000s ease-in-out 0s;
   }
 
   .form-label {
     @apply block text-sm font-medium mb-1.5;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(16, 19, 18, 0.75);
   }
 
   .section-padding  { @apply py-16 md:py-24; }
@@ -194,18 +197,19 @@
 
   .editorial-rule {
     height: 1px;
-    background: linear-gradient(90deg, rgba(214,163,74,0.65), rgba(255,255,255,0.12), transparent);
+    background: linear-gradient(90deg, rgba(214,163,74,0.65), rgba(16,19,18,0.10), transparent);
   }
 
   .countdown-block {
     @apply flex flex-col items-center justify-center rounded-2xl p-4
            min-w-[80px] md:min-w-[100px];
-    background: rgba(0, 0, 0, 0.30);
-    border: 1px solid rgba(214, 163, 74, 0.30);
+    background: rgba(255, 255, 255, 0.90);
+    border: 1px solid rgba(214, 163, 74, 0.35);
+    box-shadow: 0 4px 16px rgba(16, 19, 18, 0.05);
   }
 
-  .section-overlay        { background: rgba(0, 0, 0, 0.28); }
-  .section-overlay-strong { background: rgba(0, 0, 0, 0.55); }
+  .section-overlay        { background: rgba(255, 255, 255, 0.85); }
+  .section-overlay-strong { background: rgba(248, 246, 240, 0.95); }
 }
 
 @media (prefers-reduced-motion: reduce) {

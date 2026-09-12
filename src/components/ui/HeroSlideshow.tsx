@@ -11,8 +11,8 @@ const slides = [
     quote: "Africa is one continent, one people, and one nation.",
     initial: "KN",
     photo: "/heroes/kwame-nkrumah.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #171A18 0%, #070908 60%)",
-    accentColor: "#D6A34A",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
     country: "Ghana",
     flag: "🇬🇭",
   },
@@ -22,8 +22,8 @@ const slides = [
     quote: "It always seems impossible until it's done.",
     initial: "NM",
     photo: "/heroes/nelson-mandela.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #1B1813 0%, #070908 60%)",
-    accentColor: "#D6A34A",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
     country: "South Africa",
     flag: "🇿🇦",
   },
@@ -33,8 +33,8 @@ const slides = [
     quote: "Throughout history, it has been the inaction of those who could have acted that has made it possible for evil to triumph.",
     initial: "HS",
     photo: "/heroes/haile-selassie.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #171A18 0%, #070908 60%)",
-    accentColor: "#F0B84F",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#B9853B",
     country: "Ethiopia",
     flag: "🇪🇹",
   },
@@ -44,8 +44,8 @@ const slides = [
     quote: "Africa will write its own history, a history of glory and dignity.",
     initial: "PL",
     photo: "/heroes/patrice-lumumba.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #18151A 0%, #070908 60%)",
-    accentColor: "#B9853B",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
     country: "DR Congo",
     flag: "🇨🇩",
   },
@@ -55,8 +55,8 @@ const slides = [
     quote: "You cannot carry out fundamental change without a certain amount of madness.",
     initial: "TS",
     photo: "/heroes/thomas-sankara.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #1B1813 0%, #070908 60%)",
-    accentColor: "#D6A34A",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
     country: "Burkina Faso",
     flag: "🇧🇫",
   },
@@ -66,7 +66,7 @@ const slides = [
     quote: "The African is not struggling for his dignity; he has it.",
     initial: "JK",
     photo: "/heroes/jomo-kenyatta.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #171A18 0%, #070908 60%)",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
     accentColor: "#B9853B",
     country: "Kenya",
     flag: "🇰🇪",
@@ -77,8 +77,8 @@ const slides = [
     quote: "We are at war with poverty and oppression, and this is a war we must win.",
     initial: "JN",
     photo: "/heroes/julius-nyerere.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #1B1813 0%, #070908 60%)",
-    accentColor: "#D6A34A",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
     country: "Tanzania",
     flag: "🇹🇿",
   },
@@ -88,7 +88,7 @@ const slides = [
     quote: "Mask no difficulties, tell no lies, claim no easy victories.",
     initial: "AC",
     photo: "/heroes/amilcar-cabral.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #171313 0%, #070908 60%)",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
     accentColor: "#9A6A31",
     country: "Guinea-Bissau",
     flag: "🇬🇼",
@@ -99,7 +99,7 @@ const slides = [
     quote: "In the course of history, there comes a time when humanity is called to shift to a new level of consciousness.",
     initial: "WM",
     photo: "/heroes/wangari-maathai.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #171A18 0%, #070908 60%)",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
     accentColor: "#B9853B",
     country: "Kenya",
     flag: "🇰🇪",
@@ -110,8 +110,8 @@ const slides = [
     quote: "I look at an ant and I see myself: a native South African, enduring.",
     initial: "MM",
     photo: "/heroes/miriam-makeba.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #1B1518 0%, #070908 60%)",
-    accentColor: "#B9853B",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
     country: "South Africa",
     flag: "🇿🇦",
   },
@@ -121,8 +121,8 @@ const slides = [
     quote: "The most potent weapon in the hands of the oppressor is the mind of the oppressed.",
     initial: "SB",
     photo: "/heroes/steve-biko.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #1B1A14 0%, #070908 60%)",
-    accentColor: "#F0B84F",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#B9853B",
     country: "South Africa",
     flag: "🇿🇦",
   },
@@ -132,8 +132,8 @@ const slides = [
     quote: "Africa has a history, and it was a great one.",
     initial: "CD",
     photo: "/heroes/cheikh-anta-diop.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #14191B 0%, #070908 60%)",
-    accentColor: "#B9853B",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
     country: "Senegal",
     flag: "🇸🇳",
   },
@@ -143,8 +143,8 @@ const slides = [
     quote: "Music is the weapon of the future.",
     initial: "FK",
     photo: "/heroes/fela-kuti.jpg",
-    bg: "radial-gradient(ellipse 80% 80% at 70% 40%, #1B1813 0%, #070908 60%)",
-    accentColor: "#F0B84F",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#B9853B",
     country: "Nigeria",
     flag: "🇳🇬",
   },
@@ -152,12 +152,12 @@ const slides = [
 
 const INTERVAL = 5500;
 
-// Inline Adinkra SVG pattern, no network request
+// Inline Adinkra SVG pattern, optimized for light background
 function AdinkraPattern({ color }: { color: string }) {
   return (
     <svg
       className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 0.045 }}
+      style={{ opacity: 0.06 }}
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
@@ -201,30 +201,28 @@ export default function HeroSlideshow() {
             {/* ── Layer 1: colour gradient background ─────── */}
             <div className="absolute inset-0" style={{ background: slide.bg }} />
 
-            {/* ── Layer 2: the real photo, right half ─────── */}
+            {/* ── Layer 2: Responsive Photo Container (Mobile + Desktop) ── */}
             <div
-              className="absolute"
-              style={{
-                top: "5%",
-                right: "4%",
-                width: "44%",
-                height: "90%",
-              }}
+              className={cn(
+                "absolute transition-all duration-700",
+                "top-[10%] right-[2%] w-[85%] h-[55%] md:top-[6%] md:right-[3%] md:w-[46%] md:h-[86%]",
+                "opacity-35 md:opacity-100"
+              )}
             >
               <Image
                 src={slide.photo}
                 alt={slide.name}
                 fill
-                sizes="44vw"
-                className="object-contain object-top drop-shadow-2xl"
+                sizes="(max-width: 768px) 85vw, 46vw"
+                className="object-contain object-top md:object-right-top drop-shadow-xl"
                 priority={i <= 1}
               />
-              {/* Soft vignette around the photo so it blends into the bg */}
+              {/* Soft light vignette around the photo */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 55%, rgba(13,4,0,0.80) 100%)",
+                    "radial-gradient(ellipse 90% 90% at 50% 50%, transparent 60%, rgba(255,255,255,0.65) 100%)",
                 }}
               />
             </div>
@@ -238,7 +236,7 @@ export default function HeroSlideshow() {
                 "absolute right-[-2%] top-1/2 -translate-y-1/2",
                 "font-display font-black select-none pointer-events-none",
                 "transition-all duration-[1400ms]",
-                isActive ? "opacity-[0.05] translate-x-0" : "opacity-0 translate-x-20"
+                isActive ? "opacity-[0.06] translate-x-0" : "opacity-0 translate-x-20"
               )}
               style={{
                 fontSize: "clamp(12rem, 28vw, 26rem)",
@@ -249,31 +247,29 @@ export default function HeroSlideshow() {
               {slide.initial}
             </div>
 
-            {/* ── Layer 5: text readability overlays ─────────
-                Left-to-right: dark → transparent so text is clear
-                but photo on the right stays visible               */}
+            {/* ── Layer 5: text readability overlays (Light Mode) ───────── */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to right, rgba(5,1,0,0.88) 0%, rgba(5,1,0,0.65) 30%, rgba(5,1,0,0.20) 55%, transparent 75%)",
+                  "linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.94) 35%, rgba(255,255,255,0.70) 65%, transparent 92%)",
               }}
             />
             {/* Bottom fade into next section */}
             <div
-              className="absolute bottom-0 left-0 right-0 h-48"
-              style={{ background: "linear-gradient(to top, #0d0400 0%, rgba(13,4,0,0.40) 60%, transparent 100%)" }}
+              className="absolute bottom-0 left-0 right-0 h-40"
+              style={{ background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0.70) 60%, transparent 100%)" }}
             />
             {/* Top fade for navbar */}
             <div
               className="absolute top-0 left-0 right-0 h-28"
-              style={{ background: "linear-gradient(to bottom, rgba(5,1,0,0.65) 0%, transparent 100%)" }}
+              style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.90) 0%, transparent 100%)" }}
             />
 
             {/* ── Layer 6: caption bottom-right ───────────── */}
             <div
               className={cn(
-                "absolute bottom-24 right-5 md:right-12 max-w-[260px] text-right z-10",
+                "absolute bottom-20 right-5 md:bottom-24 md:right-12 max-w-[260px] text-right z-10",
                 "transition-all duration-700 delay-400",
                 isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
               )}
@@ -282,25 +278,21 @@ export default function HeroSlideshow() {
                 className="ml-auto mb-2 h-0.5 w-10 rounded-full"
                 style={{ background: slide.accentColor }}
               />
-              <p className="text-white/45 text-[11px] mb-1 tracking-widest uppercase font-medium">
+              <p className="text-[#101312]/60 text-[11px] mb-1 tracking-widest uppercase font-semibold">
                 {slide.flag}&nbsp; {slide.country}
               </p>
               <p
-                className="font-display font-black text-xl md:text-2xl leading-tight"
-                style={{
-                  color: "#fff",
-                  textShadow: `0 2px 24px ${slide.accentColor}70`,
-                }}
+                className="font-display font-black text-xl md:text-2xl leading-tight text-[#101312]"
               >
                 {slide.name}
               </p>
               <p
-                className="text-[11px] font-semibold tracking-wide mt-1 mb-2 leading-snug"
+                className="text-[11px] font-bold tracking-wide mt-1 mb-2 leading-snug"
                 style={{ color: slide.accentColor }}
               >
                 {slide.title}
               </p>
-              <p className="text-white/40 text-[11px] italic leading-relaxed hidden md:block">
+              <p className="text-[#101312]/65 text-[11px] italic leading-relaxed hidden md:block">
                 &ldquo;{slide.quote}&rdquo;
               </p>
             </div>
@@ -316,13 +308,13 @@ export default function HeroSlideshow() {
             onClick={() => setCurrent(i)}
             aria-label={`Go to ${slide.name}`}
             title={slide.name}
-            className="rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+            className="rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9A6A31]/50"
             style={{
               width:      i === current ? 22 : 6,
               height:     6,
               background: i === current
                 ? slides[current].accentColor
-                : "rgba(255,255,255,0.28)",
+                : "rgba(16,19,18,0.25)",
             }}
           />
         ))}
@@ -335,9 +327,9 @@ export default function HeroSlideshow() {
         className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full
                    flex items-center justify-center
                    opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-200"
-        style={{ background: "rgba(0,0,0,0.55)", border: `1px solid ${slides[current].accentColor}50` }}
+        style={{ background: "rgba(255,255,255,0.85)", border: `1px solid ${slides[current].accentColor}60` }}
       >
-        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 text-[#101312]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
@@ -349,9 +341,9 @@ export default function HeroSlideshow() {
         className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full
                    flex items-center justify-center
                    opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-200"
-        style={{ background: "rgba(0,0,0,0.55)", border: `1px solid ${slides[current].accentColor}50` }}
+        style={{ background: "rgba(255,255,255,0.85)", border: `1px solid ${slides[current].accentColor}60` }}
       >
-        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 text-[#101312]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>

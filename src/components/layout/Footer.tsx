@@ -89,14 +89,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/8 adinkra-bg section-overlay-strong">
+    <footer className="border-t border-gray-200 bg-[#F8F6F0] text-[#101312] adinkra-bg">
 
       {/* ── TOP BAND, colourful wheel stripe echoing the logo ── */}
-      <div className="w-full h-1 wheel-shimmer opacity-70" />
+      <div className="w-full h-1 wheel-shimmer opacity-80" />
 
       {/* ── MAIN GRID ─────────────────────────────────────────── */}
-      <div className="container-custom py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="container-custom py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
 
           {/* Brand column */}
           <div className="lg:col-span-2 space-y-5">
@@ -107,41 +107,41 @@ export default function Footer() {
                   alt="AfroNova"
                   fill
                   sizes="80px"
-                  className="object-contain drop-shadow-[0_2px_10px_rgba(214,163,74,0.45)]
-                             group-hover:drop-shadow-[0_4px_16px_rgba(214,163,74,0.7)]
+                  className="object-contain drop-shadow-[0_2px_10px_rgba(214,163,74,0.35)]
+                             group-hover:drop-shadow-[0_4px_16px_rgba(214,163,74,0.6)]
                              transition-all duration-300"
                 />
               </div>
               <div className="leading-tight">
-                <p className="font-display font-black text-white text-xl tracking-tight">
+                <p className="font-display font-black text-[#101312] text-xl tracking-tight">
                   AFRO<span className="text-gradient">NOVA</span>
                 </p>
-                <p className="text-white/35 text-[9px] tracking-widest uppercase mt-0.5">
+                <p className="text-[#101312]/60 text-[9px] tracking-widest uppercase mt-0.5 font-semibold">
                   Media House &amp; Events
                 </p>
               </div>
             </Link>
 
-            <p className="text-white/55 text-sm leading-relaxed max-w-xs">
+            <p className="text-[#101312]/75 text-sm leading-relaxed max-w-xs font-medium">
               {t("footer_tagline")}
             </p>
 
              {/* Contact */}
              <ul className="space-y-2.5">
-               <li className="flex items-start gap-2.5 text-sm text-white/55">
-                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-[#D6A34A]" />
-                 <a href={footerData.mapUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#D6A34A] transition-colors">
+               <li className="flex items-start gap-2.5 text-sm text-[#101312]/75 font-medium">
+                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-[#9A6A31]" />
+                 <a href={footerData.mapUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#9A6A31] transition-colors">
                    {footerData.address}
                  </a>
                </li>
-               <li className="flex items-center gap-2.5 text-sm text-white/55">
-                 <Phone className="w-4 h-4 shrink-0 text-[#D6A34A]" />
-                 <a href={`tel:${footerData.phone.replace(/\s/g, "")}`} className="hover:text-[#D6A34A] transition-colors">
+               <li className="flex items-center gap-2.5 text-sm text-[#101312]/75 font-medium">
+                 <Phone className="w-4 h-4 shrink-0 text-[#9A6A31]" />
+                 <a href={`tel:${footerData.phone.replace(/\s/g, "")}`} className="hover:text-[#9A6A31] transition-colors">
                    {footerData.phone}
                  </a>
                </li>
-               <li className="flex items-center gap-2.5 text-sm text-white/55">
-                 <Clock className="w-4 h-4 shrink-0 text-[#D6A34A]" />
+               <li className="flex items-center gap-2.5 text-sm text-[#101312]/75 font-medium">
+                 <Clock className="w-4 h-4 shrink-0 text-[#9A6A31]" />
                  {footerData.hours}
                </li>
              </ul>
@@ -156,18 +156,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center
-                             transition-all duration-200"
-                  style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.45)" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "#D6A34A";
-                    (e.currentTarget as HTMLAnchorElement).style.color       = "#D6A34A";
-                    (e.currentTarget as HTMLAnchorElement).style.background  = "rgba(214,163,74,0.10)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.1)";
-                    (e.currentTarget as HTMLAnchorElement).style.color       = "rgba(255,255,255,0.45)";
-                    (e.currentTarget as HTMLAnchorElement).style.background  = "";
-                  }}
+                             transition-all duration-200 border border-gray-300 text-[#101312]/70 bg-white hover:border-[#D6A34A] hover:text-[#9A6A31]"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -177,7 +166,7 @@ export default function Footer() {
 
           {/* Company links */}
           <div>
-            <h4 className="text-white font-semibold text-xs uppercase tracking-widest mb-4">
+            <h4 className="text-[#101312] font-bold text-xs uppercase tracking-widest mb-4">
               {t("footer_company")}
             </h4>
             <ul className="space-y-2.5">
@@ -189,8 +178,8 @@ export default function Footer() {
                 { label: t("nav_news"),      href: "/news" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-white/50 text-sm transition-colors flex items-center gap-1 group hover:text-[#D6A34A]">
-                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                  <Link href={l.href} className="text-[#101312]/70 text-sm font-medium transition-colors flex items-center gap-1 group hover:text-[#9A6A31]">
+                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#9A6A31]" />
                     {l.label}
                   </Link>
                 </li>
@@ -200,7 +189,7 @@ export default function Footer() {
 
           {/* Event links */}
           <div>
-            <h4 className="text-white font-semibold text-xs uppercase tracking-widest mb-4">
+            <h4 className="text-[#101312] font-bold text-xs uppercase tracking-widest mb-4">
               {t("footer_event")}
             </h4>
             <ul className="space-y-2.5">
@@ -208,8 +197,8 @@ export default function Footer() {
                 { label: "Africa Celebrates 2026", href: "/africa-celebrates-2026" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-white/50 text-sm transition-colors flex items-center gap-1 group hover:text-[#D6A34A]">
-                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                  <Link href={l.href} className="text-[#101312]/70 text-sm font-medium transition-colors flex items-center gap-1 group hover:text-[#9A6A31]">
+                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#9A6A31]" />
                     {l.label}
                   </Link>
                 </li>
@@ -219,18 +208,18 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-white font-semibold text-xs uppercase tracking-widest mb-4">
+            <h4 className="text-[#101312] font-bold text-xs uppercase tracking-widest mb-4">
               {t("footer_stay")}
             </h4>
-            <p className="text-white/50 text-sm mb-4 leading-relaxed">
+            <p className="text-[#101312]/70 text-sm mb-4 leading-relaxed font-medium">
               {t("footer_stay_desc")}
             </p>
             {submitted ? (
               <div className="space-y-1">
-                <p className="text-sm font-medium flex items-center gap-1.5 text-[#D6A34A]">
+                <p className="text-sm font-bold flex items-center gap-1.5 text-[#9A6A31]">
                   ✓ {t("footer_subscribed")}
                 </p>
-                <p className="text-white/35 text-xs">Check your inbox for a welcome email.</p>
+                <p className="text-[#101312]/60 text-xs">Check your inbox for a welcome email.</p>
               </div>
             ) : (
               <form onSubmit={handleNewsletter} className="space-y-2">
@@ -241,7 +230,7 @@ export default function Footer() {
                   placeholder="your@email.com"
                   required
                   disabled={loading}
-                  className="form-input text-sm py-2.5"
+                  className="form-input text-sm py-2.5 bg-white border-gray-300 text-[#101312]"
                 />
                 {newsError && (
                   <p className="text-xs" style={{ color: "#C18A45" }}>{newsError}</p>
@@ -251,7 +240,7 @@ export default function Footer() {
                   disabled={loading}
                   className="w-full flex items-center justify-center gap-2 py-2.5 text-sm
                              font-semibold rounded-xl text-white transition-all hover:opacity-90
-                             disabled:opacity-60 disabled:cursor-not-allowed"
+                             disabled:opacity-60 disabled:cursor-not-allowed shadow-md"
                   style={{ background: "linear-gradient(90deg,#9A6A31,#D6A34A)" }}
                 >
                   {loading
@@ -266,17 +255,17 @@ export default function Footer() {
       </div>
 
       {/* ── BOTTOM BAR ────────────────────────────────────────── */}
-      <div className="border-t border-white/5">
-        <div className="container-custom py-3 flex flex-col sm:flex-row items-center
+      <div className="border-t border-gray-300/60 bg-white">
+        <div className="container-custom py-4 flex flex-col sm:flex-row items-center
                         justify-between gap-3">
-          <p className="text-white/35 text-xs">{t("footer_rights")}</p>
+          <p className="text-[#101312]/60 text-xs font-medium">{t("footer_rights")}</p>
           <div className="flex items-center gap-4">
             {[
               { label: "Privacy Policy", href: "/privacy" },
               { label: "Terms of Use",   href: "/terms" },
               { label: "Cookie Policy",  href: "/cookies" },
             ].map((l) => (
-              <Link key={l.href} href={l.href} className="text-white/35 hover:text-[#D6A34A] text-xs transition-colors">
+              <Link key={l.href} href={l.href} className="text-[#101312]/60 hover:text-[#9A6A31] text-xs font-medium transition-colors">
                 {l.label}
               </Link>
             ))}
