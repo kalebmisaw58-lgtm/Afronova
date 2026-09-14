@@ -101,22 +101,22 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-3 group w-fit">
-              <div className="relative w-20 h-20 shrink-0">
+              <div className="relative w-24 h-24 md:w-[100px] md:h-[100px] shrink-0">
                 <Image
                   src="/logo.png"
                   alt="AfroNova"
                   fill
-                  sizes="80px"
-                  className="object-contain drop-shadow-[0_2px_10px_rgba(214,163,74,0.35)]
-                             group-hover:drop-shadow-[0_4px_16px_rgba(214,163,74,0.6)]
+                  sizes="100px"
+                  className="object-contain drop-shadow-[0_2px_12px_rgba(214,163,74,0.35)]
+                             group-hover:drop-shadow-[0_4px_18px_rgba(214,163,74,0.6)]
                              transition-all duration-300"
                 />
               </div>
               <div className="leading-tight">
-                <p className="font-display font-black text-[#101312] text-xl tracking-tight">
+                <p className="font-display font-black text-[#101312] text-2xl md:text-3xl tracking-tight">
                   AFRO<span className="text-gradient">NOVA</span>
                 </p>
-                <p className="text-[#101312]/60 text-[9px] tracking-widest uppercase mt-0.5 font-semibold">
+                <p className="text-[#101312]/60 text-xs tracking-widest uppercase mt-0.5 font-semibold">
                   Media House &amp; Events
                 </p>
               </div>

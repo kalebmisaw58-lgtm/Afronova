@@ -65,27 +65,27 @@ export default function Navbar() {
       style={scrolled ? { background: "rgba(255,255,255,0.92)" } : undefined}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-24">
 
           {/* ── LOGO ─────────────────────────────────────────── */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="relative w-16 h-16 md:w-[72px] md:h-[72px]">
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="relative w-20 h-20 md:w-[88px] md:h-[88px]">
               <Image
                 src="/logo.png"
                 alt="AfroNova logo"
                 fill
-                sizes="72px"
-                className="object-contain drop-shadow-[0_2px_8px_rgba(214,163,74,0.35)]
-                           group-hover:drop-shadow-[0_4px_14px_rgba(214,163,74,0.60)]
+                sizes="88px"
+                className="object-contain drop-shadow-[0_2px_10px_rgba(214,163,74,0.35)]
+                           group-hover:drop-shadow-[0_4px_16px_rgba(214,163,74,0.60)]
                            transition-all duration-300"
                 priority
               />
             </div>
             <div className="leading-tight hidden sm:block">
-              <p className="font-display font-black text-[#101312] text-lg tracking-tight leading-none">
+              <p className="font-display font-black text-[#101312] text-xl md:text-2xl tracking-tight leading-none">
                 AFRO<span className="text-gradient">NOVA</span>
               </p>
-              <p className="text-[#101312]/60 text-[9px] tracking-widest uppercase mt-0.5 font-semibold">
+              <p className="text-[#101312]/60 text-[10px] md:text-xs tracking-widest uppercase mt-0.5 font-semibold">
                 Media House &amp; Events
               </p>
             </div>
