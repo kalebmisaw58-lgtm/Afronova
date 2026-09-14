@@ -63,7 +63,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Featured Projects */}
-      <section className="section-padding bg-[#F8F6F0]">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <SectionHeader eyebrow={t("portfolio_featured_eyebrow")} title={t("portfolio_featured_title")} titleHighlight={t("portfolio_featured_highlight")} className="mb-12" />
           <div className="grid md:grid-cols-2 gap-8">
@@ -89,7 +89,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Past Editions */}
-      <section className="section-padding border-y border-gray-200 bg-white">
+      <section className="section-padding border-y border-gray-200 bg-transparent">
         <div className="container-custom">
           <SectionHeader eyebrow={t("portfolio_editions_eyebrow")} title={t("portfolio_editions_title")} titleHighlight={t("portfolio_editions_highlight")} className="mb-12" />
           <div className="space-y-4">
@@ -117,7 +117,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Gallery */}
-      <section className="section-padding bg-[#F8F6F0]">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <SectionHeader eyebrow={t("portfolio_gallery_eyebrow")} title={t("portfolio_gallery_title")} titleHighlight={t("portfolio_gallery_highlight")} className="mb-12" />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -157,7 +157,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Media Projects */}
-      <section className="section-padding bg-white border-t border-gray-200">
+      <section className="section-padding bg-transparent border-t border-gray-200">
         <div className="container-custom">
           <SectionHeader eyebrow={t("portfolio_media_eyebrow")} title={t("portfolio_media_title")} titleHighlight={t("portfolio_media_highlight")} className="mb-12" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

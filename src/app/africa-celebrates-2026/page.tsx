@@ -78,7 +78,7 @@ export default function AfricaCelebrates2026Page() {
   const sponsorTiers = [
     { tier: t("tier1_name"), bg: "linear-gradient(90deg,#9A6A31,#D6A34A)", benefits: [t("tier1_b1"), t("tier1_b2"), t("tier1_b3"), t("tier1_b4"), t("tier1_b5")] },
     { tier: t("tier2_name"), bg: "linear-gradient(90deg,#B9853B,#F0B84F)", benefits: [t("tier2_b1"), t("tier2_b2"), t("tier2_b3"), t("tier2_b4"), t("tier2_b5")] },
-    { tier: t("tier3_name"), bg: "linear-gradient(90deg,rgba(255,255,255,0.3),rgba(255,255,255,0.1))", benefits: [t("tier3_b1"), t("tier3_b2"), t("tier3_b3"), t("tier3_b4")] },
+    { tier: t("tier3_name"), bg: "linear-gradient(90deg,#D6A34A,#9A6A31)", benefits: [t("tier3_b1"), t("tier3_b2"), t("tier3_b3"), t("tier3_b4")] },
   ];
 
   return (
@@ -86,32 +86,32 @@ export default function AfricaCelebrates2026Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="absolute inset-0 adinkra-bg opacity-70" />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-transparent">
+        <div className="absolute inset-0 adinkra-bg opacity-30" />
         <div className="absolute inset-0 pointer-events-none"
-             style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(154,106,49,0.25) 0%, transparent 65%)" }} />
+             style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(214,163,74,0.12) 0%, transparent 65%)" }} />
         <div className="container-custom relative z-10 text-center py-20">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-               style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.35)", color: "#D6A34A" }}>
-            <Star className="w-3 h-3" style={{ fill: "#D6A34A" }} /> {t("ac_badge")}
+               style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.35)", color: "#9A6A31" }}>
+            <Star className="w-3 h-3 text-[#9A6A31] fill-[#9A6A31]" /> {t("ac_badge")}
           </div>
           <h1 className="text-6xl sm:text-7xl md:text-8xl font-display font-black leading-none tracking-tight mb-4">
-            <span className="text-white">Africa </span><span className="text-gradient">Celebrates</span>
+            <span className="text-[#101312]">Africa </span><span className="text-gradient">Celebrates</span>
           </h1>
-          <p className="text-5xl sm:text-6xl md:text-7xl font-display font-black mb-8 text-[#F0B84F]">2026</p>
-          <p className="text-white/70 text-base md:text-lg max-w-3xl mx-auto mb-4 italic leading-relaxed">{t("ac_theme")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-6 mb-12 text-sm">
-            <span className="flex items-center gap-2 text-white/60"><Calendar className="w-4 h-4 text-[#F0B84F]" />{t("ac_date")}</span>
-            <span className="flex items-center gap-2 text-white/60"><MapPin className="w-4 h-4 text-[#F0B84F]" />{t("ac_venue")}</span>
-            <span className="flex items-center gap-2 text-white/60"><Globe2 className="w-4 h-4 text-[#F0B84F]" />{t("ac_nations")}</span>
+          <p className="text-5xl sm:text-6xl md:text-7xl font-display font-black mb-8 text-[#9A6A31]">2026</p>
+          <p className="text-[#101312]/75 text-base md:text-lg max-w-3xl mx-auto mb-4 italic leading-relaxed font-semibold">{t("ac_theme")}</p>
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-12 text-sm font-semibold">
+            <span className="flex items-center gap-2 text-[#101312]/70"><Calendar className="w-4 h-4 text-[#9A6A31]" />{t("ac_date")}</span>
+            <span className="flex items-center gap-2 text-[#101312]/70"><MapPin className="w-4 h-4 text-[#9A6A31]" />{t("ac_venue")}</span>
+            <span className="flex items-center gap-2 text-[#101312]/70"><Globe2 className="w-4 h-4 text-[#9A6A31]" />{t("ac_nations")}</span>
           </div>
-          <div className="inline-block rounded-2xl px-6 py-6"
-               style={{ border: "1px solid rgba(214,163,74,0.25)", background: "rgba(255,255,255,0.04)" }}>
-            <p className="text-xs font-semibold tracking-widest uppercase mb-5 text-[#F0B84F]">{t("ac_countdown_label")}</p>
+          <div className="inline-block rounded-2xl px-6 py-6 card-dark"
+               style={{ border: "1px solid rgba(214,163,74,0.35)", background: "rgba(255,255,255,0.92)" }}>
+            <p className="text-xs font-bold tracking-widest uppercase mb-5 text-[#9A6A31]">{t("ac_countdown_label")}</p>
             <CountdownTimer />
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-            <a href="https://africacelebrates.com" target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-8 py-4">
+            <a href="https://africacelebrates.com" target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-8 py-4 shadow-md">
               {t("ac_visit")} <ArrowRight className="w-5 h-5" />
             </a>
           </div>
@@ -119,18 +119,18 @@ export default function AfricaCelebrates2026Page() {
       </section>
 
       {/* HIGHLIGHTS */}
-      <section className="section-padding section-overlay">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <SectionHeader eyebrow={t("ac_highlights_eyebrow")} title={t("ac_highlights_title")} titleHighlight={t("ac_highlights_highlight")} centered className="mb-12" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {highlights.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="card-dark p-6 space-y-3 hover:-translate-y-1 transition-all group">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors group-hover:bg-[rgba(214,163,74,0.20)]"
-                     style={{ background: "rgba(214,163,74,0.10)", border: "1px solid rgba(214,163,74,0.20)" }}>
-                  <Icon className="w-6 h-6 text-[#D6A34A]" />
+                     style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.30)" }}>
+                  <Icon className="w-6 h-6 text-[#9A6A31]" />
                 </div>
-                <h3 className="text-white font-semibold">{title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-[#101312] font-bold">{title}</h3>
+                <p className="text-[#101312]/70 text-sm leading-relaxed font-medium">{desc}</p>
               </div>
             ))}
           </div>
@@ -138,7 +138,7 @@ export default function AfricaCelebrates2026Page() {
       </section>
 
       {/* SCHEDULE */}
-      <section className="section-padding border-y border-white/5">
+      <section className="section-padding border-y border-gray-200 bg-transparent">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <SectionHeader eyebrow={t("ac_schedule_eyebrow")} title={t("ac_schedule_title")} titleHighlight={t("ac_schedule_highlight")} />
@@ -147,13 +147,13 @@ export default function AfricaCelebrates2026Page() {
             {programDays.map(({ date, title, events }) => (
               <div key={date} className="card-dark p-6 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: "rgba(214,163,74,0.25)", color: "#D6A34A" }}>{date}</div>
-                  <h3 className="text-white font-semibold text-sm">{title}</h3>
+                  <div className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: "rgba(214,163,74,0.18)", color: "#9A6A31" }}>{date}</div>
+                  <h3 className="text-[#101312] font-bold text-sm">{title}</h3>
                 </div>
                 <ul className="space-y-2">
                   {events.map((ev: string) => (
-                    <li key={ev} className="flex items-start gap-2 text-white/50 text-xs">
-                      <CheckCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#D6A34A]" />{ev}
+                    <li key={ev} className="flex items-start gap-2 text-[#101312]/75 text-xs font-medium">
+                      <CheckCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#9A6A31]" />{ev}
                     </li>
                   ))}
                 </ul>
@@ -164,20 +164,20 @@ export default function AfricaCelebrates2026Page() {
       </section>
 
       {/* VENUES */}
-      <section className="section-padding section-overlay">
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <SectionHeader eyebrow={t("ac_venues_eyebrow")} title={t("ac_venues_title")} titleHighlight={t("ac_venues_highlight")} centered className="mb-12" />
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
-              { name: t("ac_venue1_name"), desc: t("ac_venue1_desc"), badge: t("ac_venue1_badge"), badgeColor: "#D6A34A" },
+              { name: t("ac_venue1_name"), desc: t("ac_venue1_desc"), badge: t("ac_venue1_badge"), badgeColor: "#9A6A31" },
               { name: t("ac_venue2_name"), desc: t("ac_venue2_desc"), badge: t("ac_venue2_badge"), badgeColor: "#B9853B" },
             ].map(({ name, desc, badge, badgeColor }) => (
               <div key={name} className="card-dark p-7 space-y-3">
-                <div className="inline-flex px-3 py-1 rounded-full border text-xs font-semibold"
+                <div className="inline-flex px-3 py-1 rounded-full border text-xs font-bold"
                      style={{ color: badgeColor, borderColor: `${badgeColor}50`, background: `${badgeColor}18` }}>{badge}</div>
-                <h3 className="text-white font-display font-bold text-xl">{name}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
-                <div className="flex items-center gap-2 text-white/35 text-xs"><MapPin className="w-3.5 h-3.5" /> Addis Ababa, Ethiopia</div>
+                <h3 className="text-[#101312] font-display font-bold text-xl">{name}</h3>
+                <p className="text-[#101312]/70 text-sm leading-relaxed font-medium">{desc}</p>
+                <div className="flex items-center gap-2 text-[#101312]/50 text-xs font-semibold"><MapPin className="w-3.5 h-3.5 text-[#9A6A31]" /> Addis Ababa, Ethiopia</div>
               </div>
             ))}
           </div>
@@ -185,7 +185,7 @@ export default function AfricaCelebrates2026Page() {
       </section>
 
       {/* SPONSORSHIP */}
-      <section className="section-padding border-t border-white/5">
+      <section className="section-padding border-t border-gray-200 bg-transparent">
         <div className="container-custom">
           <SectionHeader eyebrow={t("ac_sponsor_eyebrow")} title={t("ac_sponsor_title")} titleHighlight={t("ac_sponsor_highlight")}
             centered description={t("ac_sponsor_desc")} className="mb-12" />
@@ -193,11 +193,11 @@ export default function AfricaCelebrates2026Page() {
             {sponsorTiers.map(({ tier, bg, benefits }) => (
               <div key={tier} className="card-dark p-7 space-y-5">
                 <div className="h-1.5 rounded-full" style={{ background: bg }} />
-                <h3 className="text-white font-display font-bold text-xl">{tier}</h3>
+                <h3 className="text-[#101312] font-display font-bold text-xl">{tier}</h3>
                 <ul className="space-y-2">
                   {benefits.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-white/60 text-sm">
-                      <Star className="w-3 h-3 shrink-0 text-[#D6A34A]" /> {b}
+                    <li key={b} className="flex items-center gap-2 text-[#101312]/75 text-sm font-medium">
+                      <Star className="w-3 h-3 shrink-0 text-[#9A6A31]" /> {b}
                     </li>
                   ))}
                 </ul>
@@ -209,12 +209,12 @@ export default function AfricaCelebrates2026Page() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding section-overlay">
+      <section className="py-20 bg-white/70 backdrop-blur-sm border-t border-gray-200">
         <div className="container-custom text-center space-y-6 max-w-2xl mx-auto">
           <SectionHeader eyebrow={t("ac_cta_eyebrow")} title={t("ac_cta_title")} titleHighlight={t("ac_cta_highlight")} centered />
-          <p className="text-white/55 leading-relaxed">{t("ac_cta_body")}</p>
+          <p className="text-[#101312]/75 leading-relaxed font-medium">{t("ac_cta_body")}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Link href="/contact" className="btn-primary px-8 py-3.5">{t("ac_cta_btn")} <ArrowRight className="w-4 h-4" /></Link>
+            <Link href="/contact" className="btn-primary px-8 py-3.5 shadow-md">{t("ac_cta_btn")} <ArrowRight className="w-4 h-4" /></Link>
             <a href="https://africacelebrates.com" target="_blank" rel="noopener noreferrer" className="btn-outline px-8 py-3.5">{t("ac_cta_btn2")}</a>
           </div>
         </div>
@@ -222,4 +222,3 @@ export default function AfricaCelebrates2026Page() {
     </>
   );
 }
-

@@ -17,7 +17,7 @@ function PartnerCard({ name, logo, initials, accent, description, role, category
       <div className="flip-card-inner">
         {/* FRONT */}
         <div className="flip-card-front flex flex-col items-center justify-between p-6 text-center relative"
-             style={{ background: "rgba(0,0,0,0.40)", border: "1px solid rgba(255,255,255,0.09)" }}>
+             style={{ background: "rgba(255, 255, 255, 0.94)", border: "1px solid rgba(214, 163, 74, 0.30)", boxShadow: "0 4px 20px rgba(16,19,18,0.05)" }}>
           <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
                style={{ background: `linear-gradient(90deg, ${accent}99, ${accent})` }} />
           
@@ -26,9 +26,9 @@ function PartnerCard({ name, logo, initials, accent, description, role, category
           </div>
 
           <div className="space-y-1.5 w-full">
-            <h3 className="text-white font-display font-bold text-base leading-snug line-clamp-1">{name}</h3>
+            <h3 className="text-[#101312] font-display font-bold text-base leading-snug line-clamp-1">{name}</h3>
             <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold"
-                  style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}40` }}>
+                  style={{ background: `${accent}18`, color: accent, border: `1px solid ${accent}40` }}>
               {category}
             </span>
           </div>
@@ -36,32 +36,32 @@ function PartnerCard({ name, logo, initials, accent, description, role, category
           <div className="pt-2 w-full">
             {website ? (
               <a href={website} target="_blank" rel="noopener noreferrer"
-                 className="inline-flex items-center justify-center gap-1 text-xs text-white/40 hover:text-[#D6A34A] transition-colors"
+                 className="inline-flex items-center justify-center gap-1 text-xs text-[#101312]/60 hover:text-[#9A6A31] transition-colors"
                  onClick={(e) => e.stopPropagation()}>
                 <ExternalLink className="w-3 h-3" /> {hoverHint}
               </a>
             ) : (
-              <p className="text-white/30 text-xs text-center">{hoverHint}</p>
+              <p className="text-[#101312]/40 text-xs text-center">{hoverHint}</p>
             )}
           </div>
         </div>
 
         {/* BACK */}
         <div className="flip-card-back flex flex-col justify-between p-6 relative"
-             style={{ background: `linear-gradient(135deg, ${accent}22 0%, rgba(0,0,0,0.70) 100%)`, border: `1px solid ${accent}50` }}>
+             style={{ background: `linear-gradient(135deg, ${accent}15 0%, rgba(255, 255, 255, 0.98) 100%)`, border: `1px solid ${accent}50` }}>
           <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
                style={{ background: `linear-gradient(90deg, ${accent}99, ${accent})` }} />
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <PartnerLogo logo={logo} name={name} initials={initials} accent={accent} width={48} height={48} />
               <div>
-                <h3 className="text-white font-display font-bold text-sm leading-snug line-clamp-1">{name}</h3>
+                <h3 className="text-[#101312] font-display font-bold text-sm leading-snug line-clamp-1">{name}</h3>
                 <p className="text-xs font-semibold mt-0.5" style={{ color: accent }}>{role}</p>
               </div>
             </div>
-            <p className="text-white/70 text-xs leading-relaxed line-clamp-4">{description}</p>
+            <p className="text-[#101312]/75 text-xs leading-relaxed font-medium line-clamp-4">{description}</p>
           </div>
-          <span className="text-xs font-medium mt-2" style={{ color: `${accent}CC` }}>{category}</span>
+          <span className="text-xs font-semibold mt-2" style={{ color: accent }}>{category}</span>
         </div>
       </div>
     </div>
@@ -95,19 +95,19 @@ export default function PartnersPage() {
 
   return (
     <>
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 adinkra-bg opacity-60" />
+      <section className="relative pt-32 pb-20 overflow-hidden bg-transparent">
+        <div className="absolute inset-0 adinkra-bg opacity-30" />
         <div className="absolute inset-0 pointer-events-none"
-             style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(154,106,49,0.22) 0%, transparent 65%)" }} />
+             style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(214,163,74,0.12) 0%, transparent 65%)" }} />
         <div className="container-custom relative z-10 text-center max-w-3xl mx-auto">
           <p className="section-subheading">{t("partners_eyebrow")}</p>
-          <h1 className="section-heading text-white mb-6">{t("partners_h1")} <span className="text-gradient">{t("partners_h1b")}</span></h1>
-          <p className="text-white/60 text-lg leading-relaxed">{t("partners_hero_body")}</p>
+          <h1 className="section-heading text-[#101312] mb-6">{t("partners_h1")} <span className="text-gradient">{t("partners_h1b")}</span></h1>
+          <p className="text-[#101312]/75 text-lg leading-relaxed font-medium">{t("partners_hero_body")}</p>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="border-y border-white/5 py-10 section-overlay">
+      <section className="border-y border-gray-200 py-10 bg-white/70 backdrop-blur-sm">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -118,7 +118,7 @@ export default function PartnersPage() {
             ].map(({ value, label }) => (
               <div key={label}>
                 <p className="text-4xl font-display font-black text-gradient mb-1">{value}</p>
-                <p className="text-white/45 text-sm">{label}</p>
+                <p className="text-[#101312]/65 text-sm font-semibold">{label}</p>
               </div>
             ))}
           </div>
@@ -126,20 +126,20 @@ export default function PartnersPage() {
       </section>
 
       {/* Category chips & Search */}
-      <section className="pt-14 pb-4">
+      <section className="pt-14 pb-4 bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom space-y-6">
           <div className="flex justify-center">
             <div className="relative max-w-md w-full">
-              <Search className="w-4 h-4 text-white/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#101312]/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Search partners by name or keyword..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-9 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white focus:outline-none focus:border-[#D6A34A] transition-colors"
+                className="w-full pl-10 pr-9 py-2 rounded-full bg-white border border-gray-300 text-sm text-[#101312] focus:outline-none focus:border-[#D6A34A] transition-colors shadow-sm"
               />
               {searchQuery && (
-                <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white">
+                <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#101312]/40 hover:text-[#101312]">
                   <X className="w-4 h-4" />
                 </button>
               )}
@@ -158,7 +158,7 @@ export default function PartnersPage() {
                   onClick={() => setActiveCategory(key)}
                   className="px-4 py-1.5 rounded-full text-xs font-semibold transition-all border cursor-pointer"
                   style={isActive
-                    ? { background: accent, borderColor: accent, color: "#000" }
+                    ? { background: accent, borderColor: accent, color: "#FFFFFF" }
                     : { background: `${accent}15`, borderColor: `${accent}35`, color: accent }}
                 >
                   {label}
@@ -170,10 +170,10 @@ export default function PartnersPage() {
       </section>
 
       {/* Flip Cards */}
-      <section className="section-padding pt-8">
+      <section className="section-padding pt-8 bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           {visiblePartners.length === 0 ? (
-            <div className="card-dark p-8 text-center text-white/40 rounded-xl">
+            <div className="card-dark p-8 text-center text-[#101312]/60 rounded-xl">
               No partners found matching your search. Try clearing the search or category filter.
             </div>
           ) : (
@@ -198,20 +198,19 @@ export default function PartnersPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding section-overlay">
+      <section className="py-20 bg-white/70 backdrop-blur-sm border-t border-gray-200">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto rounded-2xl p-8 md:p-12 text-center space-y-5"
-               style={{ background: "rgba(0,0,0,0.30)", border: "1px solid rgba(214,163,74,0.25)" }}>
+          <div className="max-w-3xl mx-auto rounded-2xl p-8 md:p-12 text-center space-y-5 card-dark">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase"
-                 style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.35)", color: "#D6A34A" }}>
+                 style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.35)", color: "#9A6A31" }}>
               {t("partners_cta_badge")}
             </div>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-[#101312]">
               {t("partners_cta_h")} <span className="text-gradient">{t("partners_cta_hb")}</span>
             </h2>
-            <p className="text-white/60 leading-relaxed max-w-xl mx-auto">{t("partners_cta_body")}</p>
+            <p className="text-[#101312]/75 leading-relaxed max-w-xl mx-auto font-medium">{t("partners_cta_body")}</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Link href="/contact" className="btn-primary px-8 py-3.5">{t("partners_cta_btn")} <ArrowRight className="w-4 h-4" /></Link>
+              <Link href="/contact" className="btn-primary px-8 py-3.5 shadow-md">{t("partners_cta_btn")} <ArrowRight className="w-4 h-4" /></Link>
               <Link href="/about" className="btn-outline px-8 py-3.5">{t("partners_about_btn")}</Link>
             </div>
           </div>
