@@ -87,8 +87,8 @@ export default function PartnersPage() {
   const visiblePartners = partnerList.filter((p) => {
     const matchesCat = activeCategory === "All" || p.categoryKey === activeCategory;
     const q = searchQuery.toLowerCase().trim();
-    const desc = t(p.descKey) || "";
-    const role = t(p.roleKey) || "";
+    const desc = (p.descKey && t(p.descKey) !== p.descKey ? t(p.descKey) : p.descKey) || "";
+    const role = (p.roleKey && t(p.roleKey) !== p.roleKey ? t(p.roleKey) : p.roleKey) || "";
     const matchesSearch = !q || p.name.toLowerCase().includes(q) || desc.toLowerCase().includes(q) || role.toLowerCase().includes(q);
     return matchesCat && matchesSearch;
   });
@@ -185,8 +185,8 @@ export default function PartnersPage() {
                   logo={p.logo}
                   initials={p.initials}
                   accent={p.accent}
-                  description={t(p.descKey)}
-                  role={t(p.roleKey)}
+                  description={p.descKey && t(p.descKey) !== p.descKey ? t(p.descKey) : p.descKey}
+                  role={p.roleKey && t(p.roleKey) !== p.roleKey ? t(p.roleKey) : p.roleKey}
                   category={tCategory(p.categoryKey, locale)}
                   hoverHint={t("partners_hover")}
                   website={p.website}

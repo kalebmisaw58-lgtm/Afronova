@@ -10,7 +10,13 @@ import { createBrowserClient } from "@/lib/supabase";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 const CATEGORIES = [
+  { value: "cat_institutional", label: "Institutional" },
+  { value: "cat_strategic", label: "Strategic Partner" },
+  { value: "cat_diplomatic", label: "Diplomatic" },
   { value: "cat_corporate", label: "Corporate" },
+  { value: "cat_media", label: "Media" },
+  { value: "cat_cultural", label: "Cultural" },
+  { value: "cat_hospitality", label: "Hospitality" },
   { value: "cat_government", label: "Government" },
 ];
 
