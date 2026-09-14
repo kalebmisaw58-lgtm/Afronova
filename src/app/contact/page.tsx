@@ -118,18 +118,51 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="border-t border-gray-200 bg-white py-6">
-        <div className="container-custom mb-4">
-          <p className="text-[#101312]/60 text-xs text-center uppercase tracking-wider font-bold">{t("contact_map")}</p>
-        </div>
-        <div className="w-full h-80 relative overflow-hidden bg-gray-100 border-y border-gray-200">
-          <iframe
-            src="https://www.google.com/maps?q=8.9866842,38.7884885&z=18&output=embed"
-            width="100%" height="100%"
-            style={{ border: 0 }}
-            allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-            title="AfroNova location on Google Maps"
-          />
+      <section className="border-t border-gray-200/80 bg-white py-12">
+        <div className="container-custom">
+          <div className="text-center max-w-xl mx-auto mb-6">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase"
+              style={{
+                border: "1px solid rgba(214,163,74,0.40)",
+                background: "rgba(214,163,74,0.10)",
+                color: "#9A6A31",
+              }}
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#9A6A31]" />
+              {t("contact_map")}
+            </div>
+          </div>
+
+          <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[460px] rounded-3xl overflow-hidden shadow-xl border-2 border-[#D6A34A]/30 bg-gray-100">
+            <iframe
+              src="https://www.google.com/maps?q=8.9866842,38.7884885&z=18&output=embed"
+              className="w-full h-full border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="AfroNova location on Google Maps"
+            />
+            
+            {/* Overlay badge with Google Maps link */}
+            <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-[#D6A34A]/35 flex items-center gap-3 max-w-[calc(100%-2rem)]">
+              <div className="w-8 h-8 rounded-xl bg-[#D6A34A]/15 flex items-center justify-center shrink-0">
+                <MapPin className="w-4 h-4 text-[#9A6A31]" />
+              </div>
+              <div className="min-w-0 pr-1">
+                <p className="text-[#101312] text-xs font-bold leading-tight truncate">AfroNova Headquarters</p>
+                <p className="text-[#101312]/60 text-[11px] font-medium truncate">Africa Avenue, Addis Ababa</p>
+              </div>
+              <a
+                href="https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-xs px-3 py-1.5 rounded-xl hidden sm:inline-flex items-center gap-1 shrink-0 ml-2 shadow-sm"
+              >
+                Open Maps ↗
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>
