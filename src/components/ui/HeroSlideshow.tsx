@@ -286,60 +286,95 @@ export default function HeroSlideshow() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Hero Portrait Card (Responsive Document Flow) */}
-          <div className="lg:col-span-5 xl:col-span-5 flex justify-center mt-4 lg:mt-0">
-            <div
-              className="relative w-full aspect-[4/5] max-w-[340px] sm:max-w-[380px] lg:max-w-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6A34A]/35 transition-all duration-700"
-              style={{
-                background: "linear-gradient(135deg, #F8F6F0 0%, #EFECE3 100%)",
-              }}
-            >
+          {/* RIGHT COLUMN: Hero Portrait 3D Layered Card Deck */}
+          <div className="lg:col-span-5 xl:col-span-5 flex justify-center mt-4 lg:mt-0 pr-7 sm:pr-10 lg:pr-12">
+            <div className="relative w-full aspect-[4/5] max-w-[290px] sm:max-w-[350px] lg:max-w-[400px] select-none">
               {slides.map((slide, i) => {
-                const isActive = i === current;
+                const offset = (i - current + slides.length) % slides.length;
+                const isFront = offset === 0;
+                const isMiddle = offset === 1;
+                const isBack = offset === 2;
+                const isVisible = isFront || isMiddle || isBack;
+
                 return (
                   <div
                     key={slide.name}
+                    role={isMiddle || isBack ? "button" : undefined}
+                    tabIndex={isMiddle || isBack ? 0 : -1}
+                    aria-label={isMiddle || isBack ? `View leader ${slide.name}` : undefined}
+                    aria-hidden={!isVisible}
+                    onClick={() => {
+                      if (isMiddle) setCurrent((c) => (c + 1) % slides.length);
+                      if (isBack) setCurrent((c) => (c + 2) % slides.length);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        if (isMiddle) setCurrent((c) => (c + 1) % slides.length);
+                        if (isBack) setCurrent((c) => (c + 2) % slides.length);
+                      }
+                    }}
                     className={cn(
-                      "absolute inset-0 transition-opacity duration-700",
-                      isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+                      "absolute inset-0 rounded-3xl overflow-hidden transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none origin-bottom-left",
+                      isFront && "z-30 opacity-100 scale-100 translate-x-0 translate-y-0 rotate-0 shadow-2xl border-2 border-[#D6A34A]/40 pointer-events-auto",
+                      isMiddle && "z-20 opacity-85 scale-[0.92] sm:scale-[0.93] translate-x-[14px] sm:translate-x-[22px] lg:translate-x-[28px] translate-y-[8px] sm:translate-y-[12px] rotate-[4deg] shadow-xl border border-[#D6A34A]/25 cursor-pointer hover:opacity-100 hover:scale-[0.94] focus-visible:ring-2 focus-visible:ring-[#9A6A31]",
+                      isBack && "z-10 opacity-60 scale-[0.84] sm:scale-[0.86] translate-x-[26px] sm:translate-x-[40px] lg:translate-x-[50px] translate-y-[16px] sm:translate-y-[22px] rotate-[8deg] shadow-lg border border-[#D6A34A]/15 cursor-pointer hover:opacity-85 hover:scale-[0.87] focus-visible:ring-2 focus-visible:ring-[#9A6A31]",
+                      !isVisible && "z-0 opacity-0 pointer-events-none scale-[0.78] translate-x-[60px] translate-y-[28px] rotate-[12deg]"
                     )}
+                    style={{
+                      background: "linear-gradient(135deg, #F8F6F0 0%, #EFECE3 100%)",
+                    }}
                   >
                     <Image
                       src={slide.photo}
                       alt={slide.name}
                       fill
-                      sizes="(max-width: 1024px) 90vw, 440px"
-                      className="object-cover object-top transition-transform duration-700 hover:scale-105"
-                      priority={i <= 1}
+                      sizes="(max-width: 1024px) 90vw, 400px"
+                      className={cn(
+                        "object-cover object-top transition-transform duration-700",
+                        isFront && "hover:scale-105"
+                      )}
+                      priority={i <= 2}
                     />
-                    {/* Inner vignette & bottom gradient for text contrast */}
+
+                    {/* Vignette overlay */}
                     <div
                       className="absolute inset-0 pointer-events-none"
                       style={{
-                        background:
-                          "linear-gradient(to top, rgba(16,19,18,0.92) 0%, rgba(16,19,18,0.40) 35%, transparent 70%)",
+                        background: isFront
+                          ? "linear-gradient(to top, rgba(16,19,18,0.92) 0%, rgba(16,19,18,0.40) 35%, transparent 70%)"
+                          : "linear-gradient(to top, rgba(16,19,18,0.85) 0%, rgba(16,19,18,0.20) 50%, transparent 80%)",
                       }}
                     />
 
-                    {/* Caption inside portrait card bottom */}
-                    <div className="absolute bottom-5 left-5 right-5 text-right text-white z-10">
-                      <div
-                        className="ml-auto mb-1.5 h-0.5 w-10 rounded-full"
-                        style={{ background: slide.accentColor }}
-                      />
-                      <p className="text-white/70 text-[10px] mb-0.5 tracking-widest uppercase font-semibold">
-                        {slide.flag}&nbsp; {slide.country}
-                      </p>
-                      <p className="font-display font-black text-lg sm:text-xl leading-tight text-white drop-shadow-md">
-                        {slide.name}
-                      </p>
-                      <p
-                        className="text-[11px] font-bold tracking-wide mt-0.5 leading-snug"
-                        style={{ color: "#F0B84F" }}
-                      >
-                        {slide.title}
-                      </p>
-                    </div>
+                    {/* Front card full details caption */}
+                    {isFront && (
+                      <div className="absolute bottom-5 left-5 right-5 text-right text-white z-10 animate-fade-in">
+                        <div
+                          className="ml-auto mb-1.5 h-0.5 w-10 rounded-full"
+                          style={{ background: slide.accentColor }}
+                        />
+                        <p className="text-white/70 text-[10px] mb-0.5 tracking-widest uppercase font-semibold">
+                          {slide.flag}&nbsp; {slide.country}
+                        </p>
+                        <p className="font-display font-black text-lg sm:text-xl leading-tight text-white drop-shadow-md">
+                          {slide.name}
+                        </p>
+                        <p
+                          className="text-[11px] font-bold tracking-wide mt-0.5 leading-snug"
+                          style={{ color: "#F0B84F" }}
+                        >
+                          {slide.title}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Middle and Back card quick indicator tag */}
+                    {(isMiddle || isBack) && (
+                      <div className="absolute bottom-4 right-4 z-10 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white border border-white/20 text-[10px] font-bold tracking-wider flex items-center gap-1.5 opacity-80 hover:opacity-100">
+                        <span>{slide.flag}</span>
+                        <span className="hidden sm:inline">{slide.name}</span>
+                      </div>
+                    )}
                   </div>
                 );
               })}
