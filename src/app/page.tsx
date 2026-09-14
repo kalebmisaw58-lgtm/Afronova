@@ -48,45 +48,7 @@ export default function HomePage() {
   return (
     <>
       {/* ══ 1. HERO ══════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-transparent">
-        <HeroSlideshow />
-        <div className="absolute inset-0 adinkra-bg opacity-30 z-[1] pointer-events-none" />
-        <div className="absolute top-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 accent-line opacity-60 z-[2] pointer-events-none" />
-
-        <div className="relative z-[3] w-full px-4 sm:px-6 lg:px-14 pt-28 pb-24">
-          <div className="max-w-[min(100%,32rem)] lg:w-[48%]">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-8 animate-fade-in"
-                 style={{ border: "1px solid rgba(214,163,74,0.45)", background: "rgba(214,163,74,0.12)", color: "#9A6A31" }}>
-              <Star className="w-3.5 h-3.5 fill-[#9A6A31] text-[#9A6A31]" />
-              {t("hero_badge")}
-            </div>
-            <h1 className="font-display font-black leading-none tracking-tight mb-5 animate-slide-up"
-                style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)" }}>
-              <span className="text-[#101312]">Afro</span><span className="text-gradient">Nova</span>
-            </h1>
-            <p className="text-xl md:text-2xl font-display font-bold text-gradient mb-5 leading-snug">
-              {t("hero_tagline")}
-            </p>
-            <p className="text-[#101312]/75 text-base md:text-lg font-medium leading-relaxed mb-10 max-w-[30rem]">
-              {t("hero_body")}
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap items-start gap-3">
-              <Link href="/about" className="btn-primary text-base px-7 py-3.5 shadow-md">
-                {t("hero_cta_discover")} <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link href="/services" className="btn-outline text-base px-7 py-3.5">{t("hero_cta_services")}</Link>
-              <Link href="/contact" className="btn-ghost border border-[#101312]/20 text-[#101312] hover:bg-black/5 text-base px-7 py-3.5">
-                {t("hero_cta_work")}
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[3] flex flex-col items-center gap-1 animate-bounce pointer-events-none">
-          <div className="w-px h-8" style={{ background: "rgba(154,106,49,0.45)" }} />
-          <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#9A6A31" }} />
-        </div>
-      </section>
+      <HeroSlideshow />
 
       {/* ══ 2. AFRICA CELEBRATES COUNTDOWN ══════════════════ */}
       <section className="relative py-16 md:py-24 overflow-hidden">

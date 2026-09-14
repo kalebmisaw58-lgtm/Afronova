@@ -2,7 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/LanguageContext";
 
 const slides = [
   {
@@ -152,7 +155,6 @@ const slides = [
 
 const INTERVAL = 5500;
 
-// Inline Adinkra SVG pattern, optimized for light background
 function AdinkraPattern({ color }: { color: string }) {
   return (
     <svg
@@ -175,6 +177,7 @@ function AdinkraPattern({ color }: { color: string }) {
 }
 
 export default function HeroSlideshow() {
+  const { t } = useLanguage();
   const [current, setCurrent] = useState(0);
 
   const goNext = useCallback(() => setCurrent((c) => (c + 1) % slides.length), []);
@@ -185,8 +188,11 @@ export default function HeroSlideshow() {
     return () => clearInterval(id);
   }, [goNext]);
 
+  const activeSlide = slides[current];
+
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <section className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden bg-transparent">
+      {/* ── Slide background layers ────────────────────────────── */}
       {slides.map((slide, i) => {
         const isActive = i === current;
         return (
@@ -198,73 +204,19 @@ export default function HeroSlideshow() {
               isActive ? "opacity-100" : "opacity-0"
             )}
           >
-            {/* ── Layer 1: colour gradient background ─────── */}
+            {/* Colour gradient background */}
             <div className="absolute inset-0" style={{ background: slide.bg }} />
 
-            {/* ── Layer 2: Hero Portrait Card (Clean Luxury Frame) ── */}
-            <div
-              className={cn(
-                "absolute transition-all duration-700 rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6A34A]/35 z-[2]",
-                "top-[12%] right-[4%] w-[92%] h-[50%] md:top-[13%] md:right-[5%] md:w-[42%] md:h-[72%]"
-              )}
-              style={{
-                background: "linear-gradient(135deg, #F8F6F0 0%, #EFECE3 100%)",
-              }}
-            >
-              <Image
-                src={slide.photo}
-                alt={slide.name}
-                fill
-                sizes="(max-width: 768px) 92vw, 42vw"
-                className="object-cover object-top transition-transform duration-700 hover:scale-105"
-                priority={i <= 1}
-              />
-              {/* Inner vignette & bottom gradient for text contrast */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to top, rgba(16,19,18,0.88) 0%, rgba(16,19,18,0.40) 35%, transparent 70%)",
-                }}
-              />
-
-              {/* ── Caption inside portrait card bottom ── */}
-              <div
-                className={cn(
-                  "absolute bottom-5 left-5 right-5 text-right text-white z-10",
-                  "transition-all duration-700 delay-300",
-                  isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                )}
-              >
-                <div
-                  className="ml-auto mb-1.5 h-0.5 w-10 rounded-full"
-                  style={{ background: slide.accentColor }}
-                />
-                <p className="text-white/70 text-[10px] mb-0.5 tracking-widest uppercase font-semibold">
-                  {slide.flag}&nbsp; {slide.country}
-                </p>
-                <p className="font-display font-black text-lg md:text-xl leading-tight text-white drop-shadow-md">
-                  {slide.name}
-                </p>
-                <p
-                  className="text-[11px] font-bold tracking-wide mt-0.5 leading-snug"
-                  style={{ color: "#F0B84F" }}
-                >
-                  {slide.title}
-                </p>
-              </div>
-            </div>
-
-            {/* ── Layer 3: Adinkra pattern ─────────────────── */}
+            {/* Adinkra pattern */}
             <AdinkraPattern color={slide.accentColor} />
 
-            {/* ── Layer 4: faint large initial (decorative) ── */}
+            {/* Giant decorative initial */}
             <div
               className={cn(
-                "absolute right-[-2%] top-1/2 -translate-y-1/2",
+                "absolute right-[2%] top-1/2 -translate-y-1/2",
                 "font-display font-black select-none pointer-events-none",
                 "transition-all duration-[1400ms]",
-                isActive ? "opacity-[0.05] translate-x-0" : "opacity-0 translate-x-20"
+                isActive ? "opacity-[0.04] translate-x-0" : "opacity-0 translate-x-20"
               )}
               style={{
                 fontSize: "clamp(12rem, 28vw, 26rem)",
@@ -275,43 +227,141 @@ export default function HeroSlideshow() {
               {slide.initial}
             </div>
 
-            {/* ── Layer 5: clean light background gradients ─────── */}
+            {/* Light overlay gradients */}
             <div
               className="absolute inset-0 pointer-events-none z-[1]"
               style={{
                 background:
-                  "linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.40) 65%, transparent 100%)",
+                  "linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.30) 75%, transparent 100%)",
               }}
-            />
-            {/* Bottom fade into next section */}
-            <div
-              className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-[1]"
-              style={{ background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0.60) 60%, transparent 100%)" }}
-            />
-            {/* Top fade for navbar */}
-            <div
-              className="absolute top-0 left-0 right-0 h-24 pointer-events-none z-[1]"
-              style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.90) 0%, transparent 100%)" }}
             />
           </div>
         );
       })}
 
+      {/* ── Responsive Content Grid (Zero Collision) ───────────── */}
+      <div className="container-custom relative z-10 pt-28 pb-20 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* LEFT COLUMN: Hero Text Content */}
+          <div className="lg:col-span-7 xl:col-span-7 space-y-6">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase animate-fade-in"
+              style={{
+                border: "1px solid rgba(214,163,74,0.45)",
+                background: "rgba(214,163,74,0.12)",
+                color: "#9A6A31",
+              }}
+            >
+              <Star className="w-3.5 h-3.5 fill-[#9A6A31] text-[#9A6A31]" />
+              {t("hero_badge")}
+            </div>
+
+            <h1 className="font-display font-black leading-none tracking-tight animate-slide-up text-[#101312]"
+                style={{ fontSize: "clamp(3rem, 7.5vw, 6.5rem)" }}>
+              Afro<span className="text-gradient">Nova</span>
+            </h1>
+
+            <p className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gradient leading-snug">
+              {t("hero_tagline")}
+            </p>
+
+            <p className="text-[#101312]/75 text-base sm:text-lg font-medium leading-relaxed max-w-xl">
+              {t("hero_body")}
+            </p>
+
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2">
+              <Link href="/about" className="btn-primary text-base px-7 py-3.5 shadow-md justify-center">
+                {t("hero_cta_discover")} <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link href="/services" className="btn-outline text-base px-7 py-3.5 justify-center">
+                {t("hero_cta_services")}
+              </Link>
+              <Link
+                href="/contact"
+                className="btn-ghost border border-[#101312]/20 text-[#101312] hover:bg-black/5 text-base px-7 py-3.5 justify-center"
+              >
+                {t("hero_cta_work")}
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Hero Portrait Card (Responsive Document Flow) */}
+          <div className="lg:col-span-5 xl:col-span-5 flex justify-center mt-4 lg:mt-0">
+            <div
+              className="relative w-full aspect-[4/5] max-w-[340px] sm:max-w-[380px] lg:max-w-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6A34A]/35 transition-all duration-700"
+              style={{
+                background: "linear-gradient(135deg, #F8F6F0 0%, #EFECE3 100%)",
+              }}
+            >
+              {slides.map((slide, i) => {
+                const isActive = i === current;
+                return (
+                  <div
+                    key={slide.name}
+                    className={cn(
+                      "absolute inset-0 transition-opacity duration-700",
+                      isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+                    )}
+                  >
+                    <Image
+                      src={slide.photo}
+                      alt={slide.name}
+                      fill
+                      sizes="(max-width: 1024px) 90vw, 440px"
+                      className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                      priority={i <= 1}
+                    />
+                    {/* Inner vignette & bottom gradient for text contrast */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          "linear-gradient(to top, rgba(16,19,18,0.92) 0%, rgba(16,19,18,0.40) 35%, transparent 70%)",
+                      }}
+                    />
+
+                    {/* Caption inside portrait card bottom */}
+                    <div className="absolute bottom-5 left-5 right-5 text-right text-white z-10">
+                      <div
+                        className="ml-auto mb-1.5 h-0.5 w-10 rounded-full"
+                        style={{ background: slide.accentColor }}
+                      />
+                      <p className="text-white/70 text-[10px] mb-0.5 tracking-widest uppercase font-semibold">
+                        {slide.flag}&nbsp; {slide.country}
+                      </p>
+                      <p className="font-display font-black text-lg sm:text-xl leading-tight text-white drop-shadow-md">
+                        {slide.name}
+                      </p>
+                      <p
+                        className="text-[11px] font-bold tracking-wide mt-0.5 leading-snug"
+                        style={{ color: "#F0B84F" }}
+                      >
+                        {slide.title}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       {/* ── Dot indicators ─────────────────────────────────── */}
-      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 flex-wrap justify-center px-4 max-w-sm">
+      <div className="relative z-20 flex items-center gap-1.5 flex-wrap justify-center px-4 pb-8">
         {slides.map((slide, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Go to ${slide.name}`}
             title={slide.name}
-            className="rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9A6A31]/50"
+            className="rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9A6A31]/50 cursor-pointer"
             style={{
-              width:      i === current ? 22 : 6,
-              height:     6,
-              background: i === current
-                ? slides[current].accentColor
-                : "rgba(16,19,18,0.25)",
+              width: i === current ? 22 : 6,
+              height: 6,
+              background: i === current ? activeSlide.accentColor : "rgba(16,19,18,0.25)",
             }}
           />
         ))}
@@ -321,10 +371,10 @@ export default function HeroSlideshow() {
       <button
         onClick={goPrev}
         aria-label="Previous"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full
-                   flex items-center justify-center
-                   opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-200"
-        style={{ background: "rgba(255,255,255,0.85)", border: `1px solid ${slides[current].accentColor}60` }}
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full
+                   items-center justify-center
+                   opacity-60 hover:opacity-100 focus:opacity-100 transition-opacity duration-200 cursor-pointer"
+        style={{ background: "rgba(255,255,255,0.85)", border: `1px solid ${activeSlide.accentColor}60` }}
       >
         <svg className="w-4 h-4 text-[#101312]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -335,16 +385,15 @@ export default function HeroSlideshow() {
       <button
         onClick={goNext}
         aria-label="Next"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full
-                   flex items-center justify-center
-                   opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-200"
-        style={{ background: "rgba(255,255,255,0.85)", border: `1px solid ${slides[current].accentColor}60` }}
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full
+                   items-center justify-center
+                   opacity-60 hover:opacity-100 focus:opacity-100 transition-opacity duration-200 cursor-pointer"
+        style={{ background: "rgba(255,255,255,0.85)", border: `1px solid ${activeSlide.accentColor}60` }}
       >
         <svg className="w-4 h-4 text-[#101312]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
-    </div>
+    </section>
   );
 }
-
