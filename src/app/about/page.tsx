@@ -49,9 +49,9 @@ export default function AboutPage() {
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
-              <SectionHeader eyebrow={t("about_story_eyebrow")} title={t("about_story_title")} titleHighlight={t("about_story_highlight")} />
-              <p className="text-[#101312]/75 leading-relaxed text-lg font-medium">{t("about_story_body1")}</p>
-              <p className="text-[#101312]/70 leading-relaxed font-medium">{t("about_story_body2")}</p>
+              <SectionHeader eyebrow={t("about_who_eyebrow")} title={t("about_who_title")} titleHighlight={t("about_who_highlight")} />
+              <p className="text-[#101312]/75 leading-relaxed text-lg font-medium">{t("about_p1")}</p>
+              <p className="text-[#101312]/70 leading-relaxed font-medium">{t("about_p2")}</p>
             </div>
             <div className="space-y-4">
               <div className="card-dark p-8 space-y-3">
@@ -76,7 +76,7 @@ export default function AboutPage() {
       {/* Values */}
       <section className="section-padding bg-transparent">
         <div className="container-custom">
-          <SectionHeader eyebrow={t("values_eyebrow")} title={t("values_title")} titleHighlight={t("values_highlight")} centered className="mb-14" />
+          <SectionHeader eyebrow={t("about_values_eyebrow")} title={t("about_values_title")} titleHighlight={t("about_values_highlight")} centered className="mb-14" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="card-dark p-6 space-y-3 hover:-translate-y-1 transition-all">
@@ -94,7 +94,7 @@ export default function AboutPage() {
       {/* Leadership */}
       <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
-          <SectionHeader eyebrow={t("lead_eyebrow")} title={t("lead_title")} titleHighlight={t("lead_highlight")} centered className="mb-14" />
+          <SectionHeader eyebrow={t("about_lead_eyebrow")} title={t("about_lead_title")} titleHighlight={t("about_lead_highlight")} centered className="mb-14" />
           <div className="max-w-2xl mx-auto">
             {leadership.map(({ name, role_key, bio_key, initials, bg }) => (
               <div key={name} className="card-dark p-8 text-center space-y-4">

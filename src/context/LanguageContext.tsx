@@ -239,6 +239,13 @@ const translations: Record<Locale, Record<string, string>> = {
     about_partnership_body: "Our partnership with Legendary Gold Limited brings international investment, global networks, and world-class expertise to every project AfroNova undertakes, amplifying our reach from Addis Ababa to the world stage.",
     about_values_eyebrow: "What Drives Us", about_values_title: "Core Organisation", about_values_highlight: "Values",
     about_lead_eyebrow: "Leadership", about_lead_title: "The Person Behind", about_lead_highlight: "AfroNova",
+    lead_role: "Executive Director & Founder",
+    lead_bio: "With over 15 years of experience in Pan-African event management, media production, and strategic communications, Tesfaye has spearheaded major continental initiatives including Africa Celebrates.",
+    about_story_eyebrow: "Who We Are",
+    about_story_title: "A Transformative Force",
+    about_story_highlight: "for Africa",
+    about_story_body1: "AfroNova acts as a transformative force, curating end-to-end experiences that empower communities, bridge cultures and position authentic African narratives at the forefront of the global stage.",
+    about_story_body2: "From high-impact events to compelling multimedia storytelling, AfroNova is more than a service provider, it is a movement reshaping how Africa is seen, heard and remembered.",
     about_net_eyebrow: "Our Network", about_net_title: "Trusted", about_net_highlight: "Partners",
     about_view_partners: "View All Partners",
     // Values
