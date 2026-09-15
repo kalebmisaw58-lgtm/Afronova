@@ -122,21 +122,31 @@ export default function PortfolioPage() {
           <SectionHeader eyebrow={t("portfolio_gallery_eyebrow")} title={t("portfolio_gallery_title")} titleHighlight={t("portfolio_gallery_highlight")} className="mb-12" />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryItems.map((label, i) => {
-              const imgUrl = t(`pf_gal${i + 1}`);
-              const hasImg = imgUrl && (imgUrl.startsWith("http") || imgUrl.startsWith("/"));
+              const defaultGalleryImages = [
+                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
+              ];
+              const translatedVal = t(`pf_gal${i + 1}`);
+              const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
+              const imgUrl = hasCustomImg ? translatedVal : defaultGalleryImages[i % defaultGalleryImages.length];
               const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
               const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
               const isVideo = i === 4;
               return (
                 <div key={label + i} className={`${heights[i % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
                      style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(248,246,240,0.90))` }}>
-                  {hasImg && (
-                    <img
-                      src={imgUrl}
-                      alt={label}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  )}
+                  <img
+                    src={imgUrl}
+                    alt={label}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                     {isVideo
                       ? <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10" style={{ background: "rgba(214,163,74,0.95)" }}>
