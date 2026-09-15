@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { useToast } from "@/context/ToastContext";
 
 // ── Types ─────────────────────────────────────────────────────
 export interface Field {
@@ -42,6 +43,7 @@ export default function ContactForm({
   className    = "",
   endpoint     = "/api/contact",
 }: ContactFormProps) {
+  const { showToast } = useToast();
   const [values,  setValues]  = useState<Record<string, string>>({});
   const [errors,  setErrors]  = useState<Record<string, string>>({});
   const [apiError, setApiError] = useState<string>("");
@@ -73,22 +75,24 @@ export default function ContactForm({
       if (res.status === 422 && json.errors) {
         // Zod field-level validation errors
         setErrors(json.errors);
+        showToast("Validation Error", "Please check the highlighted fields and try again.", "error");
         return;
       }
 
       if (!res.ok || !json.success) {
-        setApiError(
-          json.error ?? "Something went wrong. Please try again or email us directly."
-        );
+        const errMsg = json.error ?? "Something went wrong. Please try again or email us directly.";
+        setApiError(errMsg);
+        showToast("Submission Failed", errMsg, "error");
         return;
       }
 
       setSubmitted(true);
       setValues({});
+      showToast("Message Sent Successfully!", successMessage, "success");
     } catch {
-      setApiError(
-        "Unable to reach the server. Check your connection and try again."
-      );
+      const connErr = "Unable to reach the server. Check your connection and try again.";
+      setApiError(connErr);
+      showToast("Network Error", connErr, "error");
     } finally {
       setLoading(false);
     }

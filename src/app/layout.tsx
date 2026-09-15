@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ToastProvider } from "@/context/ToastContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://afronova.org"),
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://afronova.org",
     siteName: "AfroNova",
-    title: "AfroNova | Media House & Events",
+    title: "AfroNova | Branding the New Africa",
     description:
       "Pan-African event management, multimedia production & advertising, headquartered in Addis Ababa, Ethiopia.",
     images: [
@@ -38,17 +39,17 @@ export const metadata: Metadata = {
         url: "/logo.png",
         width: 512,
         height: 512,
-        alt: "AfroNova, One Africa, One People",
+        alt: "AfroNova, Branding the New Africa",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AfroNova | Media House & Events",
+    title: "AfroNova | Branding the New Africa",
     description:
-      "Pan-African event management, multimedia production & advertising.",
+      "Pan-African event management, multimedia production & advertising across 50+ countries.",
     images: ["/logo.png"],
-    creator: "@afronova",
+    creator: "@socialafronova",
   },
   robots: {
     index: true,
@@ -74,11 +75,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth min-h-full">
-      <body className="min-h-screen flex flex-col text-white">
+      <body className="min-h-screen flex flex-col text-[#101312]">
         <LanguageProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <ToastProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </ToastProvider>
         </LanguageProvider>
       </body>
     </html>

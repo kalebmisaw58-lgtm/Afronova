@@ -116,60 +116,79 @@ export default function NewsPage() {
             </div>
           </div>
 
-          {/* Featured */}
-          <Link href={`/news/${featured.slug}`}
-                className="block card-dark p-8 md:p-10 mb-8 group hover:-translate-y-0.5 transition-all">
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="shrink-0 w-full md:w-64 h-40 md:h-auto rounded-xl flex items-center justify-center border border-gray-200 bg-white shadow-sm"
-                   style={{ background: "linear-gradient(135deg,rgba(214,163,74,0.18),rgba(248,246,240,0.90))" }}>
-                <span className="font-display font-black text-4xl" style={{ color: "rgba(154,106,49,0.35)" }}>AC</span>
-              </div>
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <span className="px-2.5 py-1 rounded-full text-xs font-bold"
-                        style={{ background: "rgba(214,163,74,0.18)", border: "1px solid rgba(214,163,74,0.35)", color: "#9A6A31" }}>
-                    {t("news_featured")}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-white border border-gray-200 text-[#101312]/70 text-xs font-semibold">{featured.category}</span>
+          {/* Featured (only show when not actively searching) */}
+          {!searchQuery && activeCategory === "all" && featured && (
+            <Link href={`/news/${featured.slug}`}
+                  className="block card-dark p-8 md:p-10 mb-8 group hover:-translate-y-0.5 transition-all">
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="shrink-0 w-full md:w-64 h-40 md:h-auto rounded-xl flex items-center justify-center border border-gray-200 bg-white shadow-sm"
+                     style={{ background: "linear-gradient(135deg,rgba(214,163,74,0.18),rgba(248,246,240,0.90))" }}>
+                  <span className="font-display font-black text-4xl" style={{ color: "rgba(154,106,49,0.35)" }}>AC</span>
                 </div>
-                <h2 className="text-[#101312] font-display font-bold text-2xl group-hover:text-[#9A6A31] transition-colors leading-snug">{featured.title}</h2>
-                <p className="text-[#101312]/75 leading-relaxed font-medium">{featured.excerpt}</p>
-                <div className="flex items-center gap-4 text-xs text-[#101312]/60 font-semibold pt-1">
-                  <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#9A6A31]" /> {featured.date}</span>
-                  <span>{featured.readTime}</span>
+                <div className="space-y-3 flex-1">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold"
+                          style={{ background: "rgba(214,163,74,0.18)", border: "1px solid rgba(214,163,74,0.35)", color: "#9A6A31" }}>
+                      {t("news_featured")}
+                    </span>
+                    <span className="px-2.5 py-1 rounded-full bg-white border border-gray-200 text-[#101312]/70 text-xs font-semibold">{featured.category}</span>
+                  </div>
+                  <h2 className="text-[#101312] font-display font-bold text-2xl group-hover:text-[#9A6A31] transition-colors leading-snug">{featured.title}</h2>
+                  <p className="text-[#101312]/75 leading-relaxed font-medium">{featured.excerpt}</p>
+                  <div className="flex items-center gap-4 text-xs text-[#101312]/60 font-semibold pt-1">
+                    <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#9A6A31]" /> {featured.date}</span>
+                    <span>{featured.readTime}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          )}
 
-          {/* Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visibleArticles.map(({ slug, category, date, title, excerpt, readTime, accent }) => (
-              <Link key={slug} href={`/news/${slug}`}
-                    className="card-dark p-6 flex flex-col gap-4 group hover:-translate-y-1 transition-all">
-                <div className="aspect-video rounded-xl flex items-center justify-center border border-gray-200 bg-white"
-                     style={{ background: `linear-gradient(135deg,${accent}15,rgba(248,246,240,0.90))` }}>
-                  <span className="font-display font-black text-3xl" style={{ color: `${accent}50` }}>A</span>
-                </div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-white border border-gray-200 text-[#101312]/65 text-xs font-semibold">
-                    <Tag className="w-3 h-3 text-[#9A6A31]" /> {category}
-                  </span>
-                  <span className="flex items-center gap-1 text-[#101312]/60 text-xs font-semibold">
-                    <Calendar className="w-3 h-3 text-[#9A6A31]" /> {date}
-                  </span>
-                </div>
-                <h3 className="text-[#101312] font-bold leading-snug group-hover:text-[#9A6A31] transition-colors">{title}</h3>
-                <p className="text-[#101312]/70 text-sm leading-relaxed flex-1 font-medium">{excerpt}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-[#101312]/60 text-xs font-medium">{readTime}</span>
-                  <span className="text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: accent }}>
-                    {t("news_read")} <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {/* Grid / Results */}
+          {visibleArticles.length > 0 ? (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {visibleArticles.map(({ slug, category, date, title, excerpt, readTime, accent }) => (
+                <Link key={slug} href={`/news/${slug}`}
+                      className="card-dark p-6 flex flex-col gap-4 group hover:-translate-y-1 transition-all">
+                  <div className="aspect-video rounded-xl flex items-center justify-center border border-gray-200 bg-white"
+                       style={{ background: `linear-gradient(135deg,${accent}15,rgba(248,246,240,0.90))` }}>
+                    <span className="font-display font-black text-3xl" style={{ color: `${accent}50` }}>A</span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-white border border-gray-200 text-[#101312]/65 text-xs font-semibold">
+                      <Tag className="w-3 h-3 text-[#9A6A31]" /> {category}
+                    </span>
+                    <span className="flex items-center gap-1 text-[#101312]/60 text-xs font-semibold">
+                      <Calendar className="w-3 h-3 text-[#9A6A31]" /> {date}
+                    </span>
+                  </div>
+                  <h3 className="text-[#101312] font-bold leading-snug group-hover:text-[#9A6A31] transition-colors">{title}</h3>
+                  <p className="text-[#101312]/70 text-sm leading-relaxed flex-1 font-medium">{excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#101312]/60 text-xs font-medium">{readTime}</span>
+                    <span className="text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: accent }}>
+                      {t("news_read")} <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 px-4 bg-white/70 rounded-2xl border border-gray-200 shadow-sm max-w-md mx-auto my-8">
+              <Search className="w-12 h-12 text-[#D6A34A] mx-auto mb-4 opacity-80" />
+              <h3 className="text-lg font-bold text-[#101312] mb-1">No articles found</h3>
+              <p className="text-sm text-[#101312]/60 font-medium mb-6">
+                We couldn&apos;t find any articles matching &ldquo;{searchQuery}&rdquo;.
+              </p>
+              <button
+                onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
+                className="px-5 py-2 rounded-full text-xs font-bold text-white transition-all hover:opacity-90 shadow-sm"
+                style={{ background: "linear-gradient(90deg,#9A6A31,#D6A34A)" }}
+              >
+                Reset Search Filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </>

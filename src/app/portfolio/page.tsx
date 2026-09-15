@@ -1,11 +1,13 @@
 "use client";
 
-import { Play, Calendar, MapPin, ExternalLink } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { Play, Calendar, MapPin, ExternalLink, ChevronLeft, ChevronRight, X } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function PortfolioPage() {
   const { t } = useLanguage();
+  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
 
   const featuredProjects = [
     {
@@ -48,6 +50,37 @@ export default function PortfolioPage() {
   const galleryItems = [
     t("gal1"), t("gal2"), t("gal3"), t("gal4"), t("gal5"), t("gal6"), t("gal7"), t("gal8"), t("gal9"),
   ];
+
+  const defaultGalleryImages = [
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
+  ];
+
+  const handlePrevLightbox = useCallback(() => {
+    setActiveLightboxIndex((prev) => (prev === null ? null : prev === 0 ? galleryItems.length - 1 : prev - 1));
+  }, [galleryItems.length]);
+
+  const handleNextLightbox = useCallback(() => {
+    setActiveLightboxIndex((prev) => (prev === null ? null : prev === galleryItems.length - 1 ? 0 : prev + 1));
+  }, [galleryItems.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (activeLightboxIndex === null) return;
+      if (e.key === "Escape") setActiveLightboxIndex(null);
+      if (e.key === "ArrowLeft") handlePrevLightbox();
+      if (e.key === "ArrowRight") handleNextLightbox();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeLightboxIndex, handlePrevLightbox, handleNextLightbox]);
 
   return (
     <>
@@ -122,17 +155,6 @@ export default function PortfolioPage() {
           <SectionHeader eyebrow={t("portfolio_gallery_eyebrow")} title={t("portfolio_gallery_title")} titleHighlight={t("portfolio_gallery_highlight")} className="mb-12" />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryItems.map((label, i) => {
-              const defaultGalleryImages = [
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80",
-                "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
-              ];
               const translatedVal = t(`pf_gal${i + 1}`);
               const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
               const imgUrl = hasCustomImg ? translatedVal : defaultGalleryImages[i % defaultGalleryImages.length];
@@ -140,8 +162,12 @@ export default function PortfolioPage() {
               const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
               const isVideo = i === 4;
               return (
-                <div key={label + i} className={`${heights[i % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
-                     style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(248,246,240,0.90))` }}>
+                <div
+                  key={label + i}
+                  onClick={() => setActiveLightboxIndex(i)}
+                  className={`${heights[i % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
+                  style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(248,246,240,0.90))` }}
+                >
                   <img
                     src={imgUrl}
                     alt={label}
@@ -149,10 +175,10 @@ export default function PortfolioPage() {
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                     {isVideo
-                      ? <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10" style={{ background: "rgba(214,163,74,0.95)" }}>
+                      ? <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
                           <Play className="w-6 h-6 text-white ml-1" />
                         </div>
-                      : <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                      : <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
                     }
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
@@ -184,6 +210,67 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+
+      {/* Full Screen Lightbox Modal */}
+      {activeLightboxIndex !== null && (() => {
+        const curIdx = activeLightboxIndex;
+        const translatedVal = t(`pf_gal${curIdx + 1}`);
+        const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
+        const currentImg = hasCustomImg ? translatedVal : defaultGalleryImages[curIdx % defaultGalleryImages.length];
+        const currentLabel = galleryItems[curIdx];
+        const isVideo = curIdx === 4;
+
+        return (
+          <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 md:p-8 transition-opacity">
+            {/* Top Bar */}
+            <div className="w-full flex items-center justify-between text-white max-w-6xl z-10">
+              <span className="text-sm font-bold tracking-wider text-white/70">
+                {curIdx + 1} / {galleryItems.length}
+              </span>
+              <button
+                onClick={() => setActiveLightboxIndex(null)}
+                className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                aria-label="Close Lightbox"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Main Lightbox Image View */}
+            <div className="relative flex-1 w-full max-w-5xl flex items-center justify-center my-4">
+              <button
+                onClick={handlePrevLightbox}
+                className="absolute left-2 md:left-4 z-20 p-3 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/20 transition-all cursor-pointer shadow-xl"
+                aria-label="Previous Image"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              <div className="relative max-h-[75vh] max-w-full flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl border border-white/10">
+                <img
+                  src={currentImg}
+                  alt={currentLabel}
+                  className="max-h-[75vh] w-auto object-contain rounded-2xl"
+                />
+              </div>
+
+              <button
+                onClick={handleNextLightbox}
+                className="absolute right-2 md:right-4 z-20 p-3 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/20 transition-all cursor-pointer shadow-xl"
+                aria-label="Next Image"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Bottom Caption */}
+            <div className="w-full text-center max-w-xl text-white space-y-1 z-10 pb-2">
+              <p className="font-display font-bold text-lg md:text-xl text-[#F0B84F]">{currentLabel}</p>
+              <p className="text-xs text-white/60 font-medium uppercase tracking-widest">{isVideo ? "Featured Video Coverage" : "Portfolio Photography"}</p>
+            </div>
+          </div>
+        );
+      })()}
     </>
   );
 }

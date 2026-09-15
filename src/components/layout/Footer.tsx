@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
+import { useToast } from "@/context/ToastContext";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 
 const DEFAULT_SOCIALS = [
@@ -32,6 +33,7 @@ const FALLBACK_FOOTER = {
 export default function Footer() {
   const pathname = usePathname();
   const { t } = useLanguage();
+  const { showToast } = useToast();
   const [email,     setEmail]     = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
@@ -75,14 +77,19 @@ export default function Footer() {
       const json = await res.json();
 
       if (!res.ok || !json.success) {
-        setNewsError(json.errors?.email ?? json.error ?? "Something went wrong. Please try again.");
+        const err = json.errors?.email ?? json.error ?? "Something went wrong. Please try again.";
+        setNewsError(err);
+        showToast("Subscription Error", err, "error");
         return;
       }
 
       setSubmitted(true);
       setEmail("");
+      showToast("Subscribed!", "Thank you for subscribing to AfroNova updates.", "success");
     } catch {
-      setNewsError("Unable to subscribe. Please check your connection.");
+      const netErr = "Unable to subscribe. Please check your connection.";
+      setNewsError(netErr);
+      showToast("Network Error", netErr, "error");
     } finally {
       setLoading(false);
     }
