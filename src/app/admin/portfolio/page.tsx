@@ -162,15 +162,15 @@ export default function AdminPortfolioPage() {
     <div className="p-8 max-w-7xl">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-display font-bold text-white">Portfolio Items & Showcase</h1>
-          <p className="text-white/40 text-sm mt-1">Manage project showcase items and gallery image URLs</p>
+          <h1 className="text-2xl font-display font-bold text-[#101312]">Portfolio Items & Showcase</h1>
+          <p className="text-[#101312]/50 text-sm mt-1">Manage project showcase items and gallery image URLs</p>
         </div>
 
         <div className="flex items-center gap-4">
           <select
             value={localeFilter}
             onChange={(e) => setLocaleFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#D6A34A]"
+            className="px-3 py-1.5 rounded-lg bg-[#FAF8F4] border border-[#D6A34A]/25 text-sm text-[#101312] focus:outline-none focus:ring-2 focus:ring-[#D6A34A]"
           >
             {LOCALES.map(l => (
               <option key={l.code} value={l.code}>{l.flag} {l.label}</option>
@@ -191,10 +191,10 @@ export default function AdminPortfolioPage() {
       {isEditing && (
         <form onSubmit={handleSubmitItem} className="card-dark p-6 rounded-xl mb-8 space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-white">
+            <h2 className="text-lg font-semibold text-[#101312]">
               {isCreating ? "Add Portfolio Item" : "Edit Portfolio Item"}
             </h2>
-            <button type="button" onClick={resetForm} className="text-white/40 hover:text-white">
+            <button type="button" onClick={resetForm} className="text-[#101312]/50 hover:text-[#101312]">
               <X className="w-5 h-5" />
             </button>
           </div>
@@ -222,7 +222,7 @@ export default function AdminPortfolioPage() {
           </div>
 
           <div>
-            <label className="text-sm text-white/60">Excerpt / Description</label>
+            <label className="text-sm text-[#101312]/60">Excerpt / Description</label>
             <textarea placeholder="Short summary of this portfolio project..." value={form.excerpt}
               onChange={(e) => setForm({ ...form, excerpt: e.target.value })} className="input-dark w-full h-24 mt-1" />
           </div>
@@ -234,7 +234,7 @@ export default function AdminPortfolioPage() {
               Published
             </label>
             <div className="flex items-center gap-2">
-              <span className="text-white/60">Sort Order:</span>
+              <span className="text-[#101312]/60">Sort Order:</span>
               <input type="number" value={form.sort_order}
                 onChange={(e) => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })}
                 className="input-dark w-20 px-2 py-1" />
@@ -242,7 +242,7 @@ export default function AdminPortfolioPage() {
           </div>
 
           <div className="flex justify-end gap-2">
-            <button type="button" onClick={resetForm} className="px-4 py-2 text-sm text-white/50 hover:text-white">
+            <button type="button" onClick={resetForm} className="px-4 py-2 text-sm text-[#101312]/60 hover:text-[#101312]">
               Cancel
             </button>
             <button type="submit" className="btn-primary flex items-center gap-2 text-sm px-4 py-2">
@@ -256,11 +256,11 @@ export default function AdminPortfolioPage() {
       {!isEditing && (
         <div className="space-y-6">
           <div className="space-y-3">
-            <h2 className="text-lg font-semibold text-white/90">Portfolio Projects ({portfolio.length})</h2>
+            <h2 className="text-lg font-semibold text-[#101312]/90">Portfolio Projects ({portfolio.length})</h2>
             {loading ? (
-              <div className="text-white/30">Loading portfolio items...</div>
+              <div className="text-[#101312]/50">Loading portfolio items...</div>
             ) : portfolio.length === 0 ? (
-              <div className="card-dark p-8 text-center text-white/30 rounded-xl">
+              <div className="card-dark p-8 text-center text-[#101312]/50 rounded-xl">
                 No portfolio items found for {localeFilter.toUpperCase()}. Create one above!
               </div>
             ) : (
@@ -268,19 +268,19 @@ export default function AdminPortfolioPage() {
                 <div key={item.id} className="card-dark p-4 rounded-xl flex items-center justify-between gap-4">
                   <div className="space-y-1">
                     <div className="flex items-center gap-3">
-                      <span className="font-semibold text-white">{item.title}</span>
-                      <span className="text-xs px-2 py-0.5 rounded bg-white/10 text-white/70 font-mono">{item.category}</span>
-                      {item.year && <span className="text-xs text-white/40">{item.year}</span>}
+                      <span className="font-semibold text-[#101312]">{item.title}</span>
+                      <span className="text-xs px-2 py-0.5 rounded bg-gray-100 text-[#101312]/70 font-mono">{item.category}</span>
+                      {item.year && <span className="text-xs text-[#101312]/50">{item.year}</span>}
                       {item.published && <CheckCircle className="w-4 h-4 text-green-400" />}
                     </div>
-                    {item.subtitle && <p className="text-xs text-white/60">{item.subtitle}</p>}
-                    <p className="text-xs text-white/40 font-mono">slug: /{item.slug}</p>
+                    {item.subtitle && <p className="text-xs text-[#101312]/60">{item.subtitle}</p>}
+                    <p className="text-xs text-[#101312]/50 font-mono">slug: /{item.slug}</p>
                   </div>
                   <div className="flex gap-2">
-                    <button onClick={() => editItem(item)} className="p-2 text-white/40 hover:text-white rounded" title="Edit">
+                    <button onClick={() => editItem(item)} className="p-2 text-[#101312]/50 hover:text-[#101312] rounded" title="Edit">
                       <Edit className="w-4 h-4" />
                     </button>
-                    <button onClick={() => handleDeleteItem(item.id)} className="p-2 text-white/40 hover:text-red-400 rounded" title="Delete">
+                    <button onClick={() => handleDeleteItem(item.id)} className="p-2 text-[#101312]/50 hover:text-red-400 rounded" title="Delete">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -290,13 +290,13 @@ export default function AdminPortfolioPage() {
           </div>
 
           {/* Gallery Image Keys (pf_gal1 .. pf_gal9) */}
-          <div className="card-dark p-6 rounded-xl border border-white/5 space-y-4">
+          <div className="card-dark p-6 rounded-xl border border-[#D6A34A]/25 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-md font-semibold text-white flex items-center gap-2">
+                <h2 className="text-md font-semibold text-[#101312] flex items-center gap-2">
                   <Images className="w-4 h-4 text-[#D6A34A]" /> Portfolio Gallery Image Keys
                 </h2>
-                <p className="text-xs text-white/40 mt-0.5">
+                <p className="text-xs text-[#101312]/50 mt-0.5">
                   Set image URLs for slots <code className="text-[#D6A34A]">pf_gal1</code> through <code className="text-[#D6A34A]">pf_gal9</code>.
                 </p>
               </div>
@@ -310,22 +310,22 @@ export default function AdminPortfolioPage() {
                 const hasImg = currentVal.startsWith("http") || currentVal.startsWith("/");
 
                 return (
-                  <div key={keyName} className="p-3 rounded-lg bg-white/5 border border-white/5 text-xs space-y-2 flex flex-col justify-between">
+                  <div key={keyName} className="p-3 rounded-lg bg-[#FAF8F4] border border-[#D6A34A]/25 text-xs space-y-2 flex flex-col justify-between">
                     <div className="space-y-1 overflow-hidden">
                       <div className="flex items-center justify-between">
                         <span className="font-mono text-[#D6A34A] font-semibold">{keyName}</span>
-                        <span className="text-[10px] text-white/30">Slot #{idx + 1}</span>
+                        <span className="text-[10px] text-[#101312]/50">Slot #{idx + 1}</span>
                       </div>
                       {hasImg ? (
-                        <div className="relative h-24 rounded overflow-hidden border border-white/10 mt-1 bg-black/40">
+                        <div className="relative h-24 rounded overflow-hidden border border-[#D6A34A]/25 mt-1 bg-white">
                           <img src={currentVal} alt={keyName} className="w-full h-full object-cover" />
                         </div>
                       ) : (
-                        <div className="h-16 rounded border border-dashed border-white/10 flex items-center justify-center text-white/20 text-[11px]">
+                        <div className="h-16 rounded border border-dashed border-[#D6A34A]/25 flex items-center justify-center text-[#101312]/40 text-[11px]">
                           No image set
                         </div>
                       )}
-                      <p className="text-white/50 text-[11px] truncate mt-1">{currentVal || "(empty)"}</p>
+                      <p className="text-[#101312]/60 text-[11px] truncate mt-1">{currentVal || "(empty)"}</p>
                     </div>
 
                     <div className="flex items-center gap-1.5 pt-1">
@@ -334,7 +334,7 @@ export default function AdminPortfolioPage() {
                           setEditingKey(keyName);
                           setImgKeyForm({ key: keyName, value: currentVal, section: "portfolio" });
                         }}
-                        className="flex-1 py-1.5 px-2 rounded bg-white/10 hover:bg-white/20 text-white font-medium text-xs flex items-center justify-center gap-1 transition-colors"
+                        className="flex-1 py-1.5 px-2 rounded bg-gray-100 hover:bg-white/20 text-[#101312] font-medium text-xs flex items-center justify-center gap-1 transition-colors"
                       >
                         <Edit className="w-3 h-3 text-[#D6A34A]" /> {currentVal ? "Edit" : "Set Image"}
                       </button>
@@ -362,15 +362,15 @@ export default function AdminPortfolioPage() {
             </div>
 
             {editingKey && (
-              <form onSubmit={handleSaveImageKey} className="p-4 rounded-lg bg-black/60 border border-[#D6A34A]/30 space-y-4 mt-4">
+              <form onSubmit={handleSaveImageKey} className="p-4 rounded-lg bg-[#FAF8F4] border border-[#D6A34A]/30 space-y-4 mt-4">
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-mono text-[#D6A34A] font-semibold">Editing Image Slot: {editingKey}</span>
-                  <button type="button" onClick={() => setEditingKey(null)} className="text-white/40 hover:text-white"><X className="w-4 h-4" /></button>
+                  <button type="button" onClick={() => setEditingKey(null)} className="text-[#101312]/50 hover:text-[#101312]"><X className="w-4 h-4" /></button>
                 </div>
 
                 {/* Option A: Upload from Computer */}
-                <div className="p-3 rounded-lg bg-white/5 border border-white/10 space-y-2">
-                  <label className="text-xs text-white/90 font-medium flex items-center gap-2">
+                <div className="p-3 rounded-lg bg-[#FAF8F4] border border-[#D6A34A]/25 space-y-2">
+                  <label className="text-xs text-[#101312]/90 font-medium flex items-center gap-2">
                     <Upload className="w-4 h-4 text-[#D6A34A]" /> Option A: Select Picture from Your Computer
                   </label>
                   <div className="flex items-center gap-3">
@@ -379,7 +379,7 @@ export default function AdminPortfolioPage() {
                       accept="image/*"
                       onChange={handleFileUpload}
                       disabled={uploading}
-                      className="text-xs text-white/70 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-[#D6A34A] file:text-black hover:file:bg-[#b9853b] cursor-pointer"
+                      className="text-xs text-[#101312]/70 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-[#D6A34A] file:text-black hover:file:bg-[#b9853b] cursor-pointer"
                     />
                     {uploading && (
                       <span className="text-xs text-[#D6A34A] flex items-center gap-1.5 font-medium">
@@ -391,7 +391,7 @@ export default function AdminPortfolioPage() {
 
                 {/* Option B: Direct URL */}
                 <div className="space-y-1">
-                  <label className="text-[11px] text-white/60">Option B: Image URL (http://... or /images/...)</label>
+                  <label className="text-[11px] text-[#101312]/60">Option B: Image URL (http://... or /images/...)</label>
                   <input
                     type="text"
                     placeholder="Image URL or uploaded file path..."
@@ -415,13 +415,13 @@ export default function AdminPortfolioPage() {
                       const randomSample = sampleImgs[Math.floor(Math.random() * sampleImgs.length)];
                       setImgKeyForm({ ...imgKeyForm, value: randomSample });
                     }}
-                    className="text-[11px] text-[#D6A34A] underline hover:text-white"
+                    className="text-[11px] text-[#D6A34A] underline hover:text-[#101312]"
                   >
                     + Insert Sample Event Photo URL
                   </button>
 
                   <div className="flex gap-2">
-                    <button type="button" onClick={() => setEditingKey(null)} className="text-xs text-white/40 hover:text-white px-2 py-1">Cancel</button>
+                    <button type="button" onClick={() => setEditingKey(null)} className="text-xs text-[#101312]/50 hover:text-[#101312] px-2 py-1">Cancel</button>
                     <button type="submit" className="btn-primary text-xs px-3 py-1 flex items-center gap-1">
                       <Save className="w-3 h-3" /> Save Image URL
                     </button>

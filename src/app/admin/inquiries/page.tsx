@@ -74,8 +74,8 @@ export default function AdminInquiriesPage() {
     <div className="p-8 max-w-7xl">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-display font-bold text-white">Inquiries & Leads</h1>
-          <p className="text-white/40 text-sm mt-1">Review contact form submissions and newsletter subscribers</p>
+          <h1 className="text-2xl font-display font-bold text-[#101312]">Inquiries & Leads</h1>
+          <p className="text-[#101312]/50 text-sm mt-1">Review contact form submissions and newsletter subscribers</p>
         </div>
 
         <div className="flex items-center gap-3">
@@ -91,11 +91,11 @@ export default function AdminInquiriesPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-4 border-b border-white/10 mb-8">
+      <div className="flex items-center gap-4 border-b border-[#D6A34A]/25 mb-8">
         <button
           onClick={() => setActiveTab("contacts")}
           className={`pb-4 text-sm font-semibold flex items-center gap-2 border-b-2 transition-colors ${
-            activeTab === "contacts" ? "border-[#D6A34A] text-[#D6A34A]" : "border-transparent text-white/50 hover:text-white"
+            activeTab === "contacts" ? "border-[#D6A34A] text-[#D6A34A]" : "border-transparent text-[#101312]/60 hover:text-[#101312]"
           }`}
         >
           <MessageSquare className="w-4 h-4" /> Contact Messages ({contacts.length})
@@ -109,7 +109,7 @@ export default function AdminInquiriesPage() {
         <button
           onClick={() => setActiveTab("subscribers")}
           className={`pb-4 text-sm font-semibold flex items-center gap-2 border-b-2 transition-colors ${
-            activeTab === "subscribers" ? "border-[#D6A34A] text-[#D6A34A]" : "border-transparent text-white/50 hover:text-white"
+            activeTab === "subscribers" ? "border-[#D6A34A] text-[#D6A34A]" : "border-transparent text-[#101312]/60 hover:text-[#101312]"
           }`}
         >
           <Mail className="w-4 h-4" /> Newsletter Subscribers ({subscribers.length})
@@ -121,11 +121,11 @@ export default function AdminInquiriesPage() {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-white/40">Status filter:</span>
+              <span className="text-xs text-[#101312]/50">Status filter:</span>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-1 rounded bg-white/5 border border-white/10 text-xs text-white"
+                className="px-3 py-1 rounded bg-[#FAF8F4] border border-[#D6A34A]/25 text-xs text-[#101312]"
               >
                 <option value="all">All Statuses ({contacts.length})</option>
                 <option value="new">New ({newCount})</option>
@@ -137,33 +137,33 @@ export default function AdminInquiriesPage() {
           </div>
 
           {loading ? (
-            <div className="text-white/30">Loading contact submissions...</div>
+            <div className="text-[#101312]/50">Loading contact submissions...</div>
           ) : filteredContacts.length === 0 ? (
-            <div className="card-dark p-8 text-center text-white/30 rounded-xl">
+            <div className="card-dark p-8 text-center text-[#101312]/50 rounded-xl">
               No contact submissions found matching this filter.
             </div>
           ) : (
             <div className="space-y-4">
               {filteredContacts.map((c) => (
-                <div key={c.id} className="card-dark p-6 rounded-xl border border-white/5 space-y-4">
+                <div key={c.id} className="card-dark p-6 rounded-xl border border-[#D6A34A]/25 space-y-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-1">
                       <div className="flex items-center gap-3">
-                        <span className="font-semibold text-white text-base">{c.name}</span>
+                        <span className="font-semibold text-[#101312] text-base">{c.name}</span>
                         {c.inquiry && (
-                          <span className="text-xs px-2.5 py-0.5 rounded bg-white/10 text-[#D6A34A] font-medium">
+                          <span className="text-xs px-2.5 py-0.5 rounded bg-gray-100 text-[#D6A34A] font-medium">
                             {c.inquiry}
                           </span>
                         )}
                         <span className={`text-xs px-2 py-0.5 rounded font-mono ${
                           c.status === "new" ? "bg-blue-500/20 text-blue-400 border border-blue-500/30" :
                           c.status === "accepted" ? "bg-green-500/20 text-green-400" :
-                          c.status === "rejected" ? "bg-red-500/20 text-red-400" : "bg-white/10 text-white/60"
+                          c.status === "rejected" ? "bg-red-500/20 text-red-400" : "bg-gray-100 text-[#101312]/60"
                         }`}>
                           {c.status}
                         </span>
                       </div>
-                      <div className="flex items-center gap-4 text-xs text-white/40">
+                      <div className="flex items-center gap-4 text-xs text-[#101312]/50">
                         <span>{c.email}</span>
                         {c.phone && <span>&bull; {c.phone}</span>}
                         <span>&bull; {new Date(c.created_at).toLocaleString()}</span>
@@ -174,7 +174,7 @@ export default function AdminInquiriesPage() {
                       <select
                         value={c.status}
                         onChange={(e) => handleStatusChange(c.id, e.target.value)}
-                        className="px-2.5 py-1 rounded bg-black/40 border border-white/10 text-xs text-white"
+                        className="px-2.5 py-1 rounded bg-white border border-[#D6A34A]/25 text-xs text-[#101312]"
                       >
                         <option value="new">Mark New</option>
                         <option value="reviewed">Mark Reviewed</option>
@@ -184,7 +184,7 @@ export default function AdminInquiriesPage() {
 
                       <a
                         href={`mailto:${c.email}?subject=Re: AfroNova Inquiry - ${c.inquiry || "General"}`}
-                        className="p-1.5 rounded bg-white/10 hover:bg-white/20 text-white/70 hover:text-white"
+                        className="p-1.5 rounded bg-gray-100 hover:bg-white/20 text-[#101312]/70 hover:text-[#101312]"
                         title="Reply via Email"
                       >
                         <Send className="w-4 h-4" />
@@ -192,7 +192,7 @@ export default function AdminInquiriesPage() {
 
                       <button
                         onClick={() => handleDeleteContact(c.id)}
-                        className="p-1.5 rounded text-white/30 hover:text-red-400"
+                        className="p-1.5 rounded text-[#101312]/50 hover:text-red-400"
                         title="Delete"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -200,7 +200,7 @@ export default function AdminInquiriesPage() {
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-lg bg-black/30 border border-white/5 text-sm text-white/80 leading-relaxed whitespace-pre-wrap">
+                  <div className="p-4 rounded-lg bg-black/30 border border-[#D6A34A]/25 text-sm text-[#101312]/80 leading-relaxed whitespace-pre-wrap">
                     {c.message}
                   </div>
                 </div>
@@ -214,15 +214,15 @@ export default function AdminInquiriesPage() {
       {activeTab === "subscribers" && (
         <div className="space-y-4">
           {loading ? (
-            <div className="text-white/30">Loading subscribers...</div>
+            <div className="text-[#101312]/50">Loading subscribers...</div>
           ) : subscribers.length === 0 ? (
-            <div className="card-dark p-8 text-center text-white/30 rounded-xl">
+            <div className="card-dark p-8 text-center text-[#101312]/50 rounded-xl">
               No newsletter subscribers yet.
             </div>
           ) : (
-            <div className="card-dark rounded-xl overflow-hidden border border-white/5">
+            <div className="card-dark rounded-xl overflow-hidden border border-[#D6A34A]/25">
               <table className="w-full text-left text-sm">
-                <thead className="bg-white/5 text-xs text-white/40 uppercase font-mono">
+                <thead className="bg-[#FAF8F4] text-xs text-[#101312]/50 uppercase font-mono">
                   <tr>
                     <th className="px-6 py-3">Email Address</th>
                     <th className="px-6 py-3">Source</th>
@@ -231,21 +231,21 @@ export default function AdminInquiriesPage() {
                     <th className="px-6 py-3 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-white/80">
+                <tbody className="divide-y divide-white/5 text-[#101312]/80">
                   {subscribers.map((s) => (
-                    <tr key={s.id} className="hover:bg-white/5 transition-colors">
-                      <td className="px-6 py-4 font-medium text-white">{s.email}</td>
-                      <td className="px-6 py-4 text-xs font-mono text-white/50">{s.source || "website"}</td>
+                    <tr key={s.id} className="hover:bg-[#FAF8F4] transition-colors">
+                      <td className="px-6 py-4 font-medium text-[#101312]">{s.email}</td>
+                      <td className="px-6 py-4 text-xs font-mono text-[#101312]/60">{s.source || "website"}</td>
                       <td className="px-6 py-4">
                         <span className="inline-flex items-center gap-1 text-xs text-green-400">
                           <CheckCircle className="w-3.5 h-3.5" /> Confirmed
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-xs text-white/40">{new Date(s.created_at).toLocaleDateString()}</td>
+                      <td className="px-6 py-4 text-xs text-[#101312]/50">{new Date(s.created_at).toLocaleDateString()}</td>
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => handleDeleteSubscriber(s.id)}
-                          className="p-1.5 text-white/30 hover:text-red-400 rounded"
+                          className="p-1.5 text-[#101312]/50 hover:text-red-400 rounded"
                           title="Remove"
                         >
                           <Trash2 className="w-4 h-4" />

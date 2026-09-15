@@ -69,12 +69,12 @@ export default function AdminTestimonialsPage() {
   return (
     <div className="p-8 max-w-7xl">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-display font-bold text-white">Testimonials</h1>
+        <h1 className="text-2xl font-display font-bold text-[#101312]">Testimonials</h1>
         <div className="flex items-center gap-4">
           <select
             value={localeFilter}
             onChange={(e) => setLocaleFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#D6A34A]"
+            className="px-3 py-1.5 rounded-lg bg-[#FAF8F4] border border-[#D6A34A]/25 text-sm text-[#101312] focus:outline-none focus:ring-2 focus:ring-[#D6A34A]"
           >
             <option value="all">All Locales</option>
             {LOCALES.map(l => (
@@ -95,10 +95,10 @@ export default function AdminTestimonialsPage() {
       {isEditing && (
         <form onSubmit={handleSubmit} className="card-dark p-6 rounded-xl mb-8 space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-white">
+            <h2 className="text-lg font-semibold text-[#101312]">
               {isCreating ? "Add New Testimonial" : "Edit Testimonial"}
             </h2>
-            <button type="button" onClick={resetForm} className="text-white/40 hover:text-white">
+            <button type="button" onClick={resetForm} className="text-[#101312]/50 hover:text-[#101312]">
               <X className="w-5 h-4" />
             </button>
           </div>
@@ -124,14 +124,14 @@ export default function AdminTestimonialsPage() {
           </div>
 
           <div>
-            <label className="text-sm text-white/60">Quote</label>
+            <label className="text-sm text-[#101312]/60">Quote</label>
             <textarea placeholder="What did they say?" value={form.quote}
               onChange={(e) => setForm({ ...form, quote: e.target.value })} className="input-dark w-full h-32" required />
           </div>
 
           <div className="flex justify-end gap-2">
             <button type="button" onClick={resetForm}
-              className="px-4 py-2 text-sm text-white/50 hover:text-white">Cancel</button>
+              className="px-4 py-2 text-sm text-[#101312]/60 hover:text-[#101312]">Cancel</button>
             <button type="submit" className="btn-primary flex items-center gap-2 text-sm px-4 py-2">
               <Save className="w-4 h-4" /> {isCreating ? "Create" : "Save"} Testimonial
                         </button>
@@ -157,7 +157,7 @@ export default function AdminTestimonialsPage() {
               ))}
             </div>
           ) : testimonials.length === 0 ? (
-            <div className="card-dark p-8 text-center text-white/30 rounded-xl">
+            <div className="card-dark p-8 text-center text-[#101312]/50 rounded-xl">
               No testimonials found. Create one above!
             </div>
           ) : (
@@ -168,9 +168,9 @@ export default function AdminTestimonialsPage() {
                     <Quote className="w-6 h-6 text-[#D6A34A]" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-white/80 italic">&quot;{t.quote}&quot;</p>
-                    <div className="flex items-center gap-2 text-xs text-white/40 mt-2">
-                      <span className="font-medium text-white/70">{t.author}</span>
+                    <p className="text-[#101312]/80 italic">&quot;{t.quote}&quot;</p>
+                    <div className="flex items-center gap-2 text-xs text-[#101312]/50 mt-2">
+                      <span className="font-medium text-[#101312]/70">{t.author}</span>
                       {t.role && <span>&bull; {t.role}</span>}
                       {t.organisation && <span>&bull; {t.organisation}</span>}
                       <span className="flex items-center gap-1"><Globe className="w-3 h-3" /> {t.locale}</span>
@@ -178,10 +178,10 @@ export default function AdminTestimonialsPage() {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    <button onClick={() => editTestimonial(t)} className="p-1.5 text-white/40 hover:text-white rounded" title="Edit">
+                    <button onClick={() => editTestimonial(t)} className="p-1.5 text-[#101312]/50 hover:text-[#101312] rounded" title="Edit">
                       <Edit className="w-4 h-4" />
                     </button>
-                    <button onClick={() => handleDelete(t.id)} className="p-1.5 text-white/40 hover:text-red-400 rounded" title="Delete">
+                    <button onClick={() => handleDelete(t.id)} className="p-1.5 text-[#101312]/50 hover:text-red-400 rounded" title="Delete">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>

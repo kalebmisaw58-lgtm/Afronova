@@ -18,8 +18,8 @@ function AdminGate({ children }: { children: ReactNode }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#101312]">
-        <div className="text-white/60">Loading admin…</div>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF8F4]">
+        <div className="text-[#9A6A31] font-semibold">Loading admin…</div>
       </div>
     );
   }
@@ -31,7 +31,7 @@ function AdminGate({ children }: { children: ReactNode }) {
 
   // Authenticated routes get the sidebar layout
   return (
-    <div className="flex min-h-screen bg-[#070908] text-white">
+    <div className="flex min-h-screen bg-[#FAF8F4] text-[#101312]">
       <AdminNav />
       <main className="flex-1 overflow-y-auto">{children}</main>
     </div>

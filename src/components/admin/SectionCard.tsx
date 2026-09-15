@@ -19,21 +19,21 @@ export default function SectionCard({
   updateValue, englishDefaults, dirtyIds,
 }: SectionCardProps) {
   return (
-    <div className="card-dark border border-white/5 rounded-xl overflow-hidden">
+    <div className="card-dark border border-[#D6A34A]/25 rounded-2xl overflow-hidden bg-white shadow-sm mb-4">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-4 text-left hover:bg-white/5 transition-colors"
+        className="w-full flex items-center justify-between p-4 text-left hover:bg-[#FAF8F4] transition-colors cursor-pointer"
       >
         <div className="flex items-center gap-3">
-          {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-          <span className="font-semibold text-white">{section.label}</span>
-          {section.desc && <span className="text-xs text-white/40">{section.desc}</span>}
+          {isExpanded ? <ChevronDown className="w-4 h-4 text-[#9A6A31]" /> : <ChevronRight className="w-4 h-4 text-[#9A6A31]" />}
+          <span className="font-bold text-[#101312] text-base">{section.label}</span>
+          {section.desc && <span className="text-xs text-[#101312]/60 font-medium">{section.desc}</span>}
         </div>
-        <span className="text-xs text-white/30">{items.length} keys</span>
+        <span className="text-xs font-bold text-[#9A6A31] bg-[#D6A34A]/12 px-2.5 py-1 rounded-full border border-[#D6A34A]/25">{items.length} keys</span>
       </button>
 
       {isExpanded && (
-        <div className="px-4 pb-4 space-y-4">
+        <div className="px-5 pb-5 space-y-4 border-t border-[#D6A34A]/15 pt-4 bg-[#FAF8F4]/50">
           {items.map((item) => (
             <KeyEditor
               key={item.id}

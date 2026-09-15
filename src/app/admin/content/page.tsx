@@ -318,26 +318,26 @@ export default function ContentManagerPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-display font-bold text-white">Website Content & Translations</h1>
-          <p className="text-white/45 text-sm mt-1">
+          <h1 className="text-3xl font-display font-bold text-[#101312]">Website Content & Translations</h1>
+          <p className="text-[#101312]/65 text-sm mt-1 font-medium">
             Manage multi-language UI strings across English, Amharic, French, Portuguese, and Arabic
           </p>
         </div>
 
         {/* View Switcher */}
-        <div className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10 shrink-0">
+        <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-gray-200 shadow-sm shrink-0">
           <button
             onClick={() => setViewMode("matrix")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
-              viewMode === "matrix" ? "bg-[#D6A34A] text-black shadow-md" : "text-white/60 hover:text-white"
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+              viewMode === "matrix" ? "bg-[#D6A34A] text-white shadow-sm" : "text-[#101312]/65 hover:text-[#101312] hover:bg-gray-100"
             }`}
           >
             <LayoutGrid className="w-4 h-4" /> 5-Language Matrix
           </button>
           <button
             onClick={() => setViewMode("single")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
-              viewMode === "single" ? "bg-[#D6A34A] text-black shadow-md" : "text-white/60 hover:text-white"
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+              viewMode === "single" ? "bg-[#D6A34A] text-white shadow-sm" : "text-[#101312]/65 hover:text-[#101312] hover:bg-gray-100"
             }`}
           >
             <List className="w-4 h-4" /> Single Locale Editor
@@ -347,13 +347,13 @@ export default function ContentManagerPage() {
 
       {/* Save message banner */}
       {saveMessage && (
-        <div className="p-3 mb-6 rounded-xl text-sm" style={{
+        <div className="p-4 mb-6 rounded-xl text-sm font-semibold shadow-sm" style={{
           background: saveMessage.startsWith("Error")
-            ? "rgba(154,106,49,0.12)" : "rgba(214,163,74,0.12)",
+            ? "rgba(154,106,49,0.12)" : "rgba(214,163,74,0.15)",
           border: "1px solid",
           borderColor: saveMessage.startsWith("Error")
-            ? "rgba(154,106,49,0.35)" : "rgba(214,163,74,0.35)",
-          color: saveMessage.startsWith("Error") ? "#F0D49A" : "#D6A34A",
+            ? "rgba(154,106,49,0.35)" : "rgba(214,163,74,0.40)",
+          color: saveMessage.startsWith("Error") ? "#9A6A31" : "#7A5323",
         }}>
           {saveMessage}
         </div>
@@ -363,25 +363,25 @@ export default function ContentManagerPage() {
       {viewMode === "matrix" && (
         <div className="space-y-6">
           {/* Controls toolbar */}
-          <div className="card-dark p-4 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="card-dark p-4 rounded-2xl border border-[#D6A34A]/25 bg-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-3 flex-1">
               <div className="relative flex-1 max-w-sm">
-                <Search className="w-4 h-4 text-white/30 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#101312]/40 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   placeholder="Search keys or translated text..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="input-dark pl-9 py-1.5 text-xs w-full"
+                  className="form-input pl-9 py-1.5 text-xs w-full"
                 />
               </div>
 
               <div className="flex items-center gap-2">
-                <Filter className="w-3.5 h-3.5 text-white/40" />
+                <Filter className="w-3.5 h-3.5 text-[#9A6A31]" />
                 <select
                   value={sectionFilter}
                   onChange={(e) => setSectionFilter(e.target.value)}
-                  className="px-2.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs text-white"
+                  className="form-input px-3 py-1.5 text-xs"
                 >
                   <option value="all">All Sections ({Object.keys(matrixData).length})</option>
                   {CONTENT_SECTIONS.map((s) => (
@@ -394,7 +394,7 @@ export default function ContentManagerPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={loadMatrix}
-                className="p-2 rounded bg-white/5 hover:bg-white/10 text-white/60 hover:text-white"
+                className="p-2.5 rounded-xl border border-gray-200 bg-white hover:bg-gray-100 text-[#101312]/70 hover:text-[#101312] transition-colors cursor-pointer"
                 title="Refresh Matrix"
               >
                 <RefreshCw className="w-4 h-4" />
@@ -402,7 +402,7 @@ export default function ContentManagerPage() {
               <button
                 onClick={saveAllMatrix}
                 disabled={saving || matrixDirtyKeys.size === 0}
-                className="btn-primary text-xs px-4 py-2 flex items-center gap-1.5"
+                className="btn-primary text-xs px-4 py-2 flex items-center gap-1.5 shadow-sm"
               >
                 <Save className="w-3.5 h-3.5" /> Save All Matrix Changes ({matrixDirtyKeys.size})
               </button>
@@ -411,33 +411,33 @@ export default function ContentManagerPage() {
 
           {/* Matrix Table */}
           {loading ? (
-            <div className="text-white/40 py-12 text-center">Loading 5-language matrix...</div>
+            <div className="text-[#101312]/60 py-12 text-center font-semibold">Loading 5-language matrix...</div>
           ) : filteredMatrixEntries.length === 0 ? (
-            <div className="card-dark p-8 text-center text-white/40 rounded-xl">
+            <div className="card-dark p-8 text-center text-[#101312]/60 bg-white border border-[#D6A34A]/25 rounded-2xl">
               No translation keys found matching search or section filter.
             </div>
           ) : (
-            <div className="card-dark rounded-xl border border-white/5 overflow-x-auto">
+            <div className="card-dark rounded-2xl border border-[#D6A34A]/25 bg-white shadow-sm overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
-                <thead className="bg-black/60 text-white/50 border-b border-white/10 uppercase font-mono">
+                <thead className="bg-[#FAF8F4] text-[#9A6A31] border-b border-[#D6A34A]/20 uppercase font-mono">
                   <tr>
-                    <th className="p-3 min-w-[160px] sticky left-0 bg-[#101312] z-10">Translation Key</th>
+                    <th className="p-3 min-w-[170px] sticky left-0 bg-[#FAF8F4] z-10 border-r border-[#D6A34A]/20 font-bold">Translation Key</th>
                     {LOCALES.map((l) => (
-                      <th key={l.code} className="p-3 min-w-[200px]">
+                      <th key={l.code} className="p-3 min-w-[200px] font-bold">
                         <span className="mr-1.5">{l.flag}</span>{l.label} ({l.code.toUpperCase()})
                       </th>
                     ))}
-                    <th className="p-3 w-16 text-right">Save</th>
+                    <th className="p-3 w-16 text-right font-bold">Save</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-white/80">
+                <tbody className="divide-y divide-gray-100 text-[#101312]">
                   {filteredMatrixEntries.map(([key, data]) => {
                     const isDirty = matrixDirtyKeys.has(key);
                     return (
-                      <tr key={key} className={`hover:bg-white/5 transition-colors ${isDirty ? "bg-[#D6A34A]/5" : ""}`}>
-                        <td className="p-3 font-mono text-[#D6A34A] sticky left-0 bg-[#101312] z-10 border-r border-white/5">
-                          <span className="block font-semibold truncate max-w-[150px]" title={key}>{key}</span>
-                          <span className="text-[10px] text-white/30 block uppercase font-sans mt-0.5">{data.section}</span>
+                      <tr key={key} className={`hover:bg-[#FAF8F4] transition-colors ${isDirty ? "bg-[#D6A34A]/10" : ""}`}>
+                        <td className="p-3 font-mono text-[#9A6A31] sticky left-0 bg-white z-10 border-r border-gray-200">
+                          <span className="block font-bold truncate max-w-[160px]" title={key}>{key}</span>
+                          <span className="text-[10px] text-[#101312]/50 block uppercase font-sans font-semibold mt-0.5">{data.section}</span>
                         </td>
                         {LOCALES.map((l) => (
                           <td key={l.code} className="p-2">
@@ -446,10 +446,10 @@ export default function ContentManagerPage() {
                               value={data.values[l.code] || ""}
                               onChange={(e) => updateMatrixValue(key, l.code, e.target.value)}
                               placeholder={`Translate to ${l.label}...`}
-                              className={`w-full p-2 rounded bg-black/40 border text-xs text-white focus:outline-none transition-colors ${
+                              className={`w-full p-2.5 rounded-xl border text-xs text-[#101312] bg-white focus:outline-none transition-colors ${
                                 l.code === "ar" ? "text-right dir-rtl" : ""
                               } ${
-                                !data.values[l.code] ? "border-amber-500/30" : "border-white/10 focus:border-[#D6A34A]"
+                                !data.values[l.code] ? "border-amber-500/40 bg-amber-50/20" : "border-gray-200 focus:border-[#D6A34A]"
                               }`}
                             />
                           </td>
@@ -458,8 +458,8 @@ export default function ContentManagerPage() {
                           <button
                             onClick={() => saveMatrixKey(key)}
                             disabled={!isDirty || saving}
-                            className={`p-1.5 rounded transition-all ${
-                              isDirty ? "bg-[#D6A34A] text-black hover:scale-105" : "text-white/20 hover:text-white/40"
+                            className={`p-2 rounded-xl transition-all cursor-pointer ${
+                              isDirty ? "bg-[#D6A34A] text-white hover:scale-105 shadow-sm" : "text-gray-300 hover:text-gray-400"
                             }`}
                             title="Save Key Across Languages"
                           >
@@ -480,13 +480,13 @@ export default function ContentManagerPage() {
       {viewMode === "single" && (
         <>
           {/* Locale selector + actions */}
-          <div className="flex flex-wrap items-center gap-4 mb-6 pb-4 border-b border-white/5">
+          <div className="flex flex-wrap items-center gap-4 mb-6 pb-4 border-b border-gray-200">
             <div className="flex items-center gap-3">
-              <Globe className="w-5 h-5 text-white/40" />
+              <Globe className="w-5 h-5 text-[#9A6A31]" />
               <select
                 value={selectedLocale}
                 onChange={(e) => setSelectedLocale(e.target.value)}
-                className="form-input py-2 text-sm"
+                className="form-input py-2 text-sm max-w-xs font-semibold"
               >
                 {LOCALES.map((l) => (
                   <option key={l.code} value={l.code}>{l.flag} {l.label} ({l.code})</option>
@@ -514,7 +514,7 @@ export default function ContentManagerPage() {
 
           {/* Search */}
           <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#101312]/40" />
             <input
               type="text"
               value={searchTerm}
@@ -526,7 +526,7 @@ export default function ContentManagerPage() {
 
           {/* Loading */}
           {loading && (
-            <div className="text-white/40 py-10 text-center">Loading content…</div>
+            <div className="text-[#101312]/60 py-10 text-center font-semibold">Loading content…</div>
           )}
 
           {/* Sections */}
@@ -566,9 +566,9 @@ export default function ContentManagerPage() {
                 ))}
 
               {Object.keys(filteredGrouped).length === 0 && !loading && (
-                <div className="text-center py-12 text-white/40">
-                  <p>No content found for this locale.</p>
-                  <p className="text-sm mt-2">Click &lsquo;Import English Defaults&rsquo; to create translation keys.</p>
+                <div className="text-center py-12 text-[#101312]/60 bg-white rounded-2xl border border-[#D6A34A]/25 p-8">
+                  <p className="font-semibold text-base">No content found for this locale.</p>
+                  <p className="text-sm mt-2 text-[#101312]/60">Click &lsquo;Import English Defaults&rsquo; to create translation keys.</p>
                 </div>
               )}
             </div>

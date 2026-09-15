@@ -169,8 +169,8 @@ export default function AdminPartnersPage() {
     <div className="p-8 max-w-7xl">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-display font-bold text-white">Partners ({partners.length})</h1>
-          <p className="text-white/40 text-sm mt-1">Manage partner organizations, logos, and localized role descriptions</p>
+          <h1 className="text-2xl font-display font-bold text-[#101312]">Partners ({partners.length})</h1>
+          <p className="text-[#101312]/50 text-sm mt-1">Manage partner organizations, logos, and localized role descriptions</p>
         </div>
         {!isEditing && (
           <div className="flex items-center gap-3">
@@ -194,8 +194,8 @@ export default function AdminPartnersPage() {
       {isEditing && (
         <form onSubmit={handleSubmit} className="card-dark p-6 rounded-xl mb-8 space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-white">{isCreating ? "Add New Partner" : "Edit Partner"}</h2>
-            <button type="button" onClick={resetForm} className="text-white/40 hover:text-white">
+            <h2 className="text-lg font-semibold text-[#101312]">{isCreating ? "Add New Partner" : "Edit Partner"}</h2>
+            <button type="button" onClick={resetForm} className="text-[#101312]/50 hover:text-[#101312]">
               <X className="w-5 h-4" />
             </button>
           </div>
@@ -212,7 +212,7 @@ export default function AdminPartnersPage() {
             <input type="color" value={form.accent}
               onChange={(e) => setForm({ ...form, accent: e.target.value })} className="input-dark h-10" />
             <div className="sm:col-span-2 space-y-2">
-              <label className="text-xs text-white/60 font-medium flex items-center justify-between">
+              <label className="text-xs text-[#101312]/60 font-medium flex items-center justify-between">
                 <span>Partner Logo</span>
                 <label className="text-xs text-[#D6A34A] hover:underline cursor-pointer flex items-center gap-1">
                   <Upload className="w-3.5 h-3.5" /> Upload Logo File
@@ -245,10 +245,10 @@ export default function AdminPartnersPage() {
           </div>
 
           <div className="space-y-4">
-            <label className="text-sm text-white/60">Per-Language Descriptions</label>
+            <label className="text-sm text-[#101312]/60">Per-Language Descriptions</label>
             {Object.entries(descriptions).map(([locale, d]: [string, any]) => (
-              <div key={locale} className="border border-white/10 rounded-lg p-4 space-y-2">
-                <h4 className="text-sm font-medium text-white/60 flex items-center gap-1">
+              <div key={locale} className="border border-[#D6A34A]/25 rounded-lg p-4 space-y-2">
+                <h4 className="text-sm font-medium text-[#101312]/60 flex items-center gap-1">
                   <Globe className="w-4 h-4" /> {locale.toUpperCase()}
                 </h4>
                 <input type="text" placeholder="Role / title" value={d.role}
@@ -263,7 +263,7 @@ export default function AdminPartnersPage() {
 
           <div className="flex justify-end gap-2">
             <button type="button" onClick={resetForm}
-              className="px-4 py-2 text-sm text-white/50 hover:text-white">Cancel</button>
+              className="px-4 py-2 text-sm text-[#101312]/60 hover:text-[#101312]">Cancel</button>
             <button type="submit" className="btn-primary flex items-center gap-2 text-sm px-4 py-2">
               <Save className="w-4 h-4" /> {isCreating ? "Create" : "Save"} Partner
             </button>
@@ -286,7 +286,7 @@ export default function AdminPartnersPage() {
               ))}
             </div>
           ) : partners.length === 0 ? (
-            <div className="card-dark p-8 text-center text-white/30 rounded-xl">
+            <div className="card-dark p-8 text-center text-[#101312]/50 rounded-xl">
               No partners found. Create one above!
             </div>
           ) : (
@@ -302,8 +302,8 @@ export default function AdminPartnersPage() {
                     height={48}
                   />
                   <div>
-                    <h3 className="font-medium text-white">{p.name}</h3>
-                    <div className="flex items-center gap-2 text-xs text-white/40 mt-1">
+                    <h3 className="font-medium text-[#101312]">{p.name}</h3>
+                    <div className="flex items-center gap-2 text-xs text-[#101312]/50 mt-1">
                       {p.category_key && <span className="flex items-center gap-1"><Tag className="w-3 h-3" />{p.category_key.replace("cat_", "")}</span>}
                       {p.featured && <span className="text-[#D6A34A]">Featured</span>}
                     </div>
@@ -311,10 +311,10 @@ export default function AdminPartnersPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <button onClick={() => editPartner(p)} className="p-1.5 text-white/40 hover:text-white rounded" title="Edit">
+                  <button onClick={() => editPartner(p)} className="p-1.5 text-[#101312]/50 hover:text-[#101312] rounded" title="Edit">
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button onClick={() => handleDelete(p.id)} className="p-1.5 text-white/40 hover:text-red-400 rounded" title="Delete">
+                  <button onClick={() => handleDelete(p.id)} className="p-1.5 text-[#101312]/50 hover:text-red-400 rounded" title="Delete">
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>

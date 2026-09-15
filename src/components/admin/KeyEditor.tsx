@@ -20,13 +20,13 @@ export default function KeyEditor({ item, updateValue, englishRef, isDirty }: Ke
     item.key.includes("theme");
 
   return (
-    <div className="space-y-1">
+    <div className="space-y-1.5 p-3 rounded-xl bg-white border border-gray-200/80 shadow-xs">
       <div className="flex items-center gap-2">
-        <code className="text-xs text-white/40 font-mono bg-white/5 px-2 py-1 rounded">
+        <code className="text-xs text-[#9A6A31] font-mono font-bold bg-[#D6A34A]/12 border border-[#D6A34A]/25 px-2.5 py-0.5 rounded-md">
           {item.key}
         </code>
         {isDirty && (
-          <span className="w-2 h-2 rounded-full bg-[#F0B84F] animate-pulse" title="Unsaved changes" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#D6A34A] animate-pulse" title="Unsaved changes" />
         )}
       </div>
 
@@ -47,8 +47,8 @@ export default function KeyEditor({ item, updateValue, englishRef, isDirty }: Ke
       )}
 
       {englishRef && item.value !== englishRef && (
-        <p className="text-xs text-white/30 mt-1 italic line-clamp-2">
-          EN: {englishRef}
+        <p className="text-xs text-[#101312]/60 mt-1 italic font-medium line-clamp-2">
+          EN Default: {englishRef}
         </p>
       )}
     </div>
