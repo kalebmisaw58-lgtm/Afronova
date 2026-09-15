@@ -1242,6 +1242,7 @@ const LanguageContext = createContext<LanguageContextType>({
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
+  const [dynamicTranslations, setDynamicTranslations] = useState<Record<string, string>>({});
   const isRTL = RTL_LOCALES.includes(locale);
   const setLocale = (l: Locale) => setLocaleState(l);
 
@@ -1251,6 +1252,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     html.setAttribute("dir", isRTL ? "rtl" : "ltr");
   }, [locale, isRTL]);
 
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`/api/content?locale=${locale}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled && data.success && data.translations) {
+          setDynamicTranslations(data.translations);
+        }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [locale]);
+
   const formatFallbackKey = (key: string): string => {
     return key
       .replace(/_/g, " ")
@@ -1258,7 +1272,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   const t = (key: string): string =>
-    translations[locale]?.[key] ?? translations["en"]?.[key] ?? formatFallbackKey(key);
+    dynamicTranslations[key] ?? translations[locale]?.[key] ?? translations["en"]?.[key] ?? formatFallbackKey(key);
 
   return (
     <LanguageContext.Provider value={{ locale, setLocale, t, isRTL }}>

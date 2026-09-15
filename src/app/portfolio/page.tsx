@@ -4,10 +4,22 @@ import { useState, useEffect, useCallback } from "react";
 import { Play, Calendar, MapPin, ExternalLink, ChevronLeft, ChevronRight, X } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
+import { getDbPortfolioGalleryImages, DEFAULT_GALLERY_IMAGES } from "@/lib/portfolio";
 
 export default function PortfolioPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
+  const [dbGalleryImages, setDbGalleryImages] = useState<string[]>(DEFAULT_GALLERY_IMAGES);
+
+  useEffect(() => {
+    let active = true;
+    void getDbPortfolioGalleryImages(locale).then((imgs) => {
+      if (active && imgs && imgs.length > 0) {
+        setDbGalleryImages(imgs);
+      }
+    });
+    return () => { active = false; };
+  }, [locale]);
 
   const featuredProjects = [
     {
@@ -157,7 +169,9 @@ export default function PortfolioPage() {
             {galleryItems.map((label, i) => {
               const translatedVal = t(`pf_gal${i + 1}`);
               const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
-              const imgUrl = hasCustomImg ? translatedVal : defaultGalleryImages[i % defaultGalleryImages.length];
+              const dbImg = dbGalleryImages[i];
+              const hasDbImg = dbImg && (dbImg.startsWith("http") || dbImg.startsWith("/"));
+              const imgUrl = hasCustomImg ? translatedVal : hasDbImg ? dbImg : defaultGalleryImages[i % defaultGalleryImages.length];
               const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
               const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
               const isVideo = i === 4;
@@ -216,7 +230,9 @@ export default function PortfolioPage() {
         const curIdx = activeLightboxIndex;
         const translatedVal = t(`pf_gal${curIdx + 1}`);
         const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
-        const currentImg = hasCustomImg ? translatedVal : defaultGalleryImages[curIdx % defaultGalleryImages.length];
+        const dbImg = dbGalleryImages[curIdx];
+        const hasDbImg = dbImg && (dbImg.startsWith("http") || dbImg.startsWith("/"));
+        const currentImg = hasCustomImg ? translatedVal : hasDbImg ? dbImg : defaultGalleryImages[curIdx % defaultGalleryImages.length];
         const currentLabel = galleryItems[curIdx];
         const isVideo = curIdx === 4;
 
