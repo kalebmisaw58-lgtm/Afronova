@@ -22,7 +22,6 @@ export interface Partner {
 
 export const partners: Partner[] = [
   { name: "African Union",            initials: "AU",  categoryKey: "cat_institutional", accent: "#D6A34A", logo: "african-union.png",  website: "https://au.int",                descKey: "p_au_desc",  roleKey: "p_au_role",  featured: true },
-  { name: "PATIC",                    initials: "PATIC", categoryKey: "cat_institutional", accent: "#B9853B", logo: "patic.png",         website: "https://patic.org",             descKey: "p_eca_desc", roleKey: "p_eca_role", featured: true },
   { name: "Legendary Gold",           initials: "LG",  categoryKey: "cat_strategic",     accent: "#F0B84F", logo: "legendary-gold.png",website: "https://legendarygold.co.uk",      descKey: "p_lg_desc",  roleKey: "p_lg_role",  featured: true },
   { name: "British Council",          initials: "BC",  categoryKey: "cat_cultural",      accent: "#9A6A31", logo: "british-council.png",website: "https://britishcouncil.org",     descKey: "p_bc_desc",  roleKey: "p_bc_role" },
   { name: "Ethiopian Airlines",       initials: "ET",  categoryKey: "cat_corporate",     accent: "#D6A34A", logo: "ethiopian-airlines.png", website: "https://ethiopianairlines.com",  descKey: "p_ea_desc",  roleKey: "p_ea_role", featured: true },
