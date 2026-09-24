@@ -5,7 +5,9 @@ import Image from "next/image";
 import {
   ArrowRight, Star, Globe2, Camera, Megaphone,
   ChevronRight, Calendar, MapPin, BookOpen,
-  Printer, CheckCircle, Play, ExternalLink,
+  CheckCircle, Play, ExternalLink, Users2, Building2,
+  Landmark, Sparkles, Layers, Handshake, ShieldCheck, Compass,
+  Briefcase, GraduationCap, Award
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -17,32 +19,130 @@ import { partners as partnerList } from "@/lib/partners";
 export default function HomePage() {
   const { t } = useLanguage();
 
-  const services = [
-    { icon: Calendar, title: t("svc1_title"), description: t("svc1_desc"), href: "/services#event-management", iconBg: "rgba(214,163,74,0.15)", iconColor: "#9A6A31" },
-    { icon: Camera,   title: t("svc2_title"), description: t("svc2_desc"), href: "/services#multimedia",       iconBg: "rgba(185,133,59,0.15)", iconColor: "#9A6A31" },
-    { icon: Megaphone,title: t("svc3_title"), description: t("svc3_desc"), href: "/services#advertising",      iconBg: "rgba(154,106,49,0.15)",  iconColor: "#9A6A31" },
-    { icon: Printer,  title: t("svc4_title"), description: t("svc4_desc"), href: "/services#print-brand",      iconBg: "rgba(240,184,79,0.15)", iconColor: "#9A6A31" },
-    { icon: BookOpen, title: t("svc5_title"), description: t("svc5_desc"), href: "/services#publication",      iconBg: "rgba(154,106,49,0.15)",  iconColor: "#9A6A31" },
+  const sixPillars = [
+    {
+      icon: Calendar,
+      title: "Event Management & Facilitation",
+      description: "Cultural festivals, business forums, summits and diplomatic gatherings executed with precision.",
+      href: "/services#event-management",
+      accent: "#9A6A31"
+    },
+    {
+      icon: Camera,
+      title: "Multimedia Production & Storytelling",
+      description: "Documentaries, broadcast coverage, video production and high-impact digital storytelling.",
+      href: "/services#multimedia",
+      accent: "#B9853B"
+    },
+    {
+      icon: Megaphone,
+      title: "Strategic Communications & Advertising",
+      description: "Pan-African brand campaigns, media relations and culturally grounded public relations.",
+      href: "/services#advertising",
+      accent: "#D6A34A"
+    },
+    {
+      icon: BookOpen,
+      title: "Publishing & Knowledge Media",
+      description: "Annual reports, cultural catalogues, policy papers and Pan-African publications.",
+      href: "/services#publication",
+      accent: "#9A6A31"
+    },
+    {
+      icon: Handshake,
+      title: "Strategic Engagement",
+      description: "Building enduring relationships, diplomatic bridges, and multi-stakeholder strategic engagement across Africa and globally.",
+      href: "/services#strategic-engagement",
+      accent: "#B9853B"
+    },
+    {
+      icon: Layers,
+      title: "Pan-African Projects & Initiatives",
+      description: "We conceptualize, develop, coordinate, and implement impactful Pan-African projects and initiatives that bring together institutions, communities, partners, and resources around shared continental priorities.",
+      href: "/services#pan-african-projects",
+      accent: "#D6A34A"
+    },
   ];
 
   const stats = [
-    { value: "50+",  label: t("stat1_label") },
-    { value: "5",    label: t("stat2_label") },
-    { value: "14+",  label: t("stat3_label") },
-    { value: "10K+", label: t("stat4_label") },
+    { value: "10+",  label: t("stat1_label") },
+    { value: "6",    label: t("stat2_label") },
+    { value: "15+",  label: t("stat3_label") },
+    { value: "10+",  label: "Pan-African Initiatives" },
   ];
 
-  const reasons = [
-    { title: t("why1_title"), desc: t("why1_desc"), color: "#9A6A31" },
-    { title: t("why2_title"), desc: t("why2_desc"), color: "#B9853B" },
-    { title: t("why3_title"), desc: t("why3_desc"), color: "#D6A34A" },
-    { title: t("why4_title"), desc: t("why4_desc"), color: "#9A6A31" },
+  const whyAfroNova = [
+    {
+      title: "Cultural Intelligence",
+      desc: "We understand Africa beyond stereotypes, its cultures, histories, institutions, audiences, and contemporary realities.",
+      icon: Compass,
+      color: "#9A6A31"
+    },
+    {
+      title: "Institutional Access",
+      desc: "Based in Addis Ababa, AfroNova operates within an ecosystem of governments, diplomatic missions, international organizations, media, business, and cultural institutions.",
+      icon: Landmark,
+      color: "#B9853B"
+    },
+    {
+      title: "Continental Perspective",
+      desc: "We bring together African and global perspectives to create platforms that cross borders and disciplines.",
+      icon: Globe2,
+      color: "#D6A34A"
+    },
+    {
+      title: "Creative Excellence",
+      desc: "We combine African creativity with contemporary production, media, technology, and storytelling.",
+      icon: Sparkles,
+      color: "#9A6A31"
+    },
+    {
+      title: "Strategic Partnership",
+      desc: "We don't simply deliver projects. We build relationships and platforms designed for long-term value.",
+      icon: ShieldCheck,
+      color: "#B9853B"
+    },
+  ];
+
+  const whoWeWorkWith = [
+    { title: "Governments & Public Institutions", icon: Landmark },
+    { title: "Diplomatic Missions", icon: Globe2 },
+    { title: "African & International Organizations", icon: Building2 },
+    { title: "Corporations & Brands", icon: Briefcase },
+    { title: "Media & Broadcasters", icon: Megaphone },
+    { title: "Cultural & Creative Institutions", icon: Sparkles },
+    { title: "Foundations & NGOs", icon: Users2 },
+    { title: "Artists, Creatives & Cultural Leaders", icon: Award },
   ];
 
   const featuredWork = [
-    { title: t("fw1_title"), type: t("fw1_type"), desc: t("fw1_desc"), accent: "#9A6A31", image: "/heroes/kwame-nkrumah.jpg", href: "/africa-celebrates-2026", isEvent: true },
-    { title: t("fw2_title"), type: t("fw2_type"), desc: t("fw2_desc"), accent: "#C96B4B", image: "/heroes/miriam-makeba.jpg", href: "/portfolio", isEvent: false },
-    { title: t("fw3_title"), type: t("fw3_type"), desc: t("fw3_desc"), accent: "#6E8B5B", image: "/heroes/wangari-maathai.jpg", href: "/portfolio", isEvent: false },
+    {
+      title: "Africa Celebrates 2025, 5th Edition",
+      type: "Flagship Platform",
+      desc: "Lead Implementing Partner in Ethiopia translating the vision of 40+ nations into forums, fashion galas, and trade summits.",
+      accent: "#9A6A31",
+      image: "/heroes/kwame-nkrumah.jpg",
+      href: "/africa-celebrates-2026",
+      isEvent: true
+    },
+    {
+      title: "AFRIMA 2025 Music Conference",
+      type: "Media Partnership",
+      desc: "Full event facilitation and media coverage for All Africa Music Awards' World Media Calendar Unveiling.",
+      accent: "#B9853B",
+      image: "/heroes/miriam-makeba.jpg",
+      href: "/portfolio",
+      isEvent: false
+    },
+    {
+      title: "PATIC Industrial Launch",
+      type: "Pan-African Initiative",
+      desc: "Pan-African Transcontinental Industrial Corporation launch event connecting trade delegates across borders.",
+      accent: "#D6A34A",
+      image: "/heroes/haile-selassie.jpg",
+      href: "/portfolio",
+      isEvent: false
+    },
   ];
 
   return (
@@ -51,25 +151,27 @@ export default function HomePage() {
       <HeroSlideshow />
 
       {/* ══ 2. AFRICA CELEBRATES COUNTDOWN ══════════════════ */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #181B1A 0%, #252019 50%, #181B1A 100%)" }} />
         <div className="absolute inset-0 adinkra-bg opacity-30 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 accent-line" />
         <div className="absolute bottom-0 left-0 right-0 accent-line" />
         <div className="container-custom relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-            <div className="text-center lg:text-left space-y-3 max-w-sm">
+            <div className="text-center lg:text-left space-y-3 max-w-xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
                    style={{ background: "rgba(214,163,74,0.18)", border: "1px solid rgba(214,163,74,0.45)", color: "#F0B84F" }}>
-                <Star className="w-3 h-3 fill-[#F0B84F] text-[#F0B84F]" /> {t("countdown_badge")}
+                <Star className="w-3 h-3 fill-[#F0B84F] text-[#F0B84F]" /> AfroNova Flagship Partner
               </div>
-              <h2 className="text-4xl md:text-5xl font-display font-black text-white leading-none">
+              <h2 className="text-3xl md:text-4xl font-display font-black text-white leading-tight">
                 {t("countdown_title1")} <span className="text-gradient">{t("countdown_title2")}</span> {t("countdown_title3")}
               </h2>
-              <p className="text-white/70 text-sm leading-relaxed">{t("countdown_theme")}</p>
-              <div className="flex flex-wrap gap-4 text-sm text-white/70 justify-center lg:justify-start pt-1">
+              <p className="text-white/80 text-sm leading-relaxed font-medium">
+                Africa Celebrates brings together culture, enterprise, innovation, dialogue, creativity, and continental connection on one Pan-African platform. AfroNova serves as a lead implementing partner in Ethiopia, helping translate the vision into experiences, forums, partnerships, and storytelling.
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs text-white/70 justify-center lg:justify-start pt-1 font-semibold">
                 <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#F0B84F]" />{t("countdown_date")}</span>
-                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#F0B84F]" />{t("countdown_venue")}</span>
+                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#F0B84F]" />African Union HQ, Addis Ababa</span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">
@@ -88,79 +190,158 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ 3. STATS ══════════════════════════════════════════ */}
-      <section className="border-y border-gray-200 py-14 bg-white/70 backdrop-blur-sm">
+      {/* ══ 3. STATS BAR ══════════════════════════════════════ */}
+      <section className="border-y border-gray-200 py-12 bg-white/80 backdrop-blur-sm">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map(({ value, label }) => (
               <div key={label} className="text-center">
                 <p className="text-4xl md:text-5xl font-display font-black text-gradient mb-1">{value}</p>
-                <p className="text-[#101312]/65 text-sm font-semibold">{label}</p>
+                <p className="text-[#101312]/75 text-sm font-semibold">{label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ 4. WHO WE ARE ════════════════════════════════════ */}
-      <section className="section-padding bg-transparent">
+      {/* ══ 4. AFRICA & ITS GLOBAL DIASPORA ════════════════════ */}
+      <section className="section-padding bg-white/50 backdrop-blur-[2px]">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <SectionHeader eyebrow={t("who_eyebrow")} title={t("who_title")} titleHighlight={t("who_highlight")} />
-              <p className="text-[#101312]/75 leading-relaxed text-lg font-medium">{t("who_body1")}</p>
-              <p className="text-[#101312]/70 leading-relaxed font-medium">
-                {t("who_body2")} <strong className="text-[#9A6A31]">{t("who_partner")}</strong>.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-1">
-                {[t("tag_events"), t("tag_media"), t("tag_advertising"), t("tag_publishing"), t("tag_merch")].map((tag) => (
-                  <span key={tag} className="px-3.5 py-1.5 rounded-full text-xs font-bold"
-                        style={{ background: "rgba(214,163,74,0.12)", border: "1px solid rgba(214,163,74,0.30)", color: "#9A6A31" }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <Link href="/about" className="btn-primary inline-flex">{t("who_story")} <ArrowRight className="w-4 h-4" /></Link>
-            </div>
-            <div className="space-y-4">
-              <div className="card-dark p-7 space-y-3">
-                <p className="text-[#9A6A31] text-xs uppercase tracking-widest font-bold">{t("who_mission_label")}</p>
-                <p className="text-[#101312]/80 leading-relaxed font-medium">{t("who_mission")}</p>
-              </div>
-              <div className="card-dark p-7 space-y-3">
-                <p className="text-[#9A6A31] text-xs uppercase tracking-widest font-bold">{t("who_vision_label")}</p>
-                <p className="text-[#101312]/80 leading-relaxed font-medium">{t("who_vision")}</p>
-              </div>
-              <div className="card-dark p-5 flex items-center gap-4" style={{ borderLeft: "4px solid #D6A34A" }}>
-                <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                     style={{ background: "linear-gradient(135deg,#9A6A31,#D6A34A)" }}>
-                  <Globe2 className="w-5 h-5 text-white" />
-                </div>
-                <p className="text-[#101312]/75 text-sm leading-relaxed font-medium">
-                  <strong className="text-[#101312]">{t("who_location")}</strong> {t("who_location_desc")}
+          <div className="card-dark p-8 md:p-12 rounded-3xl relative overflow-hidden"
+               style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,246,240,0.95) 100%)", border: "1px solid rgba(214,163,74,0.30)" }}>
+            <div className="grid md:grid-cols-12 gap-8 items-center relative z-10">
+              <div className="md:col-span-8 space-y-4">
+                <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-[#9A6A31] bg-[#D6A34A]/15 border border-[#D6A34A]/30">
+                  Global Connection
+                </span>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-[#101312]">
+                  Africa &amp; Its <span className="text-gradient">Global Diaspora</span>
+                </h2>
+                <p className="text-[#101312]/80 text-base md:text-lg leading-relaxed font-medium">
+                  Africa&apos;s story does not stop at its shores. AfroNova creates platforms that connect the continent with its global African family, bringing together culture, ideas, talent, enterprise, and shared identity across borders.
                 </p>
+              </div>
+              <div className="md:col-span-4 flex justify-center md:justify-end">
+                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl border border-[#D6A34A]/40"
+                     style={{ background: "linear-gradient(135deg,#9A6A31,#D6A34A)" }}>
+                  <Globe2 className="w-12 h-12 md:w-16 md:h-16 text-white animate-pulse" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ 5. SERVICES ══════════════════════════════════════ */}
+      {/* ══ 5. FROM ADDIS ABABA TO THE WORLD ═══════════════════ */}
+      <section className="section-padding bg-transparent">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <SectionHeader
+                eyebrow="Continental Capital"
+                title="FROM ADDIS ABABA"
+                titleHighlight="TO THE WORLD"
+              />
+              <p className="text-[#101312]/85 leading-relaxed text-lg md:text-xl font-medium">
+                Based in Addis Ababa, one of Africa&apos;s principal centers of diplomacy and continental affairs, AfroNova works at the intersection of African culture, institutions, creativity, media, and global engagement.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                {["Diplomatic Capital", "African Union City", "Cross-Border Media", "Pan-African Partnerships"].map((pill) => (
+                  <span key={pill} className="px-4 py-2 rounded-xl text-xs font-bold bg-white border border-[#D6A34A]/35 text-[#9A6A31] shadow-sm">
+                    {pill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="card-dark p-8 rounded-2xl space-y-5 border-l-4 border-[#D6A34A]">
+              <div className="flex items-center gap-3 text-[#9A6A31]">
+                <Landmark className="w-6 h-6" />
+                <h3 className="font-display font-bold text-xl text-[#101312]">Headquarters &amp; Global Reach</h3>
+              </div>
+              <p className="text-[#101312]/75 text-sm leading-relaxed font-medium">
+                Headquartered at <strong className="text-[#101312]">Africa Avenue, Bole Sub-City, Woreda 02, House No. New, Addis Ababa, Ethiopia</strong>, AfroNova operates as a strategic bridge connecting African institutions with audiences and markets worldwide.
+              </p>
+              <div className="pt-2">
+                <Link href="/about" className="btn-primary inline-flex text-sm px-6 py-2.5">
+                  Learn More About AfroNova <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 6. WHY AFRONOVA ══════════════════════════════════ */}
+      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
+        <div className="container-custom">
+          <SectionHeader
+            eyebrow="Why AfroNova"
+            title="African by Origin."
+            titleHighlight="Global by Outlook."
+            centered
+            className="mb-12"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyAfroNova.map(({ title, desc, icon: Icon, color }) => (
+              <div key={title} className="card-dark p-7 space-y-4 hover:-translate-y-1 transition-all" style={{ borderTopWidth: 3, borderTopColor: color }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white shadow-sm border border-gray-100">
+                  <Icon className="w-6 h-6" style={{ color }} />
+                </div>
+                <h3 className="text-[#101312] font-display font-bold text-lg">{title}</h3>
+                <p className="text-[#101312]/75 text-sm leading-relaxed font-medium">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 7. WHO WE WORK WITH ═══════════════════════════════ */}
+      <section className="section-padding bg-transparent">
+        <div className="container-custom">
+          <SectionHeader
+            eyebrow="Strategic Network"
+            title="WHO WE"
+            titleHighlight="WORK WITH"
+            description="Connecting key stakeholders across the continent and global ecosystem."
+            centered
+            className="mb-12"
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {whoWeWorkWith.map(({ title, icon: Icon }) => (
+              <div key={title} className="card-dark p-6 rounded-2xl flex flex-col items-center text-center space-y-3 hover:-translate-y-1 transition-all border border-gray-200/80 bg-white">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#D6A34A]/12 text-[#9A6A31]">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <p className="text-[#101312] text-sm font-bold leading-tight">{title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 8. SIX PILLARS OF PAN-AFRICAN EXCELLENCE ═════════ */}
       <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <SectionHeader eyebrow={t("services_eyebrow")} title={t("services_title")} titleHighlight={t("services_highlight")} description={t("services_desc")} />
+            <SectionHeader
+              eyebrow="What We Do"
+              title="Six Pillars of"
+              titleHighlight="Pan-African Excellence"
+              description="End-to-end capabilities across events, media, advertising, publishing, strategic engagement, and Pan-African projects."
+            />
             <Link href="/services" className="btn-outline shrink-0">{t("services_all")} <ChevronRight className="w-4 h-4" /></Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map(({ icon: Icon, title, description, href, iconBg, iconColor }) => (
-              <Link key={title} href={href} className="card-dark p-7 group hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style={{ background: iconBg }}>
-                  <Icon className="w-6 h-6" style={{ color: iconColor }} />
+            {sixPillars.map(({ icon: Icon, title, description, href, accent }) => (
+              <Link key={title} href={href} className="card-dark p-7 group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between" style={{ borderTopWidth: 3, borderTopColor: accent }}>
+                <div>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform bg-[#D6A34A]/12">
+                    <Icon className="w-6 h-6" style={{ color: accent }} />
+                  </div>
+                  <h3 className="text-[#101312] font-display font-bold text-lg mb-3">{title}</h3>
+                  <p className="text-[#101312]/75 text-sm leading-relaxed mb-5 font-medium">{description}</p>
                 </div>
-                <h3 className="text-[#101312] font-display font-bold text-lg mb-3">{title}</h3>
-                <p className="text-[#101312]/70 text-sm leading-relaxed mb-5 font-medium">{description}</p>
-                <span className="text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: iconColor }}>
+                <span className="text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all mt-auto" style={{ color: accent }}>
                   {t("services_learn")} <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
@@ -169,26 +350,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ 6. WHY AFRONOVA ══════════════════════════════════ */}
+      {/* ══ 9. FEATURED WORK ════════════════════════════════ */}
       <section className="section-padding bg-transparent">
-        <div className="container-custom">
-          <SectionHeader eyebrow={t("why_eyebrow")} title={t("why_title")} titleHighlight={t("why_highlight")} centered className="mb-12" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {reasons.map(({ title, desc, color }) => (
-              <div key={title} className="card-dark p-6 space-y-3 hover:-translate-y-1 transition-all" style={{ borderTopWidth: 3, borderTopColor: color }}>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 shrink-0" style={{ color }} />
-                  <h4 className="text-[#101312] font-bold">{title}</h4>
-                </div>
-                <p className="text-[#101312]/70 text-sm leading-relaxed font-medium">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 7. FEATURED WORK ════════════════════════════════ */}
-      <section className="section-padding bg-white/60 backdrop-blur-[2px]">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <SectionHeader eyebrow={t("work_eyebrow")} title={t("work_title")} titleHighlight={t("work_highlight")} description={t("work_desc")} />
@@ -217,27 +380,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ 8. PARTNERS ══════════════════════════════════════ */}
-      <section className="py-16 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
-        <div className="container-custom">
-          <p className="text-center text-[#101312]/60 text-xs uppercase tracking-widest font-bold mb-8">{t("partners_label")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+      {/* ══ 10. VERY SMALL TRUSTED PARTNERS ══════════════════ */}
+      <section className="py-12 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
+        <div className="container-custom text-center">
+          <p className="text-[#101312]/60 text-xs uppercase tracking-widest font-bold mb-6">{t("partners_label")}</p>
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
             {partnerList.map((p) => (
-              <div key={p.name} className="flex items-center justify-center transition-transform duration-200 hover:scale-110">
-                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={66} height={66} />
+              <div key={p.name} className="flex items-center justify-center transition-transform duration-200 hover:scale-105 opacity-85 hover:opacity-100">
+                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={42} height={42} />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ 9. CTA ═══════════════════════════════════════════ */}
+      {/* ══ 11. CTA (SHAPE THE NEXT CHAPTER OF AFRICA) ════════ */}
       <section className="py-20 bg-white/70 backdrop-blur-sm border-t border-gray-200">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <SectionHeader eyebrow={t("cta_eyebrow")} title={t("cta_title")} titleHighlight={t("cta_highlight")} centered />
-            <p className="text-[#101312]/75 text-lg leading-relaxed font-medium">{t("cta_body")}</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-[#9A6A31] bg-[#D6A34A]/15 border border-[#D6A34A]/30">
+              Partner With Us
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-[#101312]">
+              Shape the Next <span className="text-gradient">Chapter of Africa</span>
+            </h2>
+            <p className="text-[#101312]/80 text-lg leading-relaxed font-medium">
+              Partner with AfroNova to create experiences, platforms, stories, and connections that move Africa forward.
+            </p>
+            <p className="text-[#9A6A31] text-sm font-semibold italic">
+              &ldquo;We create platforms, experiences, narratives and connections that shape how Africa engages with itself and the world.&rdquo;
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link href="/contact" className="btn-primary text-base px-8 py-4 shadow-md">{t("cta_start")} <ArrowRight className="w-5 h-5" /></Link>
               <Link href="/services" className="btn-outline text-base px-8 py-4">{t("cta_explore")}</Link>
             </div>

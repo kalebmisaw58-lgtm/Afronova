@@ -12,9 +12,9 @@ export const newsArticles: NewsArticle[] = [
   {
     slug: "africa-celebrates-2026-announced", category: "event", date: "July 10, 2026", readTime: "4 min read",
     title: "Africa Celebrates 2026, 6th Edition Officially Announced for November in Addis Ababa",
-    excerpt: "AfroNova confirms the 6th edition of Africa Celebrates, taking place November 10 to 15 at AU HQ and UNECA.",
+    excerpt: "AfroNova confirms the 6th edition of Africa Celebrates, taking place November 10 to 15 at the African Union Headquarters in Addis Ababa.",
     paragraphs: [
-      "AfroNova Media House & Events is proud to announce Africa Celebrates 2026, the sixth edition of the continent’s Pan-African festival. The event will take place November 10 to 15, 2026 at the African Union Headquarters and the United Nations Economic Commission for Africa in Addis Ababa, Ethiopia.",
+      "AfroNova is proud to announce Africa Celebrates 2026, the sixth edition of the continent’s Pan-African festival. The event will take place November 10 to 15, 2026 at the African Union Headquarters in Addis Ababa, Ethiopia.",
       "This year’s theme, One Africa, One People, brings culture, innovation and enterprise together on one world-class stage.",
       "The programme includes gala fashion and awards nights, a business and trade forum, and an open exhibition for artisans, vendors and corporate delegations from across Africa and the diaspora.",
     ],
@@ -26,10 +26,10 @@ export const newsArticles: NewsArticle[] = [
     paragraphs: ["AfroNova and Legendary Gold Limited are extending their collaboration for Africa Celebrates 2026.", "The partnership supports a stronger international platform for African culture, enterprise and creative talent."],
   },
   {
-    slug: "au-uneca-venues-confirmed", category: "event", date: "May 30, 2026", readTime: "3 min read",
-    title: "AU and UNECA Venues Confirmed for Africa Celebrates 2026",
-    excerpt: "The festival will convene across two of Addis Ababa’s most significant continental institutions.",
-    paragraphs: ["The African Union Headquarters and UNECA have been confirmed as the venues for Africa Celebrates 2026.", "The two locations reflect the festival’s commitment to continental connection, dialogue and shared prosperity."],
+    slug: "au-hq-venue-confirmed", category: "event", date: "May 30, 2026", readTime: "3 min read",
+    title: "African Union Headquarters Confirmed for Africa Celebrates 2026",
+    excerpt: "The festival will convene at Addis Ababa’s premier diplomatic institution.",
+    paragraphs: ["The African Union Headquarters has been confirmed as the venue for Africa Celebrates 2026.", "The location reflects the festival’s commitment to continental connection, dialogue and shared prosperity."],
   },
   {
     slug: "fashion-night-highlights", category: "recap", date: "Nov 20, 2025", readTime: "5 min read",

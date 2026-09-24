@@ -18,9 +18,8 @@ const eventSchema = {
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   location: [
     { "@type": "Place", name: "African Union Headquarters", address: { "@type": "PostalAddress", addressLocality: "Addis Ababa", addressCountry: "ET" } },
-    { "@type": "Place", name: "United Nations Economic Commission for Africa (UNECA)", address: { "@type": "PostalAddress", addressLocality: "Addis Ababa", addressCountry: "ET" } },
   ],
-  organizer: { "@type": "Organization", name: "AfroNova Media House & Events", url: "https://afronova.org" },
+  organizer: { "@type": "Organization", name: "AfroNova", url: "https://afronova.org" },
 };
 
 export default function AfricaCelebrates2026Page() {

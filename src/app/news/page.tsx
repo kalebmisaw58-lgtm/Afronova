@@ -36,18 +36,18 @@ export default function NewsPage() {
   };
 
   const defaultArticles = [
-    { slug: "legendary-gold-partnership", category: t("news_cat_partner"), categoryKey: "partner", date: "June 28, 2026", title: t("art1_title"), excerpt: t("art1_excerpt"), readTime: "3 min read", accent: "#9A6A31" },
-    { slug: "au-uneca-venues-confirmed", category: t("news_cat_event"), categoryKey: "event", date: "May 30, 2026", title: t("art3_title"), excerpt: t("art3_excerpt"), readTime: "9A6A31" },
-    { slug: "fashion-night-highlights", category: t("news_cat_recap"), categoryKey: "recap", date: "Nov 20, 2025", title: t("art4_title"), excerpt: t("art4_excerpt"), readTime: "5 min read", accent: "#B9853B" },
-    { slug: "trade-forum-outcomes-2025", category: t("news_cat_business"), categoryKey: "business", date: "Nov 18, 2025", title: t("art5_title"), excerpt: t("art5_excerpt"), readTime: "4 min read", accent: "#9A6A31" },
-    { slug: "multimedia-awards-2025", category: t("news_cat_production"), categoryKey: "production", date: "Oct 5, 2025", title: t("art6_title"), excerpt: t("art6_excerpt"), readTime: "2 min read", accent: "#B9853B" },
+    { slug: "legendary-gold-partnership", category: "Ideas & Perspectives", categoryKey: "ideas", date: "June 28, 2026", title: t("art1_title"), excerpt: t("art1_excerpt"), readTime: "3 min read", accent: "#9A6A31" },
+    { slug: "au-hq-venue-confirmed", category: "Africa Now", categoryKey: "africa_now", date: "May 30, 2026", title: t("art3_title"), excerpt: t("art3_excerpt"), readTime: "3 min read", accent: "#B9853B" },
+    { slug: "fashion-night-highlights", category: "Culture & Creativity", categoryKey: "culture", date: "Nov 20, 2025", title: t("art4_title"), excerpt: t("art4_excerpt"), readTime: "5 min read", accent: "#B9853B" },
+    { slug: "trade-forum-outcomes-2025", category: "Innovation", categoryKey: "innovation", date: "Nov 18, 2025", title: t("art5_title"), excerpt: t("art5_excerpt"), readTime: "4 min read", accent: "#9A6A31" },
+    { slug: "multimedia-awards-2025", category: "Behind the Work", categoryKey: "behind", date: "Oct 5, 2025", title: t("art6_title"), excerpt: t("art6_excerpt"), readTime: "2 min read", accent: "#B9853B" },
   ];
 
   const displayList = dbArticles.length > 0
     ? dbArticles.map((a, i) => ({
         slug: a.slug,
         category: a.category,
-        categoryKey: a.category === "partnership" ? "partner" : a.category,
+        categoryKey: a.category,
         date: a.date,
         title: a.title,
         excerpt: a.excerpt,
@@ -57,11 +57,15 @@ export default function NewsPage() {
     : defaultArticles;
 
   const featured = displayList.length > 0 ? displayList[0] : defaultFeatured;
-  const articles = displayList.length > 1 ? displayList.slice(1) : defaultArticles;
 
   const categories = [
-    { key: "all", label: t("news_cat_all") }, { key: "event", label: t("news_cat_event") }, { key: "partner", label: t("news_cat_partner") },
-    { key: "business", label: t("news_cat_business") }, { key: "recap", label: t("news_cat_recap") }, { key: "production", label: t("news_cat_production") },
+    { key: "all", label: "All" },
+    { key: "africa_now", label: "Africa Now" },
+    { key: "ideas", label: "Ideas & Perspectives" },
+    { key: "culture", label: "Culture & Creativity" },
+    { key: "innovation", label: "Innovation" },
+    { key: "people", label: "People & Places" },
+    { key: "behind", label: "Behind the Work" },
   ];
 
   const visibleArticles = displayList.filter((article) => {

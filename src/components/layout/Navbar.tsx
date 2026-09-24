@@ -68,25 +68,22 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20 md:h-24">
 
           {/* ── LOGO ─────────────────────────────────────────── */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="relative w-20 h-20 md:w-[88px] md:h-[88px]">
+          <Link href="/" className="flex items-center gap-3.5 group shrink-0">
+            <div className="relative w-20 h-20 md:w-24 md:h-24">
               <Image
                 src="/logo.png"
                 alt="AfroNova logo"
                 fill
-                sizes="88px"
-                className="object-contain drop-shadow-[0_2px_10px_rgba(214,163,74,0.35)]
-                           group-hover:drop-shadow-[0_4px_16px_rgba(214,163,74,0.60)]
-                           transition-all duration-300"
+                sizes="96px"
+                className="object-contain drop-shadow-[0_2px_12px_rgba(214,163,74,0.45)]
+                           group-hover:drop-shadow-[0_4px_20px_rgba(214,163,74,0.70)]
+                           transition-all duration-300 group-hover:scale-105"
                 priority
               />
             </div>
-            <div className="leading-tight hidden sm:block">
-              <p className="font-display font-black text-[#101312] text-xl md:text-2xl tracking-tight leading-none">
+            <div className="leading-none">
+              <p className="font-display font-black text-[#101312] text-2xl md:text-3xl lg:text-4xl tracking-tight">
                 AFRO<span className="text-gradient">NOVA</span>
-              </p>
-              <p className="text-[#101312]/60 text-[10px] md:text-xs tracking-widest uppercase mt-0.5 font-semibold">
-                Media House &amp; Events
               </p>
             </div>
           </Link>

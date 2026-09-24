@@ -102,7 +102,9 @@ export default function PartnersPage() {
         <div className="container-custom relative z-10 text-center max-w-3xl mx-auto">
           <p className="section-subheading">{t("partners_eyebrow")}</p>
           <h1 className="section-heading text-[#101312] mb-6">{t("partners_h1")} <span className="text-gradient">{t("partners_h1b")}</span></h1>
-          <p className="text-[#101312]/75 text-lg leading-relaxed font-medium">{t("partners_hero_body")}</p>
+          <p className="text-[#101312]/80 text-lg leading-relaxed font-medium">
+            From our headquarters in Addis Ababa, AfroNova connects and collaborates with governments, diplomatic missions, international organizations, broadcasters, and cultural institutions from across Africa and around the world. Hover over any card to explore our partnerships and collaborations.
+          </p>
         </div>
       </section>
 

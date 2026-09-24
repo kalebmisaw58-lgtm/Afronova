@@ -21,24 +21,33 @@ export default function PortfolioPage() {
     return () => { active = false; };
   }, [locale]);
 
-  const featuredProjects = [
+  const flagshipProject = {
+    title: "Africa Celebrates 2025, 5th Edition",
+    theme: "Justice for Africans and People of African Descent through and Beyond Reparations",
+    role: "Lead Implementing Partner in Ethiopia",
+    highlights: [
+      "Coordinated 42 participating African nations and global diaspora delegations in Addis Ababa",
+      "Organized Gala Fashion Night, Pan-African Trade Forums, and Cultural Exhibitions",
+      "Delivered full broadcast, press relations, and VIP protocol management",
+      "Generated multi-million dollar trade commitments and cross-border partnerships",
+    ],
+    accent: "#9A6A31", year: "2025",
+  };
+
+  const associatedInitiatives = [
     {
-      title: "Africa Celebrates 2025, 5th Edition",
-      theme: "Justice for Africans and People of African Descent through and Beyond Reparations",
-      role: "Lead Implementing Partner in Ethiopia",
-      highlights: [
-        t("fp1_h1"), t("fp1_h2"), t("fp1_h3"), t("fp1_h4"),
-      ],
-      accent: "#9A6A31", year: "2025",
-    },
-    {
-      title: "AFRIMA 2025",
+      title: "AFRIMA 2025 Music Conference",
       theme: "World Media Calendar Unveiling & Music Conference, \"Music Beyond Borders\"",
       role: "Full Event Facilitator & Media Partner",
-      highlights: [
-        t("fp2_h1"), t("fp2_h2"), t("fp2_h3"), t("fp2_h4"),
-      ],
+      desc: "Hosted in conjunction with Africa Celebrates, convening music executives, artists, and broadcasting networks from across Africa.",
       accent: "#B9853B", year: "2025",
+    },
+    {
+      title: "Pan-African Transcontinental Industrial Corporation (PATIC) Launch",
+      theme: "Industrializing Africa: Cross-Border Enterprise & Economic Integration",
+      role: "Strategic Partner & Event Facilitator",
+      desc: "Official continental launch bringing together industrial leaders, trade ministers, investors, and corporate delegates to drive intra-African enterprise.",
+      accent: "#D6A34A", year: "2025",
     },
   ];
 
@@ -107,28 +116,51 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Flagship Project */}
       <section className="section-padding bg-white/60 backdrop-blur-[2px]">
-        <div className="container-custom">
-          <SectionHeader eyebrow={t("portfolio_featured_eyebrow")} title={t("portfolio_featured_title")} titleHighlight={t("portfolio_featured_highlight")} className="mb-12" />
-          <div className="grid md:grid-cols-2 gap-8">
-            {featuredProjects.map(({ title, theme, role, highlights, accent, year }) => (
-              <div key={title} className="card-dark p-8 space-y-5" style={{ borderTopWidth: 3, borderTopColor: accent }}>
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ background: `${accent}18`, color: accent }}>{year}</span>
-                  <span className="text-[#101312]/60 text-xs font-semibold">{role}</span>
+        <div className="container-custom space-y-12">
+          <SectionHeader eyebrow="Flagship Platform" title="Africa Celebrates 2025" titleHighlight="5th Edition" className="mb-8" />
+          
+          {/* Main Flagship Card */}
+          <div className="card-dark p-8 md:p-10 space-y-6 border-t-4 border-[#9A6A31]">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#9A6A31]/15 text-[#9A6A31] border border-[#9A6A31]/30">
+                Primary Flagship · {flagshipProject.year}
+              </span>
+              <span className="text-[#101312]/60 text-xs font-semibold">{flagshipProject.role}</span>
+            </div>
+            <h2 className="text-[#101312] font-display font-bold text-3xl md:text-4xl">{flagshipProject.title}</h2>
+            <p className="text-base italic leading-relaxed font-semibold text-[#9A6A31]">&ldquo;{flagshipProject.theme}&rdquo;</p>
+            
+            <div className="space-y-3 pt-2">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#101312]/60">Key Operational Highlights</p>
+              <ul className="grid sm:grid-cols-2 gap-3">
+                {flagshipProject.highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-2.5 text-[#101312]/80 text-sm font-medium">
+                    <span className="mt-1.5 w-2 h-2 rounded-full shrink-0 bg-[#9A6A31]" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Associated Initiatives Under Flagship */}
+          <div className="space-y-6 pt-4">
+            <h3 className="text-xl font-display font-bold text-[#101312]">Associated Initiatives &amp; High-Level Launches</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {associatedInitiatives.map(({ title, theme, role, desc, accent, year }) => (
+                <div key={title} className="card-dark p-7 space-y-4" style={{ borderTopWidth: 3, borderTopColor: accent }}>
+                  <div className="flex items-center justify-between">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ background: `${accent}18`, color: accent }}>{year}</span>
+                    <span className="text-[#101312]/60 text-xs font-semibold">{role}</span>
+                  </div>
+                  <h4 className="text-[#101312] font-display font-bold text-xl">{title}</h4>
+                  <p className="text-xs italic font-semibold" style={{ color: accent }}>&ldquo;{theme}&rdquo;</p>
+                  <p className="text-[#101312]/75 text-sm leading-relaxed font-medium">{desc}</p>
                 </div>
-                <h3 className="text-[#101312] font-display font-bold text-2xl">{title}</h3>
-                <p className="text-sm italic leading-relaxed font-semibold" style={{ color: accent }}>&ldquo;{theme}&rdquo;</p>
-                <ul className="space-y-2">
-                  {highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-2 text-[#101312]/75 text-sm font-medium">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent }} />{h}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

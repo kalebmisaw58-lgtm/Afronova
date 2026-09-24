@@ -23,9 +23,9 @@ const DEFAULT_SOCIALS = [
 ];
 
 const FALLBACK_FOOTER = {
-  address: "Africa Avenue, Addis Ababa 1000, Ethiopia",
+  address: "Africa Avenue, Bole Sub-City, Woreda 02, House No. New, Addis Ababa, Ethiopia",
   phone: "+251 96 508 1998",
-  hours: "Mon  to  Fri, 9:00 AM  to  5:00 PM",
+  hours: "Mon to Fri, 9:00 AM to 5:00 PM",
   mapUrl: "https://maps.app.goo.gl/WfyUFKJmgt7YLtpZ9",
   socials: DEFAULT_SOCIALS,
 };
@@ -107,24 +107,21 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="flex items-center gap-3 group w-fit">
-              <div className="relative w-24 h-24 md:w-[100px] md:h-[100px] shrink-0">
+            <Link href="/" className="flex items-center gap-3.5 group w-fit">
+              <div className="relative w-28 h-28 md:w-32 md:h-32 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="AfroNova"
                   fill
-                  sizes="100px"
+                  sizes="128px"
                   className="object-contain drop-shadow-[0_2px_12px_rgba(214,163,74,0.35)]
-                             group-hover:drop-shadow-[0_4px_18px_rgba(214,163,74,0.6)]
-                             transition-all duration-300"
+                             group-hover:drop-shadow-[0_4px_22px_rgba(214,163,74,0.65)]
+                             transition-all duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="leading-tight">
-                <p className="font-display font-black text-[#101312] text-2xl md:text-3xl tracking-tight">
+              <div className="leading-none">
+                <p className="font-display font-black text-[#101312] text-3xl md:text-4xl tracking-tight">
                   AFRO<span className="text-gradient">NOVA</span>
-                </p>
-                <p className="text-[#101312]/60 text-xs tracking-widest uppercase mt-0.5 font-semibold">
-                  Media House &amp; Events
                 </p>
               </div>
             </Link>
