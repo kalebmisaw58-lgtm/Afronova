@@ -48,7 +48,7 @@ export default function AboutPage() {
     <>
       {/* ══ 1. HERO ══════════════════════════════════════════ */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-white">
-        <div className="absolute inset-0 adinkra-bg opacity-10" />
+        <div className="absolute inset-0 adinkra-bg opacity-30" />
         <div className="absolute inset-0 pointer-events-none"
              style={{ background: "radial-gradient(ellipse 60% 50% at 5% 5%, rgba(214,163,74,0.12) 0%, transparent 65%)" }} />
         <div className="container-custom relative z-10">
