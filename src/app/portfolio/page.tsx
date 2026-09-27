@@ -51,14 +51,6 @@ export default function PortfolioPage() {
     },
   ];
 
-  const pastEditions = [
-    { edition: t("ed5"), year: "2025", theme: "Justice for Africans and People of African Descent through and Beyond Reparations", attendees: "12,000+", nations: "42", accent: "#9A6A31" },
-    { edition: t("ed4"), year: "2024", theme: "Unite, Celebrate, Prosper", attendees: "10,000+", nations: "40+", accent: "#B9853B" },
-    { edition: t("ed3"), year: "2023", theme: "Africa Rising: Culture & Commerce", attendees: "8,500+", nations: "38", accent: "#9A6A31" },
-    { edition: t("ed2"), year: "2022", theme: "One Africa, One People", attendees: "7,000+", nations: "35", accent: "#B9853B" },
-    { edition: t("ed1"), year: "2021", theme: "The Inaugural Africa Celebrates", attendees: "5,000+", nations: "30", accent: "#9A6A31" },
-  ];
-
   const mediaProjects = [
     { title: "Africa Celebrates Official Docu-Series", type: t("mp_doc"),  year: "2025", desc: t("mp1_desc"), accent: "#9A6A31" },
     { title: "AFRIMA Music Beyond Borders Coverage",   type: t("mp_bcast"),year: "2025", desc: t("mp2_desc"), accent: "#B9853B" },
@@ -161,34 +153,6 @@ export default function PortfolioPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Past Editions */}
-      <section className="section-padding border-y border-gray-200 bg-transparent">
-        <div className="container-custom">
-          <SectionHeader eyebrow={t("portfolio_editions_eyebrow")} title={t("portfolio_editions_title")} titleHighlight={t("portfolio_editions_highlight")} className="mb-12" />
-          <div className="space-y-4">
-            {pastEditions.map(({ edition, year, theme, attendees, nations, accent }) => (
-              <div key={edition} className="card-dark p-6 md:p-8 hover:-translate-y-0.5 transition-all" style={{ borderLeftWidth: 4, borderLeftColor: accent }}>
-                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                  <div className="shrink-0">
-                    <p className="font-display font-bold text-2xl" style={{ color: accent }}>{year}</p>
-                    <p className="text-[#101312]/65 text-sm font-semibold">{edition}</p>
-                  </div>
-                  <div className="h-px md:h-10 md:w-px bg-gray-200" />
-                  <div className="flex-1 space-y-2">
-                    <p className="text-[#101312] font-bold italic">&ldquo;{theme}&rdquo;</p>
-                    <div className="flex flex-wrap gap-4 text-sm text-[#101312]/65 font-medium">
-                      <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" style={{ color: accent }} /> Addis Ababa, Ethiopia</span>
-                      <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" style={{ color: accent }} /> {attendees} {t("portfolio_attendees")}</span>
-                      <span className="flex items-center gap-1.5"><ExternalLink className="w-3.5 h-3.5" style={{ color: accent }} /> {nations} {t("portfolio_nations")}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
