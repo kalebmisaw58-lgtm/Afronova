@@ -76,13 +76,58 @@ export default function PortfolioPage() {
     "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
   ];
 
+  // AFRIMA Gallery items
+  const afrimaGalleryItems = [
+    {
+      title: "AFRIMA Red Carpet & Media Unveiling",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "Music Beyond Borders Live Concert",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+      isVideo: true,
+    },
+    {
+      title: "Pan-African Artist & Producer Summit",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "All Africa Music Rights & Broadcasters Forum",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+  ];
+
+  // Combined gallery items for continuous Lightbox navigation
+  const mainGalleryList = galleryItems.map((label, i) => {
+    const translatedVal = t(`pf_gal${i + 1}`);
+    const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
+    const dbImg = dbGalleryImages[i];
+    const hasDbImg = dbImg && (dbImg.startsWith("http") || dbImg.startsWith("/"));
+    const imgUrl = hasCustomImg ? translatedVal : hasDbImg ? dbImg : defaultGalleryImages[i % defaultGalleryImages.length];
+    return {
+      title: label,
+      category: "Africa Celebrates",
+      imgUrl,
+      isVideo: i === 4,
+    };
+  });
+
+  const allGalleryItems = [...mainGalleryList, ...afrimaGalleryItems];
+
   const handlePrevLightbox = useCallback(() => {
-    setActiveLightboxIndex((prev) => (prev === null ? null : prev === 0 ? galleryItems.length - 1 : prev - 1));
-  }, [galleryItems.length]);
+    setActiveLightboxIndex((prev) => (prev === null ? null : prev === 0 ? allGalleryItems.length - 1 : prev - 1));
+  }, [allGalleryItems.length]);
 
   const handleNextLightbox = useCallback(() => {
-    setActiveLightboxIndex((prev) => (prev === null ? null : prev === galleryItems.length - 1 ? 0 : prev + 1));
-  }, [galleryItems.length]);
+    setActiveLightboxIndex((prev) => (prev === null ? null : prev === allGalleryItems.length - 1 ? 0 : prev + 1));
+  }, [allGalleryItems.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -157,47 +202,91 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Primary Gallery (Africa Celebrates) */}
       <section className="section-padding bg-white/60 backdrop-blur-[2px]">
-        <div className="container-custom">
-          <SectionHeader eyebrow={t("portfolio_gallery_eyebrow")} title={t("portfolio_gallery_title")} titleHighlight={t("portfolio_gallery_highlight")} className="mb-12" />
+        <div className="container-custom space-y-12">
+          <SectionHeader
+            eyebrow={t("portfolio_gallery_eyebrow")}
+            title={t("portfolio_gallery_title")}
+            titleHighlight={t("portfolio_gallery_highlight")}
+            className="mb-8"
+          />
+
+          {/* Africa Celebrates Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {galleryItems.map((label, i) => {
-              const translatedVal = t(`pf_gal${i + 1}`);
-              const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
-              const dbImg = dbGalleryImages[i];
-              const hasDbImg = dbImg && (dbImg.startsWith("http") || dbImg.startsWith("/"));
-              const imgUrl = hasCustomImg ? translatedVal : hasDbImg ? dbImg : defaultGalleryImages[i % defaultGalleryImages.length];
+            {mainGalleryList.map((item, i) => {
               const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
               const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
-              const isVideo = i === 4;
               return (
                 <div
-                  key={label + i}
+                  key={item.title + i}
                   onClick={() => setActiveLightboxIndex(i)}
                   className={`${heights[i % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
                   style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(248,246,240,0.90))` }}
                 >
                   <img
-                    src={imgUrl}
-                    alt={label}
+                    src={item.imgUrl}
+                    alt={item.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                    {isVideo
-                      ? <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
-                          <Play className="w-6 h-6 text-white ml-1" />
-                        </div>
-                      : <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
-                    }
+                    {item.isVideo ? (
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
+                        <Play className="w-6 h-6 text-white ml-1" />
+                      </div>
+                    ) : (
+                      <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
+                    )}
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
-                    <p className="text-white text-sm font-semibold">{label}</p>
-                    <p className="text-xs text-[#F0B84F] font-bold">{isVideo ? "Video" : "Photography"}</p>
+                    <p className="text-white text-sm font-semibold">{item.title}</p>
+                    <p className="text-xs text-[#F0B84F] font-bold">{item.isVideo ? "Video" : "Photography"}</p>
                   </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* AFRIMA Music Conference Gallery (Right at the bottom of the current gallery) */}
+          <div className="pt-10 space-y-8 border-t border-gray-200">
+            <SectionHeader
+              eyebrow="Media Partnership Gallery"
+              title="AFRIMA Music Conference"
+              titleHighlight="Showcase"
+              description="Facilitation, red carpet, and broadcast media coverage for All Africa Music Awards' World Media Unveiling."
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {afrimaGalleryItems.map((item, localIdx) => {
+                const globalIdx = mainGalleryList.length + localIdx; // 9..12
+                return (
+                  <div
+                    key={item.title}
+                    onClick={() => setActiveLightboxIndex(globalIdx)}
+                    className="aspect-[4/3] rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white"
+                  >
+                    <img
+                      src={item.imgUrl}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                      {item.isVideo ? (
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
+                          <Play className="w-5 h-5 text-white ml-0.5" />
+                        </div>
+                      ) : (
+                        <ExternalLink className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
+                      )}
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-3.5 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
+                      <p className="text-white text-xs sm:text-sm font-semibold leading-tight line-clamp-1">{item.title}</p>
+                      <p className="text-[11px] text-[#F0B84F] font-bold mt-0.5">{item.isVideo ? "Broadcast Video" : "AFRIMA Photography"}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -224,21 +313,21 @@ export default function PortfolioPage() {
       {/* Full Screen Lightbox Modal */}
       {activeLightboxIndex !== null && (() => {
         const curIdx = activeLightboxIndex;
-        const translatedVal = t(`pf_gal${curIdx + 1}`);
-        const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
-        const dbImg = dbGalleryImages[curIdx];
-        const hasDbImg = dbImg && (dbImg.startsWith("http") || dbImg.startsWith("/"));
-        const currentImg = hasCustomImg ? translatedVal : hasDbImg ? dbImg : defaultGalleryImages[curIdx % defaultGalleryImages.length];
-        const currentLabel = galleryItems[curIdx];
-        const isVideo = curIdx === 4;
+        const currentItem = allGalleryItems[curIdx];
+        if (!currentItem) return null;
 
         return (
           <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 md:p-8 transition-opacity">
             {/* Top Bar */}
             <div className="w-full flex items-center justify-between text-white max-w-6xl z-10">
-              <span className="text-sm font-bold tracking-wider text-white/70">
-                {curIdx + 1} / {galleryItems.length}
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/15 text-[#F0B84F]">
+                  {currentItem.category}
+                </span>
+                <span className="text-sm font-bold tracking-wider text-white/70">
+                  {curIdx + 1} / {allGalleryItems.length}
+                </span>
+              </div>
               <button
                 onClick={() => setActiveLightboxIndex(null)}
                 className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
@@ -260,8 +349,8 @@ export default function PortfolioPage() {
 
               <div className="relative max-h-[75vh] max-w-full flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl border border-white/10">
                 <img
-                  src={currentImg}
-                  alt={currentLabel}
+                  src={currentItem.imgUrl}
+                  alt={currentItem.title}
                   className="max-h-[75vh] w-auto object-contain rounded-2xl"
                 />
               </div>
@@ -277,8 +366,8 @@ export default function PortfolioPage() {
 
             {/* Bottom Caption */}
             <div className="w-full text-center max-w-xl text-white space-y-1 z-10 pb-2">
-              <p className="font-display font-bold text-lg md:text-xl text-[#F0B84F]">{currentLabel}</p>
-              <p className="text-xs text-white/60 font-medium uppercase tracking-widest">{isVideo ? "Featured Video Coverage" : "Portfolio Photography"}</p>
+              <p className="font-display font-bold text-lg md:text-xl text-[#F0B84F]">{currentItem.title}</p>
+              <p className="text-xs text-white/60 font-medium uppercase tracking-widest">{currentItem.isVideo ? "Featured Video Coverage" : "Portfolio Photography"}</p>
             </div>
           </div>
         );
