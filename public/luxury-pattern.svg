@@ -1,26 +1,17 @@
 <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-  <!-- Light off-white tile fill -->
+  <!-- Light clean background base -->
   <rect width="80" height="80" fill="#FAF8F4" />
-  <!-- Pure white background base -->
-  <rect width="80" height="80" fill="#FFFFFF" />
+  <rect width="80" height="80" fill="#FFFFFF" opacity="0.9" />
   
-  <!-- Warm ivory center diamond tile -->
-  <polygon points="40,0 80,40 40,80 0,40" fill="#F3ECE0" />
-  
-  <!-- Muted warm gold center dot -->
-  <circle cx="40" cy="40" r="6" fill="#E0D1B1" />
-  
-  <!-- Crisp diagonal diamond grid lines -->
-  <path d="M40 0 L80 40 M0 40 L40 80 M40 0 L0 40 M80 40 L40 80" stroke="#E5DAC7" stroke-width="0.75" />
-  <!-- Ultra-soft luxury pattern layer (subtle 38% opacity whisper texture) -->
-  <g opacity="0.38">
-    <!-- Soft warm ivory center diamond tile -->
-    <polygon points="40,0 80,40 40,80 0,40" fill="#F3ECE0" />
+  <!-- Whisper-soft luxury pattern layer (ultra-subtle 10% opacity texture to preserve text contrast) -->
+  <g opacity="0.10">
+    <!-- Soft warm center diamond tile -->
+    <polygon points="40,0 80,40 40,80 0,40" fill="#E8DEC8" />
     
-    <!-- Soft gold center dot -->
-    <circle cx="40" cy="40" r="5.5" fill="#DFD0AF" />
+    <!-- Soft muted center dot -->
+    <circle cx="40" cy="40" r="4.5" fill="#D6A34A" />
     
-    <!-- Whisper-soft diagonal grid lines -->
-    <path d="M40 0 L80 40 M0 40 L40 80 M40 0 L0 40 M80 40 L40 80" stroke="#E2D6C0" stroke-width="0.65" />
+    <!-- Fine delicate diagonal grid lines -->
+    <path d="M40 0 L80 40 M0 40 L40 80 M40 0 L0 40 M80 40 L40 80" stroke="#CBB996" stroke-width="0.5" />
   </g>
 </svg>

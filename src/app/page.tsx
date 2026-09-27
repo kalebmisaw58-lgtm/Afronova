@@ -153,7 +153,7 @@ export default function HomePage() {
       {/* ══ 2. AFRICA CELEBRATES COUNTDOWN ══════════════════ */}
       <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #181B1A 0%, #252019 50%, #181B1A 100%)" }} />
-        <div className="absolute inset-0 adinkra-bg opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 adinkra-bg opacity-10 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 accent-line" />
         <div className="absolute bottom-0 left-0 right-0 accent-line" />
         <div className="container-custom relative z-10">
