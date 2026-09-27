@@ -18,10 +18,10 @@ export default function ContactPage() {
 
   const socials = [
     { icon: Instagram, href: "https://www.instagram.com/afronova__",              label: "Instagram",   handle: "@afronova__" },
-    { icon: Facebook,  href: "https://facebook.com/afronova",                    label: "Facebook",    handle: "AfroNova" },
+    { icon: Facebook,  href: "https://www.facebook.com/share/19FxHLrzQD/",        label: "Facebook",    handle: "@afronova" },
     { icon: Twitter,   href: "https://x.com/socialafronova",                     label: "Twitter / X", handle: "@socialafronova" },
-    { icon: Youtube,   href: "https://youtube.com/afronova",                     label: "YouTube",     handle: "AfroNova" },
-    { icon: Linkedin,  href: "https://www.linkedin.com/company/afronova-mediahub/", label: "LinkedIn",    handle: "AfroNova" },
+    { icon: Youtube,   href: "https://www.youtube.com/@AfroNovaTV-n2c",          label: "YouTube",     handle: "@AfroNovaTV-n2c" },
+    { icon: Linkedin,  href: "https://www.linkedin.com/company/afronova-mediahub/", label: "LinkedIn",    handle: "AfroNova Media Hub" },
     { icon: TikTokIcon, href: "https://www.tiktok.com/@afronova_",                label: "TikTok",      handle: "@afronova_" },
   ];
 
