@@ -14,25 +14,6 @@ interface LanguageContextType {
 
 const translations: Record<Locale, Record<string, string>> = {
   en: {
-    ac_theme: "\"One Africa, One People: Uniting Culture, Innovation and Enterprise for a Shared Prosperous Future\"",
-    about_story_eyebrow: "Our Story",
-    about_story_title: "Building the",
-    about_story_highlight: "Pan-African Legacy",
-    about_story_body1: "Founded in Addis Ababa, AfroNova was established with a clear mission: to create a unified platform that celebrates African identity, fosters cross-border collaboration, and promotes economic growth.",
-    about_story_body2: "Over the years, we have expanded our reach across 50+ countries, partnering with diplomatic missions, regional bodies, and creative leaders to host flagship events and deliver impactful media projects.",
-    values_eyebrow: "What Drives Us",
-    values_title: "Core Organisation",
-    values_highlight: "Values",
-    lead_eyebrow: "Leadership",
-    lead_title: "The Person Behind",
-    lead_highlight: "AfroNova",
-    svc1_desc: "Cultural festivals, business forums, summits and AU-aligned gatherings executed with precision.",
-    ed5: "5th Edition",
-    ed4: "4th Edition",
-    ed3: "3rd Edition",
-    ed2: "2nd Edition",
-    ed1: "1st Edition",
-
     // Nav
     nav_home: "Home", nav_about: "About Us", nav_services: "Services",
     nav_portfolio: "Portfolio", nav_news: "News", nav_partners: "Partners",
@@ -40,7 +21,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // Hero
     hero_badge: "Pan-African · Events · Media · Innovation · Promotion",
     hero_tagline: "Branding the New Africa.",
-    hero_body: "AfroNova is a Pan-African organization shaping how Africa is experienced, represented, and connected to the world. Headquartered in Addis Ababa, Ethiopia, a city where Africa and the world come together, we build platforms that let African cultures, creativity, and innovation meet the world on their own terms. Through transformative events, multimedia storytelling, strategic communications, and partnerships across borders, we connect Africa to new ideas, new audiences, and new possibilities.",
+    hero_body: "AfroNova is a premier Pan-African enterprise dedicated to celebrating, amplifying and promoting Africa's cultural heritage, innovation and creative excellence. Headquartered in Addis Ababa, operating across 50+ countries.",
     hero_cta_discover: "Discover AfroNova",
     hero_cta_services: "Our Services",
     hero_cta_work: "Work With Us",
@@ -49,31 +30,31 @@ const translations: Record<Locale, Record<string, string>> = {
     countdown_title1: "Africa", countdown_title2: "Celebrates", countdown_title3: "2026",
     countdown_theme: "\"One Africa, One People: Uniting Culture, Innovation and Enterprise for a Shared Prosperous Future\"",
     countdown_date: "November 10 to 15, 2026",
-    countdown_venue: "African Union HQ, Addis Ababa",
+    countdown_venue: "AU HQ & UNECA, Addis Ababa",
     countdown_label: "Countdown to the Event",
     countdown_visit: "Visit Official Website",
     countdown_details: "Full Event Details",
     // Stats
     stat1_label: "Countries Reached", stat2_label: "Core Service Pillars",
-    stat3_label: "Strategic Partners", stat4_label: "Pan-African Initiatives",
+    stat3_label: "Strategic Partners", stat4_label: "Lives Impacted Annually",
     // Who we are
     who_eyebrow: "Who We Are", who_title: "A Transformative Force", who_highlight: "for Africa",
-    who_body1: "AfroNova is a Pan-African organization shaping how Africa is experienced, represented, and connected to the world. Headquartered in Addis Ababa, Ethiopia, we bring together culture, creativity, innovation, media, and strategic engagement to create meaningful experiences and platforms that connect Africa with the world.",
+    who_body1: "AfroNova acts as a transformative force, curating end-to-end experiences that empower communities, bridge cultures and position authentic African narratives at the forefront of the global stage.",
     who_body2: "From high-impact events to compelling multimedia storytelling, AfroNova is more than a service provider, it is a movement reshaping how Africa is seen, heard and remembered. Official local partner of",
     who_partner: "Legendary Gold Limited",
     who_story: "Our Story",
     who_mission_label: "Mission",
-    who_mission: "To shape platforms that amplify African voices, celebrate cultural identity, foster meaningful collaboration, and advance Africa’s creativity, innovation, and global engagement through transformative experiences, storytelling, strategic communications, and Pan-African initiatives.",
+    who_mission: "To amplify African voices, foster cultural pride and drive meaningful change through world-class events, innovative multimedia and culturally grounded strategic communications.",
     who_vision_label: "Vision",
-    who_vision: "To shape a future where Africa’s culture, creativity, innovation, and ideas are confidently represented, globally connected, and influential in shaping the world.",
+    who_vision: "To become Africa's foremost event and media hub, a trusted platform where cultures converge and authentic African stories shape global perspectives.",
     who_location: "Addis Ababa, Ethiopia",
     who_location_desc: "The diplomatic capital of Africa, steps from the African Union.",
     // Services section on home
-    services_eyebrow: "What We Do", services_title: "Six Pillars of", services_highlight: "Pan-African Excellence",
-    services_desc: "End-to-end capabilities across events, media, advertising, publishing, strategic engagement and Pan-African initiatives.",
+    services_eyebrow: "What We Do", services_title: "Five Pillars of", services_highlight: "Pan-African Excellence",
+    services_desc: "End-to-end capabilities across events, media, advertising, publishing and brand merchandising.",
     services_all: "All Services", services_learn: "Learn more",
     // Why AfroNova
-    why_eyebrow: "Why AfroNova", why_title: "African by Origin. Global by Outlook.", why_highlight: "",
+    why_eyebrow: "Why AfroNova", why_title: "What Sets Us", why_highlight: "Apart",
     // Featured Work
     work_eyebrow: "Featured Work", work_title: "Projects That", work_highlight: "Define Us",
     work_desc: "A snapshot of the work AfroNova has delivered across the continent.",
@@ -81,27 +62,27 @@ const translations: Record<Locale, Record<string, string>> = {
     // Partners strip
     partners_label: "Trusted Partners & Collaborators",
     // CTA
-    cta_eyebrow: "Work With Us", cta_title: "Shape the Next Chapter of Africa", cta_highlight: "",
-    cta_body: "Partner with AfroNova to create experiences, platforms, stories, and connections that move Africa forward.",
+    cta_eyebrow: "Work With Us", cta_title: "Let's Build Something", cta_highlight: "Extraordinary",
+    cta_body: "Whether you need a world-class event, a compelling documentary, a Pan-African campaign, or a publishing project, AfroNova delivers.",
     cta_start: "Start a Conversation", cta_explore: "Explore Services",
     // Footer
-    footer_tagline: "We create platforms, experiences, narratives and connections that shape how Africa engages with itself and the world.",
+    footer_tagline: "Branding the New Africa. Limitless Possibilities. We don't just host events, we ignite movements.",
     footer_rights: "© 2026 AfroNova. Pan-African · Events · Media · Innovation · Promotion. All rights reserved.",
     footer_stay: "Stay Updated", footer_stay_desc: "Get the latest news, event updates and exclusive announcements.",
     footer_subscribe: "Subscribe", footer_subscribed: "You're on the list. Welcome to AfroNova!",
     footer_company: "Company", footer_event: "Event",
     // News categories & article content
-    news_cat_all: "All", news_cat_event: "Africa Now", news_cat_partner: "Ideas & Perspectives",
-    news_cat_exhibitors: "Culture & Creativity", news_cat_business: "Innovation",
-    news_cat_recap: "People & Places", news_cat_production: "Behind the Work",
+    news_cat_all: "All", news_cat_event: "Event", news_cat_partner: "Partnership",
+    news_cat_exhibitors: "Exhibitors", news_cat_business: "Business",
+    news_cat_recap: "Recap", news_cat_production: "Production",
     news_feat_title: "Africa Celebrates 2026, 6th Edition Officially Announced for November in Addis Ababa",
-    news_feat_excerpt: "AfroNova confirms the 6th Edition of Africa Celebrates, the continent's premier Pan-African festival, set for November 10 to 15, 2026 at the African Union Headquarters in Addis Ababa.",
+    news_feat_excerpt: "AfroNova confirms the 6th Edition of Africa Celebrates, the continent's premier Pan-African festival, set for November 10 to 15, 2026 at the African Union Headquarters and UNECA.",
     art1_title: "AfroNova Deepens Partnership with Legendary Gold Limited Ahead of 2026 Festival",
     art1_excerpt: "The official local partnership enters a new phase, bringing expanded investment and global reach to Africa Celebrates 2026.",
     art2_title: "Exhibitor & Vendor Applications Now Open for Africa Celebrates 2026",
     art2_excerpt: "AfroNova opens applications for exhibitors, artisans, and vendors. Over 200 spaces available from across the continent and global diaspora.",
-    art3_title: "African Union Headquarters Confirmed as Official Venue for 2026 Edition",
-    art3_excerpt: "AfroNova confirms the iconic AU Headquarters as official venue for the 6th edition.",
+    art3_title: "African Union HQ and UNECA Confirmed as Venues for 2026 Edition",
+    art3_excerpt: "AfroNova confirms the iconic AU Headquarters and UNECA as official venues for the 6th edition.",
     art4_title: "Inside the Africa Celebrates 2025 Gala Fashion Night",
     art4_excerpt: "A stunning showcase of African fashion designers from 30 countries made the 2025 Gala Night the most-watched in the festival's history.",
     art5_title: "$2.3B in Trade Commitments at Africa Celebrates 2025 Business Forum",
@@ -171,8 +152,6 @@ const translations: Record<Locale, Record<string, string>> = {
     p_ci_role: "Diplomatic Partner, Francophone Africa",
     p_nz_desc: "Bridging African and Pacific perspectives, supporting international dialogue and cultural programming through AfroNova.",
     p_nz_role: "International Diplomatic Partner",
-    p_usau_desc: "The United States Mission to the African Union advances US-Africa relations and supports dialogue, partnership and shared prosperity across the continent.",
-    p_usau_role: "Diplomatic Partner, African Union",
     p_kt_desc: "One of Ethiopia's leading entertainment channels. Kana TV provides broadcast reach and media coverage for AfroNova events.",
     p_kt_role: "Broadcast Media Partner",
     p_dc_desc: "A premier entertainment company providing production, talent management and event entertainment for AfroNova's festivals.",
@@ -271,7 +250,7 @@ const translations: Record<Locale, Record<string, string>> = {
     val8_title: "Continuous Learning", val8_desc: "Constantly evolving, adapting and growing to serve Africa better.",
     // Services page
     svc_eyebrow: "What We Do",
-    svc_h1: "Six Pillars of", svc_h1b: "Pan-African Excellence",
+    svc_h1: "Five Pillars of", svc_h1b: "Pan-African Excellence",
     svc_hero_body: "From event curation to multimedia production, strategic advertising, print merchandising, and digital publication, AfroNova delivers end-to-end Pan-African excellence.",
     svc_process_eyebrow: "How We Work", svc_process_title: "Our Process",
     svc_cta_h: "Let's build something", svc_cta_hb: "extraordinary together.",
@@ -320,21 +299,13 @@ const translations: Record<Locale, Record<string, string>> = {
     portfolio_gallery_eyebrow: "Gallery", portfolio_gallery_title: "Moments of", portfolio_gallery_highlight: "Excellence",
     portfolio_media_eyebrow: "Case Studies", portfolio_media_title: "Media & Production", portfolio_media_highlight: "Projects",
     portfolio_attendees: "Attendees", portfolio_nations: "Nations",
-    pf_gal1: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
-    pf_gal2: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
-    pf_gal3: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
-    pf_gal4: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
-    pf_gal5: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
-    pf_gal6: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80",
-    pf_gal7: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80",
-    pf_gal8: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80",
-    pf_gal9: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
     // News page
     news_eyebrow: "Latest Updates", news_h1: "News &", news_h1b: "Press",
     news_hero_body: "Press releases, event updates, partnerships, and stories from across the AfroNova world.",
     news_featured: "Featured", news_read: "Read",
     // Africa Celebrates page
     ac_badge: "6th Edition · Pan-African Festival",
+    ac_theme: "\"One Africa, One People: Uniting Culture, Innovation and Enterprise for a Shared Prosperous Future\"",
     ac_date: "November 10 to 15, 2026", ac_venue: "AU HQ & UNECA, Addis Ababa", ac_nations: "40+ African Nations",
     ac_countdown_label: "Countdown to Africa Celebrates 2026",
     ac_visit: "Visit Official Website", ac_download: "Download Programme",
@@ -355,24 +326,6 @@ const translations: Record<Locale, Record<string, string>> = {
     ac_cta_btn: "Contact AfroNova", ac_cta_btn2: "Official Event Website",
   },
   am: {
-    about_story_eyebrow: "ታሪካችን",
-    about_story_title: "የፓን-አፍሪካን",
-    about_story_highlight: "ቅርሳዊ ቅርስ",
-    about_story_body1: "በአዲስ አበባ የተመሰረተው አፍሮኖቫ፡ የአፍሪካን ማንነት የሚያከብር፣ ድንበር ተሻጋሪ ትብብርን የሚያጎለብት እና ኢኮኖሚያዊ እድገትን የሚያፋጥን አንድነቱ የተጠበቀ መድረክ ለመፍጠር የተቋቋመ ድርጅት ነው።",
-    about_story_body2: "በአመታት ውስጥ ከ50 በላይ ሀገራት ተደራሽነታችንን በማስፋት ከዲፕሎማሲያዊ ተልእኮዎች፣ ክልላዊ አካላት እና ፈጠራ መሪዎች ጋር በመተባበር ታላላቅ ሁነቶችን አዘጋጅተናል።",
-    values_eyebrow: "የሚመሩን እሴቶች",
-    values_title: "የድርጅታችን ዋና",
-    values_highlight: "እሴቶች",
-    lead_eyebrow: "አመራር",
-    lead_title: "ከአፍሮኖቫ በስተጀርባ ያለው",
-    lead_highlight: "አፍሮኖቫ",
-    svc1_desc: "ባህላዊ ፌስቲቫሎች፣ የንግድ መድረኮች እና ከአፍሪካ ህብረት ጋር የተጣጣሙ ጉባኤዎች።",
-    ed5: "5ኛው እትም",
-    ed4: "4ኛው እትም",
-    ed3: "3ኛው እትም",
-    ed2: "2ኛው እትም",
-    ed1: "1ኛው እትም",
-
     nav_home: "መነሻ", nav_about: "ስለ እኛ", nav_services: "አገልግሎቶች",
     nav_portfolio: "ፖርትፎሊዮ", nav_news: "ዜና", nav_partners: "አጋሮች",
     nav_portal: "አሳዳሪ ፖርታል", nav_contact: "አግኙን",
@@ -404,7 +357,7 @@ const translations: Record<Locale, Record<string, string>> = {
     who_vision: "የአፍሪካ ዋናዋ የዝግጅት እና ሚዲያ ማዕከል ለመሆን, ባሕሎች የሚገናኙበት እና ታማኝ የአፍሪካ ታሪኮች ዓለም አቀፍ አተያዮችን የሚቀርጹበት ታማኝ መድረክ።",
     who_location: "አዲስ አበባ፣ ኢትዮጵያ",
     who_location_desc: "የአፍሪካ ዲፕሎማሲያዊ ዋና ከተማ፣ ከአፍሪካ ህብረት ቅርብ።",
-    services_eyebrow: "የምናደርገው", services_title: "ስድስት ምሰሶዎች", services_highlight: "የፓን-አፍሪካ ልዕቀት",
+    services_eyebrow: "የምናደርገው", services_title: "አምስት ምሰሶዎች", services_highlight: "የፓን-አፍሪካ ልዕቀት",
     services_desc: "ዝግጅቶች፣ ሚዲያ፣ ማስታወቂያ፣ ህትመት እና ብራንድ ምርቶች ላይ ሁሉ-ዙሪያ አቅሞች።",
     services_all: "ሁሉም አገልግሎቶች", services_learn: "ተጨማሪ ይወቁ",
     why_eyebrow: "ለምን አፍሮኖቫ", why_title: "የሚለዩን ምን ነው", why_highlight: "",
@@ -436,6 +389,7 @@ const translations: Record<Locale, Record<string, string>> = {
     prog4_title: "የባሕልና ጥበብ ቀን", prog5_title: "ጋላ ሽልማት ሌሊት", prog6_title: "የዝግጅት ማጠቃለያ",
     tier1_name: "ዋና ስፖንሰር", tier2_name: "ወርቅ ስፖንሰር", tier3_name: "ብር ስፖንሰር",
     partners_all: "ሁሉም",
+    ed5: "5ኛ እትም", ed4: "4ኛ እትም", ed3: "3ኛ እትም", ed2: "2ኛ እትም", ed1: "1ኛ እትም",
     svc1_full_desc: "ከፌስቲቫሎች እስከ ጉባዔዎች አፍሮኖቫ ሙሉ ዝግጅቶችን ያቀርባል።",
     svc1_f1: "የባሕል ፌስቲቫሎች፣ ፎረሞች እና የኤዩ ዝግጅቶች",
     svc1_f2: "ዝርዝር ዲዛይን፣ ሎጂስቲክስ እና ደህንነት",
@@ -505,7 +459,7 @@ const translations: Record<Locale, Record<string, string>> = {
     val6_title: "ተጽዕኖ ተኮር", val6_desc: "ስኬትን በእውነተኛ ለውጥ ይለካዋል።",
     val7_title: "ባሕላዊ ኩራት", val7_desc: "የአፍሪካ ማንነት የሁሉ ነገር ማዕከል ነው።",
     val8_title: "ቀጣይ ትምህርት", val8_desc: "ሁልጊዜ እያደገ እና እያዳበረ።",
-    svc_eyebrow: "የምናደርገው", svc_h1: "ስድስት ምሰሶዎች", svc_h1b: "የፓን-አፍሪካ ልዕቀት",
+    svc_eyebrow: "የምናደርገው", svc_h1: "አምስት ምሰሶዎች", svc_h1b: "የፓን-አፍሪካ ልዕቀት",
     svc_hero_body: "ዝግጅቶች፣ ሚዲያ፣ ማስታወቂያ፣ ህትመት እና ዲጂታል ህትመት, አፍሮኖቫ ሁሉ-ዙሪያ ፓን-አፍሪካዊ ልዕቀት ያቀርባል።",
     svc_process_eyebrow: "እንዴት እንሠራለን", svc_process_title: "ሂደታችን",
     svc_cta_h: "አስደናቂ ነገር", svc_cta_hb: "አብረን እንፍጠር።",
@@ -575,25 +529,6 @@ const translations: Record<Locale, Record<string, string>> = {
     ac_cta_btn: "አፍሮኖቫን ያግኙ", ac_cta_btn2: "ይፋዊ ድርጣቢያ",
   },
   fr: {
-    ac_theme: "\"Une Afrique, Un Peuple : Unir la Culture, l'Innovation et l'Entreprise pour un Avenir Prospère Partagé\"",
-    about_story_eyebrow: "Notre Histoire",
-    about_story_title: "Bâtir l'Héritage",
-    about_story_highlight: "Panafricain",
-    about_story_body1: "Fondée à Addis-Abeba, AfroNova a été créée avec une mission claire : créer une plateforme unifiée célébrant l'identité africaine, favorisant la collaboration transfrontalière et stimulant la croissance économique.",
-    about_story_body2: "Au fil des ans, nous avons étendu notre portée dans plus de 50 pays, en partenariat avec des missions diplomatiques, des organismes régionaux et des leaders créatifs pour organiser des événements phares.",
-    values_eyebrow: "Ce qui nous anime",
-    values_title: "Valeurs de",
-    values_highlight: "l'Organisation",
-    lead_eyebrow: "Leadership",
-    lead_title: "La Personne Derrière",
-    lead_highlight: "AfroNova",
-    svc1_desc: "Festivals culturels, forums d'affaires, sommets et rassemblements alignés sur l'UA exécutés avec précision.",
-    ed5: "5ème Édition",
-    ed4: "4ème Édition",
-    ed3: "3ème Édition",
-    ed2: "2ème Édition",
-    ed1: "1ère Édition",
-
     nav_home: "Accueil", nav_about: "À propos", nav_services: "Services",
     nav_portfolio: "Portfolio", nav_news: "Actualités", nav_partners: "Partenaires",
     nav_portal: "Portail Exposants", nav_contact: "Contact",
@@ -625,7 +560,7 @@ const translations: Record<Locale, Record<string, string>> = {
     who_vision: "Devenir le principal hub d'événements et de médias d'Afrique, une plateforme de confiance où les cultures convergent et où les histoires africaines authentiques façonnent les perspectives mondiales.",
     who_location: "Addis-Abeba, Éthiopie",
     who_location_desc: "La capitale diplomatique de l'Afrique, à deux pas de l'Union africaine.",
-    services_eyebrow: "Ce que nous faisons", services_title: "Six piliers de", services_highlight: "l'excellence panafricaine",
+    services_eyebrow: "Ce que nous faisons", services_title: "Cinq piliers de", services_highlight: "l'excellence panafricaine",
     services_desc: "Capacités de bout en bout en événements, médias, publicité, édition et marchandisage de marque.",
     services_all: "Tous les services", services_learn: "En savoir plus",
     why_eyebrow: "Pourquoi AfroNova", why_title: "Ce qui nous distingue", why_highlight: "",
@@ -657,6 +592,7 @@ const translations: Record<Locale, Record<string, string>> = {
     prog4_title: "Journée Culture & Arts", prog5_title: "Soirée Gala & Récompenses", prog6_title: "Cérémonie de clôture",
     tier1_name: "Sponsor Titre", tier2_name: "Sponsor Or", tier3_name: "Sponsor Argent",
     partners_all: "Tous",
+    ed5: "5e Édition", ed4: "4e Édition", ed3: "3e Édition", ed2: "2e Édition", ed1: "1re Édition",
     svc1_full_desc: "Des festivals culturels aux sommets d'affaires, AfroNova livre des expériences d'événements complètes.",
     svc1_f1: "Festivals culturels, forums d'affaires et rassemblements UA",
     svc1_f2: "Conception d'événements, gestion logistique et sécurité",
@@ -726,7 +662,7 @@ const translations: Record<Locale, Record<string, string>> = {
     val6_title: "Focus sur l'impact", val6_desc: "Le succès mesuré par le changement réel.",
     val7_title: "Fierté culturelle", val7_desc: "Le patrimoine africain est notre pièce maîtresse.",
     val8_title: "Apprentissage continu", val8_desc: "Toujours en évolution pour mieux servir l'Afrique.",
-    svc_eyebrow: "Ce que nous faisons", svc_h1: "Six piliers de", svc_h1b: "l'excellence panafricaine",
+    svc_eyebrow: "Ce que nous faisons", svc_h1: "Cinq piliers de", svc_h1b: "l'excellence panafricaine",
     svc_hero_body: "De la gestion d'événements à la production multimédia, publicité, marchandisage et édition, AfroNova livre.",
     svc_process_eyebrow: "Comment nous travaillons", svc_process_title: "Notre processus",
     svc_cta_h: "Construisons quelque chose", svc_cta_hb: "d'extraordinaire ensemble.",
@@ -775,6 +711,7 @@ const translations: Record<Locale, Record<string, string>> = {
     news_hero_body: "Communiqués de presse, mises à jour d'événements, partenariats et histoires du monde d'AfroNova.",
     news_featured: "À la une", news_read: "Lire",
     ac_badge: "6e Édition · Festival panafricain",
+    ac_theme: "\"Une Afrique, Un Peuple : Unir la Culture, l'Innovation et l'Entreprise pour un Avenir Prospère Commun\"",
     ac_date: "10 to 15 novembre 2026", ac_venue: "Siège UA & UNECA, Addis-Abeba", ac_nations: "40+ nations africaines",
     ac_countdown_label: "Compte à rebours jusqu'à Africa Celebrates 2026",
     ac_visit: "Visiter le site officiel", ac_download: "Télécharger le programme",
@@ -795,25 +732,6 @@ const translations: Record<Locale, Record<string, string>> = {
     ac_cta_btn: "Contacter AfroNova", ac_cta_btn2: "Site officiel de l'événement",
   },
   pt: {
-    ac_theme: "\"Uma África, Um Povo: Unindo Cultura, Inovação e Empresa para um Futuro Próspero Partilhado\"",
-    about_story_eyebrow: "Nossa História",
-    about_story_title: "Construindo o Legado",
-    about_story_highlight: "Pan-Africano",
-    about_story_body1: "Fundada em Adis Abeba, a AfroNova foi estabelecida com uma missão clara: criar uma plataforma unificada que celebra a identidade africana, promove a colaboração transfronteiriça e estimula o crescimento económico.",
-    about_story_body2: "Ao longo dos anos, expandimos o nosso alcance por mais de 50 países, em parceria com missões diplomáticas, organismos regionais e líderes criativos para realizar eventos emblemáticos.",
-    values_eyebrow: "O que nos move",
-    values_title: "Valores da",
-    values_highlight: "Organização",
-    lead_eyebrow: "Liderança",
-    lead_title: "A Pessoa Por Trás da",
-    lead_highlight: "AfroNova",
-    svc1_desc: "Festivais culturais, fóruns de negócios e cimeiras em alinhamento com a UA executados com precisão.",
-    ed5: "5ª Edição",
-    ed4: "4ª Edição",
-    ed3: "3ª Edição",
-    ed2: "2ª Edição",
-    ed1: "1ª Edição",
-
     nav_home: "Início", nav_about: "Sobre Nós", nav_services: "Serviços",
     nav_portfolio: "Portfólio", nav_news: "Notícias", nav_partners: "Parceiros",
     nav_portal: "Portal de Expositores", nav_contact: "Contacto",
@@ -845,7 +763,7 @@ const translations: Record<Locale, Record<string, string>> = {
     who_vision: "Tornar-se o principal hub de eventos e media de África, uma plataforma de confiança onde as culturas convergem e as histórias africanas autênticas moldam perspetivas globais.",
     who_location: "Adis Abeba, Etiópia",
     who_location_desc: "A capital diplomática de África, a passos da União Africana.",
-    services_eyebrow: "O que fazemos", services_title: "Seis pilares da", services_highlight: "excelência pan-africana",
+    services_eyebrow: "O que fazemos", services_title: "Cinco pilares da", services_highlight: "excelência pan-africana",
     services_desc: "Capacidades de ponta a ponta em eventos, media, publicidade, publicação e merchandising de marca.",
     services_all: "Todos os serviços", services_learn: "Saber mais",
     why_eyebrow: "Porquê a AfroNova", why_title: "O que nos distingue", why_highlight: "",
@@ -877,6 +795,7 @@ const translations: Record<Locale, Record<string, string>> = {
     prog4_title: "Dia Cultura & Artes", prog5_title: "Gala de Prémios", prog6_title: "Cerimónia de Encerramento",
     tier1_name: "Patrocinador Título", tier2_name: "Patrocinador Ouro", tier3_name: "Patrocinador Prata",
     partners_all: "Todos",
+    ed5: "5.ª Edição", ed4: "4.ª Edição", ed3: "3.ª Edição", ed2: "2.ª Edição", ed1: "1.ª Edição",
     svc1_full_desc: "De festivais culturais a cimeiras de negócios, a AfroNova entrega experiências de eventos completas.",
     svc1_f1: "Festivais culturais, fóruns de negócios e eventos alinhados com a UA",
     svc1_f2: "Design de eventos, gestão logística e segurança",
@@ -946,7 +865,7 @@ const translations: Record<Locale, Record<string, string>> = {
     val6_title: "Foco no impacto", val6_desc: "O sucesso medido pela mudança real.",
     val7_title: "Orgulho cultural", val7_desc: "O património africano é o nosso ponto central.",
     val8_title: "Aprendizagem contínua", val8_desc: "Sempre a evoluir para melhor servir África.",
-    svc_eyebrow: "O que fazemos", svc_h1: "Seis pilares da", svc_h1b: "excelência pan-africana",
+    svc_eyebrow: "O que fazemos", svc_h1: "Cinco pilares da", svc_h1b: "excelência pan-africana",
     svc_hero_body: "Da gestão de eventos à produção multimédia, publicidade, merchandising e publicação, a AfroNova entrega.",
     svc_process_eyebrow: "Como trabalhamos", svc_process_title: "O nosso processo",
     svc_cta_h: "Vamos construir algo", svc_cta_hb: "extraordinário juntos.",
@@ -995,6 +914,7 @@ const translations: Record<Locale, Record<string, string>> = {
     news_hero_body: "Comunicados de imprensa, atualizações de eventos, parcerias e histórias do mundo AfroNova.",
     news_featured: "Destaque", news_read: "Ler",
     ac_badge: "6.ª Edição · Festival pan-africano",
+    ac_theme: "\"Uma África, Um Povo: Unindo Cultura, Inovação e Empresa para um Futuro Próspero Comum\"",
     ac_date: "10 to 15 de novembro de 2026", ac_venue: "Sede UA & UNECA, Adis Abeba", ac_nations: "40+ nações africanas",
     ac_countdown_label: "Contagem decrescente para Africa Celebrates 2026",
     ac_visit: "Visitar o site oficial", ac_download: "Descarregar programa",
@@ -1015,24 +935,6 @@ const translations: Record<Locale, Record<string, string>> = {
     ac_cta_btn: "Contactar AfroNova", ac_cta_btn2: "Site oficial do evento",
   },
   ar: {
-    about_story_eyebrow: "قصتنا",
-    about_story_title: "بناء الإرث",
-    about_story_highlight: "الأفريقي الشامل",
-    about_story_body1: "تأسست أفرونوفا في أديس أبابا بمهمة واضحة: إنشاء منصة موحدة تحتفي بالهوية الأفريقية وتنزع نحو التعزيز والتعاون عبر الحدود والدفع بالنمو الاقتصادي.",
-    about_story_body2: "على مر السنين، وسعنا نطاق وصولنا عبر أكثر من 50 دولة، بالشراكة مع البعثات الدبلوماسية والهيئات الإقليمية والقادة المبدعين لاستضافة الفعاليات الكبرى وإنجاز مشاريع إعلامية ذات تأثير.",
-    values_eyebrow: "ما يدفعنا",
-    values_title: "قيم المؤسسة",
-    values_highlight: "الأساسية",
-    lead_eyebrow: "القيادة",
-    lead_title: "الشخص الكائن خلف",
-    lead_highlight: "أفرونوفا",
-    svc1_desc: "المهرجانات الثقافية ومنتديات الأعمال والقمم واللقاءات المتماشية مع الاتحاد الأفريقي بدقة متناهية.",
-    ed5: "الإصدار الخامس",
-    ed4: "الإصدار الرابع",
-    ed3: "الإصدار الثالث",
-    ed2: "الإصدار الثاني",
-    ed1: "الإصدار الأول",
-
     nav_home: "الرئيسية", nav_about: "من نحن", nav_services: "الخدمات",
     nav_portfolio: "المحفظة", nav_news: "الأخبار", nav_partners: "الشركاء",
     nav_portal: "بوابة العارضين", nav_contact: "اتصل بنا",
@@ -1064,7 +966,7 @@ const translations: Record<Locale, Record<string, string>> = {
     who_vision: "أن نصبح المحور الرائد للفعاليات والإعلام في أفريقيا, منصة موثوقة تتقاطع فيها الثقافات وتُشكّل القصص الأفريقية الأصيلة المنظورات العالمية.",
     who_location: "أديس أبابا، إثيوبيا",
     who_location_desc: "العاصمة الدبلوماسية لأفريقيا، على مقربة من الاتحاد الأفريقي.",
-    services_eyebrow: "ما نفعله", services_title: "ست ركائز", services_highlight: "للتميز الأفريقي الشامل",
+    services_eyebrow: "ما نفعله", services_title: "خمس ركائز", services_highlight: "للتميز الأفريقي الشامل",
     services_desc: "قدرات شاملة عبر الفعاليات والإعلام والإعلانات والنشر وترويج العلامات التجارية.",
     services_all: "جميع الخدمات", services_learn: "اعرف المزيد",
     why_eyebrow: "لماذا أفرونوفا", why_title: "ما الذي يُميّزنا", why_highlight: "",
@@ -1096,6 +998,7 @@ const translations: Record<Locale, Record<string, string>> = {
     prog4_title: "يوم الثقافة والفنون", prog5_title: "ليلة الجوائز الكبرى", prog6_title: "حفل الختام",
     tier1_name: "الراعي الرئيسي", tier2_name: "الراعي الذهبي", tier3_name: "الراعي الفضي",
     partners_all: "الكل",
+    ed5: "الطبعة الخامسة", ed4: "الطبعة الرابعة", ed3: "الطبعة الثالثة", ed2: "الطبعة الثانية", ed1: "الطبعة الأولى",
     svc1_full_desc: "من المهرجانات الثقافية إلى قمم الأعمال، تقدم أفرونوفا تجارب فعاليات متكاملة.",
     svc1_f1: "مهرجانات ثقافية ومنتديات أعمال وفعاليات الاتحاد الأفريقي",
     svc1_f2: "تصميم الفعاليات وإدارة اللوجستيات والأمن",
@@ -1165,7 +1068,7 @@ const translations: Record<Locale, Record<string, string>> = {
     val6_title: "التركيز على التأثير", val6_desc: "يُقاس النجاح بالتغيير الحقيقي.",
     val7_title: "الفخر الثقافي", val7_desc: "التراث الأفريقي هو محور كل ما نفعله.",
     val8_title: "التعلم المستمر", val8_desc: "دائماً نتطور لخدمة أفريقيا بشكل أفضل.",
-    svc_eyebrow: "ما نفعله", svc_h1: "ست ركائز", svc_h1b: "للتميز الأفريقي الشامل",
+    svc_eyebrow: "ما نفعله", svc_h1: "خمس ركائز", svc_h1b: "للتميز الأفريقي الشامل",
     svc_hero_body: "من إدارة الفعاليات إلى الإنتاج الإعلامي والإعلانات والترويج والنشر, أفرونوفا تُنجز.",
     svc_process_eyebrow: "كيف نعمل", svc_process_title: "عمليتنا",
     svc_cta_h: "لنبنِ شيئاً", svc_cta_hb: "استثنائياً معاً.",
@@ -1242,7 +1145,6 @@ const LanguageContext = createContext<LanguageContextType>({
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
-  const [dynamicTranslations, setDynamicTranslations] = useState<Record<string, string>>({});
   const isRTL = RTL_LOCALES.includes(locale);
   const setLocale = (l: Locale) => setLocaleState(l);
 
@@ -1252,27 +1154,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     html.setAttribute("dir", isRTL ? "rtl" : "ltr");
   }, [locale, isRTL]);
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch(`/api/content?locale=${locale}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (!cancelled && data.success && data.translations) {
-          setDynamicTranslations(data.translations);
-        }
-      })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, [locale]);
-
-  const formatFallbackKey = (key: string): string => {
-    return key
-      .replace(/_/g, " ")
-      .replace(/\b\w/g, (char) => char.toUpperCase());
-  };
-
   const t = (key: string): string =>
-    dynamicTranslations[key] ?? translations[locale]?.[key] ?? translations["en"]?.[key] ?? formatFallbackKey(key);
+    translations[locale][key] ?? translations["en"][key] ?? key;
 
   return (
     <LanguageContext.Provider value={{ locale, setLocale, t, isRTL }}>

@@ -108,24 +108,6 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="border-y border-gray-200 py-10 bg-white/70 backdrop-blur-sm">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { value: "15+", label: t("partners_stat1") },
-              { value: "50+", label: t("partners_stat2") },
-              { value: "6",   label: t("partners_stat3") },
-              { value: "5+",  label: t("partners_stat4") },
-            ].map(({ value, label }) => (
-              <div key={label}>
-                <p className="text-4xl font-display font-black text-gradient mb-1">{value}</p>
-                <p className="text-[#101312]/65 text-sm font-semibold">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Category chips & Search */}
       <section className="pt-14 pb-4 bg-white/60 backdrop-blur-[2px]">
