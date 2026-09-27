@@ -76,7 +76,7 @@ export default function PortfolioPage() {
     "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
   ];
 
-  // AFRIMA Gallery items
+  // AFRIMA Gallery items (9 cards matching the primary gallery layout)
   const afrimaGalleryItems = [
     {
       title: "AFRIMA Red Carpet & Media Unveiling",
@@ -102,9 +102,97 @@ export default function PortfolioPage() {
       imgUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
       isVideo: false,
     },
+    {
+      title: "Main Stage Concert Broadcast Operations",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
+      isVideo: true,
+    },
+    {
+      title: "Pan-African Youth & Creative Talent Masterclass",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "Continental Music Industry Executive Roundtable",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "AFRIMA International Press & Media Center",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "VIP Awards Gala & Cultural Celebration",
+      category: "AFRIMA Music Conference",
+      imgUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
   ];
 
-  // Combined gallery items for continuous Lightbox navigation
+  // PATIC Launch Gallery items (9 cards matching the primary gallery layout)
+  const paticGalleryItems = [
+    {
+      title: "PATIC Continental Launch & Executive Ceremony",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "Intra-African Trade & Economic Integration Summit",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "PATIC Industrialization Keynote & Docu-Series",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80",
+      isVideo: true,
+    },
+    {
+      title: "Cross-Border Enterprise & Investment Signing",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "Pan-African Industrial Leaders & Ministerial Forum",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "Manufacturing & Infrastructure Expo Pavilion",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "PATIC Official Broadcast & Media Conference",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+      isVideo: true,
+    },
+    {
+      title: "Diplomatic & Corporate Enterprise Gala",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+    {
+      title: "Pan-African Trade Delegation & AU Forum",
+      category: "PATIC Launch",
+      imgUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+      isVideo: false,
+    },
+  ];
+
+  // Combined gallery items for continuous Lightbox navigation across all 27 cards
   const mainGalleryList = galleryItems.map((label, i) => {
     const translatedVal = t(`pf_gal${i + 1}`);
     const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
@@ -119,7 +207,7 @@ export default function PortfolioPage() {
     };
   });
 
-  const allGalleryItems = [...mainGalleryList, ...afrimaGalleryItems];
+  const allGalleryItems = [...mainGalleryList, ...afrimaGalleryItems, ...paticGalleryItems];
 
   const handlePrevLightbox = useCallback(() => {
     setActiveLightboxIndex((prev) => (prev === null ? null : prev === 0 ? allGalleryItems.length - 1 : prev - 1));
@@ -204,66 +292,26 @@ export default function PortfolioPage() {
 
       {/* Primary Gallery (Africa Celebrates) */}
       <section className="section-padding bg-white/60 backdrop-blur-[2px]">
-        <div className="container-custom space-y-12">
-          <SectionHeader
-            eyebrow={t("portfolio_gallery_eyebrow")}
-            title={t("portfolio_gallery_title")}
-            titleHighlight={t("portfolio_gallery_highlight")}
-            className="mb-8"
-          />
-
-          {/* Africa Celebrates Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {mainGalleryList.map((item, i) => {
-              const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
-              const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
-              return (
-                <div
-                  key={item.title + i}
-                  onClick={() => setActiveLightboxIndex(i)}
-                  className={`${heights[i % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
-                  style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(248,246,240,0.90))` }}
-                >
-                  <img
-                    src={item.imgUrl}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                    {item.isVideo ? (
-                      <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
-                        <Play className="w-6 h-6 text-white ml-1" />
-                      </div>
-                    ) : (
-                      <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
-                    )}
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
-                    <p className="text-white text-sm font-semibold">{item.title}</p>
-                    <p className="text-xs text-[#F0B84F] font-bold">{item.isVideo ? "Video" : "Photography"}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* AFRIMA Music Conference Gallery (Right at the bottom of the current gallery) */}
-          <div className="pt-10 space-y-8 border-t border-gray-200">
+        <div className="container-custom space-y-16">
+          
+          {/* 1. Africa Celebrates Gallery Grid (9 Cards) */}
+          <div className="space-y-8">
             <SectionHeader
-              eyebrow="Media Partnership Gallery"
-              title="AFRIMA Music Conference"
-              titleHighlight="Showcase"
-              description="Facilitation, red carpet, and broadcast media coverage for All Africa Music Awards' World Media Unveiling."
+              eyebrow={t("portfolio_gallery_eyebrow")}
+              title={t("portfolio_gallery_title")}
+              titleHighlight={t("portfolio_gallery_highlight")}
+              className="mb-8"
             />
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {afrimaGalleryItems.map((item, localIdx) => {
-                const globalIdx = mainGalleryList.length + localIdx; // 9..12
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {mainGalleryList.map((item, i) => {
+                const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
+                const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
                 return (
                   <div
-                    key={item.title}
-                    onClick={() => setActiveLightboxIndex(globalIdx)}
-                    className="aspect-[4/3] rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white"
+                    key={item.title + i}
+                    onClick={() => setActiveLightboxIndex(i)}
+                    className={`${heights[i % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
+                    style={{ background: `linear-gradient(135deg,${accents[i % 3]},rgba(248,246,240,0.90))` }}
                   >
                     <img
                       src={item.imgUrl}
@@ -272,22 +320,111 @@ export default function PortfolioPage() {
                     />
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                       {item.isVideo ? (
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
-                          <Play className="w-5 h-5 text-white ml-0.5" />
+                        <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
+                          <Play className="w-6 h-6 text-white ml-1" />
                         </div>
                       ) : (
-                        <ExternalLink className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
+                        <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
                       )}
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-3.5 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
-                      <p className="text-white text-xs sm:text-sm font-semibold leading-tight line-clamp-1">{item.title}</p>
-                      <p className="text-[11px] text-[#F0B84F] font-bold mt-0.5">{item.isVideo ? "Broadcast Video" : "AFRIMA Photography"}</p>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
+                      <p className="text-white text-sm font-semibold">{item.title}</p>
+                      <p className="text-xs text-[#F0B84F] font-bold">{item.isVideo ? "Video" : "Photography"}</p>
                     </div>
                   </div>
                 );
               })}
             </div>
           </div>
+
+          {/* 2. AFRIMA Music Conference Gallery Grid (9 Cards) */}
+          <div className="pt-12 space-y-8 border-t border-gray-200">
+            <SectionHeader
+              eyebrow="Media Partnership Gallery"
+              title="AFRIMA Music Conference"
+              titleHighlight="Showcase Grid"
+              description="Facilitation, red carpet, and broadcast media coverage for All Africa Music Awards' World Media Unveiling."
+            />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {afrimaGalleryItems.map((item, localIdx) => {
+                const globalIdx = mainGalleryList.length + localIdx; // 9..17
+                const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
+                const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
+                return (
+                  <div
+                    key={item.title + localIdx}
+                    onClick={() => setActiveLightboxIndex(globalIdx)}
+                    className={`${heights[localIdx % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
+                    style={{ background: `linear-gradient(135deg,${accents[localIdx % 3]},rgba(248,246,240,0.90))` }}
+                  >
+                    <img
+                      src={item.imgUrl}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                      {item.isVideo ? (
+                        <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
+                          <Play className="w-6 h-6 text-white ml-1" />
+                        </div>
+                      ) : (
+                        <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
+                      )}
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
+                      <p className="text-white text-sm font-semibold">{item.title}</p>
+                      <p className="text-xs text-[#F0B84F] font-bold">{item.isVideo ? "Video" : "Photography"}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 3. PATIC Launch Gallery Grid (9 Cards) */}
+          <div className="pt-12 space-y-8 border-t border-gray-200">
+            <SectionHeader
+              eyebrow="Strategic Initiative Gallery"
+              title="PATIC Continental Launch"
+              titleHighlight="Showcase Grid"
+              description="Official continental launch, intra-African trade forums, and industrial economic integration summits."
+            />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {paticGalleryItems.map((item, localIdx) => {
+                const globalIdx = mainGalleryList.length + afrimaGalleryItems.length + localIdx; // 18..26
+                const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
+                const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
+                return (
+                  <div
+                    key={item.title + localIdx}
+                    onClick={() => setActiveLightboxIndex(globalIdx)}
+                    className={`${heights[localIdx % 3]} rounded-2xl border border-gray-200 relative overflow-hidden group cursor-pointer shadow-md bg-white`}
+                    style={{ background: `linear-gradient(135deg,${accents[localIdx % 3]},rgba(248,246,240,0.90))` }}
+                  >
+                    <img
+                      src={item.imgUrl}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                      {item.isVideo ? (
+                        <div className="w-14 h-14 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-lg" style={{ background: "rgba(214,163,74,0.95)" }}>
+                          <Play className="w-6 h-6 text-white ml-1" />
+                        </div>
+                      ) : (
+                        <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-md" />
+                      )}
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10">
+                      <p className="text-white text-sm font-semibold">{item.title}</p>
+                      <p className="text-xs text-[#F0B84F] font-bold">{item.isVideo ? "Video" : "Photography"}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -367,7 +504,7 @@ export default function PortfolioPage() {
             {/* Bottom Caption */}
             <div className="w-full text-center max-w-xl text-white space-y-1 z-10 pb-2">
               <p className="font-display font-bold text-lg md:text-xl text-[#F0B84F]">{currentItem.title}</p>
-              <p className="text-xs text-white/60 font-medium uppercase tracking-widest">{currentItem.isVideo ? "Featured Video Coverage" : "Portfolio Photography"}</p>
+              <p className="text-xs text-[#F0B84F] font-medium uppercase tracking-widest">{currentItem.isVideo ? "Featured Video Coverage" : "Portfolio Photography"}</p>
             </div>
           </div>
         );
@@ -375,4 +512,3 @@ export default function PortfolioPage() {
     </>
   );
 }
-
