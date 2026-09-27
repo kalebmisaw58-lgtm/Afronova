@@ -26,10 +26,6 @@
     scroll-behavior: smooth;
     min-height: 100%;
     background-color: #FAF8F4;
-    background-image: url('/luxury-pattern.svg');
-    background-repeat: repeat;
-    background-size: 80px 80px;
-    background-attachment: fixed;
   }
 
   body {
