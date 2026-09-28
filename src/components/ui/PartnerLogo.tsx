@@ -36,7 +36,7 @@ export default function PartnerLogo({
     return (
       <div
         className={cn(
-          "rounded-full flex items-center justify-center font-display font-black text-white shrink-0",
+          "rounded-2xl flex items-center justify-center font-display font-black text-white shrink-0 shadow-sm",
           className
         )}
         style={{
@@ -56,7 +56,7 @@ export default function PartnerLogo({
 
   return (
     <div
-      className={cn("relative rounded-xl flex items-center justify-center shrink-0 overflow-hidden bg-white/5", className)}
+      className={cn("relative rounded-2xl flex items-center justify-center shrink-0 overflow-hidden bg-white p-2.5 border border-gray-200/80 shadow-sm hover:border-[#D6A34A]/60 hover:shadow-md transition-all", className)}
       style={{ width, height, minWidth: width }}
       aria-label={name}
     >
@@ -64,7 +64,7 @@ export default function PartnerLogo({
         src={src}
         alt={name}
         onError={() => setError(true)}
-        className="w-full h-full object-contain p-1.5"
+        className="w-full h-full object-contain"
       />
     </div>
   );

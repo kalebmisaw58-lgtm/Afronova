@@ -37,21 +37,21 @@ export default function CountdownTimer() {
   ];
 
   return (
-    <div className="flex items-center justify-center gap-1 sm:gap-2.5 md:gap-3 flex-nowrap shrink-0">
+    <div className="flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 flex-nowrap shrink-0">
       {blocks.map(({ label, value }, i) => (
-        <div key={label} className="flex items-center gap-1 sm:gap-2.5 md:gap-3 shrink-0">
-          <div className="countdown-block px-2 sm:px-3.5 py-2 sm:py-3 min-w-[56px] sm:min-w-[76px] md:min-w-[86px] text-center bg-white border border-[#D6A34A]/40 rounded-2xl shadow-sm">
+        <div key={label} className="flex items-center gap-1.5 sm:gap-3 md:gap-4 shrink-0">
+          <div className="countdown-block px-2.5 sm:px-4 py-2.5 sm:py-3 min-w-[68px] sm:min-w-[85px] md:min-w-[95px] text-center bg-white border border-[#D6A34A]/40 rounded-2xl shadow-sm">
             {/* Value in high-contrast bronze gold */}
-            <span className="text-xl sm:text-2xl md:text-3xl font-display font-black tabular-nums leading-none text-[#9A6A31]">
+            <span className="text-2xl sm:text-3xl md:text-4xl font-display font-black tabular-nums leading-none text-[#9A6A31]">
               {String(value).padStart(2, "0")}
             </span>
             {/* Label in high-contrast dark charcoal text */}
-            <span className="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-[#101312]/80 mt-1 block">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[#101312]/80 mt-1 block">
               {label}
             </span>
           </div>
           {i < blocks.length - 1 && (
-            <span className="text-base sm:text-xl md:text-2xl font-bold text-[#F0B84F] shrink-0 pb-1 leading-none">
+            <span className="text-xl sm:text-2xl font-bold text-[#F0B84F] shrink-0 pb-1 sm:pb-2 leading-none">
               :
             </span>
           )}

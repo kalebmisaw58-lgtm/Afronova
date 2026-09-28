@@ -383,14 +383,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ 10. VERY SMALL TRUSTED PARTNERS ══════════════════ */}
-      <section className="py-12 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
+      {/* ══ 10. TRUSTED PARTNERS & COLLABORATORS ══════════════════ */}
+      <section className="py-14 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
         <div className="container-custom text-center">
-          <p className="text-[#101312]/60 text-xs uppercase tracking-widest font-bold mb-6">{t("partners_label")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <p className="text-[#101312]/60 text-xs uppercase tracking-widest font-bold mb-8">{t("partners_label")}</p>
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 md:gap-8">
             {partnerList.map((p) => (
-              <div key={p.name} className="flex items-center justify-center transition-transform duration-200 hover:scale-105 opacity-85 hover:opacity-100">
-                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={42} height={42} />
+              <div key={p.name} className="flex items-center justify-center transition-all duration-300 hover:scale-110 opacity-90 hover:opacity-100">
+                <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={84} height={84} />
               </div>
             ))}
           </div>

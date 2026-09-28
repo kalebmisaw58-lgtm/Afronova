@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | AfroNova",
   },
   description:
-    "AfroNova is a Pan-African organization shaping how Africa is experienced, represented, and connected to the world. Headquartered in Addis Ababa, Ethiopia, we create platforms where African culture, creativity, and innovation engage the world on their own terms through transformative events, multimedia storytelling, strategic communications, and cross-border partnerships.",
+    "AfroNova is a premier Pan-African enterprise dedicated to celebrating, amplifying and promoting Africa's cultural heritage, innovation and creative excellence. Official local partner of Legendary Gold Limited and core organizer of Africa Celebrates.",
   keywords: [
     "AfroNova",
     "Africa Celebrates",
