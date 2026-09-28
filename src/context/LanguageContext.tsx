@@ -21,7 +21,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // Hero
     hero_badge: "Pan-African · Events · Media · Innovation · Promotion",
     hero_tagline: "Branding the New Africa.",
-    hero_body: "AfroNova is a premier Pan-African enterprise dedicated to celebrating, amplifying and promoting Africa's cultural heritage, innovation and creative excellence. Headquartered in Addis Ababa, operating across 50+ countries.",
+    hero_body: "AfroNova is a Pan-African organization shaping how Africa is experienced, represented, and connected to the world. Headquartered in Addis Ababa, Ethiopia, we create platforms where African culture, creativity, and innovation engage the world on their own terms through transformative events, multimedia storytelling, strategic communications, and cross-border partnerships.",
     hero_cta_discover: "Discover AfroNova",
     hero_cta_services: "Our Services",
     hero_cta_work: "Work With Us",
