@@ -150,7 +150,7 @@ export default function AboutPage() {
         <div className="container-custom text-center">
           <p className="text-[#101312]/60 text-xs uppercase tracking-widest font-bold mb-8">Trusted Partners &amp; Collaborators</p>
           <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 md:gap-8">
-            {partners.slice(0, 10).map((p) => (
+            {partners.map((p) => (
               <div key={p.name} className="flex items-center justify-center transition-all duration-300 hover:scale-110 opacity-90 hover:opacity-100">
                 <PartnerLogo logo={p.logo} name={p.name} initials={p.initials} accent={p.accent} width={84} height={84} />
               </div>
