@@ -37,18 +37,23 @@ export default function CountdownTimer() {
   ];
 
   return (
-    <div className="flex items-center gap-3 md:gap-4 flex-wrap justify-center">
+    <div className="flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 flex-nowrap shrink-0">
       {blocks.map(({ label, value }, i) => (
-        <div key={label} className="flex items-center gap-3 md:gap-4">
-          <div className="countdown-block">
-            {/* Value in logo orange */}
-            <span className="text-3xl md:text-4xl font-display font-bold tabular-nums leading-none text-[#D6A34A]">
+        <div key={label} className="flex items-center gap-1.5 sm:gap-3 md:gap-4 shrink-0">
+          <div className="countdown-block px-2.5 sm:px-4 py-2.5 sm:py-3 min-w-[68px] sm:min-w-[85px] md:min-w-[95px] text-center bg-white border border-[#D6A34A]/40 rounded-2xl shadow-sm">
+            {/* Value in high-contrast bronze gold */}
+            <span className="text-2xl sm:text-3xl md:text-4xl font-display font-black tabular-nums leading-none text-[#9A6A31]">
               {String(value).padStart(2, "0")}
             </span>
-            <span className="text-white/45 text-xs uppercase tracking-wider mt-1">{label}</span>
+            {/* Label in high-contrast dark charcoal text */}
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[#101312]/80 mt-1 block">
+              {label}
+            </span>
           </div>
           {i < blocks.length - 1 && (
-            <span className="text-2xl font-bold pb-4" style={{ color: "rgba(214,163,74,0.50)" }}>:</span>
+            <span className="text-xl sm:text-2xl font-bold text-[#F0B84F] shrink-0 pb-1 sm:pb-2 leading-none">
+              :
+            </span>
           )}
         </div>
       ))}

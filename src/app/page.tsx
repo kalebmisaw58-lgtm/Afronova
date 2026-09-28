@@ -157,7 +157,7 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 right-0 accent-line" />
         <div className="absolute bottom-0 left-0 right-0 accent-line" />
         <div className="container-custom relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10">
             <div className="text-center lg:text-left space-y-3 max-w-xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
                    style={{ background: "rgba(214,163,74,0.18)", border: "1px solid rgba(214,163,74,0.45)", color: "#F0B84F" }}>
@@ -166,19 +166,19 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-4xl font-display font-black text-white leading-tight">
                 {t("countdown_title1")} <span className="text-gradient">{t("countdown_title2")}</span> {t("countdown_title3")}
               </h2>
-              <p className="text-white/80 text-sm leading-relaxed font-medium">
+              <p className="text-white/90 text-sm leading-relaxed font-medium">
                 Africa Celebrates brings together culture, enterprise, innovation, dialogue, creativity, and continental connection on one Pan-African platform. AfroNova serves as a lead implementing partner in Ethiopia, helping translate the vision into experiences, forums, partnerships, and storytelling.
               </p>
-              <div className="flex flex-wrap gap-4 text-xs text-white/70 justify-center lg:justify-start pt-1 font-semibold">
+              <div className="flex flex-wrap gap-4 text-xs text-white/95 justify-center lg:justify-start pt-1 font-semibold">
                 <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#F0B84F]" />{t("countdown_date")}</span>
                 <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#F0B84F]" />African Union HQ, Addis Ababa</span>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3 w-full lg:w-auto overflow-x-auto py-1">
               <p className="text-xs font-bold tracking-widest uppercase text-[#F0B84F]">{t("countdown_label")}</p>
               <CountdownTimer />
             </div>
-            <div className="flex flex-col items-center lg:items-end gap-3">
+            <div className="flex flex-col items-center lg:items-end gap-3 shrink-0">
               <a href="https://africacelebrates.com" target="_blank" rel="noopener noreferrer" className="btn-primary px-7 py-3 text-sm">
                 {t("countdown_visit")} <ExternalLink className="w-4 h-4" />
               </a>

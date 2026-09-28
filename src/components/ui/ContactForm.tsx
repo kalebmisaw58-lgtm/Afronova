@@ -104,7 +104,7 @@ export default function ContactForm({
       <div className={`flex flex-col items-center justify-center gap-4 py-12 text-center ${className}`}>
         <CheckCircle className="w-16 h-16 text-[#D6A34A]" />
         <h3 className="text-xl font-display font-bold text-white">{successMessage}</h3>
-        <p className="text-white/45 text-sm max-w-xs">
+        <p className="text-white/80 text-sm max-w-xs font-medium">
           Check your inbox, we&apos;ve sent you a confirmation email.
         </p>
         <button
