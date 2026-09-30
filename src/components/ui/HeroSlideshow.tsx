@@ -206,6 +206,28 @@ const slides = [
     country: "South Africa",
     flag: "🇿🇦",
   },
+  {
+    name: "W.E.B. Du Bois",
+    title: "Father of Modern Pan-Africanism · United States & Ghana · 1868 to 1963",
+    quote: "The problem of the twentieth century is the problem of the color line, but the future belongs to African unity.",
+    initial: "DB",
+    photo: "/heroes/web-dubois.jpg",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#B9853B",
+    country: "Ghana & USA",
+    flag: "🇬🇭",
+  },
+  {
+    name: "Henry Sylvester Williams",
+    title: "Founder of Pan-African Movement · Trinidad & Tobago · 1869 to 1911",
+    quote: "The time has come when the voice of Black people must be heard in the councils of the nations.",
+    initial: "HW",
+    photo: "/heroes/henry-sylvester-williams.jpg",
+    bg: "radial-gradient(ellipse 90% 90% at 75% 35%, #FDFBF7 0%, #F5F3EC 55%, #FFFFFF 100%)",
+    accentColor: "#9A6A31",
+    country: "Trinidad & Tobago",
+    flag: "🇹🇹",
+  },
 ];
 
 const INTERVAL = 5500;
