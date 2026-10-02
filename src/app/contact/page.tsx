@@ -32,7 +32,7 @@ export default function ContactPage() {
     { name: "inquiry", label: t("contact_field_inquiry"), options: [
       t("contact_inquiry_general"), t("contact_inquiry_event"), t("contact_inquiry_media"),
       t("contact_inquiry_ads"), t("contact_inquiry_ac"), t("contact_inquiry_sponsor"),
-      t("contact_inquiry_press"), t("contact_inquiry_other"),
+      t("contact_inquiry_press"), t("contact_inquiry_talent"), t("contact_inquiry_other"),
     ]},
     { name: "message", label: t("contact_field_msg"), type: "textarea" as const, required: true, placeholder: t("contact_field_msg_ph") },
   ];
