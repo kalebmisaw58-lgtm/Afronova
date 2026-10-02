@@ -22,19 +22,21 @@ export interface Partner {
 
 export const partners: Partner[] = [
   { name: "African Union",            initials: "AU",  categoryKey: "cat_institutional", accent: "#D6A34A", logo: "african-union.png",  website: "https://au.int",                descKey: "p_au_desc",  roleKey: "p_au_role",  featured: true },
-  { name: "European Union",           initials: "EU",  categoryKey: "cat_diplomatic",    accent: "#B9853B", logo: "european-union.png", website: "https://europa.eu",              descKey: "p_eu_desc",  roleKey: "p_eu_role" },
-  { name: "Ethiopia Tourism",         initials: "ET2", categoryKey: "cat_government",    accent: "#9A6A31", logo: "ethiopia-tourism.png", website: "https://ethiopia.travel",          descKey: "p_et_desc",  roleKey: "p_et_role" },
+  { name: "UNECA (ECA)",              initials: "ECA", categoryKey: "cat_institutional", accent: "#B9853B", logo: "uneca.png",         website: "https://uneca.org",             descKey: "p_eca_desc", roleKey: "p_eca_role", featured: true },
   { name: "Legendary Gold",           initials: "LG",  categoryKey: "cat_strategic",     accent: "#F0B84F", logo: "legendary-gold.png",website: "https://legendarygold.co.uk",      descKey: "p_lg_desc",  roleKey: "p_lg_role",  featured: true },
-  { name: "US Mission to AU",          initials: "USAU", categoryKey: "cat_diplomatic",   accent: "#477A9D", logo: "images.jpg", website: "https://usau.usmission.gov", descKey: "p_usau_desc", roleKey: "p_usau_role" },
+  { name: "British Council",          initials: "BC",  categoryKey: "cat_cultural",      accent: "#9A6A31", logo: "british-council.png",website: "https://britishcouncil.org",     descKey: "p_bc_desc",  roleKey: "p_bc_role" },
+  { name: "Ethiopian Airlines",       initials: "ET",  categoryKey: "cat_corporate",     accent: "#D6A34A", logo: "ethiopian-airlines.png", website: "https://ethiopianairlines.com",  descKey: "p_ea_desc",  roleKey: "p_ea_role", featured: true },
+  { name: "European Union",           initials: "EU",  categoryKey: "cat_diplomatic",    accent: "#B9853B", logo: "european-union.png", website: "https://europa.eu",              descKey: "p_eu_desc",  roleKey: "p_eu_role" },
   { name: "Embassy of Nigeria",       initials: "NG",  categoryKey: "cat_diplomatic",    accent: "#9A6A31", logo: "nigeria-embassy.png", website: "https://ng.indembassy.gov.et",    descKey: "p_ng_desc",  roleKey: "p_ng_role" },
   { name: "Embassy of Burundi",       initials: "BI",  categoryKey: "cat_diplomatic",    accent: "#F0B84F", logo: "burundi-embassy.png", website: "https://bi.indembassy.gov.et",    descKey: "p_bi_desc",  roleKey: "p_bi_role" },
   { name: "Embassy of Côte d'Ivoire", initials: "CI",  categoryKey: "cat_diplomatic",    accent: "#D6A34A", logo: "ivory-coast-embassy.png", website: "https://ci.indembassy.gov.et",    descKey: "p_ci_desc",  roleKey: "p_ci_role" },
   { name: "New Zealand Embassy",      initials: "NZ",  categoryKey: "cat_diplomatic",    accent: "#B9853B", logo: "nz-embassy.png",    website: "https://nzembassy.org",          descKey: "p_nz_desc",  roleKey: "p_nz_role" },
-  { name: "British Council",          initials: "BC",  categoryKey: "cat_cultural",      accent: "#9A6A31", logo: "british-council.png",website: "https://britishcouncil.org",     descKey: "p_bc_desc",  roleKey: "p_bc_role" },
-  { name: "Skylight Hotel",           initials: "SH",  categoryKey: "cat_hospitality",   accent: "#F0B84F", logo: "skylight-hotel.png",  website: "https://skylighthotels.com",      descKey: "p_sh_desc",  roleKey: "p_sh_role" },
-  { name: "Ethiopian Airlines",       initials: "ET",  categoryKey: "cat_corporate",     accent: "#D6A34A", logo: "ethiopian-airlines.png", website: "https://ethiopianairlines.com",  descKey: "p_ea_desc",  roleKey: "p_ea_role", featured: true },
-  { name: "Africa Fashion Reception", initials: "AF",  categoryKey: "cat_cultural",      accent: "#9A6A31", logo: "africa-fashion-reception.png", website: "https://africafashionreception.com", descKey: "p_af_desc",  roleKey: "p_af_role" },
+  { name: "US Mission to AU",          initials: "USAU", categoryKey: "cat_diplomatic",   accent: "#477A9D", logo: "images.jpg", website: "https://usau.usmission.gov", descKey: "p_usau_desc", roleKey: "p_usau_role" },
   { name: "Kana TV",                  initials: "KT",  categoryKey: "cat_media",         accent: "#9A6A31", logo: "kana-tv.png",       website: "https://kanatv.com",            descKey: "p_kt_desc",  roleKey: "p_kt_role" },
+  { name: "DCT Entertainment",        initials: "DC",  categoryKey: "cat_media",         accent: "#D6A34A", logo: "dct-entertainment.png", website: "https://dctentertainment.com",    descKey: "p_dc_desc",  roleKey: "p_dc_role" },
+  { name: "Skylight Hotel",           initials: "SH",  categoryKey: "cat_hospitality",   accent: "#F0B84F", logo: "skylight-hotel.png",  website: "https://skylighthotels.com",      descKey: "p_sh_desc",  roleKey: "p_sh_role" },
+  { name: "Ethiopia Tourism",         initials: "ET2", categoryKey: "cat_government",    accent: "#9A6A31", logo: "ethiopia-tourism.png", website: "https://ethiopia.travel",          descKey: "p_et_desc",  roleKey: "p_et_role" },
+    { name: "Africa Fashion Reception", initials: "AF",  categoryKey: "cat_cultural",      accent: "#9A6A31", logo: "africa-fashion-reception.png", website: "https://africafashionreception.com", descKey: "p_af_desc",  roleKey: "p_af_role" },
 ];
 
 /** Convenience helpers -------------------------------------------------- */

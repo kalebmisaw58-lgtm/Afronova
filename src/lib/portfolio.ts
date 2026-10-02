@@ -80,3 +80,4 @@ export async function getDbPortfolioItems(locale: string = "en"): Promise<DbPort
     return [];
   }
 }
+

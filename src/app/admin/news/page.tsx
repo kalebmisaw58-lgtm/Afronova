@@ -1,12 +1,10 @@
-"use client";
+ "use client";
 
 import { useState, useEffect } from "react";
 import { Plus, Edit, Trash2, Save, X, Globe, Tag, Calendar, FileText, Upload, Loader2 } from "lucide-react";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { LOCALES } from "@/lib/content-sections";
 import { compressImage } from "@/lib/image-compression";
-import { Skeleton } from "@/components/ui/Skeleton";
-import { createBrowserClient } from "@/lib/supabase";
 
 const CATEGORIES = ["event", "partnership", "business", "recap", "production"];
 
@@ -27,7 +25,7 @@ export default function AdminNewsPage() {
       const formData = new FormData();
       formData.append("file", fileToUpload);
       const supabase = typeof window !== "undefined"
-        ? createBrowserClient()
+        ? require("@/lib/supabase").createBrowserClient()
         : null;
 
       let token = "";
@@ -69,7 +67,6 @@ export default function AdminNewsPage() {
       setUploadingImage(false);
     }
   }
-
   const [form, setForm] = useState({
     slug: "", locale: "en", category: "event",
     article_date: "", read_time: "", title: "", excerpt: "",
@@ -144,13 +141,13 @@ export default function AdminNewsPage() {
   return (
     <div className="p-8 max-w-7xl">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-display font-bold text-[#101312]">News Articles</h1>
+        <h1 className="text-2xl font-display font-bold text-white">News Articles</h1>
 
         <div className="flex items-center gap-4">
           <select
             value={localeFilter}
             onChange={(e) => setLocaleFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-[#FAF8F4] border border-[#D6A34A]/25 text-sm text-[#101312] focus:outline-none focus:ring-2 focus:ring-[#D6A34A]"
+            className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#D6A34A]"
           >
             <option value="all">All Locales</option>
             {LOCALES.map(l => (
@@ -171,8 +168,8 @@ export default function AdminNewsPage() {
       {isEditing && (
         <form onSubmit={handleSubmit} className="card-dark p-6 rounded-xl mb-8 space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-[#101312]">{isCreating ? "Add New Article" : "Edit Article"}</h2>
-            <button type="button" onClick={resetForm} className="text-[#101312]/50 hover:text-[#101312]">
+            <h2 className="text-lg font-semibold text-white">{isCreating ? "Add New Article" : "Edit Article"}</h2>
+            <button type="button" onClick={resetForm} className="text-white/40 hover:text-white">
               <X className="w-5 h-4" />
             </button>
           </div>
@@ -202,7 +199,7 @@ export default function AdminNewsPage() {
             onChange={(e) => setForm({ ...form, excerpt: e.target.value })} className="input-dark w-full h-20" />
 
           <div className="space-y-2">
-            <label className="text-sm text-[#101312]/60">Body Paragraphs</label>
+            <label className="text-sm text-white/60">Body Paragraphs</label>
             {form.paragraphs.map((p: string, i: number) => (
               <div key={i} className="flex gap-2">
                 <textarea value={p}
@@ -227,7 +224,7 @@ export default function AdminNewsPage() {
             </label>
             <div className="flex gap-2">
               <button type="button" onClick={resetForm}
-                className="px-4 py-2 text-sm text-[#101312]/60 hover:text-[#101312]">Cancel</button>
+                className="px-4 py-2 text-sm text-white/50 hover:text-white">Cancel</button>
               <button type="submit" className="btn-primary flex items-center gap-2 text-sm px-4 py-2">
                 <Save className="w-4 h-4" /> {isCreating ? "Create" : "Save"} Article
               </button>
@@ -239,19 +236,9 @@ export default function AdminNewsPage() {
       {!isCreating && editingId === null && (
         <div className="space-y-3">
           {loading ? (
-            <div className="space-y-3">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="card-dark p-4 rounded-xl flex items-center gap-4">
-                  <Skeleton className="w-10 h-10 rounded-lg shrink-0" />
-                  <div className="flex-1 space-y-2">
-                    <Skeleton className="h-4 w-3/4" />
-                    <Skeleton className="h-3 w-1/2" />
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="text-white/30">Loading articles...</div>
           ) : articles.length === 0 ? (
-            <div className="card-dark p-8 text-center text-[#101312]/50 rounded-xl">
+            <div className="card-dark p-8 text-center text-white/30 rounded-xl">
               No articles found. Create one above!
             </div>
           ) : (
@@ -262,8 +249,8 @@ export default function AdminNewsPage() {
                     <FileText className="w-6 h-6 text-[#D6A34A]" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-[#101312]">{a.title}</h3>
-                    <div className="flex items-center gap-3 text-xs text-[#101312]/50 mt-1">
+                    <h3 className="font-medium text-white">{a.title}</h3>
+                    <div className="flex items-center gap-3 text-xs text-white/40 mt-1">
                       <span className="flex items-center gap-1"><Globe className="w-3 h-3" /> {a.locale}</span>
                       <span className="flex items-center gap-1"><Tag className="w-3 h-3" /> {a.category}</span>
                       {a.article_date && <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {a.article_date}</span>}
@@ -276,10 +263,10 @@ export default function AdminNewsPage() {
                   }`}>
                     {a.published ? "Pub" : "Draft"}
                   </span>
-                  <button onClick={() => editArticle(a)} className="p-1.5 text-[#101312]/50 hover:text-[#101312] rounded" title="Edit">
+                  <button onClick={() => editArticle(a)} className="p-1.5 text-white/40 hover:text-white rounded" title="Edit">
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button onClick={() => handleDelete(a.id)} className="p-1.5 text-[#101312]/50 hover:text-red-400 rounded" title="Delete">
+                  <button onClick={() => handleDelete(a.id)} className="p-1.5 text-white/40 hover:text-red-400 rounded" title="Delete">
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
@@ -291,4 +278,3 @@ export default function AdminNewsPage() {
     </div>
   );
 }
-

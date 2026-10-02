@@ -102,6 +102,12 @@ export default function HomePage() {
       icon: ShieldCheck,
       color: "#B9853B"
     },
+    {
+      title: "Talent Pathways",
+      desc: "We identify and support emerging as well as established talent to grow their craft, build their visibility, and pursue opportunities across Africa and around the world.",
+      icon: Users2,
+      color: "#D6A34A"
+    },
   ];
 
   const whoWeWorkWith = [
