@@ -30,7 +30,7 @@ const defaultFields: Field[] = [
   { name: "inquiry", label: "Inquiry Type",    options: [
     "General Inquiry", "Event Management", "Multimedia Production",
     "Advertising / Campaigns", "Africa Celebrates 2026",
-    "Sponsorship", "Media / Press", "Other",
+    "Sponsorship", "Media / Press", "Talent Recruitment", "Other",
   ]},
   { name: "message", label: "Message",         type: "textarea",
     placeholder: "Tell us about your project or inquiry…", required: true },
