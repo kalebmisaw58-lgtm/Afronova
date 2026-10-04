@@ -28,26 +28,34 @@ export const DEFAULT_GALLERY_IMAGES = [
 ];
 
 /**
- * Fetch portfolio image URLs configured in Admin Dashboard (stored in site_content table under keys like pf_gal1..pf_gal9, pf_afrima1..pf_afrima9, etc.)
+ * Fetch portfolio image URLs configured in Admin Dashboard
  */
 export async function getDbPortfolioGalleryImages(locale: string = "en", prefix: string = "pf_gal"): Promise<string[]> {
   try {
-    const supabase = typeof window !== "undefined" ? createBrowserClient() : createServerClient();
+    let map: Record<string, string> = {};
 
-    const { data, error } = await supabase
-      .from("site_content")
-      .select("key, value, locale")
-      .like("key", `${prefix}%`);
+    if (typeof window !== "undefined") {
+      const res = await fetch(`/api/portfolio?locale=${locale}`);
+      const json = await res.json();
+      if (json.success && json.imageMap) {
+        map = json.imageMap;
+      }
+    } else {
+      const supabase = createServerClient();
+      const { data } = await supabase
+        .from("site_content")
+        .select("key, value, locale")
+        .like("key", `${prefix}%`);
 
-    const map: Record<string, string> = {};
-    if (data && !error) {
-      data.forEach((row) => {
-        if (row.value && (row.value.startsWith("http") || row.value.startsWith("/"))) {
-          if (!map[row.key] || row.locale === locale) {
-            map[row.key] = row.value;
+      if (data) {
+        data.forEach((row) => {
+          if (row.value && (row.value.startsWith("http") || row.value.startsWith("/"))) {
+            if (!map[row.key] || row.locale === locale) {
+              map[row.key] = row.value;
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     return Array.from({ length: 9 }).map((_, i) => {
@@ -64,8 +72,15 @@ export async function getDbPortfolioGalleryImages(locale: string = "en", prefix:
  */
 export async function getDbPortfolioItems(locale: string = "en"): Promise<DbPortfolioItem[]> {
   try {
-    const supabase = typeof window !== "undefined" ? createBrowserClient() : createServerClient();
+    if (typeof window !== "undefined") {
+      const res = await fetch(`/api/portfolio?locale=${locale}`);
+      const json = await res.json();
+      if (json.success && Array.isArray(json.items)) {
+        return json.items;
+      }
+    }
 
+    const supabase = createServerClient();
     const { data, error } = await supabase
       .from("portfolio_items")
       .select("*")
