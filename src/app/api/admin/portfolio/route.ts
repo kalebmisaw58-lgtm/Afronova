@@ -14,7 +14,7 @@ import { z } from "zod";
 const PortfolioSchema = z.object({
   locale: z.enum(["en", "am", "fr", "pt", "ar"]).default("en"),
   slug: z.string().min(1),
-  category: z.enum(["event", "recap", "production", "campaign", "publication"]).default("event"),
+  category: z.string().min(1).default("event"),
   title: z.string().min(1),
   subtitle: z.string().optional().nullable(),
   excerpt: z.string().optional().nullable(),
@@ -22,6 +22,7 @@ const PortfolioSchema = z.object({
   accent: z.string().default("#D6A34A"),
   sort_order: z.number().int().default(0),
   published: z.boolean().default(true),
+  image_url: z.string().optional().nullable(),
 });
 
 export async function GET(req: NextRequest) {

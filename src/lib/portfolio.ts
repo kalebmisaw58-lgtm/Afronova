@@ -12,6 +12,7 @@ export interface DbPortfolioItem {
   accent: string;
   sort_order: number;
   published: boolean;
+  image_url?: string | null;
 }
 
 export const DEFAULT_GALLERY_IMAGES = [
@@ -27,9 +28,9 @@ export const DEFAULT_GALLERY_IMAGES = [
 ];
 
 /**
- * Fetch portfolio image URLs configured in Admin Dashboard (stored in site_content table under key pf_gal1..pf_gal9)
+ * Fetch portfolio image URLs configured in Admin Dashboard (stored in site_content table under keys like pf_gal1..pf_gal9, pf_afrima1..pf_afrima9, etc.)
  */
-export async function getDbPortfolioGalleryImages(locale: string = "en"): Promise<string[]> {
+export async function getDbPortfolioGalleryImages(locale: string = "en", prefix: string = "pf_gal"): Promise<string[]> {
   try {
     const supabase = typeof window !== "undefined" ? createBrowserClient() : createServerClient();
 
@@ -37,7 +38,7 @@ export async function getDbPortfolioGalleryImages(locale: string = "en"): Promis
       .from("site_content")
       .select("key, value")
       .eq("locale", locale)
-      .like("key", "pf_gal%");
+      .like("key", `${prefix}%`);
 
     const map: Record<string, string> = {};
     if (data && !error) {
@@ -49,7 +50,7 @@ export async function getDbPortfolioGalleryImages(locale: string = "en"): Promis
     }
 
     return Array.from({ length: 9 }).map((_, i) => {
-      const key = `pf_gal${i + 1}`;
+      const key = `${prefix}${i + 1}`;
       return map[key] || DEFAULT_GALLERY_IMAGES[i % DEFAULT_GALLERY_IMAGES.length];
     });
   } catch {

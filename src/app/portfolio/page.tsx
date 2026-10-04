@@ -10,13 +10,19 @@ export default function PortfolioPage() {
   const { t, locale } = useLanguage();
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
   const [dbGalleryImages, setDbGalleryImages] = useState<string[]>(DEFAULT_GALLERY_IMAGES);
+  const [dbAfrimaImages, setDbAfrimaImages] = useState<string[]>([]);
+  const [dbPaticImages, setDbPaticImages] = useState<string[]>([]);
 
   useEffect(() => {
     let active = true;
-    void getDbPortfolioGalleryImages(locale).then((imgs) => {
-      if (active && imgs && imgs.length > 0) {
-        setDbGalleryImages(imgs);
-      }
+    void getDbPortfolioGalleryImages(locale, "pf_gal").then((imgs) => {
+      if (active && imgs && imgs.length > 0) setDbGalleryImages(imgs);
+    });
+    void getDbPortfolioGalleryImages(locale, "pf_afrima").then((imgs) => {
+      if (active && imgs && imgs.length > 0) setDbAfrimaImages(imgs);
+    });
+    void getDbPortfolioGalleryImages(locale, "pf_patic").then((imgs) => {
+      if (active && imgs && imgs.length > 0) setDbPaticImages(imgs);
     });
     return () => { active = false; };
   }, [locale]);
@@ -350,6 +356,8 @@ export default function PortfolioPage() {
                 const globalIdx = mainGalleryList.length + localIdx; // 9..17
                 const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
                 const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
+                const customImg = dbAfrimaImages[localIdx];
+                const imgSrc = (customImg && (customImg.startsWith("http") || customImg.startsWith("/"))) ? customImg : item.imgUrl;
                 return (
                   <div
                     key={item.title + localIdx}
@@ -358,7 +366,7 @@ export default function PortfolioPage() {
                     style={{ background: `linear-gradient(135deg,${accents[localIdx % 3]},rgba(248,246,240,0.90))` }}
                   >
                     <img
-                      src={item.imgUrl}
+                      src={imgSrc}
                       alt={item.title}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -394,6 +402,8 @@ export default function PortfolioPage() {
                 const globalIdx = mainGalleryList.length + afrimaGalleryItems.length + localIdx; // 18..26
                 const accents = ["rgba(214,163,74,0.20)", "rgba(185,133,59,0.16)", "rgba(154,106,49,0.16)"];
                 const heights = ["aspect-square", "aspect-[4/3]", "aspect-[3/4]"];
+                const customImg = dbPaticImages[localIdx];
+                const imgSrc = (customImg && (customImg.startsWith("http") || customImg.startsWith("/"))) ? customImg : item.imgUrl;
                 return (
                   <div
                     key={item.title + localIdx}
@@ -402,7 +412,7 @@ export default function PortfolioPage() {
                     style={{ background: `linear-gradient(135deg,${accents[localIdx % 3]},rgba(248,246,240,0.90))` }}
                   >
                     <img
-                      src={item.imgUrl}
+                      src={imgSrc}
                       alt={item.title}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
