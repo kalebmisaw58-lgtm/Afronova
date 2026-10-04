@@ -36,15 +36,16 @@ export async function getDbPortfolioGalleryImages(locale: string = "en", prefix:
 
     const { data, error } = await supabase
       .from("site_content")
-      .select("key, value")
-      .eq("locale", locale)
+      .select("key, value, locale")
       .like("key", `${prefix}%`);
 
     const map: Record<string, string> = {};
     if (data && !error) {
       data.forEach((row) => {
         if (row.value && (row.value.startsWith("http") || row.value.startsWith("/"))) {
-          map[row.key] = row.value;
+          if (!map[row.key] || row.locale === locale) {
+            map[row.key] = row.value;
+          }
         }
       });
     }

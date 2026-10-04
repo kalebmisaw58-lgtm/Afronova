@@ -200,11 +200,11 @@ export default function PortfolioPage() {
 
   // Combined gallery items for continuous Lightbox navigation across all 27 cards
   const mainGalleryList = galleryItems.map((label, i) => {
-    const translatedVal = t(`pf_gal${i + 1}`);
-    const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/"));
     const dbImg = dbGalleryImages[i];
     const hasDbImg = dbImg && (dbImg.startsWith("http") || dbImg.startsWith("/"));
-    const imgUrl = hasCustomImg ? translatedVal : hasDbImg ? dbImg : defaultGalleryImages[i % defaultGalleryImages.length];
+    const translatedVal = t(`pf_gal${i + 1}`);
+    const hasCustomImg = translatedVal && (translatedVal.startsWith("http") || translatedVal.startsWith("/")) && !translatedVal.includes("unsplash.com");
+    const imgUrl = hasDbImg ? dbImg : hasCustomImg ? translatedVal : defaultGalleryImages[i % defaultGalleryImages.length];
     return {
       title: label,
       category: "Africa Celebrates",
