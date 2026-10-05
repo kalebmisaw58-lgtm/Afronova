@@ -14,6 +14,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import HeroSlideshow from "@/components/ui/HeroSlideshow";
 import CountdownTimer from "@/components/ui/CountdownTimer";
 import PartnerLogo from "@/components/ui/PartnerLogo";
+import { partners as partnerList } from "@/lib/partners";
 import { useState, useEffect } from "react";
 import { getDbPortfolioGalleryImages } from "@/lib/portfolio";
 
