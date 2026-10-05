@@ -36,6 +36,7 @@ export default function ContactPage() {
       t("contact_inquiry_ads"),
       t("contact_inquiry_ac"),
       t("contact_inquiry_sponsor"),
+      t("contact_inquiry_collab"),
       t("contact_inquiry_press"),
       t("contact_inquiry_talent"),
       t("contact_inquiry_other"),
