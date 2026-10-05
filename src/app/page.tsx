@@ -14,10 +14,36 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import HeroSlideshow from "@/components/ui/HeroSlideshow";
 import CountdownTimer from "@/components/ui/CountdownTimer";
 import PartnerLogo from "@/components/ui/PartnerLogo";
-import { partners as partnerList } from "@/lib/partners";
+import { useState, useEffect } from "react";
+import { getDbPortfolioGalleryImages } from "@/lib/portfolio";
 
 export default function HomePage() {
   const { t } = useLanguage();
+  const [dbImages, setDbImages] = useState({
+    pf_gal1: "/heroes/kwame-nkrumah.jpg",
+    pf_afrima1: "/heroes/miriam-makeba.jpg",
+    pf_patic1: "/heroes/haile-selassie.jpg",
+  });
+
+  useEffect(() => {
+    let active = true;
+    void getDbPortfolioGalleryImages("en", "pf_gal").then((imgs) => {
+      if (active && imgs && imgs[0] && (imgs[0].startsWith("http") || imgs[0].startsWith("/"))) {
+        setDbImages((prev) => ({ ...prev, pf_gal1: imgs[0] }));
+      }
+    });
+    void getDbPortfolioGalleryImages("en", "pf_afrima").then((imgs) => {
+      if (active && imgs && imgs[0] && (imgs[0].startsWith("http") || imgs[0].startsWith("/"))) {
+        setDbImages((prev) => ({ ...prev, pf_afrima1: imgs[0] }));
+      }
+    });
+    void getDbPortfolioGalleryImages("en", "pf_patic").then((imgs) => {
+      if (active && imgs && imgs[0] && (imgs[0].startsWith("http") || imgs[0].startsWith("/"))) {
+        setDbImages((prev) => ({ ...prev, pf_patic1: imgs[0] }));
+      }
+    });
+    return () => { active = false; };
+  }, []);
 
   const sixPillars = [
     {
@@ -127,7 +153,7 @@ export default function HomePage() {
       type: "Flagship Platform",
       desc: "Lead Implementing Partner in Ethiopia translating the vision of 40+ nations into forums, fashion galas, and trade summits.",
       accent: "#9A6A31",
-      image: "/heroes/kwame-nkrumah.jpg",
+      image: dbImages.pf_gal1,
       href: "/africa-celebrates-2026",
       isEvent: true
     },
@@ -136,7 +162,7 @@ export default function HomePage() {
       type: "Media Partnership",
       desc: "Full event facilitation and media coverage for All Africa Music Awards' World Media Calendar Unveiling.",
       accent: "#B9853B",
-      image: "/heroes/miriam-makeba.jpg",
+      image: dbImages.pf_afrima1,
       href: "/portfolio",
       isEvent: false
     },
@@ -145,7 +171,7 @@ export default function HomePage() {
       type: "Pan-African Initiative",
       desc: "Pan-African Transcontinental Industrial Corporation launch event connecting trade delegates across borders.",
       accent: "#D6A34A",
-      image: "/heroes/haile-selassie.jpg",
+      image: dbImages.pf_patic1,
       href: "/portfolio",
       isEvent: false
     },
@@ -371,7 +397,7 @@ export default function HomePage() {
               <Link key={title} href={href} className="card-dark p-7 flex flex-col gap-4 group hover:-translate-y-1 transition-all">
                 <div className="relative aspect-video rounded-xl flex items-center justify-center overflow-hidden"
                      style={{ background: `linear-gradient(135deg,${accent}15,rgba(248,246,240,0.90))`, border: `1px solid ${accent}35` }}>
-                  <Image src={image} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
+                  <Image src={image} alt="" fill unoptimized sizes="(min-width: 768px) 33vw, 100vw" className="object-cover opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
                   {isEvent && <span className="absolute top-3 right-3 rounded-md bg-[#101312]/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">Africa Celebrates</span>}
                 </div>
                 <div className="flex items-center justify-between">
