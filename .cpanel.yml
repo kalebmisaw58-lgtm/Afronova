@@ -1,0 +1,13 @@
+---
+deployment:
+  tasks:
+    # Install production dependencies only
+    - export WORKDIR="${HOME}/afronova"
+    - cp -R . "${WORKDIR}"
+    - cd "${WORKDIR}"
+    - npm ci --omit=dev
+    - npm run build
+    # Copy standalone output to the Node.js app directory
+    - cp -R .next/standalone/. "${WORKDIR}/"
+    - cp -R .next/static .next/standalone/.next/static
+    - cp -R public .next/standalone/public
