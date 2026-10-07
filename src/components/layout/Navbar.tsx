@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
   { key: "nav_portfolio", href: "/portfolio" },
   { key: "nav_news",      href: "/news" },
   { key: "nav_partners",  href: "/partners" },
+  { key: "nav_portal",    href: "/portal", highlight: true },
   { key: "nav_contact",   href: "/contact" },
 ];
 
@@ -46,11 +47,21 @@ export default function Navbar() {
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
   useEffect(() => { setIsOpen(false); }, [pathname]);
+
+  // Close language dropdown on outside click
+  useEffect(() => {
+    if (!langOpen) return;
+    const close = (e: MouseEvent) => {
+      if (!(e.target as Element).closest("[data-lang-menu]")) setLangOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, [langOpen]);
 
   if (pathname?.startsWith("/admin")) return null;
 
@@ -139,7 +150,7 @@ export default function Navbar() {
           {/* ── RIGHT CONTROLS ───────────────────────────────── */}
           <div className="flex items-center gap-2">
             {/* Language switcher */}
-            <div className="relative">
+            <div className="relative" data-lang-menu>
               <button
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-1.5 text-[#101312]/80 hover:text-[#9A6A31]

@@ -87,7 +87,7 @@ export async function sendContactEmail(data: ContactEmailData) {
     row("Message", data.message),
   ].join("");
 
-  const [notification, confirmation] = await Promise.all([
+  const [notification, confirmation] = await Promise.allSettled([
     // Notify AfroNova team
     getResendClient().emails.send({
       from:    FROM,
@@ -96,7 +96,7 @@ export async function sendContactEmail(data: ContactEmailData) {
       subject: `[Contact] New message from ${data.name}`,
       html:    emailWrapper(`New Contact: ${data.name}`, body),
     }),
-    // Auto-reply to sender
+    // Auto-reply to sender — best-effort; failure must not suppress team notification
     getResendClient().emails.send({
       from:    FROM,
       to:      data.email,
@@ -116,7 +116,14 @@ export async function sendContactEmail(data: ContactEmailData) {
     }),
   ]);
 
-  return { notification, confirmation };
+  if (notification.status === "rejected") {
+    throw new Error(`Team notification failed: ${notification.reason}`);
+  }
+  if (confirmation.status === "rejected") {
+    console.warn("[resend] Auto-reply failed (non-fatal):", confirmation.reason);
+  }
+
+  return { notification: notification.value, confirmation: confirmation.status === "fulfilled" ? confirmation.value : null };
 }
 
 // ── 2. Newsletter welcome email ───────────────────────────────

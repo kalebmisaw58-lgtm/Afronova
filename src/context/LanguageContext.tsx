@@ -1151,7 +1151,27 @@ const LanguageContext = createContext<LanguageContextType>({
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
   const isRTL = RTL_LOCALES.includes(locale);
-  const setLocale = (l: Locale) => setLocaleState(l);
+
+  // Hydrate from localStorage after mount to avoid SSR mismatch
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("afronova-locale") as Locale | null;
+      if (saved && (["en", "am", "fr", "pt", "ar"] as Locale[]).includes(saved)) {
+        setLocaleState(saved);
+      }
+    } catch {
+      // localStorage unavailable (private browsing, etc.) — use default
+    }
+  }, []);
+
+  const setLocale = (l: Locale) => {
+    setLocaleState(l);
+    try {
+      localStorage.setItem("afronova-locale", l);
+    } catch {
+      // ignore
+    }
+  };
 
   useEffect(() => {
     const html = document.documentElement;
