@@ -17,7 +17,6 @@ const navItems: NavItem[] = [
   { key: "nav_portfolio", href: "/portfolio" },
   { key: "nav_news",      href: "/news" },
   { key: "nav_partners",  href: "/partners" },
-  { key: "nav_portal",    href: "/portal", highlight: true },
   { key: "nav_contact",   href: "/contact" },
 ];
 
