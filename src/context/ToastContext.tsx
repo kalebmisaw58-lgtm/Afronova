@@ -17,7 +17,7 @@ interface Toast {
 
 interface ToastContextType {
   toast: (message: string, type?: ToastType) => void;
-  showToast: (message: string, type?: ToastType) => void;
+  showToast: (title: string, messageOrType?: string | ToastType, type?: ToastType) => void;
   success: (message: string) => void;
   error:   (message: string) => void;
   info:    (message: string) => void;
@@ -45,7 +45,21 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     setToasts((prev) => [...prev, { id, message, type }]);
   }, []);
 
-  const showToast = toast;
+  const showToast = useCallback((title: string, messageOrType?: string | ToastType, type?: ToastType) => {
+    let finalMessage = title;
+    let finalType: ToastType = "info";
+
+    if (type) {
+      finalMessage = `${title}: ${messageOrType}`;
+      finalType = type;
+    } else if (messageOrType === "success" || messageOrType === "error" || messageOrType === "info") {
+      finalType = messageOrType;
+    } else if (messageOrType) {
+      finalMessage = `${title}: ${messageOrType}`;
+    }
+
+    toast(finalMessage, finalType);
+  }, [toast]);
 
   const success = useCallback((m: string) => toast(m, "success"), [toast]);
   const error   = useCallback((m: string) => toast(m, "error"),   [toast]);
