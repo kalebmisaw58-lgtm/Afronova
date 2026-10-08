@@ -23,20 +23,21 @@ on conflict (locale, key) do nothing;
 insert into public.partners (name, initials, category_key, accent, logo, website, featured, sort_order)
 values
   ('African Union',            'AU',  'cat_institutional', '#D6A34A', 'african-union.png',         'https://au.int',                true,  0),
-  ('UNECA (ECA)',              'ECA', 'cat_institutional', '#B9853B', 'uneca.png',                'https://uneca.org',             true,  1),
-  ('Legendary Gold',           'LG',  'cat_strategic',     '#F0B84F', 'legendary-gold.png',       'https://legendarygold.co.uk',   true,  2),
-  ('British Council',          'BC',  'cat_cultural',      '#9A6A31', 'british-council.png',      'https://britishcouncil.org',    false, 3),
-  ('Ethiopian Airlines',       'ET',  'cat_corporate',     '#D6A34A', 'ethiopian-airlines.png',   'https://ethiopianairlines.com', true,  4),
-  ('European Union',           'EU',  'cat_diplomatic',    '#B9853B', 'european-union.png',       'https://europa.eu',             false, 5),
-  ('Embassy of Nigeria',       'NG',  'cat_diplomatic',    '#9A6A31', 'nigeria-embassy.png',      'https://ng.indembassy.gov.et',  false, 6),
-  ('Embassy of Burundi',       'BI',  'cat_diplomatic',    '#F0B84F', 'burundi-embassy.png',      'https://bi.indembassy.gov.et',  false, 7),
-  ('Embassy of Côte d''Ivoire','CI',  'cat_diplomatic',    '#D6A34A', 'ivory-coast-embassy.png',  'https://ci.indembassy.gov.et',  false, 8),
-  ('New Zealand Embassy',      'NZ',  'cat_diplomatic',    '#B9853B', 'nz-embassy.png',           'https://nzembassy.org',         false, 9),
-  ('US Mission to AU',         'USAU','cat_diplomatic',    '#477A9D', 'images.jpg',               'https://usau.usmission.gov',    false, 10),
-  ('Kana TV',                  'KT',  'cat_media',         '#9A6A31', 'kana-tv.png',              'https://kanatv.com',            false, 11),
-  ('Skylight Hotel',           'SH',  'cat_hospitality',   '#F0B84F', 'skylight-hotel.png',       'https://skylighthotels.com',    false, 12),
-  ('Ethiopia Tourism',         'ET2', 'cat_government',    '#9A6A31', 'ethiopia-tourism.png',     'https://ethiopia.travel',       false, 13),
-  ('Africa Fashion Reception', 'AF',  'cat_cultural',      '#9A6A31', 'africa-fashion-reception.png','https://africafashionreception.com', false, 14)
+  ('European Union',           'EU',  'cat_diplomatic',    '#B9853B', 'european-union.png',       'https://europa.eu',             true,  1),
+  ('Ministry of Tourism',      'ET2', 'cat_government',    '#9A6A31', 'ethiopia-tourism.png',     'https://ethiopia.travel',       true,  2),
+  ('Legendary Gold',           'LG',  'cat_strategic',     '#F0B84F', 'legendary-gold.png',       'https://legendarygold.co.uk',   true,  3),
+  ('US Mission to AU',         'USAU','cat_diplomatic',    '#477A9D', 'images.jpg',               'https://usau.usmission.gov',    true,  4),
+  ('Embassy of Nigeria',       'NG',  'cat_diplomatic',    '#9A6A31', 'nigeria-embassy.png',      'https://ng.indembassy.gov.et',  false, 5),
+  ('Embassy of Burundi',       'BI',  'cat_diplomatic',    '#F0B84F', 'burundi-embassy.png',      'https://bi.indembassy.gov.et',  false, 6),
+  ('Embassy of Côte d''Ivoire','CI',  'cat_diplomatic',    '#D6A34A', 'ivory-coast-embassy.png',  'https://ci.indembassy.gov.et',  false, 7),
+  ('New Zealand Embassy',      'NZ',  'cat_diplomatic',    '#B9853B', 'nz-embassy.png',           'https://nzembassy.org',         false, 8),
+  ('UNECA (ECA)',              'ECA', 'cat_institutional', '#B9853B', 'uneca.png',                'https://uneca.org',             true,  9),
+  ('British Council',          'BC',  'cat_cultural',      '#9A6A31', 'british-council.png',      'https://britishcouncil.org',    false, 10),
+  ('Skylight Hotel',           'SH',  'cat_hospitality',   '#F0B84F', 'skylight-hotel.png',       'https://skylighthotels.com',    true,  11),
+  ('Ethiopian Airlines',       'ET',  'cat_corporate',     '#D6A34A', 'ethiopian-airlines.png',   'https://ethiopianairlines.com', true,  12),
+  ('Africa Fashion Reception', 'AF',  'cat_cultural',      '#9A6A31', 'africa-fashion-reception.png','https://africafashionreception.com', false, 13),
+  ('Kana TV',                  'KT',  'cat_media',         '#9A6A31', 'kana-tv.png',              'https://kanatv.com',            false, 14),
+  ('DCT Entertainment',        'DC',  'cat_media',         '#D6A34A', 'dct-entertainment.png',    'https://dctentertainment.com',  false, 15)
 on conflict (name) do nothing;
 
 -- Partner descriptions (English only — other locales can be added via CMS)
