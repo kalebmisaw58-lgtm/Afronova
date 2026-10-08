@@ -260,9 +260,22 @@ export default function Footer() {
 
       {/* ── BOTTOM BAR ────────────────────────────────────────── */}
       <div className="border-t border-gray-300/60 bg-white">
-        <div className="container-custom py-4 flex flex-col sm:flex-row items-center
-                        justify-between gap-3">
-          <p className="text-[#101312]/60 text-xs font-medium">{t("footer_rights")}</p>
+        <div className="container-custom py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-3">
+            <p className="text-[#101312]/60 text-xs font-medium">{t("footer_rights")}</p>
+            <span className="hidden sm:inline text-gray-300">•</span>
+            <p className="text-[#101312]/60 text-xs font-medium">
+              Designed &amp; Developed by{" "}
+              <a
+                href="https://kaleb-misaw-portfolio.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#9A6A31] font-bold hover:underline transition-colors"
+              >
+                Kaleb M.
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-4">
             {[
               { label: "Privacy Policy", href: "/privacy" },
