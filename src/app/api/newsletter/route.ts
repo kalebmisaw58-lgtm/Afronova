@@ -99,8 +99,15 @@ export async function POST(req: NextRequest) {
     // Await the optional sync so serverless runtimes do not discard it early.
     await subscribeToMailchimp(email);
 
-    // ── Send welcome email ──────────────────────────────────
-    await sendNewsletterWelcome(email);
+    // ── Send welcome email (best-effort, non-fatal) ─────────
+    try {
+      const resendRes = await sendNewsletterWelcome(email);
+      if (resendRes?.error) {
+        console.warn("[newsletter] Welcome email dispatch warning:", resendRes.error);
+      }
+    } catch (emailErr) {
+      console.warn("[newsletter] Welcome email failed (non-fatal):", emailErr);
+    }
 
     return NextResponse.json(
       { success: true, message: "You're subscribed! Welcome to AfroNova." },

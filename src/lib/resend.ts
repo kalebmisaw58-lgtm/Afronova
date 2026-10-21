@@ -117,13 +117,18 @@ export async function sendContactEmail(data: ContactEmailData) {
   ]);
 
   if (notification.status === "rejected") {
-    throw new Error(`Team notification failed: ${notification.reason}`);
-  }
-  if (confirmation.status === "rejected") {
-    console.warn("[resend] Auto-reply failed (non-fatal):", confirmation.reason);
+    console.error("[resend] Team notification promise rejected:", notification.reason);
+  } else if (notification.value?.error) {
+    console.error("[resend] Team notification API error:", notification.value.error);
   }
 
-  return { notification: notification.value, confirmation: confirmation.status === "fulfilled" ? confirmation.value : null };
+  if (confirmation.status === "rejected") {
+    console.warn("[resend] Auto-reply promise rejected (non-fatal):", confirmation.reason);
+  } else if (confirmation.value?.error) {
+    console.warn("[resend] Auto-reply API error (non-fatal):", confirmation.value.error);
+  }
+
+  return { notification: notification.status === "fulfilled" ? notification.value : null, confirmation: confirmation.status === "fulfilled" ? confirmation.value : null };
 }
 
 // ── 2. Newsletter welcome email ───────────────────────────────

@@ -51,14 +51,18 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ── Send emails ─────────────────────────────────────────
-    await sendContactEmail({
-      name:    data.name,
-      email:   data.email,
-      phone:   data.phone,
-      inquiry: data.inquiry,
-      message: data.message,
-    });
+    // ── Send emails (best-effort, non-fatal if DB recorded) ──
+    try {
+      await sendContactEmail({
+        name:    data.name,
+        email:   data.email,
+        phone:   data.phone,
+        inquiry: data.inquiry,
+        message: data.message,
+      });
+    } catch (emailErr) {
+      console.warn("[contact] Email dispatch failed (saved in database):", emailErr);
+    }
 
     return NextResponse.json(
       { success: true, message: "Your message has been received. We'll be in touch within 1 to 2 business days." },
